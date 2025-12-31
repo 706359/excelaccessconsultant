@@ -1,0 +1,148 @@
+.ServicePage-hero {
+  padding: var(--space-16) 0;
+}
+
+.ServicePageHero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ServicePageHero-title {
+  font-size: 3rem;
+  margin-bottom: var(--space-6);
+}
+
+.ServicePageHero-subtitle {
+  font-size: 1.25rem;
+  color: #374151;
+  line-height: 1.75;
+}
+
+.ServicePage-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ServicePage-section-title {
+  font-size: 1.875rem;
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.ServicePage-section-text {
+  font-size: 1.125rem;
+  color: #374151;
+  line-height: 1.75;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-12);
+}
+
+.ServicePage-problem,
+.ServicePage-solution {
+  margin-bottom: var(--space-16);
+}
+
+.ServicePage-deliverables {
+  margin-bottom: var(--space-16);
+}
+
+.ServicePage-deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.DeliverableCard {
+  text-align: left;
+}
+
+.DeliverableCard-title {
+  font-size: 1.25rem;
+  color: #dc2626;
+  margin-bottom: var(--space-4);
+}
+
+.DeliverableCard-description {
+  color: #374151;
+  line-height: 1.75;
+}
+
+.ServicePage-process {
+  margin-bottom: var(--space-16);
+}
+
+.ServicePage-process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.ProcessStep {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.ProcessStep-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 9999px;
+  background-color: #dc2626;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.ProcessStep-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-2);
+}
+
+.ProcessStep-description {
+  color: #374151;
+  line-height: 1.75;
+}
+
+.ServicePage-cta {
+  text-align: center;
+  padding: var(--space-12) 0;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: var(--space-12);
+}
+
+.ServicePage-cta-title {
+  font-size: 1.875rem;
+  margin-bottom: var(--space-4);
+}
+
+.ServicePage-cta-text {
+  font-size: 1.125rem;
+  color: #374151;
+  margin-bottom: var(--space-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .ServicePage-hero {
+    padding: var(--space-12) 0;
+  }
+
+  .ServicePage-deliverables-grid,
+  .ServicePage-process-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+

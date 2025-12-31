@@ -1,0 +1,67 @@
+.ContactForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.ContactForm-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ContactForm-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.ContactForm-required {
+  color: var(--color-accent);
+}
+
+.ContactForm-input,
+.ContactForm-textarea {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--input-border-radius);
+  background-color: var(--color-input-bg);
+  color: var(--color-input-text);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  transition: var(--transition-all);
+  width: 100%;
+}
+
+.ContactForm-input:focus,
+.ContactForm-textarea:focus {
+  outline: none;
+  border-color: var(--color-input-border-focus);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.ContactForm-input::placeholder,
+.ContactForm-textarea::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+.ContactForm-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.ContactForm-message {
+  padding: var(--space-4);
+  border-radius: var(--input-border-radius);
+  font-size: var(--font-size-sm);
+}
+
+.ContactForm-message--success {
+  background-color: rgba(33, 115, 70, 0.1);
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(33, 115, 70, 0.2);
+}
+
+.ContactForm-actions {
+  margin-top: var(--space-2);
+}
