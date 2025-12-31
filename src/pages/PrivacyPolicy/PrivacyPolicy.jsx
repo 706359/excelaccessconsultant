@@ -1,5 +1,4 @@
 import Section from '../../components/Section/Section';
-import './PrivacyPolicy.css';
 
 const PrivacyPolicy = () => {
   return (

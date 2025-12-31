@@ -1,4 +1,3 @@
-import './Section.css';
 
 const Section = ({ 
   children, 

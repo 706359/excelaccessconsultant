@@ -1,6 +1,5 @@
 import Section from '../../components/Section/Section';
 import Card from '../../components/Card/Card';
-import './About.css';
 
 const About = () => {
   return (

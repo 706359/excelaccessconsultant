@@ -8,16 +8,7 @@ import Header from './components/Header/Header';
 import Section from './components/Section/Section';
 import TopBanner from './components/TopBanner/TopBanner';
 import SEO from './components/SEO/SEO';
-import './pages/About/About.css';
-import './pages/Contact/Contact.css';
-import './pages/FAQ/FAQ.css';
-import './pages/Home/Home.css';
-import './pages/Services/Services.css';
 import './styles/global.css';
-import './styles/section-headings.css';
-import './tokens/core.css';
-import './tokens/semantic.css';
-import './utilities/utilities.css';
 
 function App() {
   useEffect(() => {

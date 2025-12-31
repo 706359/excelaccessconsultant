@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './ContactForm.css';
 import Button from '../Button/Button';
 
 const ContactForm = () => {

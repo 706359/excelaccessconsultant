@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import Section from '../../../components/Section/Section';
 import Card from '../../../components/Card/Card';
 import Button from '../../../components/Button/Button';
-import './MSAccessDevelopment.css';
 
 const MSAccessDevelopment = () => {
   return (

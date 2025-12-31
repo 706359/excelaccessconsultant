@@ -1,4 +1,3 @@
-import './TopBanner.css';
 
 const TopBanner = () => {
   return (

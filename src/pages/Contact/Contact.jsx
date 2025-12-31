@@ -1,6 +1,5 @@
 import Section from '../../components/Section/Section';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import './Contact.css';
 
 const Contact = () => {
   return (
