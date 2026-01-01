@@ -23,7 +23,7 @@ function HomePage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
+    phone: '',
     message: '',
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -50,15 +50,17 @@ function HomePage() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Create mailto link as fallback
-    const subject = encodeURIComponent(`Contact from ${formData.name} - ${formData.company}`);
+    const subject = encodeURIComponent(`Contact from ${formData.name}`);
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nMessage:\n${formData.message}`
+      `Full Name: ${formData.name}\nEmail Address: ${formData.email}\nPhone Number: ${
+        formData.phone || 'Not provided'
+      }\n\nMessage:\n${formData.message}`
     );
     window.location.href = `mailto:rob@excelaccessconsultant.com?subject=${subject}&body=${body}`;
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
-      setFormData({ name: '', email: '', company: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', message: '' });
     }, 3000);
   };
 
@@ -106,11 +108,6 @@ function HomePage() {
             question: 'How long do projects take?',
             answer:
               "Depends on what you need. Simple automations? A few days to a week. Big database projects? Usually 4 to 8 weeks. I'll give you a timeline when we talk.",
-          },
-          {
-            question: 'How do you handle security?',
-            answer:
-              "I work in your systems, not mine. I sign NDAs. Your data stays where it belongs. I've worked with sensitive financial and operational data for years.",
           },
           {
             question: 'Do you provide documentation?',
@@ -193,16 +190,6 @@ function HomePage() {
               >
                 FAQ
               </a>
-              <a
-                href='#contact'
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('contact');
-                }}
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                Contact
-              </a>
               <button onClick={() => scrollToSection('contact')} className='btn-primary'>
                 Get Started
               </button>
@@ -273,19 +260,10 @@ function HomePage() {
                 >
                   FAQ
                 </a>
-                <a
-                  href='#contact'
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('contact');
-                  }}
-                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
-                >
-                  Contact
-                </a>
                 <button
                   onClick={() => {
                     scrollToSection('contact');
+                    setIsMobileMenuOpen(false);
                   }}
                   className='btn-primary text-left w-full py-2'
                 >
@@ -1014,7 +992,7 @@ function HomePage() {
                   aria-expanded={openFaqIndex === 4}
                 >
                   <h3 className='text-xl font-bold font-display text-slate-900'>
-                    How do you handle security?
+                    Do you provide documentation?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
                     {openFaqIndex === 4 ? '−' : '+'}
@@ -1022,8 +1000,8 @@ function HomePage() {
                 </button>
                 {openFaqIndex === 4 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
-                    I work in your systems, not mine. I sign NDAs. Your data stays where it belongs.
-                    I've worked with sensitive financial and operational data for years.
+                    Yes. I write documentation that explains how things work. You shouldn't need me
+                    to explain it every time you use it.
                   </p>
                 )}
               </div>
@@ -1035,7 +1013,7 @@ function HomePage() {
                   aria-expanded={openFaqIndex === 5}
                 >
                   <h3 className='text-xl font-bold font-display text-slate-900'>
-                    Do you provide documentation?
+                    Can you help with urgent issues?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
                     {openFaqIndex === 5 ? '−' : '+'}
@@ -1043,8 +1021,8 @@ function HomePage() {
                 </button>
                 {openFaqIndex === 5 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
-                    Yes. I write documentation that explains how things work. You shouldn't need me
-                    to explain it every time you use it.
+                    If I'm available, yes. I've done plenty of emergency fixes. Call me and we'll
+                    figure it out.
                   </p>
                 )}
               </div>
@@ -1056,34 +1034,13 @@ function HomePage() {
                   aria-expanded={openFaqIndex === 6}
                 >
                   <h3 className='text-xl font-bold font-display text-slate-900'>
-                    Can you help with urgent issues?
+                    Do you work remotely?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
                     {openFaqIndex === 6 ? '−' : '+'}
                   </span>
                 </button>
                 {openFaqIndex === 6 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    If I'm available, yes. I've done plenty of emergency fixes. Call me and we'll
-                    figure it out.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(7)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 7}
-                >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
-                    Do you work remotely?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 7 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 7 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
                     Yes. I work remotely. We'll use screen sharing, secure file transfer, whatever
                     works for you. I've been doing remote work long before it was trendy.
@@ -1140,6 +1097,29 @@ function HomePage() {
                       I tell you what it costs before I start. No surprises.
                     </p>
                   </div>
+
+                  <div className='pt-6 border-t border-slate-200'>
+                    <div className='space-y-3'>
+                      <div>
+                        <p className='text-sm font-medium text-slate-700 mb-1'>Phone</p>
+                        <a
+                          href='tel:8017045604'
+                          className='text-excel hover:text-excel-hover font-medium'
+                        >
+                          (801) 704-5604
+                        </a>
+                      </div>
+                      <div>
+                        <p className='text-sm font-medium text-slate-700 mb-1'>Email</p>
+                        <a
+                          href='mailto:rob@excelaccessconsultant.com'
+                          className='text-excel hover:text-excel-hover font-medium'
+                        >
+                          rob@excelaccessconsultant.com
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1169,7 +1149,7 @@ function HomePage() {
                           htmlFor='name'
                           className='block text-sm font-medium text-slate-700 mb-2'
                         >
-                          Name
+                          Full Name <span className='text-red-600'>*</span>
                         </label>
                         <input
                           id='name'
@@ -1179,7 +1159,7 @@ function HomePage() {
                           value={formData.name}
                           onChange={handleInputChange}
                           className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
-                          placeholder='Your name'
+                          placeholder='Your full name'
                         />
                       </div>
                       <div>
@@ -1187,7 +1167,7 @@ function HomePage() {
                           htmlFor='email'
                           className='block text-sm font-medium text-slate-700 mb-2'
                         >
-                          Email
+                          Email Address <span className='text-red-600'>*</span>
                         </label>
                         <input
                           id='email'
@@ -1202,36 +1182,42 @@ function HomePage() {
                       </div>
                       <div>
                         <label
-                          htmlFor='company'
+                          htmlFor='phone'
                           className='block text-sm font-medium text-slate-700 mb-2'
                         >
-                          Company
+                          Phone Number
                         </label>
                         <input
-                          id='company'
-                          name='company'
-                          type='text'
-                          value={formData.company}
+                          id='phone'
+                          name='phone'
+                          type='tel'
+                          value={formData.phone}
                           onChange={handleInputChange}
                           className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
-                          placeholder='Your company'
+                          placeholder='Your phone number'
                         />
                       </div>
                       <div>
-                        <label
-                          htmlFor='message'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Message
-                        </label>
+                        <div className='flex items-center justify-between mb-2'>
+                          <label
+                            htmlFor='message'
+                            className='block text-sm font-medium text-slate-700'
+                          >
+                            Message
+                          </label>
+                          <span className='text-xs text-slate-500'>
+                            {formData.message.length}/180
+                          </span>
+                        </div>
                         <textarea
                           id='message'
                           name='message'
                           rows='5'
                           required
+                          maxLength={180}
                           value={formData.message}
                           onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel resize-none'
+                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel resize-y'
                           placeholder='What do you need help with?'
                         ></textarea>
                       </div>
@@ -1244,10 +1230,6 @@ function HomePage() {
                       </button>
                     </form>
                   )}
-
-                  <div className='mt-8 pt-8 border-t border-slate-200 text-center'>
-                    <p className='text-slate-600 text-sm'>rob@excelaccessconsultant.com</p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1265,7 +1247,7 @@ function HomePage() {
                 <img
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
-                  className='h-12 md:h-14 w-auto brightness-0 invert'
+                  className='h-14 md:h-16 w-auto brightness-0 invert'
                 />
               </Link>
               <p className='text-slate-400 text-sm leading-relaxed mb-4'>

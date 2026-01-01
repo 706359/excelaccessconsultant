@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
 import '../../styles/global.css';
 
 function About() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-excel selection:text-white'>
       <SEO
@@ -11,51 +14,133 @@ function About() {
         keywords='operational stability, data governance, Excel consulting, Access consulting, audit-ready systems, business continuity, risk mitigation'
       />
 
-      {/* Navigation */}
-      <nav className='flex justify-between items-center px-6 md:px-8 py-6 border-b border-slate-200 sticky top-0 z-50 bg-white/95 backdrop-blur-sm'>
-        <Link to='/' className='flex items-center'>
-          <img
-            src='/logo.png'
-            alt='ExcelAccessConsultant - Expert Excel and Access Consulting Services'
-            className='h-12 w-auto'
-          />
-        </Link>
-        <div className='hidden md:flex items-center gap-8'>
-          <Link
-            to='/'
-            className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-          >
-            Home
-          </Link>
-          <Link to='/about' className='text-slate-900 text-sm font-medium'>
-            About
-          </Link>
-          <a
-            href='/#services'
-            className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-          >
-            Services
-          </a>
-          <a
-            href='/#faq'
-            className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-          >
-            FAQ
-          </a>
-          <a href='/#contact' className='btn-primary'>
-            Schedule a Free Consultation
-          </a>
+      {/* Top Banner */}
+      <div className='bg-red-600 text-white py-3 text-center text-sm font-medium'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <p>
+            Call Us Today!{' '}
+            <a href='tel:8017045604' className='hover:underline font-semibold'>
+              (801) 704-5604
+            </a>
+            {' | '}
+            <a
+              href='mailto:rob@excelaccessconsultant.com'
+              className='hover:underline font-semibold'
+            >
+              rob@excelaccessconsultant.com
+            </a>
+          </p>
         </div>
-        <button className='md:hidden text-slate-700'>
-          <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d='M4 6h16M4 12h16M4 18h16'
-            />
-          </svg>
-        </button>
+      </div>
+
+      {/* Navigation */}
+      <nav className='border-b border-slate-200 sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm'>
+        <div className='max-w-7xl mx-auto px-6 md:px-8'>
+          <div className='flex justify-between items-center py-6'>
+            <Link to='/' className='flex items-center'>
+              <img
+                src='/logo.png'
+                alt='ExcelAccessConsultant Logo'
+                className='h-14 md:h-16 w-auto'
+              />
+            </Link>
+            <div className='hidden md:flex items-center gap-8'>
+              <Link
+                to='/'
+                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
+              >
+                Home
+              </Link>
+              <Link to='/about' className='text-slate-900 text-sm font-medium'>
+                About
+              </Link>
+              <a
+                href='/#services'
+                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
+              >
+                Services
+              </a>
+              <a
+                href='/#faq'
+                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
+              >
+                FAQ
+              </a>
+              <a href='/#contact' className='btn-primary'>
+                Get Started
+              </a>
+            </div>
+            <button
+              className='md:hidden text-slate-700 p-2'
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label='Toggle mobile menu'
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M6 18L18 6M6 6l12 12'
+                  />
+                </svg>
+              ) : (
+                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M4 6h16M4 12h16M4 18h16'
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className='md:hidden border-t border-slate-200 py-4'>
+              <div className='flex flex-col gap-4'>
+                <Link
+                  to='/'
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
+                >
+                  Home
+                </Link>
+                <Link
+                  to='/about'
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className='text-slate-900 text-sm font-medium py-2'
+                >
+                  About
+                </Link>
+                <a
+                  href='/#services'
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
+                >
+                  Services
+                </a>
+                <a
+                  href='/#faq'
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
+                >
+                  FAQ
+                </a>
+                <a
+                  href='/#contact'
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className='btn-primary text-center py-2'
+                >
+                  Get Started
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
       </nav>
 
       <main>
@@ -239,50 +324,109 @@ function About() {
       </main>
 
       {/* Footer */}
-      <footer className='bg-slate-100 border-t border-slate-200 py-12'>
-        <div className='max-w-6xl mx-auto px-6'>
-          <div className='grid md:grid-cols-2 gap-8 mb-8'>
-            <div>
-              <div className='text-xl font-bold tracking-tight mb-4 font-display text-slate-900'>
-                ExcelAccessConsultant
-              </div>
-              <p className='text-slate-600 text-sm leading-relaxed'>
-                Professional Excel and MS Access consulting for enterprise operations.
+      <footer className='bg-slate-900 text-slate-300 border-t border-slate-800'>
+        <div className='max-w-7xl mx-auto px-6 py-16'>
+          <div className='grid md:grid-cols-3 gap-12 mb-12'>
+            {/* Brand Section */}
+            <div className='md:col-span-1'>
+              <Link to='/' className='flex items-center mb-4'>
+                <img
+                  src='/logo.png'
+                  alt='ExcelAccessConsultant Logo'
+                  className='h-14 md:h-16 w-auto brightness-0 invert'
+                />
+              </Link>
+              <p className='text-slate-400 text-sm leading-relaxed mb-4'>
+                Senior-level Excel and Microsoft Access consulting focused on automation, data
+                integrity, and operational clarity.
               </p>
+              <div className='text-slate-400 text-sm'>
+                <p className='font-medium text-slate-300 mb-1'>Email</p>
+                <a
+                  href='mailto:rob@excelaccessconsultant.com'
+                  className='hover:text-white transition-colors'
+                >
+                  rob@excelaccessconsultant.com
+                </a>
+              </div>
             </div>
+
+            {/* Navigation Links */}
             <div>
-              <h4 className='font-bold mb-4 text-sm text-slate-900'>Links</h4>
-              <ul className='space-y-2 text-slate-600 text-sm'>
+              <h4 className='font-bold mb-4 text-sm text-white uppercase tracking-wider'>
+                Navigation
+              </h4>
+              <ul className='space-y-3 text-slate-400 text-sm'>
                 <li>
-                  <Link to='/' className='hover:text-slate-900 transition-colors'>
+                  <Link to='/' className='hover:text-white transition-colors'>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to='/about' className='hover:text-slate-900 transition-colors'>
+                  <Link to='/about' className='hover:text-white transition-colors'>
                     About
                   </Link>
                 </li>
                 <li>
-                  <a href='/#services' className='hover:text-slate-900 transition-colors'>
+                  <a href='/#services' className='hover:text-white transition-colors'>
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href='/#faq' className='hover:text-slate-900 transition-colors'>
+                  <a href='/#faq' className='hover:text-white transition-colors'>
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a href='/#contact' className='hover:text-slate-900 transition-colors'>
+                  <a href='/#contact' className='hover:text-white transition-colors'>
                     Contact
                   </a>
                 </li>
               </ul>
             </div>
+
+            {/* Services Quick Links */}
+            <div>
+              <h4 className='font-bold mb-4 text-sm text-white uppercase tracking-wider'>
+                Services
+              </h4>
+              <ul className='space-y-3 text-slate-400 text-sm'>
+                <li>
+                  <a href='/#services' className='hover:text-white transition-colors'>
+                    Process Automation
+                  </a>
+                </li>
+                <li>
+                  <a href='/#services' className='hover:text-white transition-colors'>
+                    Enterprise Access Databases
+                  </a>
+                </li>
+                <li>
+                  <a href='/#services' className='hover:text-white transition-colors'>
+                    Data Rescue & Optimization
+                  </a>
+                </li>
+                <li>
+                  <a href='/#contact' className='hover:text-white transition-colors'>
+                    Free Consultation
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className='pt-8 border-t border-slate-200 text-center text-slate-500 text-sm'>
-            <p>© 2026 ExcelAccessConsultant</p>
+
+          {/* Bottom Bar */}
+          <div className='pt-8 border-t border-slate-800'>
+            <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
+              <p className='text-slate-500 text-sm'>
+                © 2026 ExcelAccessConsultant. All rights reserved.
+              </p>
+              <div className='flex items-center gap-6 text-slate-500 text-sm'>
+                <span>20+ Years Experience</span>
+                <span className='hidden md:inline'>•</span>
+                <span>Excel & MS Access Specialist</span>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
