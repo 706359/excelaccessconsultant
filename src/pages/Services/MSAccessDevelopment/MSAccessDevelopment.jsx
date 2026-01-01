@@ -10,8 +10,8 @@ const MSAccessDevelopment = () => {
         <div className="ServicePageHero">
           <h1 className="ServicePageHero-title">MS Access Development</h1>
           <p className="ServicePageHero-subtitle">
-            Build robust database applications and management systems tailored to your business needs, 
-            from simple data entry forms to complex multi-user systems.
+            Need a database that fits your business? I'll build you an Access system that your team 
+            will actually want to use. From simple forms to complex multi-user setups.
           </p>
         </div>
       </Section>
@@ -21,19 +21,19 @@ const MSAccessDevelopment = () => {
           <div className="ServicePage-problem">
             <h2 className="ServicePage-section-title">The Problem</h2>
             <p className="ServicePage-section-text">
-              Managing business data efficiently requires more than spreadsheets. You need a proper 
-              database system that can handle relationships, enforce data integrity, support multiple 
-              users, and provide intuitive interfaces. Off-the-shelf solutions often don't fit your 
-              specific workflows, and enterprise database systems can be overkill and expensive.
+              Spreadsheets can only take you so far. You need a real database that handles relationships, 
+              keeps your data clean, works for multiple people, and doesn't make your team want to pull 
+              their hair out. Off-the-shelf stuff doesn't fit your workflow, and enterprise systems are 
+              way more than you need (and way more expensive).
             </p>
           </div>
 
           <div className="ServicePage-solution">
             <h2 className="ServicePage-section-title">Our Solution</h2>
             <p className="ServicePage-section-text">
-              We develop custom MS Access database applications that are perfectly tailored to your 
-              business processes. Our solutions combine the power of relational databases with 
-              user-friendly interfaces, making data management efficient and accessible to your team.
+              I'll build you a custom Access database that actually fits how you work. It'll have the 
+              power of a real relational database, but with interfaces your team can actually use without 
+              needing a manual.
             </p>
           </div>
 
@@ -43,29 +43,29 @@ const MSAccessDevelopment = () => {
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Custom Database Design</h3>
                 <p className="DeliverableCard-description">
-                  Well-structured databases with proper relationships, normalization, and data 
-                  integrity constraints.
+                  Databases built the right way—proper relationships, normalized structure, and rules 
+                  that keep your data clean and consistent.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">User-Friendly Forms</h3>
                 <p className="DeliverableCard-description">
-                  Intuitive forms and interfaces that make data entry and management simple for 
-                  non-technical users.
+                  Forms and interfaces that make sense. Your team can enter and manage data without 
+                  needing a computer science degree.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Advanced Queries</h3>
                 <p className="DeliverableCard-description">
-                  Complex queries and reports that extract exactly the information you need, when 
-                  you need it.
+                  Queries and reports that get you exactly what you need, when you need it. No more 
+                  digging through data to find answers.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Multi-User Systems</h3>
                 <p className="DeliverableCard-description">
-                  Architectures that support multiple concurrent users with proper security and 
-                  data locking.
+                  Systems that handle multiple people working at the same time, with proper security 
+                  and no data conflicts.
                 </p>
               </Card>
             </div>
@@ -78,32 +78,31 @@ const MSAccessDevelopment = () => {
                 <div className="ProcessStep-number">1</div>
                 <h3 className="ProcessStep-title">Requirements Analysis</h3>
                 <p className="ProcessStep-description">
-                  We work with you to understand your data structure, workflows, and specific 
-                  requirements.
+                  I'll work with you to understand your data, how you work, and exactly what you need.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">2</div>
                 <h3 className="ProcessStep-title">Database Design</h3>
                 <p className="ProcessStep-description">
-                  We design the database schema, relationships, and structure optimized for your 
-                  use case.
+                  I'll design the database structure, relationships, and everything else to fit 
+                  exactly how you'll use it.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">3</div>
                 <h3 className="ProcessStep-title">Development</h3>
                 <p className="ProcessStep-description">
-                  We build forms, queries, reports, and automation features with clean, documented 
-                  code.
+                  I'll build the forms, queries, reports, and automation with clean, documented code 
+                  that you can actually understand.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">4</div>
                 <h3 className="ProcessStep-title">Testing & Deployment</h3>
                 <p className="ProcessStep-description">
-                  We thoroughly test the system, deploy it, train your team, and provide ongoing 
-                  support.
+                  I'll test it thoroughly, get it set up for you, train your team, and I'm here if 
+                  you need help later.
                 </p>
               </div>
             </div>
@@ -112,7 +111,7 @@ const MSAccessDevelopment = () => {
           <div className="ServicePage-cta">
             <h2 className="ServicePage-cta-title">Ready to Build Your Custom Database?</h2>
             <p className="ServicePage-cta-text">
-              Let's discuss how we can create a database solution that perfectly fits your business needs.
+              Let's talk about what you need. I'll build you a database that actually fits your business.
             </p>
             <Button variant="primary" size="large" as={Link} to="/contact">
               Get Started

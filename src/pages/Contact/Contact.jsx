@@ -6,9 +6,9 @@ const Contact = () => {
     <div className="Contact">
       <Section background="secondary" className="Contact-hero">
         <div className="ContactHero">
-          <h1 className="ContactHero-title">Get in Touch</h1>
+          <h1 className="ContactHero-title">Let's Talk</h1>
           <p className="ContactHero-subtitle">
-            Call, email, or send the contact form and a Senior Programmer will be there for you.
+            Give me a call, shoot me an email, or fill out the form below. I'll get back to you within one business day.
           </p>
         </div>
       </Section>
@@ -20,7 +20,7 @@ const Contact = () => {
             
             <div className="Contact-info-section Contact-phone-section">
               <a href="tel:8017045604" className="Contact-phone">
-                801-704-5604
+                (801) 704-5604
               </a>
             </div>
 
@@ -34,16 +34,17 @@ const Contact = () => {
             </div>
 
             <div className="Contact-info-section">
-              <h3 className="Contact-info-heading">Service Details</h3>
+              <h3 className="Contact-info-heading">What to Expect</h3>
               <ul className="Contact-service-list">
-                <li className="Contact-service-item">Free quote for your project</li>
-                <li className="Contact-service-item">Consulting rate: $90/hr</li>
+                <li className="Contact-service-item">Free quote for your project - no obligation</li>
+                <li className="Contact-service-item">Consulting rate: $90/hour</li>
+                <li className="Contact-service-item">I'll respond within one business day</li>
               </ul>
             </div>
           </div>
 
           <div className="Contact-form-wrapper">
-            <h2 className="Contact-form-title">Send Us a Message</h2>
+            <h2 className="Contact-form-title">Send Me a Message</h2>
             <ContactForm />
           </div>
         </div>

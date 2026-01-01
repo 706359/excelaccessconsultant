@@ -10,8 +10,8 @@ const DataProcessing = () => {
         <div className="ServicePageHero">
           <h1 className="ServicePageHero-title">Data Processing & Reporting</h1>
           <p className="ServicePageHero-subtitle">
-            Extract insights from your data with automated processing pipelines and comprehensive 
-            reporting dashboards designed for decision-makers.
+            Turn your messy data into something useful. I'll set up automated processing and dashboards 
+            that help you make decisions, not just look at numbers.
           </p>
         </div>
       </Section>
@@ -21,20 +21,19 @@ const DataProcessing = () => {
           <div className="ServicePage-problem">
             <h2 className="ServicePage-section-title">The Problem</h2>
             <p className="ServicePage-section-text">
-              Your business generates vast amounts of data, but turning that data into actionable 
-              insights is challenging. Manual data processing is slow and error-prone, and 
-              creating reports takes valuable time away from analysis. You need automated systems 
-              that process data efficiently and present it in clear, decision-ready formats.
+              You've got tons of data, but turning it into something useful? That's the hard part. 
+              Manual processing is slow and full of mistakes, and building reports takes forever. 
+              You need systems that handle the processing automatically and give you answers in a 
+              format that actually makes sense.
             </p>
           </div>
 
           <div className="ServicePage-solution">
             <h2 className="ServicePage-section-title">Our Solution</h2>
             <p className="ServicePage-section-text">
-              We design and build automated data processing pipelines and reporting systems that 
-              transform raw data into meaningful insights. Our solutions handle data validation, 
-              cleaning, transformation, and visualization, giving you the information you need to 
-              make informed decisions quickly.
+              I'll build you automated processing pipelines and reporting systems that turn your raw 
+              data into something you can actually use. I'll handle validation, cleaning, transformation, 
+              and visualization so you get the information you need to make decisions, fast.
             </p>
           </div>
 
@@ -44,29 +43,29 @@ const DataProcessing = () => {
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Automated Data Pipelines</h3>
                 <p className="DeliverableCard-description">
-                  End-to-end automation that processes data from multiple sources, validates it, 
-                  and prepares it for analysis.
+                  Complete automation that pulls data from wherever it lives, checks it for problems, 
+                  and gets it ready for you to analyze.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Custom Reporting Dashboards</h3>
                 <p className="DeliverableCard-description">
-                  Professional dashboards with charts, graphs, and KPIs that update automatically 
-                  with new data.
+                  Clean dashboards with charts, graphs, and the metrics you care about. They update 
+                  automatically when new data comes in.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Data Validation & Cleaning</h3>
                 <p className="DeliverableCard-description">
-                  Automated tools that identify and fix data quality issues, ensuring accuracy and 
-                  reliability.
+                  Tools that find and fix data problems automatically. Your data stays clean and 
+                  reliable without you having to babysit it.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Real-Time Analytics</h3>
                 <p className="DeliverableCard-description">
-                  Systems that provide up-to-date insights and metrics, enabling faster 
-                  decision-making.
+                  Systems that give you current insights and metrics when you need them, so you can 
+                  make decisions without waiting around.
                 </p>
               </Card>
             </div>
@@ -79,32 +78,32 @@ const DataProcessing = () => {
                 <div className="ProcessStep-number">1</div>
                 <h3 className="ProcessStep-title">Data Assessment</h3>
                 <p className="ProcessStep-description">
-                  We analyze your data sources, formats, and quality to understand what we're 
-                  working with.
+                  I'll take a look at where your data comes from, what format it's in, and how good 
+                  it is so I know what we're dealing with.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">2</div>
                 <h3 className="ProcessStep-title">Pipeline Design</h3>
                 <p className="ProcessStep-description">
-                  We design the processing workflow, identify transformation needs, and plan the 
-                  reporting structure.
+                  I'll design how the processing will work, figure out what transformations you need, 
+                  and plan out how the reports should look.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">3</div>
                 <h3 className="ProcessStep-title">Development</h3>
                 <p className="ProcessStep-description">
-                  We build the processing automation and reporting dashboards with robust error 
-                  handling and validation.
+                  I'll build the automation and dashboards with solid error handling and validation 
+                  so things don't break when something unexpected happens.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">4</div>
                 <h3 className="ProcessStep-title">Deployment & Optimization</h3>
                 <p className="ProcessStep-description">
-                  We deploy the solution, monitor performance, optimize as needed, and provide 
-                  ongoing support.
+                  I'll get it set up, keep an eye on how it's performing, tweak it if needed, and 
+                  I'm here if you need help.
                 </p>
               </div>
             </div>
@@ -113,8 +112,8 @@ const DataProcessing = () => {
           <div className="ServicePage-cta">
             <h2 className="ServicePage-cta-title">Ready to Unlock Your Data Insights?</h2>
             <p className="ServicePage-cta-text">
-              Let's discuss how we can automate your data processing and create powerful reporting 
-              solutions for your business.
+              Let's talk about your data. I'll show you how to automate the processing and build 
+              reports that actually help.
             </p>
             <Button variant="primary" size="large" as={Link} to="/contact">
               Get Started

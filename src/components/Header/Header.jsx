@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Button from '../Button/Button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Header = () => {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
@@ -46,17 +47,27 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="Header">
-      <div className="Header-inner">
-        <a href="#home" className="Header-logo" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} aria-label="ExcelAccessConsultant Home">
-          <img src="/logo.png" alt="ExcelAccessConsultant - Expert Excel and Access Consulting Services" className="Header-logo-image" width="200" height="60" />
-        </a>
-        
-        <button 
-          className="Header-menu-toggle"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
+    <header className='Header'>
+      <div className='Header-inner'>
+        <a
+          href='#home'
+          className='Header-logo'
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('home');
+          }}
+          aria-label='ExcelAccessConsultant Home'
         >
+          <img
+            src='/logo.png'
+            alt='ExcelAccessConsultant - Expert Excel and Access Consulting Services'
+            className='Header-logo-image'
+            width='200'
+            height='60'
+          />
+        </a>
+
+        <button className='Header-menu-toggle' onClick={toggleMenu} aria-label='Toggle menu'>
           <span className={`Header-menu-icon ${isMenuOpen ? 'Header-menu-icon--open' : ''}`}>
             <span></span>
             <span></span>
@@ -65,41 +76,52 @@ const Header = () => {
         </button>
 
         <nav className={`Header-nav ${isMenuOpen ? 'Header-nav--open' : ''}`}>
-          <a 
-            href="#home"
+          <a
+            href='#home'
             className={`Header-link ${activeSection === 'home' ? 'Header-link--active' : ''}`}
-            onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('home');
+            }}
           >
             Home
           </a>
-          <a 
-            href="#about"
+          <a
+            href='#about'
             className={`Header-link ${activeSection === 'about' ? 'Header-link--active' : ''}`}
-            onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('about');
+            }}
           >
             About
           </a>
-          <a 
-            href="#services"
+          <a
+            href='#services'
             className={`Header-link ${activeSection === 'services' ? 'Header-link--active' : ''}`}
-            onClick={(e) => { e.preventDefault(); scrollToSection('services'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('services');
+            }}
           >
             Services
           </a>
-          <a 
-            href="#faq"
+          <a
+            href='#faq'
             className={`Header-link ${activeSection === 'faq' ? 'Header-link--active' : ''}`}
-            onClick={(e) => { e.preventDefault(); scrollToSection('faq'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('faq');
+            }}
           >
             FAQ
           </a>
-          <a 
-            href="#contact"
-            className={`Header-link ${activeSection === 'contact' ? 'Header-link--active' : ''}`}
-            onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-          >
-            Contact
-          </a>
+
+          <div className='Header-cta'>
+            <Button variant='primary' size='medium' onClick={() => scrollToSection('contact')}>
+              Schedule a Free Consultation
+            </Button>
+          </div>
         </nav>
       </div>
     </header>

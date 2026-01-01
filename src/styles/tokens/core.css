@@ -1,0 +1,68 @@
+/* ============================================================
+   CORE TOKENS - Numeric Values Only (Source of Truth)
+   ============================================================ */
+
+:root {
+  /* Button Color System - Core Values */
+  /* ForeColor - Text/Icon Color */
+  --color-button-foreground-r: 200;
+  --color-button-foreground-g: 0;
+  --color-button-foreground-b: 0;
+  --color-button-foreground: rgb(200, 0, 0);
+
+  /* BackColor - Background Color */
+  --color-button-background-r: 255;
+  --color-button-background-g: 255;
+  --color-button-background-b: 255;
+  --color-button-background: rgb(255, 255, 255);
+
+  /* BorderColor - Border Color */
+  --color-button-border-r: 0;
+  --color-button-border-g: 0;
+  --color-button-border-b: 0;
+  --color-button-border: rgb(0, 0, 0);
+
+  /* HoverForeColor - Hover Text/Icon Color */
+  --color-button-hover-foreground-r: 0;
+  --color-button-hover-foreground-g: 0;
+  --color-button-hover-foreground-b: 255;
+  --color-button-hover-foreground: rgb(0, 0, 255);
+
+  /* HoverColor - Hover Background Color */
+  --color-button-hover-background-r: 255;
+  --color-button-hover-background-g: 242;
+  --color-button-hover-background-b: 0;
+  --color-button-hover-background: rgb(255, 242, 0);
+
+  /* PressedForeColor - Pressed Text/Icon Color */
+  --color-button-pressed-foreground-r: 255;
+  --color-button-pressed-foreground-g: 255;
+  --color-button-pressed-foreground-b: 255;
+  --color-button-pressed-foreground: rgb(255, 255, 255);
+
+  /* Color Numbers (for reference) */
+  --color-number-foreground: 200;
+  --color-number-background: 16777215;
+  --color-number-border: 0;
+  --color-number-hover-foreground: 16711680;
+  --color-number-hover-background: 62207;
+  --color-number-pressed-foreground: 16777215;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Border Radius Scale */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+
+  /* Transitions */
+  --transition-all: 0.2s ease;
+}
+

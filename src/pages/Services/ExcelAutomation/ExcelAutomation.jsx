@@ -10,8 +10,8 @@ const ExcelAutomation = () => {
         <div className="ServicePageHero">
           <h1 className="ServicePageHero-title">Excel Automation</h1>
           <p className="ServicePageHero-subtitle">
-            Transform your Excel workflows with custom automation solutions that save time, 
-            reduce errors, and unlock the full potential of your data.
+            Stop doing the same Excel tasks over and over. I'll build you automation that saves time, 
+            cuts down on mistakes, and makes your data actually useful.
           </p>
         </div>
       </Section>
@@ -21,20 +21,18 @@ const ExcelAutomation = () => {
           <div className="ServicePage-problem">
             <h2 className="ServicePage-section-title">The Problem</h2>
             <p className="ServicePage-section-text">
-              Many businesses rely heavily on Excel for data management, reporting, and analysis. 
-              However, manual processes are time-consuming, error-prone, and don't scale. Your team 
-              spends hours on repetitive tasks like data entry, formatting, calculations, and report 
-              generation—time that could be better spent on strategic work.
+              You're probably spending way too much time in Excel doing the same things over and over. 
+              Data entry, formatting, calculations, building reports—it's tedious, it's error-prone, and 
+              it's eating up hours that your team could spend on actual work. There's got to be a better way.
             </p>
           </div>
 
           <div className="ServicePage-solution">
             <h2 className="ServicePage-section-title">Our Solution</h2>
             <p className="ServicePage-section-text">
-              We design and develop custom Excel automation solutions using VBA (Visual Basic for 
-              Applications) and advanced Excel features. Our solutions automate repetitive tasks, 
-              streamline workflows, and create dynamic, interactive dashboards that make data 
-              analysis effortless.
+              I'll build you custom Excel automation using VBA and Excel's advanced features. The boring, 
+              repetitive stuff? That gets automated. Your workflows? Streamlined. And I'll build you dashboards 
+              that actually help you understand your data, not just look at it.
             </p>
           </div>
 
@@ -44,29 +42,29 @@ const ExcelAutomation = () => {
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Custom VBA Macros</h3>
                 <p className="DeliverableCard-description">
-                  Tailored macros that automate your specific workflows, from data processing to 
-                  report generation.
+                  Custom macros built for your exact workflows. I'll automate what you need automated, 
+                  from processing data to building reports.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Automated Reporting</h3>
                 <p className="DeliverableCard-description">
-                  Dynamic reports that update automatically with new data, eliminating manual 
-                  compilation work.
+                  Reports that update themselves when new data comes in. No more manual compilation—just 
+                  open the file and there's your report.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Interactive Dashboards</h3>
                 <p className="DeliverableCard-description">
-                  Professional dashboards with charts, pivot tables, and interactive controls for 
-                  real-time data visualization.
+                  Clean dashboards with charts, pivot tables, and controls that actually make sense. 
+                  See your data the way you need to see it.
                 </p>
               </Card>
               <Card className="DeliverableCard">
                 <h3 className="DeliverableCard-title">Data Processing Tools</h3>
                 <p className="DeliverableCard-description">
-                  Automated tools for data cleaning, validation, transformation, and consolidation 
-                  from multiple sources.
+                  Tools that clean up messy data, check for errors, transform it how you need it, 
+                  and pull it all together from different sources.
                 </p>
               </Card>
             </div>
@@ -79,32 +77,32 @@ const ExcelAutomation = () => {
                 <div className="ProcessStep-number">1</div>
                 <h3 className="ProcessStep-title">Discovery</h3>
                 <p className="ProcessStep-description">
-                  We analyze your current Excel workflows, identify automation opportunities, and 
-                  understand your specific requirements.
+                  I'll take a look at what you're doing now, figure out where automation makes sense, 
+                  and understand exactly what you need.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">2</div>
                 <h3 className="ProcessStep-title">Design</h3>
                 <p className="ProcessStep-description">
-                  We design the automation solution, create mockups, and get your approval before 
-                  development begins.
+                  I'll design the solution, show you what it'll look like, and get your okay before 
+                  I start building.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">3</div>
                 <h3 className="ProcessStep-title">Development</h3>
                 <p className="ProcessStep-description">
-                  We build the solution with clean, documented code and test it thoroughly to ensure 
-                  reliability.
+                  I'll build it with clean, documented code and test it to make sure it actually works 
+                  when you need it.
                 </p>
               </div>
               <div className="ProcessStep">
                 <div className="ProcessStep-number">4</div>
                 <h3 className="ProcessStep-title">Deployment & Training</h3>
                 <p className="ProcessStep-description">
-                  We deploy the solution, provide training to your team, and offer ongoing support 
-                  as needed.
+                  I'll get it set up for you, train your team on how to use it, and I'm here if you 
+                  need help later.
                 </p>
               </div>
             </div>
@@ -113,7 +111,7 @@ const ExcelAutomation = () => {
           <div className="ServicePage-cta">
             <h2 className="ServicePage-cta-title">Ready to Automate Your Excel Workflows?</h2>
             <p className="ServicePage-cta-text">
-              Let's discuss how we can help streamline your processes and save your team valuable time.
+              Let's talk about what's eating up your team's time. I'll show you how to automate it.
             </p>
             <Button variant="primary" size="large" as={Link} to="/contact">
               Get Started

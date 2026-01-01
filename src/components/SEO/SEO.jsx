@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 
-const SEO = ({ 
-  title = 'ExcelAccessConsultant - Expert Excel & Access Consulting Services',
-  description = 'Professional Excel and Access consulting services. Custom automation, database development, VBA programming, and data management solutions. 15+ years of experience. Free consultation available.',
-  keywords = 'Excel consulting, Access consulting, Excel automation, Access database, VBA programming, data management, Excel macros, database development, business automation',
+const SEO = ({
+  title = 'Excel and Access Consulting That Actually Works | ExcelAccessConsultant',
+  description = 'Excel and Access consulting that actually works. 17+ years of experience fixing broken spreadsheets, building stable databases, and automating repetitive tasks. Free consultation available.',
+  keywords = 'Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development',
+  ogTitle = 'Excel and Access Consulting That Actually Works',
   image = '/logo.png',
   url = 'https://excelaccessconsultant.com',
-  type = 'website'
+  type = 'website',
 }) => {
   useEffect(() => {
     // Update document title
@@ -16,13 +17,13 @@ const SEO = ({
     const updateMetaTag = (name, content, isProperty = false) => {
       const attribute = isProperty ? 'property' : 'name';
       let meta = document.querySelector(`meta[${attribute}="${name}"]`);
-      
+
       if (!meta) {
         meta = document.createElement('meta');
         meta.setAttribute(attribute, name);
         document.head.appendChild(meta);
       }
-      
+
       meta.setAttribute('content', content);
     };
 
@@ -32,14 +33,14 @@ const SEO = ({
     updateMetaTag('keywords', keywords);
 
     // Update Open Graph tags
-    updateMetaTag('og:title', title, true);
+    updateMetaTag('og:title', ogTitle, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', `${url}${image}`, true);
     updateMetaTag('og:url', url, true);
     updateMetaTag('og:type', type, true);
 
     // Update Twitter tags
-    updateMetaTag('twitter:title', title, true);
+    updateMetaTag('twitter:title', ogTitle, true);
     updateMetaTag('twitter:description', description, true);
     updateMetaTag('twitter:image', `${url}${image}`, true);
 
@@ -51,10 +52,9 @@ const SEO = ({
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', url);
-  }, [title, description, keywords, image, url, type]);
+  }, [title, description, keywords, ogTitle, image, url, type]);
 
   return null;
 };
 
 export default SEO;
-

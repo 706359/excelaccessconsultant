@@ -105,7 +105,7 @@ const ContactForm = () => {
 
       {submitStatus === 'success' && (
         <div className="ContactForm-message ContactForm-message--success">
-          Thank you! Your message has been sent. We'll respond within one business day.
+          Thanks! I got your message and I'll get back to you within one business day.
         </div>
       )}
 

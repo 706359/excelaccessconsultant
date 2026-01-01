@@ -143,7 +143,7 @@ const PrivacyPolicy = () => {
               <br />
               <strong>Phone:</strong>{' '}
               <a href="tel:8017045604" className="PrivacyPolicy-link">
-                801-704-5604
+                (801) 704-5604
               </a>
             </p>
           </div>

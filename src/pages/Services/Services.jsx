@@ -7,9 +7,9 @@ const Services = () => {
     <div className="Services">
       <Section background="secondary" className="Services-hero">
         <div className="ServicesHero">
-          <h1 className="ServicesHero-title">Our Services</h1>
+          <h1 className="ServicesHero-title">What I Do</h1>
           <p className="ServicesHero-subtitle">
-            Comprehensive automation and data solutions tailored to your business needs.
+            I build automation and data solutions that fit your business. No fluff, just stuff that works.
           </p>
         </div>
       </Section>
@@ -20,8 +20,8 @@ const Services = () => {
             <div className="ServiceCard-icon">📊</div>
             <h2 className="ServiceCard-title">Excel Automation</h2>
             <p className="ServiceCard-description">
-              Transform your Excel workflows with custom macros, VBA solutions, and automated 
-              reporting systems. Reduce manual work, eliminate errors, and save hours every week.
+              Tired of doing the same Excel tasks over and over? I'll build you custom macros and automation 
+              that actually work. Save hours every week and cut down on mistakes.
             </p>
             <ul className="ServiceCard-features">
               <li>Custom VBA macros and scripts</li>
@@ -38,8 +38,8 @@ const Services = () => {
             <div className="ServiceCard-icon">🗄️</div>
             <h2 className="ServiceCard-title">MS Access Development</h2>
             <p className="ServiceCard-description">
-              Build robust database applications and management systems tailored to your business. 
-              From simple data entry forms to complex multi-user systems.
+              Need a database that fits your business? I'll build you an Access system that your team 
+              will actually use. From simple forms to complex multi-user setups.
             </p>
             <ul className="ServiceCard-features">
               <li>Custom database design</li>
@@ -56,8 +56,8 @@ const Services = () => {
             <div className="ServiceCard-icon">📈</div>
             <h2 className="ServiceCard-title">Data Processing & Reporting</h2>
             <p className="ServiceCard-description">
-              Extract insights from your data with automated processing pipelines and comprehensive 
-              reporting dashboards designed for decision-makers.
+              Turn your messy data into something useful. I'll set up automated processing and dashboards 
+              that help you make decisions, not just look at numbers.
             </p>
             <ul className="ServiceCard-features">
               <li>Automated data pipelines</li>
@@ -76,7 +76,7 @@ const Services = () => {
         <div className="Services-cta">
           <h2 className="Services-cta-title">Ready to Get Started?</h2>
           <p className="Services-cta-text">
-            Let's discuss how we can help automate your processes and unlock the power of your data.
+            Let's talk about what's slowing you down. I'll show you how to automate the tedious stuff and make your data work for you.
           </p>
           <Link to="/contact" className="Services-cta-link">
             Contact Us

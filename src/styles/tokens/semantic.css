@@ -1,0 +1,34 @@
+/* ============================================================
+   SEMANTIC TOKENS - Component-Specific Mappings
+   ============================================================ */
+
+:root {
+  /* Button Component Semantic Tokens */
+  --button-default-foreground: var(--color-button-foreground);
+  --button-default-background: var(--color-button-background);
+  --button-default-border: var(--color-button-border);
+
+  --button-hover-foreground: var(--color-button-hover-foreground);
+  --button-hover-background: var(--color-button-hover-background);
+  --button-hover-border: var(--color-button-border);
+
+  --button-pressed-foreground: var(--color-button-pressed-foreground);
+  --button-pressed-background: var(--color-button-hover-background);
+  --button-pressed-border: var(--color-button-border);
+
+  --button-active-foreground: var(--color-button-pressed-foreground);
+  --button-active-background: var(--color-button-hover-background);
+  --button-active-border: var(--color-button-border);
+
+  /* Focus States */
+  --button-focus-foreground: var(--color-button-foreground);
+  --button-focus-background: var(--color-button-background);
+  --button-focus-border: var(--color-button-hover-foreground);
+  --button-focus-ring: var(--color-button-hover-foreground);
+
+  /* Disabled States */
+  --button-disabled-foreground: rgb(128, 128, 128);
+  --button-disabled-background: rgb(240, 240, 240);
+  --button-disabled-border: rgb(200, 200, 200);
+}
+
