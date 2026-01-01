@@ -12,9 +12,9 @@ export default {
           800: '#1E293B',
           900: '#0F172A',
         },
-        // Brand colors
-        excel: '#217346',
-        'excel-hover': '#1a5c38',
+        // Brand colors - MS Access Red/Maroon (Primary)
+        excel: '#A32228', // MS Access red/maroon
+        'excel-hover': '#8a1c21', // Darker red for hover
         access: '#A32228',
         'access-hover': '#8a1c21',
         // Base background - light professional gray

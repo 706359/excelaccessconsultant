@@ -1,13 +1,26 @@
-import { useState } from 'react';
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import FAQSchema from './components/SEO/FAQSchema';
 import SEO from './components/SEO/SEO';
+import ToastContainer from './components/Toast/ToastContainer';
 import About from './pages/About/About';
 import './styles/global.css';
+
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/' element={<HomePage />} />
@@ -25,8 +38,31 @@ function HomePage() {
     email: '',
     phone: '',
     message: '',
+    files: [],
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaQuestion, setCaptchaQuestion] = useState('');
+  const [captchaAnswer, setCaptchaAnswer] = useState(0);
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [captchaError, setCaptchaError] = useState(false);
+  const [captchaTimeLeft, setCaptchaTimeLeft] = useState(120); // 2 minutes in seconds
+  const [hasInteractedWithForm, setHasInteractedWithForm] = useState(false);
+  const [toasts, setToasts] = useState([]);
+  const [fieldErrors, setFieldErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const showToast = (message, type = 'info', duration = 3000) => {
+    const id = Date.now() + Math.random();
+    setToasts((prev) => [...prev, { id, message, type, duration }]);
+  };
+
+  const removeToast = (id) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  };
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -47,27 +83,218 @@ function HomePage() {
     setOpenCaseStudyIndex(openCaseStudyIndex === index ? null : index);
   };
 
-  const handleFormSubmit = (e) => {
+  const generateCaptcha = () => {
+    // Generate harder math problems to make it difficult for bots
+    const operations = ['+', '-', '*'];
+    const operation = operations[Math.floor(Math.random() * operations.length)];
+
+    let num1, num2, answer, question;
+
+    switch (operation) {
+      case '+':
+        // Addition: 15-99 + 15-99
+        num1 = Math.floor(Math.random() * 85) + 15;
+        num2 = Math.floor(Math.random() * 85) + 15;
+        answer = num1 + num2;
+        question = `${num1} + ${num2}`;
+        break;
+      case '-':
+        // Subtraction: ensure positive result (50-99 - 10-49)
+        num1 = Math.floor(Math.random() * 50) + 50;
+        num2 = Math.floor(Math.random() * 40) + 10;
+        answer = num1 - num2;
+        question = `${num1} - ${num2}`;
+        break;
+      case '*':
+        // Multiplication: single digit times double digit (2-9 * 10-25)
+        num1 = Math.floor(Math.random() * 8) + 2;
+        num2 = Math.floor(Math.random() * 16) + 10;
+        answer = num1 * num2;
+        question = `${num1} × ${num2}`;
+        break;
+      default:
+        num1 = 20;
+        num2 = 15;
+        answer = 35;
+        question = '20 + 15';
+    }
+
+    setCaptchaQuestion(question);
+    setCaptchaAnswer(answer);
+    setCaptchaInput('');
+    setCaptchaError(false);
+    setCaptchaTimeLeft(120); // Reset timer to 2 minutes
+  };
+
+  // Generate captcha on component mount
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  // Handle hash navigation on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.substring(1); // Remove the # symbol
+      setTimeout(() => {
+        scrollToSection(id);
+      }, 100);
+    }
+  }, []);
+
+  // Captcha expiration timer - only show warnings if user has interacted with form
+  useEffect(() => {
+    if (captchaTimeLeft <= 0) {
+      // Only show warning if user has interacted with the form
+      if (hasInteractedWithForm) {
+        showToast('Captcha expired. Please solve the new problem.', 'warning');
+      }
+      generateCaptcha();
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setCaptchaTimeLeft((prev) => {
+        const newTime = prev - 1;
+        if (newTime <= 0) {
+          // Only show warning if user has interacted with the form
+          if (hasInteractedWithForm) {
+            setTimeout(() => {
+              showToast('Captcha expired. Please solve the new problem.', 'warning');
+            }, 0);
+          }
+          generateCaptcha();
+          return 0;
+        }
+        return newTime;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [captchaTimeLeft, hasInteractedWithForm]);
+
+  const validateForm = () => {
+    const errors = {
+      name: '',
+      email: '',
+      message: '',
+    };
+    let isValid = true;
+
+    // Validate name
+    if (!formData.name.trim()) {
+      errors.name = 'Full name is required';
+      isValid = false;
+    }
+
+    // Validate email
+    if (!formData.email.trim()) {
+      errors.email = 'Email address is required';
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    // Validate message
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+      isValid = false;
+    }
+
+    setFieldErrors(errors);
+    return isValid;
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    // Clear previous errors
+    setFieldErrors({ name: '', email: '', message: '' });
+
+    // Validate form fields
+    if (!validateForm()) {
+      showToast('Please fill in all required fields correctly.', 'error', 5000);
+      return;
+    }
+
+    // Validate captcha
+    const userAnswer = parseInt(captchaInput.trim());
+    if (isNaN(userAnswer) || userAnswer !== captchaAnswer) {
+      setCaptchaError(true);
+      showToast('Incorrect answer. Please try again.', 'error', 5000);
+      generateCaptcha(); // Generate new captcha on error
+      return;
+    }
+
+    // Start submitting
+    setIsSubmitting(true);
+
+    // Simulate sending process (2 seconds)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     // Create mailto link as fallback
     const subject = encodeURIComponent(`Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Full Name: ${formData.name}\nEmail Address: ${formData.email}\nPhone Number: ${
-        formData.phone || 'Not provided'
-      }\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:rob@excelaccessconsultant.com?subject=${subject}&body=${body}`;
+    let body = `Full Name: ${formData.name}\nEmail Address: ${formData.email}\nPhone Number: ${
+      formData.phone || 'Not provided'
+    }\n\nMessage:\n${formData.message}`;
+
+    if (formData.files.length > 0) {
+      body += `\n\nAttached Files (${formData.files.length}):\n`;
+      formData.files.forEach((file, index) => {
+        body += `${index + 1}. ${file.name} (${(file.size / 1024).toFixed(2)} KB)\n`;
+      });
+      body +=
+        '\nNote: Files cannot be attached via email client. Please send files separately or mention them in your follow-up email.';
+    }
+
+    const encodedBody = encodeURIComponent(body);
+
+    // Open email client
+    window.location.href = `mailto:rob@excelaccessconsultant.com?subject=${subject}&body=${encodedBody}`;
+
+    // Complete submission
+    setIsSubmitting(false);
     setFormSubmitted(true);
+
+    // Show thank you message
+    showToast('Thank you! Your message has been sent successfully.', 'success', 5000);
+
+    // Reset form after delay
     setTimeout(() => {
       setFormSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', message: '', files: [] });
+      setCaptchaInput('');
+      setHasInteractedWithForm(false); // Reset interaction flag
+      generateCaptcha(); // Generate new captcha after successful submission
+      // Reset file input
+      const fileInput = document.getElementById('file-upload');
+      if (fileInput) {
+        fileInput.value = '';
+      }
     }, 3000);
   };
 
   const handleInputChange = (e) => {
+    setHasInteractedWithForm(true); // Mark that user has interacted with form
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    setFormData({
+      ...formData,
+      files: selectedFiles,
+    });
+  };
+
+  const removeFile = (index) => {
+    setFormData({
+      ...formData,
+      files: formData.files.filter((_, i) => i !== index),
     });
   };
 
@@ -150,7 +377,13 @@ function HomePage() {
       <nav className='border-b border-slate-200 sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm'>
         <div className='max-w-7xl mx-auto px-6 md:px-8'>
           <div className='flex justify-between items-center py-6'>
-            <Link to='/' className='flex items-center'>
+            <Link
+              to='/'
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className='flex items-center'
+            >
               <img
                 src='/logo.png'
                 alt='ExcelAccessConsultant Logo'
@@ -160,6 +393,9 @@ function HomePage() {
             <div className='hidden md:flex items-center gap-8'>
               <Link
                 to='/'
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
               >
                 Home
@@ -170,29 +406,42 @@ function HomePage() {
               >
                 About
               </Link>
-              <a
-                href='#services'
+              <Link
+                to='/#services'
                 onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('services');
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection('services');
+                  }
                 }}
                 className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
               >
                 Services
-              </a>
-              <a
-                href='#faq'
+              </Link>
+              <Link
+                to='/#faq'
                 onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('faq');
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection('faq');
+                  }
                 }}
                 className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
               >
                 FAQ
-              </a>
-              <button onClick={() => scrollToSection('contact')} className='btn-primary'>
+              </Link>
+              <Link
+                to='/#contact'
+                onClick={(e) => {
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection('contact');
+                  }
+                }}
+                className='btn-primary'
+              >
                 Get Started
-              </button>
+              </Link>
             </div>
             <button
               className='md:hidden text-slate-700 p-2'
@@ -228,7 +477,10 @@ function HomePage() {
               <div className='flex flex-col gap-4'>
                 <Link
                   to='/'
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
                 >
                   Home
@@ -240,35 +492,45 @@ function HomePage() {
                 >
                   About
                 </Link>
-                <a
-                  href='#services'
+                <Link
+                  to='/#services'
                   onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('services');
+                    setIsMobileMenuOpen(false);
+                    if (window.location.pathname === '/') {
+                      e.preventDefault();
+                      scrollToSection('services');
+                    }
                   }}
                   className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
                 >
                   Services
-                </a>
-                <a
-                  href='#faq'
+                </Link>
+                <Link
+                  to='/#faq'
                   onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('faq');
+                    setIsMobileMenuOpen(false);
+                    if (window.location.pathname === '/') {
+                      e.preventDefault();
+                      scrollToSection('faq');
+                    }
                   }}
                   className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
                 >
                   FAQ
-                </a>
-                <button
-                  onClick={() => {
-                    scrollToSection('contact');
+                </Link>
+                <Link
+                  to='/#contact'
+                  onClick={(e) => {
                     setIsMobileMenuOpen(false);
+                    if (window.location.pathname === '/') {
+                      e.preventDefault();
+                      scrollToSection('contact');
+                    }
                   }}
-                  className='btn-primary text-left w-full py-2'
+                  className='btn-primary text-left w-full py-2 block'
                 >
                   Get Started
-                </button>
+                </Link>
               </div>
             </div>
           )}
@@ -312,8 +574,8 @@ function HomePage() {
             </h1>
 
             <p className='text-lg text-slate-700 max-w-2xl mx-auto mb-10 leading-relaxed font-medium'>
-              I fix broken spreadsheets, build databases that don't crash, and automate the stuff
-              that wastes your time. No fluff, just working systems.
+              I fix broken spreadsheets, build databases that don&apos;t crash, and automate the
+              stuff that wastes your time. No fluff, just working systems.
             </p>
 
             <div className='flex flex-col sm:flex-row justify-center gap-4 mb-16'>
@@ -350,8 +612,8 @@ function HomePage() {
               </h2>
               <p className='text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed'>
                 I build Excel and Access systems for companies that actually use them every day. If
-                your spreadsheet crashes or your database is slow, I can fix it. If you're doing the
-                same thing manually every week, I can automate it.
+                your spreadsheet crashes or your database is slow, I can fix it. If you&apos;re
+                doing the same thing manually every week, I can automate it.
               </p>
             </div>
 
@@ -382,8 +644,8 @@ function HomePage() {
                     </h3>
                     <p className='text-slate-600 leading-relaxed'>
                       I build Access databases that multiple people can use without breaking.
-                      They're fast, they don't corrupt your data, and they'll still work in five
-                      years.
+                      They&apos;re fast, they don&apos;t corrupt your data, and they&apos;ll still
+                      work in five years.
                     </p>
                   </div>
                 </div>
@@ -399,7 +661,7 @@ function HomePage() {
                     </h3>
                     <p className='text-slate-600 leading-relaxed'>
                       Your spreadsheet takes forever to open? Your database crashes? I can usually
-                      fix it without starting over. I'll clean it up, speed it up, and make it
+                      fix it without starting over. I&apos;ll clean it up, speed it up, and make it
                       stable again.
                     </p>
                   </div>
@@ -432,7 +694,7 @@ function HomePage() {
                     </h3>
                     <p className='text-slate-600 leading-relaxed'>
                       I hook up your Excel and Access files to other systems—SQL databases, ERP
-                      software, whatever you're using. No more copying and pasting data between
+                      software, whatever you&apos;re using. No more copying and pasting data between
                       systems.
                     </p>
                   </div>
@@ -446,7 +708,7 @@ function HomePage() {
                     Case Studies
                   </h3>
                   <p className='text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed'>
-                    Real problems, real solutions. Here's what I've fixed for clients.
+                    Real problems, real solutions. Here&apos;s what I&apos;ve fixed for clients.
                   </p>
                 </div>
 
@@ -489,15 +751,15 @@ function HomePage() {
                           <p>
                             I rebuilt the database structure to handle concurrent users properly.
                             Fixed the queries that were causing crashes. Added proper error handling
-                            so when something goes wrong, it doesn't lose data.
+                            so when something goes wrong, it doesn&apos;t lose data.
                           </p>
                         </div>
                         <div>
                           <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
                           <p>
                             Zero crashes in the last 8 months. All 15 people can use it
-                            simultaneously without issues. They're saving about 10 hours a week that
-                            they used to spend fixing problems.
+                            simultaneously without issues. They&apos;re saving about 10 hours a week
+                            that they used to spend fixing problems.
                           </p>
                         </div>
                       </div>
@@ -603,8 +865,8 @@ function HomePage() {
                           <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
                           <p>
                             What used to take 2-3 hours now takes 5 minutes. No more copy-paste
-                            errors. Data stays in sync automatically. They're saving about 500 hours
-                            a year.
+                            errors. Data stays in sync automatically. They&apos;re saving about 500
+                            hours a year.
                           </p>
                         </div>
                       </div>
@@ -732,17 +994,17 @@ function HomePage() {
               </h2>
               <div className='space-y-6 text-lg text-slate-700 leading-relaxed'>
                 <p>
-                  I'm Robert Terry. I've been fixing Excel and Access problems for 20 years. I've
-                  seen what works and what doesn't.
+                  I&apos;m Robert Terry. I&apos;ve been fixing Excel and Access problems for 20
+                  years. I&apos;ve seen what works and what doesn&apos;t.
                 </p>
                 <p>
-                  Here's how I work: I figure out what's slowing you down, then I build something
-                  that fixes it. No fancy tech for the sake of it. Just systems that work and keep
-                  working.
+                  Here&apos;s how I work: I figure out what&apos;s slowing you down, then I build
+                  something that fixes it. No fancy tech for the sake of it. Just systems that work
+                  and keep working.
                 </p>
                 <p>
-                  I'm not a big agency. When you call, you talk to me. When I build something, I
-                  build it right. That's it.
+                  I&apos;m not a big agency. When you call, you talk to me. When I build something,
+                  I build it right. That&apos;s it.
                 </p>
               </div>
               <div className='mt-8 text-center'>
@@ -771,8 +1033,8 @@ function HomePage() {
                     20 Years of Experience
                   </h3>
                   <p className='text-slate-600 leading-relaxed'>
-                    I've been doing this for 20 years. Just Excel and Access. I know the quirks, the
-                    gotchas, and how to make things work.
+                    I&apos;ve been doing this for 20 years. Just Excel and Access. I know the
+                    quirks, the gotchas, and how to make things work.
                   </p>
                 </div>
 
@@ -804,8 +1066,8 @@ function HomePage() {
                     Clear Communication
                   </h3>
                   <p className='text-slate-600 leading-relaxed'>
-                    I tell you what I'm doing, when it'll be done, and what it costs. No surprises,
-                    no hidden fees.
+                    I tell you what I&apos;m doing, when it&apos;ll be done, and what it costs. No
+                    surprises, no hidden fees.
                   </p>
                 </div>
 
@@ -815,7 +1077,7 @@ function HomePage() {
                     Your Data Stays Safe
                   </h3>
                   <p className='text-slate-600 leading-relaxed'>
-                    I sign NDAs. I work in your secure systems. Your data doesn't leave your
+                    I sign NDAs. I work in your secure systems. Your data doesn&apos;t leave your
                     control.
                   </p>
                 </div>
@@ -842,8 +1104,8 @@ function HomePage() {
                       Understand
                     </h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      I look at what you have, how you use it, and what's actually broken. Then I
-                      figure out the real problem, not just the symptoms.
+                      I look at what you have, how you use it, and what&apos;s actually broken. Then
+                      I figure out the real problem, not just the symptoms.
                     </p>
                   </div>
                 </div>
@@ -855,8 +1117,8 @@ function HomePage() {
                   <div className='flex-1'>
                     <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>Design</h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      I plan out what I'm going to build and how it'll work. Simple, reliable, and
-                      something you can actually use.
+                      I plan out what I&apos;m going to build and how it&apos;ll work. Simple,
+                      reliable, and something you can actually use.
                     </p>
                   </div>
                 </div>
@@ -882,7 +1144,7 @@ function HomePage() {
                     <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>Support</h3>
                     <p className='text-slate-600 leading-relaxed'>
                       After I deliver it, I help you get comfortable using it. If something breaks
-                      or you need changes, I'm here.
+                      or you need changes, I&apos;m here.
                     </p>
                   </div>
                 </div>
@@ -980,7 +1242,7 @@ function HomePage() {
                 {openFaqIndex === 3 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
                     Depends on what you need. Simple automations? A few days to a week. Big database
-                    projects? Usually 4 to 8 weeks. I'll give you a timeline when we talk.
+                    projects? Usually 4 to 8 weeks. I&apos;ll give you a timeline when we talk.
                   </p>
                 )}
               </div>
@@ -1000,8 +1262,8 @@ function HomePage() {
                 </button>
                 {openFaqIndex === 4 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
-                    Yes. I write documentation that explains how things work. You shouldn't need me
-                    to explain it every time you use it.
+                    Yes. I write documentation that explains how things work. You shouldn&apos;t
+                    need me to explain it every time you use it.
                   </p>
                 )}
               </div>
@@ -1021,8 +1283,8 @@ function HomePage() {
                 </button>
                 {openFaqIndex === 5 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
-                    If I'm available, yes. I've done plenty of emergency fixes. Call me and we'll
-                    figure it out.
+                    If I&apos;m available, yes. I&apos;ve done plenty of emergency fixes. Call me
+                    and we&apos;ll figure it out.
                   </p>
                 )}
               </div>
@@ -1042,8 +1304,9 @@ function HomePage() {
                 </button>
                 {openFaqIndex === 6 && (
                   <p className='text-slate-600 leading-relaxed mt-4'>
-                    Yes. I work remotely. We'll use screen sharing, secure file transfer, whatever
-                    works for you. I've been doing remote work long before it was trendy.
+                    Yes. I work remotely. We&apos;ll use screen sharing, secure file transfer,
+                    whatever works for you. I&apos;ve been doing remote work long before it was
+                    trendy.
                   </p>
                 )}
               </div>
@@ -1056,10 +1319,11 @@ function HomePage() {
           <div className='max-w-7xl mx-auto px-6'>
             <div className='text-center mb-16'>
               <h2 className='text-4xl md:text-5xl font-bold mb-4 font-display text-slate-900'>
-                Get Started
+                Let&apos;s Get to Work.
               </h2>
               <p className='text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed'>
-                Let's talk about what you need. No sales pitch, just a real conversation.
+                Tell us what&apos;s broken or what you need built. We&apos;ll review your project
+                and get back to you within 24 hours to see if we&apos;re the right fit.
               </p>
             </div>
 
@@ -1075,7 +1339,7 @@ function HomePage() {
                       Free consultation
                     </h4>
                     <p className='text-slate-600'>
-                      Let's talk about your problem. No charge for the first conversation.
+                      Let&apos;s talk about your problem. No charge for the first conversation.
                     </p>
                   </div>
 
@@ -1125,25 +1389,40 @@ function HomePage() {
 
               {/* Contact Form */}
               <div>
-                <h3 className='text-2xl md:text-3xl font-bold mb-6 font-display text-slate-900'>
-                  Get in Touch
-                </h3>
-                <p className='text-slate-600 mb-6 leading-relaxed'>
-                  Tell me what's broken or what you need built. I'll get back to you and we can
-                  figure out if I can help.
-                </p>
-
                 <div className='card'>
                   {formSubmitted ? (
-                    <div className='text-center py-8'>
-                      <p className='text-excel font-semibold mb-2'>Thank you!</p>
-                      <p className='text-slate-600 text-sm'>
-                        Your email client should open. If not, email me directly at
-                        rob@excelaccessconsultant.com
+                    <div className='text-center py-12'>
+                      <div className='mb-4'>
+                        <svg
+                          className='w-16 h-16 text-green-500 mx-auto'
+                          fill='none'
+                          stroke='currentColor'
+                          viewBox='0 0 24 24'
+                        >
+                          <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2}
+                            d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+                          />
+                        </svg>
+                      </div>
+                      <h3 className='text-2xl font-bold text-slate-900 mb-3'>Thank You!</h3>
+                      <p className='text-slate-600 mb-4'>
+                        Your message has been sent successfully.
+                      </p>
+                      <p className='text-slate-500 text-sm'>
+                        Your email client should open shortly. If not, email me directly at{' '}
+                        <a
+                          href='mailto:rob@excelaccessconsultant.com'
+                          className='text-excel hover:underline'
+                        >
+                          rob@excelaccessconsultant.com
+                        </a>
                       </p>
                     </div>
                   ) : (
-                    <form className='space-y-6' onSubmit={handleFormSubmit}>
+                    <form className='space-y-6' onSubmit={handleFormSubmit} noValidate>
                       <div>
                         <label
                           htmlFor='name'
@@ -1155,12 +1434,23 @@ function HomePage() {
                           id='name'
                           name='name'
                           type='text'
-                          required
                           value={formData.name}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
+                          onChange={(e) => {
+                            handleInputChange(e);
+                            if (fieldErrors.name) {
+                              setFieldErrors({ ...fieldErrors, name: '' });
+                            }
+                          }}
+                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
+                            fieldErrors.name && fieldErrors.name.trim() !== ''
+                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                              : 'border-slate-300 focus:border-excel'
+                          }`}
                           placeholder='Your full name'
                         />
+                        {fieldErrors.name && fieldErrors.name.trim() !== '' && (
+                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.name}</p>
+                        )}
                       </div>
                       <div>
                         <label
@@ -1173,12 +1463,23 @@ function HomePage() {
                           id='email'
                           name='email'
                           type='email'
-                          required
                           value={formData.email}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
+                          onChange={(e) => {
+                            handleInputChange(e);
+                            if (fieldErrors.email) {
+                              setFieldErrors({ ...fieldErrors, email: '' });
+                            }
+                          }}
+                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
+                            fieldErrors.email && fieldErrors.email.trim() !== ''
+                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                              : 'border-slate-300 focus:border-excel'
+                          }`}
                           placeholder='your.email@company.com'
                         />
+                        {fieldErrors.email && fieldErrors.email.trim() !== '' && (
+                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.email}</p>
+                        )}
                       </div>
                       <div>
                         <label
@@ -1213,20 +1514,231 @@ function HomePage() {
                           id='message'
                           name='message'
                           rows='5'
-                          required
                           maxLength={180}
                           value={formData.message}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel resize-y'
+                          onChange={(e) => {
+                            handleInputChange(e);
+                            if (fieldErrors.message) {
+                              setFieldErrors({ ...fieldErrors, message: '' });
+                            }
+                          }}
+                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel resize-y ${
+                            fieldErrors.message && fieldErrors.message.trim() !== ''
+                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                              : 'border-slate-300 focus:border-excel'
+                          }`}
                           placeholder='What do you need help with?'
                         ></textarea>
+                        {fieldErrors.message && fieldErrors.message.trim() !== '' && (
+                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.message}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label
+                          htmlFor='file-upload'
+                          className='block text-sm font-medium text-slate-700 mb-2'
+                        >
+                          Attach Documents or Files (Optional)
+                        </label>
+                        <div className='space-y-2'>
+                          <div className='flex items-center gap-3'>
+                            <label
+                              htmlFor='file-upload'
+                              className='flex-1 px-4 py-3 bg-white border border-slate-300 rounded cursor-pointer hover:border-excel transition-colors flex items-center justify-between'
+                            >
+                              <span className='text-slate-600 text-sm'>
+                                {formData.files.length > 0
+                                  ? `${formData.files.length} file(s) selected`
+                                  : 'Choose files or drag and drop'}
+                              </span>
+                              <svg
+                                className='w-5 h-5 text-slate-400'
+                                fill='none'
+                                stroke='currentColor'
+                                viewBox='0 0 24 24'
+                              >
+                                <path
+                                  strokeLinecap='round'
+                                  strokeLinejoin='round'
+                                  strokeWidth={2}
+                                  d='M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13'
+                                />
+                              </svg>
+                            </label>
+                            <input
+                              id='file-upload'
+                              type='file'
+                              multiple
+                              onChange={handleFileChange}
+                              className='hidden'
+                              accept='.pdf,.doc,.docx,.xls,.xlsx,.txt,.csv,.zip,.rar'
+                            />
+                          </div>
+                          {formData.files.length > 0 && (
+                            <div className='space-y-2 mt-2'>
+                              {formData.files.map((file, index) => (
+                                <div
+                                  key={index}
+                                  className='flex items-center justify-between px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm'
+                                >
+                                  <div className='flex items-center gap-2 flex-1 min-w-0'>
+                                    <svg
+                                      className='w-4 h-4 text-slate-400 flex-shrink-0'
+                                      fill='none'
+                                      stroke='currentColor'
+                                      viewBox='0 0 24 24'
+                                    >
+                                      <path
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                        strokeWidth={2}
+                                        d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+                                      />
+                                    </svg>
+                                    <span className='text-slate-700 truncate'>{file.name}</span>
+                                    <span className='text-slate-500 text-xs flex-shrink-0'>
+                                      ({(file.size / 1024).toFixed(2)} KB)
+                                    </span>
+                                  </div>
+                                  <button
+                                    type='button'
+                                    onClick={() => removeFile(index)}
+                                    className='ml-2 text-red-600 hover:text-red-700 flex-shrink-0'
+                                    aria-label='Remove file'
+                                  >
+                                    <svg
+                                      className='w-4 h-4'
+                                      fill='none'
+                                      stroke='currentColor'
+                                      viewBox='0 0 24 24'
+                                    >
+                                      <path
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                        strokeWidth={2}
+                                        d='M6 18L18 6M6 6l12 12'
+                                      />
+                                    </svg>
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <p className='text-xs text-slate-500 mt-2'>
+                          Supported formats: PDF, DOC, DOCX, XLS, XLSX, TXT, CSV, ZIP, RAR
+                        </p>
+                      </div>
+                      <div>
+                        <div className='flex items-center justify-between mb-2'>
+                          <label
+                            htmlFor='captcha'
+                            className='block text-sm font-medium text-slate-700'
+                          >
+                            Security Check <span className='text-red-600'>*</span>
+                          </label>
+                          <span
+                            className={`text-xs font-medium ${
+                              captchaTimeLeft <= 30
+                                ? 'text-red-600'
+                                : captchaTimeLeft <= 60
+                                ? 'text-yellow-600'
+                                : 'text-slate-500'
+                            }`}
+                          >
+                            {Math.floor(captchaTimeLeft / 60)}:
+                            {(captchaTimeLeft % 60).toString().padStart(2, '0')}
+                          </span>
+                        </div>
+                        <div className='flex items-center gap-3'>
+                          <div className='flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-50 border border-slate-300 rounded font-mono'>
+                            <span className='text-slate-900 font-bold text-xl'>
+                              {captchaQuestion}
+                            </span>
+                            <span className='text-slate-600 text-lg'>=</span>
+                          </div>
+                          <input
+                            id='captcha'
+                            type='number'
+                            required
+                            value={captchaInput}
+                            onChange={(e) => {
+                              setHasInteractedWithForm(true); // Mark that user has interacted with form
+                              setCaptchaInput(e.target.value);
+                              setCaptchaError(false);
+                            }}
+                            className={`w-24 px-4 py-3 bg-white border text-slate-900 text-center font-semibold focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel ${
+                              captchaError
+                                ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                                : 'border-slate-300'
+                            }`}
+                            placeholder='?'
+                            autoComplete='off'
+                          />
+                          <button
+                            type='button'
+                            onClick={generateCaptcha}
+                            className='px-3 py-3 text-slate-600 hover:text-slate-900 border border-slate-300 hover:border-slate-400 rounded transition-colors'
+                            aria-label='Refresh captcha'
+                            title='Get a new question'
+                          >
+                            <svg
+                              className='w-5 h-5'
+                              fill='none'
+                              stroke='currentColor'
+                              viewBox='0 0 24 24'
+                            >
+                              <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                strokeWidth={2}
+                                d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                        {captchaError && (
+                          <p className='text-red-600 text-sm mt-2'>
+                            Incorrect answer. Please try again.
+                          </p>
+                        )}
+                        <p className='text-xs text-slate-500 mt-2'>
+                          Solve the math problem to verify you&apos;re human
+                        </p>
                       </div>
                       <button
                         type='submit'
-                        className='btn-primary w-full py-4 text-base'
+                        disabled={isSubmitting}
+                        className='btn-primary w-full py-4 text-base flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-white hover:text-white'
                         aria-label='Submit contact form'
                       >
-                        Send Message
+                        {isSubmitting ? (
+                          <>
+                            <svg
+                              className='animate-spin h-5 w-5 text-white'
+                              xmlns='http://www.w3.org/2000/svg'
+                              fill='none'
+                              viewBox='0 0 24 24'
+                            >
+                              <circle
+                                className='opacity-25'
+                                cx='12'
+                                cy='12'
+                                r='10'
+                                stroke='currentColor'
+                                strokeWidth='4'
+                              ></circle>
+                              <path
+                                className='opacity-75'
+                                fill='currentColor'
+                                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                              ></path>
+                            </svg>
+                            <span>Sending...</span>
+                          </>
+                        ) : (
+                          <span>Send Message</span>
+                        )}
                       </button>
                     </form>
                   )}
@@ -1243,7 +1755,13 @@ function HomePage() {
           <div className='grid md:grid-cols-3 gap-12 mb-12'>
             {/* Brand Section */}
             <div className='md:col-span-1'>
-              <Link to='/' className='flex items-center mb-4'>
+              <Link
+                to='/'
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className='flex items-center mb-4'
+              >
                 <img
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
@@ -1272,7 +1790,13 @@ function HomePage() {
               </h4>
               <ul className='space-y-3 text-slate-400 text-sm'>
                 <li>
-                  <Link to='/' className='hover:text-white transition-colors'>
+                  <Link
+                    to='/'
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className='hover:text-white transition-colors'
+                  >
                     Home
                   </Link>
                 </li>
@@ -1282,40 +1806,46 @@ function HomePage() {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href='#services'
+                  <Link
+                    to='/#services'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('services');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('services');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='#faq'
+                  <Link
+                    to='/#faq'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('faq');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('faq');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     FAQ
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='#contact'
+                  <Link
+                    to='/#contact'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('contact');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('contact');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -1327,52 +1857,60 @@ function HomePage() {
               </h4>
               <ul className='space-y-3 text-slate-400 text-sm'>
                 <li>
-                  <a
-                    href='#services'
+                  <Link
+                    to='/#services'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('services');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('services');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     Process Automation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='#services'
+                  <Link
+                    to='/#services'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('services');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('services');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     Enterprise Access Databases
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='#services'
+                  <Link
+                    to='/#services'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('services');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('services');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     Data Rescue & Optimization
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='#contact'
+                  <Link
+                    to='/#contact'
                     onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('contact');
+                      if (window.location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('contact');
+                      }
                     }}
                     className='hover:text-white transition-colors'
                   >
                     Free Consultation
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -1393,6 +1931,9 @@ function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} removeToast={removeToast} />
     </div>
   );
 }

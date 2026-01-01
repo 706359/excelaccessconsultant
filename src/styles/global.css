@@ -46,11 +46,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-excel hover:bg-excel-hover text-white px-6 py-3 text-sm font-medium transition-colors;
+    @apply bg-excel hover:bg-excel-hover text-white hover:text-white px-6 py-3 text-sm font-medium transition-colors;
   }
 
   .btn-secondary {
-    @apply text-slate-700 hover:text-slate-900 text-base font-medium transition-colors;
+    @apply text-black hover:text-slate-900 text-base font-medium transition-colors border border-slate-300 hover:border-slate-400 px-8 py-4 bg-black/80 hover:bg-white;
   }
 
   .badge {
@@ -61,15 +61,62 @@
     @apply bg-white/90 backdrop-blur-sm border border-slate-200 shadow-sm p-6;
   }
 
-  .card button {
+  .card button:not(.btn-primary):not([type='submit']) {
     @apply transition-colors hover:text-slate-900 cursor-pointer;
+  }
+
+  .card .btn-primary,
+  .card button[type='submit'].btn-primary {
+    @apply text-white hover:text-white;
   }
 
   .card button:hover h3 {
     @apply text-slate-900;
   }
 
-  .card button:hover span {
+  .card button:not(.btn-primary):not([type='submit']):hover span {
     @apply text-slate-600;
+  }
+
+  /* Ensure btn-primary buttons and their children stay white */
+  .card .btn-primary,
+  .card button[type='submit'].btn-primary,
+  .card .btn-primary *,
+  .card button[type='submit'].btn-primary *,
+  .card .btn-primary:hover,
+  .card button[type='submit'].btn-primary:hover,
+  .card .btn-primary:hover *,
+  .card button[type='submit'].btn-primary:hover * {
+    color: white !important;
+  }
+
+  /* Hide number input spinners */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+@layer utilities {
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
   }
 }
