@@ -3,7 +3,6 @@ import SEO from '../../components/SEO/SEO';
 import '../../styles/global.css';
 
 function About() {
-
   return (
     <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-excel selection:text-white'>
       <SEO
@@ -14,10 +13,7 @@ function About() {
 
       {/* Navigation */}
       <nav className='flex justify-between items-center px-6 md:px-8 py-6 border-b border-slate-200 sticky top-0 z-50 bg-white/95 backdrop-blur-sm'>
-        <Link
-          to='/'
-          className='flex items-center'
-        >
+        <Link to='/' className='flex items-center'>
           <img
             src='/logo.png'
             alt='ExcelAccessConsultant - Expert Excel and Access Consulting Services'
@@ -71,7 +67,7 @@ function About() {
             A Specialist for Complex Enterprises.
           </h1>
           <p className='text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
-            Direct access to 17+ years of enterprise-level Excel and Access expertise.
+            Direct access to 20+ years of enterprise-level Excel and Access expertise.
           </p>
         </section>
 
@@ -80,16 +76,16 @@ function About() {
           <div className='max-w-4xl mx-auto px-6'>
             <div className='space-y-8 text-lg text-slate-700 leading-relaxed'>
               <p>
-                I'm Robert Terry. For over 17 years, I've worked at the intersection of
+                I&apos;m Robert Terry. For over 20 years, I&apos;ve worked at the intersection of
                 business logic and Microsoft technology.
               </p>
               <p>
-                My approach is straightforward: I find the friction in your data processes and build systems
-                that get rid of it.
+                My approach is straightforward: I find the friction in your data processes and build
+                systems that get rid of it.
               </p>
               <p>
-                When you hire me, you're not getting just a programmer. You're getting a business
-                partner who actually understands how your operations work.
+                When you hire me, you&apos;re not getting just a programmer. You&apos;re getting a
+                business partner who actually understands how your operations work.
               </p>
             </div>
 
@@ -98,8 +94,8 @@ function About() {
                 <h3 className='text-xl font-bold mb-4 font-display'>Direct Principal Access</h3>
                 <p className='text-slate-600 leading-relaxed'>
                   Every conversation is with me. No account managers, no junior developers, no
-                  outsourcing. The person who understands your business is the same person
-                  writing your code.
+                  outsourcing. The person who understands your business is the same person writing
+                  your code.
                 </p>
               </div>
 
@@ -128,8 +124,8 @@ function About() {
               <div className='card'>
                 <h3 className='text-xl font-bold mb-4 font-display'>Enterprise Security</h3>
                 <p className='text-slate-600 leading-relaxed'>
-                  All work happens in your IT environment. Your data never leaves your
-                  firewall. I'm ready to sign corporate NDAs right away.
+                  All work happens in your IT environment. Your data never leaves your firewall.
+                  I&apos;m ready to sign corporate NDAs right away.
                 </p>
               </div>
             </div>
@@ -145,17 +141,17 @@ function About() {
 
             <div className='space-y-6 text-lg text-slate-700 leading-relaxed'>
               <p>
-                I'm not a creative designer. I'm not generalist IT support. I'm a specialist in
-                the Microsoft Data Stack—Excel, Access, VBA, and SQL Server.
+                I&apos;m not a creative designer. I&apos;m not generalist IT support. I&apos;m a
+                specialist in the Microsoft Data Stack—Excel, Access, VBA, and SQL Server.
               </p>
               <p>
                 This focus means I understand the deep technical constraints and possibilities of
-                these platforms. I know how to push Excel to its limits without breaking it. I know how
-                to build Access databases that scale to hundreds of users. I know how to write
+                these platforms. I know how to push Excel to its limits without breaking it. I know
+                how to build Access databases that scale to hundreds of users. I know how to write
                 VBA that runs reliably for years.
               </p>
               <p>
-                When your business depends on these tools, you need someone who's spent decades
+                When your business depends on these tools, you need someone who&apos;s spent decades
                 mastering them, not someone who can &quot;also do Excel&quot; among a dozen other
                 technologies.
               </p>
@@ -178,7 +174,7 @@ function About() {
                     <h3 className='text-xl font-bold mb-3 font-display'>Understand</h3>
                     <p className='text-slate-600 leading-relaxed'>
                       Deep-dive audit of your current logic, workflows, and pain points. I
-                      don't assume—I verify how your business actually works.
+                      don&apos;t assume—I verify how your business actually works.
                     </p>
                   </div>
                 </div>
@@ -203,7 +199,7 @@ function About() {
                   <div className='flex-1'>
                     <h3 className='text-xl font-bold mb-3 font-display'>Build</h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      Development in a sandbox environment. You'll see progress at each
+                      Development in a sandbox environment. You&apos;ll see progress at each
                       milestone, and we can tweak things before final deployment.
                     </p>
                   </div>
@@ -216,8 +212,8 @@ function About() {
                   <div className='flex-1'>
                     <h3 className='text-xl font-bold mb-3 font-display'>Handover</h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      Complete documentation, training, and support. Your team will know how to
-                      use and maintain the system on their own.
+                      Complete documentation, training, and support. Your team will know how to use
+                      and maintain the system on their own.
                     </p>
                   </div>
                 </div>

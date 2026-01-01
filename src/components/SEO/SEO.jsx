@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const SEO = ({
   title = 'Excel and Access Consulting That Actually Works | ExcelAccessConsultant',
-  description = 'Excel and Access consulting that actually works. 17+ years of experience fixing broken spreadsheets, building stable databases, and automating repetitive tasks. Free consultation available.',
+  description = 'Excel and Access consulting that actually works. 20+ years of experience fixing broken spreadsheets, building stable databases, and automating repetitive tasks. Free consultation available.',
   keywords = 'Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development',
   ogTitle = 'Excel and Access Consulting That Actually Works',
   image = '/logo.png',
