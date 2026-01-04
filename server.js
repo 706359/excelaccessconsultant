@@ -141,6 +141,8 @@ To help us schedule a convenient time for you, could you please provide us with 
 
 You can reply directly to this email with your preferred time slots, or call us at (801) 704-5604.
 
+To help me prepare for our consultation and make the most of our time together, please send any relevant files, spreadsheets, databases, or documentation that you would like me to review before our meeting. This will allow me to better understand your current setup and come prepared with specific recommendations.
+
 We look forward to speaking with you soon.
 
 Best regards,
@@ -184,6 +186,17 @@ Email: rob@excelaccessconsultant.com`;
                                     </p>
                                     <p style="margin: 0;">
                                         You can reply directly to this email with your preferred time slots, or call us at <a href="tel:8017045604" style="color: #1e40af; text-decoration: none; font-weight: bold;">(801) 704-5604</a>.
+                                    </p>
+                                </div>
+
+                                <!-- Preparation Request Box -->
+                                <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                                    <h2 style="color: #92400e; margin: 0 0 15px 0; font-size: 18px;">📎 Prepare for Our Meeting</h2>
+                                    <p style="margin: 0 0 10px 0; color: #78350f;">
+                                        To help me prepare for our consultation and make the most of our time together, please send any relevant files, spreadsheets, databases, or documentation that you would like me to review before our meeting. This will allow me to better understand your current setup and come prepared with specific recommendations.
+                                    </p>
+                                    <p style="margin: 0; color: #78350f; font-size: 14px;">
+                                        You can attach files directly to your reply email or share them via a secure file transfer method of your choice.
                                     </p>
                                 </div>
 
