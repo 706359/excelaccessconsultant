@@ -24,22 +24,50 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: ''
+        });
+        
+        // Reset status message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, 5000);
+      } else {
+        setSubmitStatus('error');
+        console.error('Form submission error:', data.error);
+        
+        // Reset error status after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, 5000);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      setSubmitStatus('error');
       
-      // Reset status message after 5 seconds
+      // Reset error status after 5 seconds
       setTimeout(() => {
         setSubmitStatus(null);
       }, 5000);
-    }, 1000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -106,6 +134,12 @@ const ContactForm = () => {
       {submitStatus === 'success' && (
         <div className="ContactForm-message ContactForm-message--success">
           Thanks! I got your message and I'll get back to you within one business day.
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="ContactForm-message ContactForm-message--error">
+          Sorry, there was an error sending your message. Please try again or contact us directly at rob@excelaccessconsultant.com
         </div>
       )}
 

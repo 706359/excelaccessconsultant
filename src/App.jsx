@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 import FAQSchema from './components/SEO/FAQSchema';
 import SEO from './components/SEO/SEO';
 import ToastContainer from './components/Toast/ToastContainer';
 import About from './pages/About/About';
+import ThankYou from './pages/ThankYou/ThankYou';
 import './styles/global.css';
 
 // Scroll to top on route change
@@ -23,6 +24,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path='/about' element={<About />} />
+        <Route path='/thank-you' element={<ThankYou />} />
         <Route path='/' element={<HomePage />} />
       </Routes>
     </Router>
@@ -30,6 +32,7 @@ function App() {
 }
 
 function HomePage() {
+  const navigate = useNavigate();
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [openCaseStudyIndex, setOpenCaseStudyIndex] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,7 +41,6 @@ function HomePage() {
     email: '',
     phone: '',
     message: '',
-    files: [],
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -84,39 +86,32 @@ function HomePage() {
   };
 
   const generateCaptcha = () => {
-    // Generate harder math problems to make it difficult for bots
-    const operations = ['+', '-', '*'];
+    // Generate single-digit math problems for user-friendly verification
+    const operations = ['+', '-'];
     const operation = operations[Math.floor(Math.random() * operations.length)];
 
     let num1, num2, answer, question;
 
     switch (operation) {
       case '+':
-        // Addition: 15-99 + 15-99
-        num1 = Math.floor(Math.random() * 85) + 15;
-        num2 = Math.floor(Math.random() * 85) + 15;
+        // Addition: 1-9 + 1-9 (results: 2-18)
+        num1 = Math.floor(Math.random() * 9) + 1; // 1-9
+        num2 = Math.floor(Math.random() * 9) + 1; // 1-9
         answer = num1 + num2;
         question = `${num1} + ${num2}`;
         break;
       case '-':
-        // Subtraction: ensure positive result (50-99 - 10-49)
-        num1 = Math.floor(Math.random() * 50) + 50;
-        num2 = Math.floor(Math.random() * 40) + 10;
+        // Subtraction: single digits, ensure positive result
+        num1 = Math.floor(Math.random() * 9) + 1; // 1-9
+        num2 = Math.floor(Math.random() * num1) + 1; // 1 to num1 (ensures num1 >= num2)
         answer = num1 - num2;
         question = `${num1} - ${num2}`;
         break;
-      case '*':
-        // Multiplication: single digit times double digit (2-9 * 10-25)
-        num1 = Math.floor(Math.random() * 8) + 2;
-        num2 = Math.floor(Math.random() * 16) + 10;
-        answer = num1 * num2;
-        question = `${num1} × ${num2}`;
-        break;
       default:
-        num1 = 20;
-        num2 = 15;
-        answer = 35;
-        question = '20 + 15';
+        num1 = 5;
+        num2 = 3;
+        answer = 8;
+        question = '5 + 3';
     }
 
     setCaptchaQuestion(question);
@@ -230,49 +225,38 @@ function HomePage() {
     // Start submitting
     setIsSubmitting(true);
 
-    // Simulate sending process (2 seconds)
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    // Create mailto link as fallback
-    const subject = encodeURIComponent(`Contact from ${formData.name}`);
-    let body = `Full Name: ${formData.name}\nEmail Address: ${formData.email}\nPhone Number: ${
-      formData.phone || 'Not provided'
-    }\n\nMessage:\n${formData.message}`;
-
-    if (formData.files.length > 0) {
-      body += `\n\nAttached Files (${formData.files.length}):\n`;
-      formData.files.forEach((file, index) => {
-        body += `${index + 1}. ${file.name} (${(file.size / 1024).toFixed(2)} KB)\n`;
+    try {
+      // Call API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || '',
+          message: formData.message
+        }),
       });
-      body +=
-        '\nNote: Files cannot be attached via email client. Please send files separately or mention them in your follow-up email.';
-    }
 
-    const encodedBody = encodeURIComponent(body);
+      const data = await response.json();
 
-    // Open email client
-    window.location.href = `mailto:rob@excelaccessconsultant.com?subject=${subject}&body=${encodedBody}`;
-
-    // Complete submission
-    setIsSubmitting(false);
-    setFormSubmitted(true);
-
-    // Show thank you message
-    showToast('Thank you! Your message has been sent successfully.', 'success', 5000);
-
-    // Reset form after delay
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '', files: [] });
-      setCaptchaInput('');
-      setHasInteractedWithForm(false); // Reset interaction flag
-      generateCaptcha(); // Generate new captcha after successful submission
-      // Reset file input
-      const fileInput = document.getElementById('file-upload');
-      if (fileInput) {
-        fileInput.value = '';
+      if (response.ok && data.success) {
+        // Success - redirect to thank you page
+        setIsSubmitting(false);
+        navigate('/thank-you');
+      } else {
+        // API returned an error
+        setIsSubmitting(false);
+        showToast(data.error || 'Failed to send message. Please try again.', 'error', 5000);
       }
-    }, 3000);
+    } catch (error) {
+      // Network or other error
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      showToast('Network error. Please check your connection and try again.', 'error', 5000);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -283,20 +267,6 @@ function HomePage() {
     });
   };
 
-  const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    setFormData({
-      ...formData,
-      files: selectedFiles,
-    });
-  };
-
-  const removeFile = (index) => {
-    setFormData({
-      ...formData,
-      files: formData.files.filter((_, i) => i !== index),
-    });
-  };
 
   return (
     <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-excel selection:text-white'>
@@ -1532,102 +1502,6 @@ function HomePage() {
                         {fieldErrors.message && fieldErrors.message.trim() !== '' && (
                           <p className='text-red-600 text-sm mt-1'>{fieldErrors.message}</p>
                         )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor='file-upload'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Attach Documents or Files (Optional)
-                        </label>
-                        <div className='space-y-2'>
-                          <div className='flex items-center gap-3'>
-                            <label
-                              htmlFor='file-upload'
-                              className='flex-1 px-4 py-3 bg-white border border-slate-300 rounded cursor-pointer hover:border-excel transition-colors flex items-center justify-between'
-                            >
-                              <span className='text-slate-600 text-sm'>
-                                {formData.files.length > 0
-                                  ? `${formData.files.length} file(s) selected`
-                                  : 'Choose files or drag and drop'}
-                              </span>
-                              <svg
-                                className='w-5 h-5 text-slate-400'
-                                fill='none'
-                                stroke='currentColor'
-                                viewBox='0 0 24 24'
-                              >
-                                <path
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                  strokeWidth={2}
-                                  d='M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13'
-                                />
-                              </svg>
-                            </label>
-                            <input
-                              id='file-upload'
-                              type='file'
-                              multiple
-                              onChange={handleFileChange}
-                              className='hidden'
-                              accept='.pdf,.doc,.docx,.xls,.xlsx,.txt,.csv,.zip,.rar'
-                            />
-                          </div>
-                          {formData.files.length > 0 && (
-                            <div className='space-y-2 mt-2'>
-                              {formData.files.map((file, index) => (
-                                <div
-                                  key={index}
-                                  className='flex items-center justify-between px-3 py-2 bg-slate-50 border border-slate-200 rounded text-sm'
-                                >
-                                  <div className='flex items-center gap-2 flex-1 min-w-0'>
-                                    <svg
-                                      className='w-4 h-4 text-slate-400 flex-shrink-0'
-                                      fill='none'
-                                      stroke='currentColor'
-                                      viewBox='0 0 24 24'
-                                    >
-                                      <path
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                        strokeWidth={2}
-                                        d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
-                                      />
-                                    </svg>
-                                    <span className='text-slate-700 truncate'>{file.name}</span>
-                                    <span className='text-slate-500 text-xs flex-shrink-0'>
-                                      ({(file.size / 1024).toFixed(2)} KB)
-                                    </span>
-                                  </div>
-                                  <button
-                                    type='button'
-                                    onClick={() => removeFile(index)}
-                                    className='ml-2 text-red-600 hover:text-red-700 flex-shrink-0'
-                                    aria-label='Remove file'
-                                  >
-                                    <svg
-                                      className='w-4 h-4'
-                                      fill='none'
-                                      stroke='currentColor'
-                                      viewBox='0 0 24 24'
-                                    >
-                                      <path
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                        strokeWidth={2}
-                                        d='M6 18L18 6M6 6l12 12'
-                                      />
-                                    </svg>
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                        <p className='text-xs text-slate-500 mt-2'>
-                          Supported formats: PDF, DOC, DOCX, XLS, XLSX, TXT, CSV, ZIP, RAR
-                        </p>
                       </div>
                       <div>
                         <div className='flex items-center justify-between mb-2'>
