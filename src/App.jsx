@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link, Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import FAQSchema from './components/SEO/FAQSchema';
 import SEO from './components/SEO/SEO';
 import ToastContainer from './components/Toast/ToastContainer';
@@ -42,7 +49,6 @@ function HomePage() {
     phone: '',
     message: '',
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaQuestion, setCaptchaQuestion] = useState('');
   const [captchaAnswer, setCaptchaAnswer] = useState(0);
@@ -236,7 +242,7 @@ function HomePage() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone || '',
-          message: formData.message
+          message: formData.message,
         }),
       });
 
@@ -267,7 +273,6 @@ function HomePage() {
     });
   };
 
-
   return (
     <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-excel selection:text-white'>
       {/* Skip to main content link for accessibility */}
@@ -282,6 +287,8 @@ function HomePage() {
         title='Excel and Access Consulting That Actually Works | ExcelAccessConsultant'
         description='Excel and Access consulting that actually works. 20+ years of experience fixing broken spreadsheets, building stable databases, and automating repetitive tasks. Free consultation available.'
         keywords='Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development'
+        url='https://excelaccessconsultant.com/'
+        ogTitle='Excel and Access Consulting That Actually Works'
       />
 
       <FAQSchema
@@ -1360,262 +1367,229 @@ function HomePage() {
               {/* Contact Form */}
               <div>
                 <div className='card'>
-                  {formSubmitted ? (
-                    <div className='text-center py-12'>
-                      <div className='mb-4'>
-                        <svg
-                          className='w-16 h-16 text-green-500 mx-auto'
-                          fill='none'
-                          stroke='currentColor'
-                          viewBox='0 0 24 24'
+                  <form className='space-y-6' onSubmit={handleFormSubmit} noValidate>
+                    <div>
+                      <label
+                        htmlFor='name'
+                        className='block text-sm font-medium text-slate-700 mb-2'
+                      >
+                        Full Name <span className='text-red-600'>*</span>
+                      </label>
+                      <input
+                        id='name'
+                        name='name'
+                        type='text'
+                        value={formData.name}
+                        onChange={(e) => {
+                          handleInputChange(e);
+                          if (fieldErrors.name) {
+                            setFieldErrors({ ...fieldErrors, name: '' });
+                          }
+                        }}
+                        className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
+                          fieldErrors.name && fieldErrors.name.trim() !== ''
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-slate-300 focus:border-excel'
+                        }`}
+                        placeholder='Your full name'
+                      />
+                      {fieldErrors.name && fieldErrors.name.trim() !== '' && (
+                        <p className='text-red-600 text-sm mt-1'>{fieldErrors.name}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label
+                        htmlFor='email'
+                        className='block text-sm font-medium text-slate-700 mb-2'
+                      >
+                        Email Address <span className='text-red-600'>*</span>
+                      </label>
+                      <input
+                        id='email'
+                        name='email'
+                        type='email'
+                        value={formData.email}
+                        onChange={(e) => {
+                          handleInputChange(e);
+                          if (fieldErrors.email) {
+                            setFieldErrors({ ...fieldErrors, email: '' });
+                          }
+                        }}
+                        className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
+                          fieldErrors.email && fieldErrors.email.trim() !== ''
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-slate-300 focus:border-excel'
+                        }`}
+                        placeholder='your.email@company.com'
+                      />
+                      {fieldErrors.email && fieldErrors.email.trim() !== '' && (
+                        <p className='text-red-600 text-sm mt-1'>{fieldErrors.email}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label
+                        htmlFor='phone'
+                        className='block text-sm font-medium text-slate-700 mb-2'
+                      >
+                        Phone Number
+                      </label>
+                      <input
+                        id='phone'
+                        name='phone'
+                        type='tel'
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
+                        placeholder='Your phone number'
+                      />
+                    </div>
+                    <div>
+                      <div className='flex items-center justify-between mb-2'>
+                        <label
+                          htmlFor='message'
+                          className='block text-sm font-medium text-slate-700'
                         >
-                          <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2}
-                            d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
-                          />
-                        </svg>
+                          Message
+                        </label>
+                        <span className='text-xs text-slate-500'>
+                          {formData.message.length}/180
+                        </span>
                       </div>
-                      <h3 className='text-2xl font-bold text-slate-900 mb-3'>Thank You!</h3>
-                      <p className='text-slate-600 mb-4'>
-                        Your message has been sent successfully.
-                      </p>
-                      <p className='text-slate-500 text-sm'>
-                        Your email client should open shortly. If not, email me directly at{' '}
-                        <a
-                          href='mailto:rob@excelaccessconsultant.com'
-                          className='text-excel hover:underline'
+                      <textarea
+                        id='message'
+                        name='message'
+                        rows='5'
+                        maxLength={180}
+                        value={formData.message}
+                        onChange={(e) => {
+                          handleInputChange(e);
+                          if (fieldErrors.message) {
+                            setFieldErrors({ ...fieldErrors, message: '' });
+                          }
+                        }}
+                        className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel resize-y ${
+                          fieldErrors.message && fieldErrors.message.trim() !== ''
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-slate-300 focus:border-excel'
+                        }`}
+                        placeholder='What do you need help with?'
+                      ></textarea>
+                      {fieldErrors.message && fieldErrors.message.trim() !== '' && (
+                        <p className='text-red-600 text-sm mt-1'>{fieldErrors.message}</p>
+                      )}
+                    </div>
+                    <div>
+                      <div className='flex items-center justify-between mb-2'>
+                        <label
+                          htmlFor='captcha'
+                          className='block text-sm font-medium text-slate-700'
                         >
-                          rob@excelaccessconsultant.com
-                        </a>
+                          Security Check <span className='text-red-600'>*</span>
+                        </label>
+                        <span
+                          className={`text-xs font-medium ${
+                            captchaTimeLeft <= 30
+                              ? 'text-red-600'
+                              : captchaTimeLeft <= 60
+                              ? 'text-yellow-600'
+                              : 'text-slate-500'
+                          }`}
+                        >
+                          {Math.floor(captchaTimeLeft / 60)}:
+                          {(captchaTimeLeft % 60).toString().padStart(2, '0')}
+                        </span>
+                      </div>
+                      <div className='flex items-center gap-3'>
+                        <div className='flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-50 border border-slate-300 rounded font-mono'>
+                          <span className='text-slate-900 font-bold text-xl'>
+                            {captchaQuestion}
+                          </span>
+                          <span className='text-slate-600 text-lg'>=</span>
+                        </div>
+                        <input
+                          id='captcha'
+                          type='number'
+                          required
+                          value={captchaInput}
+                          onChange={(e) => {
+                            setHasInteractedWithForm(true); // Mark that user has interacted with form
+                            setCaptchaInput(e.target.value);
+                            setCaptchaError(false);
+                          }}
+                          className={`w-24 px-4 py-3 bg-white border text-slate-900 text-center font-semibold focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel ${
+                            captchaError
+                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                              : 'border-slate-300'
+                          }`}
+                          placeholder='?'
+                          autoComplete='off'
+                        />
+                        <button
+                          type='button'
+                          onClick={generateCaptcha}
+                          className='px-3 py-3 text-slate-600 hover:text-slate-900 border border-slate-300 hover:border-slate-400 rounded transition-colors'
+                          aria-label='Refresh captcha'
+                          title='Get a new question'
+                        >
+                          <svg
+                            className='w-5 h-5'
+                            fill='none'
+                            stroke='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              strokeWidth={2}
+                              d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      {captchaError && (
+                        <p className='text-red-600 text-sm mt-2'>
+                          Incorrect answer. Please try again.
+                        </p>
+                      )}
+                      <p className='text-xs text-slate-500 mt-2'>
+                        Solve the math problem to verify you&apos;re human
                       </p>
                     </div>
-                  ) : (
-                    <form className='space-y-6' onSubmit={handleFormSubmit} noValidate>
-                      <div>
-                        <label
-                          htmlFor='name'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Full Name <span className='text-red-600'>*</span>
-                        </label>
-                        <input
-                          id='name'
-                          name='name'
-                          type='text'
-                          value={formData.name}
-                          onChange={(e) => {
-                            handleInputChange(e);
-                            if (fieldErrors.name) {
-                              setFieldErrors({ ...fieldErrors, name: '' });
-                            }
-                          }}
-                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
-                            fieldErrors.name && fieldErrors.name.trim() !== ''
-                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                              : 'border-slate-300 focus:border-excel'
-                          }`}
-                          placeholder='Your full name'
-                        />
-                        {fieldErrors.name && fieldErrors.name.trim() !== '' && (
-                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.name}</p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor='email'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Email Address <span className='text-red-600'>*</span>
-                        </label>
-                        <input
-                          id='email'
-                          name='email'
-                          type='email'
-                          value={formData.email}
-                          onChange={(e) => {
-                            handleInputChange(e);
-                            if (fieldErrors.email) {
-                              setFieldErrors({ ...fieldErrors, email: '' });
-                            }
-                          }}
-                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
-                            fieldErrors.email && fieldErrors.email.trim() !== ''
-                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                              : 'border-slate-300 focus:border-excel'
-                          }`}
-                          placeholder='your.email@company.com'
-                        />
-                        {fieldErrors.email && fieldErrors.email.trim() !== '' && (
-                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.email}</p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor='phone'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Phone Number
-                        </label>
-                        <input
-                          id='phone'
-                          name='phone'
-                          type='tel'
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
-                          placeholder='Your phone number'
-                        />
-                      </div>
-                      <div>
-                        <div className='flex items-center justify-between mb-2'>
-                          <label
-                            htmlFor='message'
-                            className='block text-sm font-medium text-slate-700'
+                    <button
+                      type='submit'
+                      disabled={isSubmitting}
+                      className='btn-primary w-full py-4 text-base flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-white hover:text-white'
+                      aria-label='Submit contact form'
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className='animate-spin h-5 w-5 text-white'
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill='none'
+                            viewBox='0 0 24 24'
                           >
-                            Message
-                          </label>
-                          <span className='text-xs text-slate-500'>
-                            {formData.message.length}/180
-                          </span>
-                        </div>
-                        <textarea
-                          id='message'
-                          name='message'
-                          rows='5'
-                          maxLength={180}
-                          value={formData.message}
-                          onChange={(e) => {
-                            handleInputChange(e);
-                            if (fieldErrors.message) {
-                              setFieldErrors({ ...fieldErrors, message: '' });
-                            }
-                          }}
-                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel resize-y ${
-                            fieldErrors.message && fieldErrors.message.trim() !== ''
-                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                              : 'border-slate-300 focus:border-excel'
-                          }`}
-                          placeholder='What do you need help with?'
-                        ></textarea>
-                        {fieldErrors.message && fieldErrors.message.trim() !== '' && (
-                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.message}</p>
-                        )}
-                      </div>
-                      <div>
-                        <div className='flex items-center justify-between mb-2'>
-                          <label
-                            htmlFor='captcha'
-                            className='block text-sm font-medium text-slate-700'
-                          >
-                            Security Check <span className='text-red-600'>*</span>
-                          </label>
-                          <span
-                            className={`text-xs font-medium ${
-                              captchaTimeLeft <= 30
-                                ? 'text-red-600'
-                                : captchaTimeLeft <= 60
-                                ? 'text-yellow-600'
-                                : 'text-slate-500'
-                            }`}
-                          >
-                            {Math.floor(captchaTimeLeft / 60)}:
-                            {(captchaTimeLeft % 60).toString().padStart(2, '0')}
-                          </span>
-                        </div>
-                        <div className='flex items-center gap-3'>
-                          <div className='flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-50 border border-slate-300 rounded font-mono'>
-                            <span className='text-slate-900 font-bold text-xl'>
-                              {captchaQuestion}
-                            </span>
-                            <span className='text-slate-600 text-lg'>=</span>
-                          </div>
-                          <input
-                            id='captcha'
-                            type='number'
-                            required
-                            value={captchaInput}
-                            onChange={(e) => {
-                              setHasInteractedWithForm(true); // Mark that user has interacted with form
-                              setCaptchaInput(e.target.value);
-                              setCaptchaError(false);
-                            }}
-                            className={`w-24 px-4 py-3 bg-white border text-slate-900 text-center font-semibold focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel ${
-                              captchaError
-                                ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                                : 'border-slate-300'
-                            }`}
-                            placeholder='?'
-                            autoComplete='off'
-                          />
-                          <button
-                            type='button'
-                            onClick={generateCaptcha}
-                            className='px-3 py-3 text-slate-600 hover:text-slate-900 border border-slate-300 hover:border-slate-400 rounded transition-colors'
-                            aria-label='Refresh captcha'
-                            title='Get a new question'
-                          >
-                            <svg
-                              className='w-5 h-5'
-                              fill='none'
+                            <circle
+                              className='opacity-25'
+                              cx='12'
+                              cy='12'
+                              r='10'
                               stroke='currentColor'
-                              viewBox='0 0 24 24'
-                            >
-                              <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                strokeWidth={2}
-                                d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                        {captchaError && (
-                          <p className='text-red-600 text-sm mt-2'>
-                            Incorrect answer. Please try again.
-                          </p>
-                        )}
-                        <p className='text-xs text-slate-500 mt-2'>
-                          Solve the math problem to verify you&apos;re human
-                        </p>
-                      </div>
-                      <button
-                        type='submit'
-                        disabled={isSubmitting}
-                        className='btn-primary w-full py-4 text-base flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-white hover:text-white'
-                        aria-label='Submit contact form'
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <svg
-                              className='animate-spin h-5 w-5 text-white'
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                            >
-                              <circle
-                                className='opacity-25'
-                                cx='12'
-                                cy='12'
-                                r='10'
-                                stroke='currentColor'
-                                strokeWidth='4'
-                              ></circle>
-                              <path
-                                className='opacity-75'
-                                fill='currentColor'
-                                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                              ></path>
-                            </svg>
-                            <span>Sending...</span>
-                          </>
-                        ) : (
-                          <span>Send Message</span>
-                        )}
-                      </button>
-                    </form>
-                  )}
+                              strokeWidth='4'
+                            ></circle>
+                            <path
+                              className='opacity-75'
+                              fill='currentColor'
+                              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                            ></path>
+                          </svg>
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <span>Send Message</span>
+                      )}
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>

@@ -12,6 +12,8 @@ function About() {
         title='Operational Stability & Data Governance | ExcelAccessConsultant'
         description='We replace fragile spreadsheets with robust, audit-ready systems. Senior-level consulting for US finance and operations teams.'
         keywords='operational stability, data governance, Excel consulting, Access consulting, audit-ready systems, business continuity, risk mitigation'
+        url='https://excelaccessconsultant.com/about'
+        ogTitle='Operational Stability & Data Governance | ExcelAccessConsultant'
       />
 
       {/* Top Banner */}

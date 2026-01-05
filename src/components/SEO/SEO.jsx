@@ -40,9 +40,13 @@ const SEO = ({
     updateMetaTag('og:type', type, true);
 
     // Update Twitter tags
+    updateMetaTag('twitter:card', 'summary_large_image', true);
     updateMetaTag('twitter:title', ogTitle, true);
     updateMetaTag('twitter:description', description, true);
     updateMetaTag('twitter:image', `${url}${image}`, true);
+    
+    // Update og:site_name
+    updateMetaTag('og:site_name', 'ExcelAccessConsultant', true);
 
     // Update canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');

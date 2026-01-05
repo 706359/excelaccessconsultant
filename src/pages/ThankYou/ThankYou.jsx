@@ -9,6 +9,8 @@ function ThankYou() {
         title='Thank You - ExcelAccessConsultant'
         description='Thank you for contacting ExcelAccessConsultant. We will get back to you within one business day.'
         keywords='thank you, contact confirmation'
+        url='https://excelaccessconsultant.com/thank-you'
+        ogTitle='Thank You - ExcelAccessConsultant'
       />
 
       {/* Top Banner */}
