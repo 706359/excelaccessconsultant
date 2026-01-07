@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5063;
 
 // Middleware
 app.use(cors());
@@ -34,6 +34,9 @@ const createTransporter = () => {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
         },
+        connectionTimeout: 10000, // 10 seconds to establish connection
+        greetingTimeout: 10000, // 10 seconds for greeting
+        socketTimeout: 30000, // 30 seconds for socket operations
     });
 };
 
@@ -80,6 +83,11 @@ app.post('/api/contact', async (req, res) => {
 
         console.log('Contact form submission:', submissionData);
 
+        // Track email sending status
+        let emailSent = false;
+        let emailError = null;
+        let autoReplySent = false;
+
         // Send email if transporter is configured
         if (transporter) {
             try {
@@ -95,7 +103,7 @@ app.post('/api/contact', async (req, res) => {
                 emailBody += `\nMessage:\n${message}\n`;
                 emailBody += `\n\nSubmitted at: ${new Date().toLocaleString()}`;
 
-                // Send email
+                // Send email with timeout
                 const mailOptions = {
                     from: `"${name}" <${fromEmail}>`,
                     to: toEmail,
@@ -125,7 +133,14 @@ app.post('/api/contact', async (req, res) => {
                     `
                 };
 
-                await transporter.sendMail(mailOptions);
+                // Send email with 30 second timeout
+                const emailPromise = transporter.sendMail(mailOptions);
+                const timeoutPromise = new Promise((_, reject) =>
+                    setTimeout(() => reject(new Error('Email sending timeout after 30 seconds')), 30000)
+                );
+
+                await Promise.race([emailPromise, timeoutPromise]);
+                emailSent = true;
                 console.log('Email sent successfully to:', toEmail);
 
                 // Send auto-reply thank you email to the client
@@ -241,25 +256,49 @@ Email: rob@excelaccessconsultant.com`;
                         html: clientEmailHtml
                     };
 
-                    await transporter.sendMail(clientMailOptions);
+                    // Send auto-reply with timeout
+                    const autoReplyPromise = transporter.sendMail(clientMailOptions);
+                    const autoReplyTimeoutPromise = new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error('Auto-reply email timeout after 30 seconds')), 30000)
+                    );
+
+                    await Promise.race([autoReplyPromise, autoReplyTimeoutPromise]);
+                    autoReplySent = true;
                     console.log('Auto-reply email sent successfully to:', email);
                 } catch (clientEmailError) {
                     console.error('Error sending auto-reply email to client:', clientEmailError);
-                    // Don't fail the request if auto-reply fails
+                    // Auto-reply failure is not critical, but log it
                 }
             } catch (emailError) {
-                console.error('Error sending email:', emailError);
-                // Log the error but don't fail the request
-                // The form submission is still logged to console
+                console.error('Error sending notification email:', emailError);
+                emailError = emailError.message || 'Failed to send email';
+                // Don't fail the request if only notification email fails, but track it
             }
         } else {
             console.warn('Email not sent - SMTP not configured');
+            emailError = 'SMTP not configured';
         }
 
-        res.status(200).json({
-            success: true,
-            message: 'Thank you for your message. We will get back to you within one business day.'
-        });
+        // Return response with actual email status
+        if (emailSent || !transporter) {
+            // Success if email was sent OR if SMTP is not configured (for development)
+            res.status(200).json({
+                success: true,
+                emailSent: emailSent,
+                autoReplySent: autoReplySent,
+                message: emailSent
+                    ? 'Thank you for your message. We will get back to you within one business day.'
+                    : 'Your message has been received. Email notifications are currently disabled.'
+            });
+        } else {
+            // Email failed to send
+            res.status(500).json({
+                success: false,
+                emailSent: false,
+                error: emailError || 'Failed to send email notification. Please try again or contact us directly.',
+                message: 'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob@excelaccessconsultant.com or call (801) 704-5604.'
+            });
+        }
 
     } catch (error) {
         console.error('Error processing contact form:', error);

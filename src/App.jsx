@@ -249,19 +249,49 @@ function HomePage() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Success - redirect to thank you page
+        // Success - check email status
         setIsSubmitting(false);
-        navigate('/thank-you');
+        
+        if (data.emailSent === false && data.message) {
+          // Email failed but form was received
+          showToast(
+            'Your message was received, but there was an issue sending the confirmation email. We will still get back to you.',
+            'warning',
+            8000
+          );
+          // Still redirect but show warning
+          setTimeout(() => {
+            navigate('/thank-you');
+          }, 2000);
+        } else {
+          // Full success
+          navigate('/thank-you');
+        }
       } else {
         // API returned an error
         setIsSubmitting(false);
-        showToast(data.error || 'Failed to send message. Please try again.', 'error', 5000);
+        const errorMessage = data.error || data.message || 'Failed to send message. Please try again.';
+        showToast(errorMessage, 'error', 8000);
       }
     } catch (error) {
       // Network or other error
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      showToast('Network error. Please check your connection and try again.', 'error', 5000);
+      
+      // Check if it's a timeout error
+      if (error.name === 'AbortError' || error.message?.includes('timeout')) {
+        showToast(
+          'Request timed out. Your message may have been received. Please contact us directly if you don\'t receive a confirmation.',
+          'warning',
+          8000
+        );
+      } else {
+        showToast(
+          'Network error. Please check your connection and try again, or contact us directly at rob@excelaccessconsultant.com',
+          'error',
+          8000
+        );
+      }
     }
   };
 
