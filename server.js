@@ -92,7 +92,7 @@ app.post('/api/contact', async (req, res) => {
         if (transporter) {
             try {
                 const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER;
-                const toEmail = process.env.TO_EMAIL || 'rob@excelaccessconsultant.com';
+                const toEmail = process.env.TO_EMAIL || 'rob.infodatix@gmail.com';
 
                 // Build email body
                 let emailBody = `New Contact Form Submission\n\n`;
@@ -164,7 +164,7 @@ Best regards,
 Robert Terry
 ExcelAccessConsultant
 Phone: (801) 704-5604
-Email: rob@excelaccessconsultant.com`;
+Email: rob.infodatix@gmail.com`;
 
                     const clientEmailHtml = `
                         <!DOCTYPE html>
@@ -231,7 +231,7 @@ Email: rob@excelaccessconsultant.com`;
                                         <strong>Phone:</strong> <a href="tel:8017045604" style="color: #1e40af; text-decoration: none;">(801) 704-5604</a>
                                     </p>
                                     <p style="margin: 5px 0;">
-                                        <strong>Email:</strong> <a href="mailto:rob@excelaccessconsultant.com" style="color: #1e40af; text-decoration: none;">rob@excelaccessconsultant.com</a>
+                                        <strong>Email:</strong> <a href="mailto:rob.infodatix@gmail.com" style="color: #1e40af; text-decoration: none;">rob.infodatix@gmail.com</a>
                                     </p>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@ Email: rob@excelaccessconsultant.com`;
                             <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #6b7280;">
                                 <p style="margin: 0;">
                                     This is an automated response. Please do not reply directly to this email.<br>
-                                    If you have any questions, please contact us at <a href="mailto:rob@excelaccessconsultant.com" style="color: #1e40af;">rob@excelaccessconsultant.com</a>
+                                    If you have any questions, please contact us at <a href="mailto:rob.infodatix@gmail.com" style="color: #1e40af;">rob.infodatix@gmail.com</a>
                                 </p>
                             </div>
                         </body>
@@ -296,7 +296,7 @@ Email: rob@excelaccessconsultant.com`;
                 success: false,
                 emailSent: false,
                 error: emailError || 'Failed to send email notification. Please try again or contact us directly.',
-                message: 'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob@excelaccessconsultant.com or call (801) 704-5604.'
+                message: 'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob.infodatix@gmail.com or call (801) 704-5604.'
             });
         }
 

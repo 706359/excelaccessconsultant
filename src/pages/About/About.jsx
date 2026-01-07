@@ -26,10 +26,10 @@ function About() {
             </a>
             {' | '}
             <a
-              href='mailto:rob@excelaccessconsultant.com'
+              href='mailto:rob.infodatix@gmail.com'
               className='hover:underline font-semibold'
             >
-              rob@excelaccessconsultant.com
+              rob.infodatix@gmail.com
             </a>
           </p>
         </div>
@@ -345,10 +345,10 @@ function About() {
               <div className='text-slate-400 text-sm'>
                 <p className='font-medium text-slate-300 mb-1'>Email</p>
                 <a
-                  href='mailto:rob@excelaccessconsultant.com'
+                  href='mailto:rob.infodatix@gmail.com'
                   className='hover:text-white transition-colors'
                 >
-                  rob@excelaccessconsultant.com
+                  rob.infodatix@gmail.com
                 </a>
               </div>
             </div>

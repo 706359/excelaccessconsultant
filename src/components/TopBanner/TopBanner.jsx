@@ -7,8 +7,8 @@ const TopBanner = () => {
           Call Us Today!{' '}
           <a href="tel:8017045604" className="TopBanner-link">(801) 704-5604</a>
           {' | '}
-          <a href="mailto:rob@excelaccessconsultant.com" className="TopBanner-link">
-            rob@excelaccessconsultant.com
+          <a href="mailto:rob.infodatix@gmail.com" className="TopBanner-link">
+            rob.infodatix@gmail.com
           </a>
         </span>
       </div>

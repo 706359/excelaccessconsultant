@@ -137,8 +137,8 @@ const PrivacyPolicy = () => {
             </p>
             <p className="PrivacyPolicy-contact">
               <strong>Email:</strong>{' '}
-              <a href="mailto:rob@excelaccessconsultant.com" className="PrivacyPolicy-link">
-                rob@excelaccessconsultant.com
+              <a href="mailto:rob.infodatix@gmail.com" className="PrivacyPolicy-link">
+                rob.infodatix@gmail.com
               </a>
               <br />
               <strong>Phone:</strong>{' '}

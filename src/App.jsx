@@ -287,7 +287,7 @@ function HomePage() {
         );
       } else {
         showToast(
-          'Network error. Please check your connection and try again, or contact us directly at rob@excelaccessconsultant.com',
+          'Network error. Please check your connection and try again, or contact us directly at rob.infodatix@gmail.com',
           'error',
           8000
         );
@@ -371,10 +371,10 @@ function HomePage() {
             </a>
             {' | '}
             <a
-              href='mailto:rob@excelaccessconsultant.com'
+              href='mailto:rob.infodatix@gmail.com'
               className='hover:underline font-semibold'
             >
-              rob@excelaccessconsultant.com
+              rob.infodatix@gmail.com
             </a>
           </p>
         </div>
@@ -1383,10 +1383,10 @@ function HomePage() {
                       <div>
                         <p className='text-sm font-medium text-slate-700 mb-1'>Email</p>
                         <a
-                          href='mailto:rob@excelaccessconsultant.com'
+                          href='mailto:rob.infodatix@gmail.com'
                           className='text-excel hover:text-excel-hover font-medium'
                         >
-                          rob@excelaccessconsultant.com
+                          rob.infodatix@gmail.com
                         </a>
                       </div>
                     </div>
@@ -1653,10 +1653,10 @@ function HomePage() {
               <div className='text-slate-400 text-sm'>
                 <p className='font-medium text-slate-300 mb-1'>Email</p>
                 <a
-                  href='mailto:rob@excelaccessconsultant.com'
+                  href='mailto:rob.infodatix@gmail.com'
                   className='hover:text-white transition-colors'
                 >
-                  rob@excelaccessconsultant.com
+                  rob.infodatix@gmail.com
                 </a>
               </div>
             </div>

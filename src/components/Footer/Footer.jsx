@@ -54,8 +54,8 @@ const Footer = () => {
             <h4 className="Footer-heading">Contact</h4>
             <div className="Footer-contact">
               <p className="Footer-text">
-                <a href="mailto:rob@excelaccessconsultant.com" className="Footer-link">
-                  rob@excelaccessconsultant.com
+                <a href="mailto:rob.infodatix@gmail.com" className="Footer-link">
+                  rob.infodatix@gmail.com
                 </a>
               </p>
             </div>

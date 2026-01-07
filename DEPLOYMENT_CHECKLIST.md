@@ -41,7 +41,7 @@
 - ✅ All content reviewed
 - ✅ Contact information correct
 - ✅ Phone number: (801) 704-5604
-- ✅ Email: rob@excelaccessconsultant.com
+- ✅ Email: rob.infodatix@gmail.com
 
 ## 🚀 Deployment Steps
 

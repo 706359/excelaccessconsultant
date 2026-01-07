@@ -139,7 +139,7 @@ const ContactForm = () => {
 
       {submitStatus === 'error' && (
         <div className="ContactForm-message ContactForm-message--error">
-          Sorry, there was an error sending your message. Please try again or contact us directly at rob@excelaccessconsultant.com
+          Sorry, there was an error sending your message. Please try again or contact us directly at rob.infodatix@gmail.com
         </div>
       )}
 
