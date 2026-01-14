@@ -119,4 +119,25 @@
   .animate-slide-in {
     animation: slide-in 0.3s ease-out;
   }
+
+  /* Mobile menu smooth animations */
+  .Header-nav {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .Header-nav--open {
+    @apply translate-x-0 opacity-100;
+  }
+
+  /* sr-only with focus-visible for accessibility */
+  .sr-only {
+    @apply absolute w-1 h-1 p-0 -m-1 overflow-hidden whitespace-nowrap;
+    clip: rect(0, 0, 0, 0);
+    border-width: 0;
+  }
+
+  .sr-only.focus\:not-sr-only:focus {
+    @apply relative w-auto h-auto p-0 m-0 overflow-visible whitespace-normal;
+    clip: auto;
+  }
 }

@@ -251,7 +251,7 @@ function HomePage() {
       if (response.ok && data.success) {
         // Success - check email status
         setIsSubmitting(false);
-        
+
         if (data.emailSent === false && data.message) {
           // Email failed but form was received
           showToast(
@@ -270,18 +270,19 @@ function HomePage() {
       } else {
         // API returned an error
         setIsSubmitting(false);
-        const errorMessage = data.error || data.message || 'Failed to send message. Please try again.';
+        const errorMessage =
+          data.error || data.message || 'Failed to send message. Please try again.';
         showToast(errorMessage, 'error', 8000);
       }
     } catch (error) {
       // Network or other error
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      
+
       // Check if it's a timeout error
       if (error.name === 'AbortError' || error.message?.includes('timeout')) {
         showToast(
-          'Request timed out. Your message may have been received. Please contact us directly if you don\'t receive a confirmation.',
+          "Request timed out. Your message may have been received. Please contact us directly if you don't receive a confirmation.",
           'warning',
           8000
         );
@@ -370,10 +371,7 @@ function HomePage() {
               (801) 704-5604
             </a>
             {' | '}
-            <a
-              href='mailto:rob.infodatix@gmail.com'
-              className='hover:underline font-semibold'
-            >
+            <a href='mailto:rob.infodatix@gmail.com' className='hover:underline font-semibold'>
               rob.infodatix@gmail.com
             </a>
           </p>
@@ -556,6 +554,7 @@ function HomePage() {
               src='/hero.jpeg'
               alt='Excel and Access Consulting'
               className='w-full h-full object-cover'
+              loading='lazy'
               style={{
                 objectPosition: 'center',
                 minHeight: '100%',
@@ -1644,6 +1643,7 @@ function HomePage() {
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
                   className='h-14 md:h-16 w-auto brightness-0 invert'
+                  loading='lazy'
                 />
               </Link>
               <p className='text-slate-400 text-sm leading-relaxed mb-4'>

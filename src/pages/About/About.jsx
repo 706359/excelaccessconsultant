@@ -25,10 +25,7 @@ function About() {
               (801) 704-5604
             </a>
             {' | '}
-            <a
-              href='mailto:rob.infodatix@gmail.com'
-              className='hover:underline font-semibold'
-            >
+            <a href='mailto:rob.infodatix@gmail.com' className='hover:underline font-semibold'>
               rob.infodatix@gmail.com
             </a>
           </p>
@@ -44,6 +41,7 @@ function About() {
                 src='/logo.png'
                 alt='ExcelAccessConsultant Logo'
                 className='h-14 md:h-16 w-auto'
+                loading='lazy'
               />
             </Link>
             <div className='hidden md:flex items-center gap-8'>
@@ -336,6 +334,7 @@ function About() {
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
                   className='h-14 md:h-16 w-auto brightness-0 invert'
+                  loading='lazy'
                 />
               </Link>
               <p className='text-slate-400 text-sm leading-relaxed mb-4'>

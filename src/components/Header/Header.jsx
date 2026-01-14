@@ -49,6 +49,14 @@ const Header = () => {
   return (
     <header className='Header'>
       <div className='Header-inner'>
+        {/* Skip to main content link for accessibility */}
+        <a
+          href='#main'
+          className='sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-excel focus:text-white focus:px-4 focus:py-2'
+        >
+          Skip to main content
+        </a>
+
         <a
           href='#home'
           className='Header-logo'
