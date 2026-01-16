@@ -7,10 +7,11 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
+import CookieConsent from './components/CookieConsent/CookieConsent';
 import FAQSchema from './components/SEO/FAQSchema';
 import SEO from './components/SEO/SEO';
 import ToastContainer from './components/Toast/ToastContainer';
-import About from './pages/About/About';
+import TrustBadge from './components/TrustBadge/TrustBadge';
 import ThankYou from './pages/ThankYou/ThankYou';
 import './styles/global.css';
 
@@ -30,7 +31,6 @@ function App() {
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path='/about' element={<About />} />
         <Route path='/thank-you' element={<ThankYou />} />
         <Route path='/' element={<HomePage />} />
       </Routes>
@@ -276,7 +276,6 @@ function HomePage() {
       }
     } catch (error) {
       // Network or other error
-      console.error('Error submitting form:', error);
       setIsSubmitting(false);
 
       // Check if it's a timeout error
@@ -393,6 +392,8 @@ function HomePage() {
                 src='/logo.png'
                 alt='ExcelAccessConsultant Logo'
                 className='h-14 md:h-16 w-auto'
+                width='200'
+                height='60'
               />
             </Link>
             <div className='hidden md:flex items-center gap-8'>
@@ -405,12 +406,16 @@ function HomePage() {
               >
                 Home
               </Link>
-              <Link
-                to='/about'
+              <a
+                href='#about'
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('about');
+                }}
                 className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
               >
                 About
-              </Link>
+              </a>
               <Link
                 to='/#services'
                 onClick={(e) => {
@@ -490,13 +495,17 @@ function HomePage() {
                 >
                   Home
                 </Link>
-                <Link
-                  to='/about'
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <a
+                  href='#about'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                    scrollToSection('about');
+                  }}
                   className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
                 >
                   About
-                </Link>
+                </a>
                 <Link
                   to='/#services'
                   onClick={(e) => {
@@ -990,103 +999,102 @@ function HomePage() {
           </div>
         </section>
 
-        {/* About & Why Teams Trust Section */}
+        {/* About Section */}
         <section id='about' className='py-24 bg-white border-y border-slate-200'>
           <div className='max-w-6xl mx-auto px-6'>
-            {/* About Content */}
+            {/* Header */}
+            <div className='relative max-w-5xl mx-auto text-center mb-16'>
+              <div className='absolute inset-0 -z-10 bg-excel/5 rounded-full blur-3xl'></div>
+              <h1 className='text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 font-display'>
+                A Specialist for Complex Enterprises.
+              </h1>
+              <p className='text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
+                Direct access to 20+ years of enterprise-level Excel and Access expertise.
+              </p>
+            </div>
+
+            {/* About Robert Terry */}
             <div className='max-w-4xl mx-auto mb-16'>
-              <h2 className='text-4xl md:text-5xl font-bold mb-6 font-display text-center text-slate-900'>
-                About Me
-              </h2>
-              <div className='space-y-6 text-lg text-slate-700 leading-relaxed'>
+              <div className='space-y-8 text-lg text-slate-700 leading-relaxed'>
                 <p>
-                  I&apos;m Robert Terry. I&apos;ve been fixing Excel and Access problems for 20
-                  years. I&apos;ve seen what works and what doesn&apos;t.
+                  I&apos;m Robert Terry. For over 20 years, I&apos;ve worked at the intersection of
+                  business logic and Microsoft technology.
                 </p>
                 <p>
-                  Here&apos;s how I work: I figure out what&apos;s slowing you down, then I build
-                  something that fixes it. No fancy tech for the sake of it. Just systems that work
-                  and keep working.
+                  My approach is straightforward: I find the friction in your data processes and
+                  build systems that get rid of it.
                 </p>
                 <p>
-                  I&apos;m not a big agency. When you call, you talk to me. When I build something,
-                  I build it right. That&apos;s it.
+                  When you hire me, you&apos;re not getting just a programmer. You&apos;re getting a
+                  business partner who actually understands how your operations work.
                 </p>
               </div>
-              <div className='mt-8 text-center'>
-                <Link to='/about' className='text-excel hover:text-excel-hover font-medium'>
-                  More About Me →
-                </Link>
+
+              <div className='mt-16 grid md:grid-cols-2 gap-8'>
+                <div className='card'>
+                  <h3 className='text-xl font-bold mb-4 font-display'>Direct Principal Access</h3>
+                  <p className='text-slate-600 leading-relaxed'>
+                    Every conversation is with me. No account managers, no junior developers, no
+                    outsourcing. The person who understands your business is the same person writing
+                    your code.
+                  </p>
+                </div>
+
+                <div className='card'>
+                  <h3 className='text-xl font-bold mb-4 font-display'>Code Ownership</h3>
+                  <p className='text-slate-600 leading-relaxed'>
+                    You own 100% of what I build. No licenses, no lock-in, no recurring fees. The
+                    systems I build are yours, period.
+                  </p>
+                </div>
+
+                <div className='card'>
+                  <h3 className='text-xl font-bold mb-4 font-display'>Transparent Pricing</h3>
+                  <p className='text-slate-600 leading-relaxed mb-4'>
+                    Clear scope, clear milestones, clear expectations. No surprises, no hidden
+                    costs.
+                  </p>
+                  <div className='pt-4 border-t border-slate-200'>
+                    <div className='text-excel text-2xl font-bold mb-2'>$90/hour</div>
+                    <div className='text-slate-600 text-sm'>Advisory</div>
+                    <div className='text-slate-600 text-sm mt-2'>
+                      Builds: Fixed-price after consultation
+                    </div>
+                  </div>
+                </div>
+
+                <div className='card'>
+                  <h3 className='text-xl font-bold mb-4 font-display'>Enterprise Security</h3>
+                  <p className='text-slate-600 leading-relaxed'>
+                    All work happens in your IT environment. Your data never leaves your firewall.
+                    I&apos;m ready to sign corporate NDAs right away.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Why Teams Trust Content */}
-            <div className='mt-16'>
-              <div className='text-center mb-12'>
-                <h2 className='text-4xl md:text-5xl font-bold mb-6 font-display text-slate-900'>
-                  Why People Work With Me
-                </h2>
-                <p className='text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed'>
-                  I build real systems for real businesses. Not demos. Not templates. Stuff that
-                  actually runs your operations every single day.
+            {/* Expertise Section */}
+            <div className='max-w-4xl mx-auto py-16 bg-slate-50 border-y border-slate-200 rounded-lg px-8'>
+              <h2 className='text-4xl md:text-5xl font-bold mb-12 font-display text-center'>
+                Specialization Over Generalization
+              </h2>
+
+              <div className='space-y-6 text-lg text-slate-700 leading-relaxed'>
+                <p>
+                  I&apos;m not a creative designer. I&apos;m not generalist IT support. I&apos;m a
+                  specialist in the Microsoft Data Stack—Excel, Access, VBA, and SQL Server.
                 </p>
-              </div>
-
-              <div className='grid md:grid-cols-2 gap-6 max-w-4xl mx-auto'>
-                <div className='card'>
-                  <div className='text-excel font-bold text-xl font-mono mb-3'>01</div>
-                  <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>
-                    20 Years of Experience
-                  </h3>
-                  <p className='text-slate-600 leading-relaxed'>
-                    I&apos;ve been doing this for 20 years. Just Excel and Access. I know the
-                    quirks, the gotchas, and how to make things work.
-                  </p>
-                </div>
-
-                <div className='card'>
-                  <div className='text-excel font-bold text-xl font-mono mb-3'>02</div>
-                  <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>
-                    Built for You
-                  </h3>
-                  <p className='text-slate-600 leading-relaxed'>
-                    I build what you actually need, not what some template thinks you need. Your
-                    workflow, your rules, your system.
-                  </p>
-                </div>
-
-                <div className='card'>
-                  <div className='text-excel font-bold text-xl font-mono mb-3'>03</div>
-                  <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>
-                    You Talk to Me
-                  </h3>
-                  <p className='text-slate-600 leading-relaxed'>
-                    No account managers. No junior developers. You call, I answer. I build it, I
-                    test it, I deliver it.
-                  </p>
-                </div>
-
-                <div className='card'>
-                  <div className='text-excel font-bold text-xl font-mono mb-3'>04</div>
-                  <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>
-                    Clear Communication
-                  </h3>
-                  <p className='text-slate-600 leading-relaxed'>
-                    I tell you what I&apos;m doing, when it&apos;ll be done, and what it costs. No
-                    surprises, no hidden fees.
-                  </p>
-                </div>
-
-                <div className='card md:col-span-2'>
-                  <div className='text-excel font-bold text-xl font-mono mb-3'>05</div>
-                  <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>
-                    Your Data Stays Safe
-                  </h3>
-                  <p className='text-slate-600 leading-relaxed'>
-                    I sign NDAs. I work in your secure systems. Your data doesn&apos;t leave your
-                    control.
-                  </p>
-                </div>
+                <p>
+                  This focus means I understand the deep technical constraints and possibilities of
+                  these platforms. I know how to push Excel to its limits without breaking it. I
+                  know how to build Access databases that scale to hundreds of users. I know how to
+                  write VBA that runs reliably for years.
+                </p>
+                <p>
+                  When your business depends on these tools, you need someone who&apos;s spent
+                  decades mastering them, not someone who can &quot;also do Excel&quot; among a
+                  dozen other technologies.
+                </p>
               </div>
             </div>
           </div>
@@ -1097,21 +1105,19 @@ function HomePage() {
           <div className='max-w-4xl mx-auto px-6'>
             <div className='text-center mb-16'>
               <h2 className='text-4xl md:text-5xl font-bold mb-4 font-display text-slate-900'>
-                How Engagements Work
+                How I Work
               </h2>
             </div>
 
-            <div className='space-y-6'>
+            <div className='space-y-8'>
               <div className='card'>
                 <div className='flex items-start gap-6'>
                   <div className='text-excel font-bold text-2xl font-mono'>01</div>
                   <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>
-                      Understand
-                    </h3>
+                    <h3 className='text-xl font-bold mb-3 font-display'>Understand</h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      I look at what you have, how you use it, and what&apos;s actually broken. Then
-                      I figure out the real problem, not just the symptoms.
+                      Deep-dive audit of your current logic, workflows, and pain points. I
+                      don&apos;t assume—I verify how your business actually works.
                     </p>
                   </div>
                 </div>
@@ -1121,10 +1127,10 @@ function HomePage() {
                 <div className='flex items-start gap-6'>
                   <div className='text-excel font-bold text-2xl font-mono'>02</div>
                   <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>Design</h3>
+                    <h3 className='text-xl font-bold mb-3 font-display'>Design</h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      I plan out what I&apos;m going to build and how it&apos;ll work. Simple,
-                      reliable, and something you can actually use.
+                      Structural architecture of the database or automation system. This includes
+                      data models, user interfaces, and error-handling that actually works.
                     </p>
                   </div>
                 </div>
@@ -1134,10 +1140,10 @@ function HomePage() {
                 <div className='flex items-start gap-6'>
                   <div className='text-excel font-bold text-2xl font-mono'>03</div>
                   <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>Build</h3>
+                    <h3 className='text-xl font-bold mb-3 font-display'>Build</h3>
                     <p className='text-slate-600 leading-relaxed'>
-                      I write the code, test it thoroughly, and document how it works. You get
-                      something that runs and keeps running.
+                      Development in a sandbox environment. You&apos;ll see progress at each
+                      milestone, and we can tweak things before final deployment.
                     </p>
                   </div>
                 </div>
@@ -1643,6 +1649,8 @@ function HomePage() {
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
                   className='h-14 md:h-16 w-auto brightness-0 invert'
+                  width='200'
+                  height='60'
                   loading='lazy'
                 />
               </Link>
@@ -1679,9 +1687,16 @@ function HomePage() {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/about' className='hover:text-white transition-colors'>
+                  <a
+                    href='#about'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection('about');
+                    }}
+                    className='hover:text-white transition-colors'
+                  >
                     About
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link
@@ -1812,6 +1827,10 @@ function HomePage() {
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toasts} removeToast={removeToast} />
+
+      {/* Trust Building Components */}
+      <CookieConsent />
+      <TrustBadge />
     </div>
   );
 }

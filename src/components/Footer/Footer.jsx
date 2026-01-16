@@ -22,7 +22,14 @@ const Footer = () => {
         <div className="Footer-content">
           <div className="Footer-section">
             <div className="Footer-logo-wrapper">
-              <img src="/logo.png" alt="ExcelAccessConsultant" className="Footer-logo" />
+              <img 
+                src="/logo.png" 
+                alt="ExcelAccessConsultant Logo" 
+                className="h-14 md:h-16 w-auto"
+                width="200"
+                height="60"
+                loading="lazy"
+              />
             </div>
             <p className="Footer-text">
               Professional business automation and data solutions. 

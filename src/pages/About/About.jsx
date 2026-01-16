@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
+import CookieConsent from '../../components/CookieConsent/CookieConsent';
+import TrustBadge from '../../components/TrustBadge/TrustBadge';
 import '../../styles/global.css';
 
 function About() {
@@ -41,7 +43,8 @@ function About() {
                 src='/logo.png'
                 alt='ExcelAccessConsultant Logo'
                 className='h-14 md:h-16 w-auto'
-                loading='lazy'
+                width='200'
+                height='60'
               />
             </Link>
             <div className='hidden md:flex items-center gap-8'>
@@ -334,6 +337,8 @@ function About() {
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
                   className='h-14 md:h-16 w-auto brightness-0 invert'
+                  width='200'
+                  height='60'
                   loading='lazy'
                 />
               </Link>
@@ -431,6 +436,10 @@ function About() {
           </div>
         </div>
       </footer>
+
+      {/* Trust Building Components */}
+      <CookieConsent />
+      <TrustBadge />
     </div>
   );
 }

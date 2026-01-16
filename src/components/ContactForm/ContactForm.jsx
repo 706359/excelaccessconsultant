@@ -50,7 +50,6 @@ const ContactForm = () => {
         }, 5000);
       } else {
         setSubmitStatus('error');
-        console.error('Form submission error:', data.error);
         
         // Reset error status after 5 seconds
         setTimeout(() => {
@@ -58,7 +57,6 @@ const ContactForm = () => {
         }, 5000);
       }
     } catch (error) {
-      console.error('Network error:', error);
       setSubmitStatus('error');
       
       // Reset error status after 5 seconds

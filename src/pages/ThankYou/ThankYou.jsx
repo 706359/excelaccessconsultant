@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
+import CookieConsent from '../../components/CookieConsent/CookieConsent';
+import TrustBadge from '../../components/TrustBadge/TrustBadge';
 import '../../styles/global.css';
 
 function ThankYou() {
@@ -38,7 +40,8 @@ function ThankYou() {
                 src='/logo.png'
                 alt='ExcelAccessConsultant Logo'
                 className='h-14 md:h-16 w-auto'
-                loading='lazy'
+                width='200'
+                height='60'
               />
             </Link>
             <div className='hidden md:flex items-center gap-8'>
@@ -49,7 +52,7 @@ function ThankYou() {
                 Home
               </Link>
               <Link
-                to='/about'
+                to='/#about'
                 className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
               >
                 About
@@ -192,6 +195,8 @@ function ThankYou() {
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
                   className='h-14 md:h-16 w-auto brightness-0 invert'
+                  width='200'
+                  height='60'
                   loading='lazy'
                 />
               </Link>
@@ -222,7 +227,7 @@ function ThankYou() {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/about' className='hover:text-white transition-colors'>
+                  <Link to='/#about' className='hover:text-white transition-colors'>
                     About
                   </Link>
                 </li>
@@ -289,6 +294,10 @@ function ThankYou() {
           </div>
         </div>
       </footer>
+
+      {/* Trust Building Components */}
+      <CookieConsent />
+      <TrustBadge />
     </div>
   );
 }
