@@ -1,56 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap');
 
 /* Design System Tokens */
 @import './tokens/core.css';
 @import './tokens/semantic.css';
-@import './components/Button.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* Base Body Styles */
   body {
-    background-color: #dcdfe3;
-    @apply text-slate-800 font-sans antialiased;
+    @apply bg-base text-slate-900 font-sans antialiased;
+    font-size: 16px; /* body-base */
     line-height: 1.6;
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
+  /* Heading Hierarchy - Standard Sizes (Matches Logo Font Style) */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
-    @apply font-bold tracking-tight text-slate-900;
-    line-height: 1.2;
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    @apply tracking-tight text-slate-900;
+    margin-bottom: 0.75em; /* 12px - consistent heading spacing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
+  /* H1 - Main Page Titles, Hero Headings (Matches Logo Bold Style) */
   h1 {
-    @apply text-5xl md:text-7xl font-extrabold;
+    @apply text-display-lg md:text-display-xl lg:text-display-2xl;
+    font-weight: 800; /* Extra bold to match logo's bold appearance */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1em; /* 16px */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  /* H2 - Section Titles */
   h2 {
-    @apply text-4xl md:text-5xl font-bold;
+    @apply text-display-sm md:text-display-md lg:text-display-lg;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75em; /* 12px */
   }
 
+  /* H3 - Subsection Titles */
   h3 {
-    @apply text-3xl font-bold;
+    @apply text-heading-md md:text-heading-lg;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5em; /* 8px */
   }
 
+  /* H4 - Card Titles, Small Section Headings */
   h4 {
-    @apply text-2xl font-bold;
+    @apply text-heading-sm md:text-heading-md;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5em; /* 8px */
+  }
+
+  /* H5 - Small Headings */
+  h5 {
+    @apply text-heading-xs md:text-heading-sm;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5em; /* 8px */
+  }
+
+  /* H6 - Smallest Headings */
+  h6 {
+    @apply text-label-lg;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5em; /* 8px */
+  }
+
+  /* Paragraph Styles */
+  p {
+    @apply text-body-base text-slate-700;
+    line-height: 1.6;
+    margin-bottom: 1em; /* 16px - standard paragraph spacing */
+  }
+
+  /* Large Paragraphs (for emphasis) */
+  p.large {
+    @apply text-body-lg;
+    line-height: 1.7;
+  }
+
+  /* Small Paragraphs */
+  p.small {
+    @apply text-body-sm;
+    line-height: 1.5;
+  }
+
+  /* Links */
+  a {
+    @apply text-primary hover:text-primary-hover transition-colors duration-micro;
+  }
+
+  /* Override link hover color for button-styled links (higher specificity) */
+  a.bg-primary,
+  a.bg-secondary,
+  a.bg-excel,
+  a.bg-excel-green,
+  a[class*='bg-primary'],
+  a[class*='bg-secondary'],
+  a[class*='bg-excel'],
+  a[class*='bg-excel-green'] {
+    @apply hover:text-white !important;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    @apply text-body-base text-slate-700;
+    margin-bottom: 1em; /* 16px */
+    padding-left: 1.5em; /* 24px */
+  }
+
+  li {
+    line-height: 1.6;
+    margin-bottom: 0.5em; /* 8px */
+  }
+
+  /* Strong/Emphasis */
+  strong,
+  b {
+    @apply font-semibold;
+  }
+
+  em,
+  i {
+    font-style: italic;
   }
 }
 
 @layer components {
+  /* Legacy button classes - kept for backward compatibility if needed */
+  /* Use Button component instead for consistency */
   .btn-primary {
     @apply bg-excel hover:bg-excel-hover text-white hover:text-white px-6 py-3 text-sm font-medium transition-colors;
   }
 
   .btn-secondary {
-    @apply text-black hover:text-slate-900 text-base font-medium transition-colors border border-slate-300 hover:border-slate-400 px-8 py-4 bg-black/80 hover:bg-white;
+    @apply text-excel hover:text-excel-hover text-base font-medium transition-colors border border-excel hover:border-excel-hover px-8 py-4 bg-white hover:bg-excel hover:text-white;
   }
 
   .badge {
@@ -58,7 +164,15 @@
   }
 
   .card {
-    @apply bg-white/90 backdrop-blur-sm border border-slate-200 shadow-sm p-6;
+    @apply bg-white border border-slate-200 shadow-card hover:shadow-card-hover transition-all duration-standard p-md rounded-card;
+  }
+
+  .card:hover {
+    @apply -translate-y-1;
+  }
+
+  .card-image {
+    @apply aspect-video w-full object-cover rounded-t-card;
   }
 
   .card button:not(.btn-primary):not([type='submit']) {
@@ -116,8 +230,48 @@
     }
   }
 
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   .animate-slide-in {
     animation: slide-in 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
   }
 
   /* Mobile menu smooth animations */

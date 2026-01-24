@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Database Health Check Guide - ExcelAccessConsultant.com</title>
+  <style>
+    @media print {
+      @page {
+        margin: 0.5in;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+    }
+    .header {
+      border-bottom: 3px solid #A32228;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    .logo {
+      color: #A32228;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #A32228;
+      font-size: 32px;
+      margin: 10px 0;
+    }
+    h2 {
+      color: #A32228;
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #A32228;
+      padding-bottom: 5px;
+    }
+    .intro {
+      background: #f8f9fa;
+      padding: 20px;
+      border-left: 4px solid #A32228;
+      margin-bottom: 30px;
+    }
+    .warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .warning strong {
+      color: #d97706;
+    }
+    .checklist-item {
+      margin: 15px 0;
+      padding: 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      background: #f8f9fa;
+    }
+    .checklist-item strong {
+      color: #A32228;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .checklist-item p {
+      margin: 5px 0;
+      color: #475569;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #A32228;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+    .cta {
+      background: #A32228;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      margin: 30px 0;
+      border-radius: 5px;
+    }
+    .cta a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #A32228;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">ExcelAccessConsultant.com</div>
+    <h1>Access Database Health Check Guide</h1>
+    <p style="color: #64748b; margin: 0;">Identify warning signs, performance issues, and maintenance needs</p>
+  </div>
+
+  <div class="intro">
+    <p><strong>Is your Access database healthy?</strong></p>
+    <p>Use this guide to identify warning signs, assess performance, and determine when your database needs attention. Early detection prevents crashes, data loss, and costly repairs.</p>
+  </div>
+
+  <h2>Warning Signs Checklist</h2>
+
+  <div class="warning">
+    <strong>⚠️ Critical Warning Signs (Immediate Action Required)</strong>
+    <p>If you experience any of these, contact a database consultant immediately:</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Database crashes frequently</strong>
+    <p>If your database crashes more than once a week, there's a serious problem. Common causes: corruption, too many concurrent users, network issues, or database bloat.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ "Database is locked" errors</strong>
+    <p>This indicates locking conflicts, usually from too many users or improper locking mechanisms. Can lead to data corruption if not fixed.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Data appears missing or corrupted</strong>
+    <p>If records disappear or show incorrect data, corruption may have occurred. Stop using the database and restore from backup immediately.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Queries take minutes instead of seconds</strong>
+    <p>Severe performance degradation often indicates missing indexes, inefficient queries, or database bloat. Can cause timeouts and crashes.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ File size grows rapidly without new data</strong>
+    <p>Access databases can "bloat" - growing in size even when data doesn't increase. This is a sign of fragmentation and needs compacting.</p>
+  </div>
+
+  <h2>Performance Indicators</h2>
+
+  <table>
+    <tr>
+      <th>Indicator</th>
+      <th>Healthy</th>
+      <th>Warning</th>
+      <th>Critical</th>
+    </tr>
+    <tr>
+      <td>File Size</td>
+      <td>Stable or slow growth</td>
+      <td>Growing 20%+ without new data</td>
+      <td>Doubled in size without reason</td>
+    </tr>
+    <tr>
+      <td>Query Speed</td>
+      <td>&lt; 5 seconds</td>
+      <td>5-30 seconds</td>
+      <td>&gt; 30 seconds or timeout</td>
+    </tr>
+    <tr>
+      <td>Concurrent Users</td>
+      <td>&lt; 10 users</td>
+      <td>10-20 users</td>
+      <td>&gt; 20 users (consider SQL Server)</td>
+    </tr>
+    <tr>
+      <td>Crash Frequency</td>
+      <td>Never or rare</td>
+      <td>Monthly</td>
+      <td>Weekly or daily</td>
+    </tr>
+    <tr>
+      <td>Error Messages</td>
+      <td>None</td>
+      <td>Occasional</td>
+      <td>Frequent</td>
+    </tr>
+  </table>
+
+  <h2>Maintenance Checklist</h2>
+
+  <div class="checklist-item">
+    <strong>✓ Compact and Repair (Monthly)</strong>
+    <p>Run Compact and Repair monthly to reduce bloat, fix minor corruption, and improve performance. File → Database Tools → Compact and Repair Database.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Backup Regularly (Weekly or Daily)</strong>
+    <p>Automated backups prevent data loss. Set up scheduled backups or use Access's built-in backup feature before major changes.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Monitor File Size</strong>
+    <p>Track file size over time. Rapid growth without new data indicates bloat. A 10MB database shouldn't grow to 100MB without adding data.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Review Query Performance</strong>
+    <p>Use Access's Performance Analyzer to identify slow queries. Add indexes, optimize joins, and eliminate unnecessary calculations.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Test with Multiple Users</strong>
+    <p>If you have multiple users, test concurrent access. Locking errors or crashes indicate you need split database architecture or SQL Server migration.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Update Indexes</strong>
+    <p>Missing indexes slow down queries. Add indexes to frequently searched fields, foreign keys, and fields used in WHERE clauses.</p>
+  </div>
+
+  <h2>When to Consider SQL Server Migration</h2>
+
+  <div class="intro">
+    <p><strong>Access has limits. Consider migrating to SQL Server if:</strong></p>
+    <ul>
+      <li>You have 20+ concurrent users</li>
+      <li>Database size exceeds 2GB</li>
+      <li>You need cloud access</li>
+      <li>Performance is critical</li>
+      <li>You need better security and user management</li>
+    </ul>
+  </div>
+
+  <h2>Prevention Tips</h2>
+
+  <div class="checklist-item">
+    <strong>✓ Use Split Database Architecture</strong>
+    <p>Separate front-end (forms, reports) from back-end (data). Reduces corruption risk and improves performance with multiple users.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Implement Proper Error Handling</strong>
+    <p>VBA code should handle errors gracefully. Unhandled errors can corrupt data or crash the database.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Limit Concurrent Writes</strong>
+    <p>Too many users writing simultaneously causes locking conflicts. Use proper record locking or limit write access.</p>
+  </div>
+
+  <div class="checklist-item">
+    <strong>✓ Regular Maintenance Schedule</strong>
+    <p>Set a calendar reminder for monthly compact/repair and weekly backups. Prevention is cheaper than repair.</p>
+  </div>
+
+  <div class="cta">
+    <p style="margin: 0;"><strong>Need Help with Your Access Database?</strong></p>
+    <p style="margin: 10px 0 0 0;"><a href="https://excelaccessconsultant.com/#contact">Get a free consultation →</a></p>
+    <p style="margin: 5px 0 0 0; font-size: 14px;">Call: 801-616-3702</p>
+  </div>
+
+  <div class="footer">
+    <p><strong>ExcelAccessConsultant.com</strong></p>
+    <p>Excel VBA & Access Database Consulting | 15+ Years Experience | 200+ Projects</p>
+    <p>© 2026 ExcelAccessConsultant. All rights reserved.</p>
+  </div>
+</body>
+</html>

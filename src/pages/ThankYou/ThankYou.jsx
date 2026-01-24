@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO/SEO';
-import CookieConsent from '../../components/CookieConsent/CookieConsent';
-import TrustBadge from '../../components/TrustBadge/TrustBadge';
+import Button from '../../components/ui/Button/Button';
 import '../../styles/global.css';
 
 function ThankYou() {
   return (
-    <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-excel selection:text-white'>
+    <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-primary selection:text-white'>
       <SEO
         title='Thank You - ExcelAccessConsultant'
         description='Thank you for contacting ExcelAccessConsultant. We will get back to you within one business day.'
@@ -15,76 +14,14 @@ function ThankYou() {
         ogTitle='Thank You - ExcelAccessConsultant'
       />
 
-      {/* Top Banner */}
-      <div className='bg-red-600 text-white py-3 text-center text-sm font-medium'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <p>
-            Call Us Today!{' '}
-            <a href='tel:8017045604' className='hover:underline font-semibold'>
-              (801) 704-5604
-            </a>
-            {' | '}
-            <a href='mailto:rob.infodatix@gmail.com' className='hover:underline font-semibold'>
-              rob.infodatix@gmail.com
-            </a>
-          </p>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <nav className='border-b border-slate-200 sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm'>
-        <div className='max-w-7xl mx-auto px-6 md:px-8'>
-          <div className='flex justify-between items-center py-6'>
-            <Link to='/' className='flex items-center'>
-              <img
-                src='/logo.png'
-                alt='ExcelAccessConsultant Logo'
-                className='h-14 md:h-16 w-auto'
-                width='200'
-                height='60'
-              />
-            </Link>
-            <div className='hidden md:flex items-center gap-8'>
-              <Link
-                to='/'
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                Home
-              </Link>
-              <Link
-                to='/#about'
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                About
-              </Link>
-              <a
-                href='/#services'
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                Services
-              </a>
-              <a
-                href='/#faq'
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                FAQ
-              </a>
-              <a href='/#contact' className='btn-primary'>
-                Get Started
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main>
+      <div>
         {/* Thank You Section */}
-        <section className='py-24 min-h-[60vh] flex items-center'>
-          <div className='max-w-4xl mx-auto px-6 text-center'>
+        <section className='py-12 md:py-20 min-h-[60vh] flex items-center'>
+          <div className='max-w-7xl mx-auto px-6 text-center'>
             <div className='mb-8'>
-              <div className='inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6'>
+              <div className='inline-flex items-center justify-center w-20 h-20 bg-excel-green/10 rounded-full mb-6'>
                 <svg
-                  className='w-12 h-12 text-green-600'
+                  className='w-12 h-12 text-excel-green'
                   fill='none'
                   stroke='currentColor'
                   viewBox='0 0 24 24'
@@ -103,11 +40,11 @@ function ThankYou() {
               Thank You!
             </h1>
 
-            <p className='text-xl text-slate-700 mb-8 max-w-2xl mx-auto leading-relaxed'>
+            <p className='text-xl text-slate-700 mb-8 max-w-7xl mx-auto leading-relaxed'>
               We've received your message and appreciate you taking the time to contact us.
             </p>
 
-            <div className='bg-slate-50 border border-slate-200 rounded-lg p-8 mb-8 max-w-2xl mx-auto'>
+            <div className='bg-slate-50 border border-slate-200 rounded-lg p-8 mb-8 max-w-7xl mx-auto'>
               <h2 className='text-2xl font-bold mb-4 font-display text-slate-900'>
                 What Happens Next?
               </h2>
@@ -149,7 +86,7 @@ function ThankYou() {
               </div>
             </div>
 
-            <div className='bg-blue-50 border-l-4 border-excel p-6 mb-8 max-w-2xl mx-auto text-left'>
+            <div className='bg-slate-50 border-l-4 border-excel p-6 mb-8 max-w-7xl mx-auto text-left'>
               <p className='text-slate-700 mb-2'>
                 <strong>📧 Check Your Email</strong>
               </p>
@@ -161,143 +98,28 @@ function ThankYou() {
             </div>
 
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-              <Link to='/' className='btn-primary'>
+              <Button variant='primary' as={Link} to='/'>
                 Return to Home
-              </Link>
-              <a href='mailto:rob.infodatix@gmail.com' className='btn-secondary'>
+              </Button>
+              <Button variant='secondary' as='a' href='mailto:rob@excelaccessconsultant.com'>
                 Contact Us Directly
-              </a>
+              </Button>
             </div>
 
             <div className='mt-12 pt-8 border-t border-slate-200'>
               <p className='text-slate-600 mb-4'>Need immediate assistance?</p>
               <p className='text-lg'>
                 <a
-                  href='tel:8017045604'
+                  href='tel:8016163702'
                   className='text-excel hover:text-excel-hover font-semibold'
                 >
-                  Call us at (801) 704-5604
+                  Call us at 801-616-3702
                 </a>
               </p>
             </div>
           </div>
         </section>
-      </main>
-
-      {/* Footer */}
-      <footer className='bg-slate-900 text-slate-300 border-t border-slate-800'>
-        <div className='max-w-7xl mx-auto px-6 py-16'>
-          <div className='grid md:grid-cols-3 gap-12 mb-12'>
-            {/* Brand Section */}
-            <div className='md:col-span-1'>
-              <Link to='/' className='flex items-center mb-4'>
-                <img
-                  src='/logo.png'
-                  alt='ExcelAccessConsultant Logo'
-                  className='h-14 md:h-16 w-auto brightness-0 invert'
-                  width='200'
-                  height='60'
-                  loading='lazy'
-                />
-              </Link>
-              <p className='text-slate-400 text-sm leading-relaxed mb-4'>
-                Senior-level Excel and Microsoft Access consulting focused on automation, data
-                integrity, and operational clarity.
-              </p>
-              <div className='text-slate-400 text-sm'>
-                <p className='font-medium text-slate-300 mb-1'>Email</p>
-                <a
-                  href='mailto:rob.infodatix@gmail.com'
-                  className='hover:text-white transition-colors'
-                >
-                  rob.infodatix@gmail.com
-                </a>
-              </div>
-            </div>
-
-            {/* Navigation Links */}
-            <div>
-              <h4 className='font-bold mb-4 text-sm text-white uppercase tracking-wider'>
-                Navigation
-              </h4>
-              <ul className='space-y-3 text-slate-400 text-sm'>
-                <li>
-                  <Link to='/' className='hover:text-white transition-colors'>
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/#about' className='hover:text-white transition-colors'>
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <a href='/#services' className='hover:text-white transition-colors'>
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a href='/#faq' className='hover:text-white transition-colors'>
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href='/#contact' className='hover:text-white transition-colors'>
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Services Quick Links */}
-            <div>
-              <h4 className='font-bold mb-4 text-sm text-white uppercase tracking-wider'>
-                Services
-              </h4>
-              <ul className='space-y-3 text-slate-400 text-sm'>
-                <li>
-                  <a href='/#services' className='hover:text-white transition-colors'>
-                    Process Automation
-                  </a>
-                </li>
-                <li>
-                  <a href='/#services' className='hover:text-white transition-colors'>
-                    Enterprise Access Databases
-                  </a>
-                </li>
-                <li>
-                  <a href='/#services' className='hover:text-white transition-colors'>
-                    Data Rescue & Optimization
-                  </a>
-                </li>
-                <li>
-                  <a href='/#contact' className='hover:text-white transition-colors'>
-                    Free Consultation
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className='pt-8 border-t border-slate-800'>
-            <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
-              <p className='text-slate-500 text-sm'>
-                © 2026 ExcelAccessConsultant. All rights reserved.
-              </p>
-              <div className='flex items-center gap-6 text-slate-500 text-sm'>
-                <span>20+ Years Experience</span>
-                <span className='hidden md:inline'>•</span>
-                <span>Excel & MS Access Specialist</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* Trust Building Components */}
-      <CookieConsent />
-      <TrustBadge />
+      </div>
     </div>
   );
 }

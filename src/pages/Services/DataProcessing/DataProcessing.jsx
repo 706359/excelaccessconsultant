@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import Section from '../../../components/Section/Section';
-import Card from '../../../components/Card/Card';
-import Button from '../../../components/Button/Button';
+import Section from '../../../components/Layout/Section/Section';
+import Card from '../../../components/ui/Card/Card';
+import Button from '../../../components/ui/Button/Button';
 
 const DataProcessing = () => {
   return (

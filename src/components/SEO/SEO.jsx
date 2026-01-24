@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
 const SEO = ({
-  title = 'Excel and Access Consulting That Actually Works | ExcelAccessConsultant',
-  description = 'Excel and Access consulting that actually works. 20+ years of experience fixing broken spreadsheets, building stable databases, and automating repetitive tasks. Free consultation available.',
-  keywords = 'Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development',
-  ogTitle = 'Excel and Access Consulting That Actually Works',
+  title = 'Excel VBA Consultant | Access Database Expert',
+  description = 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.',
+  keywords = 'excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel VBA consultant Utah, Access database consultant Springville',
+  ogTitle = 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
   image = '/logo.png',
   url = 'https://excelaccessconsultant.com',
   type = 'website',

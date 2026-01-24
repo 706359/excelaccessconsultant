@@ -1,0 +1,631 @@
+# ExcelAccessConsultant.com - Complete Project Rules
+
+**Goal:** 15+ qualified leads/month in 6 months | **Status:** In Progress
+
+---
+
+## PROJECT CONTEXT
+
+**Domain:** excelaccessconsultant.com
+**Owner:** Robert Terry
+**Location:** Springville, Utah
+**Phone:** 801-616-3702
+**Email:** rob@excelaccessconsultant.com
+**Service:** Excel VBA + Access Database Consulting
+**Experience:** 15+ years, 500+ projects
+
+**Brand Colors:** Logo-based color scheme (NO BLUE - REMOVED, NO GRADIENTS - solid colors only)
+
+- Primary: `#C8102E` (Crimson Red - Access) - Access pages, general pages, navigation, footer
+- Primary Hover: `#9a0c24` (Darker Red)
+- Secondary: `#2D7A3E` (Forest Green - Excel) - Excel-related pages (`/excel-automation`, `/vba-development`, `/financial-modeling`)
+- Secondary Hover: `#1f5a2b` (Darker Green)
+
+**Color Usage:**
+- Excel pages: Use `secondary` (green) for buttons, links, headings, CTAs
+- Access pages: Use `primary` (red) for buttons, links, headings, CTAs
+- General pages: Use `primary` (red) for buttons, links, headings, CTAs
+- **NO BLUE COLOR** - Blue has been removed from the theme
+- **NO GRADIENTS** - All colors are solid only
+
+**Tech Stack:**
+
+- React (single-page app with React Router)
+- Tailwind CSS ✅ **CONFIRMED ACTIVE** (primary styling method)
+- Node.js/Express (backend)
+- Google Analytics 4 (G-9ZT461HGG8) ✅ Installed
+
+**Current Traffic:** <500/month organic (estimated)
+**Current Leads:** 3-5/month (estimated)
+**Target:** 15+ leads/month in 6 months
+
+---
+
+## CRITICAL REQUIREMENTS - NEVER SKIP
+
+### 1. TECHNICAL FOUNDATION (Already Complete ✅)
+
+- React-based single-page application ✅
+- Tailwind CSS styling system ✅
+- Mobile-responsive design ✅
+- Google Analytics 4 integrated ✅
+- Cookie consent implementation ✅
+- Trust badge component ✅
+- SSL certificate (assumed) ✅
+
+### 2. SEO REQUIREMENTS - MANDATORY FOR ALL PAGES
+
+**Every page MUST have:**
+
+- ✅ Unique meta title (60 chars max)
+- ✅ Meta description (155 chars max)
+- ✅ Canonical URL
+- ✅ Open Graph tags
+- ✅ Twitter Card tags
+- ✅ Proper H1 tag with primary keyword
+- ✅ Schema markup (LocalBusiness, Service, FAQ, Review as applicable)
+- ✅ Alt text on all images
+- ✅ Internal links (3-5 per page)
+- ✅ Mobile-responsive design
+
+**Schema Markup Requirements:**
+
+- LocalBusiness schema on homepage (verify all fields):
+  - Name: ExcelAccessConsultant.com
+  - Founder: Robert Terry
+  - Address: Springville, UT
+  - Phone: 801-616-3702
+  - Years in business: 15+ (add if missing)
+  - Service areas: United States
+- Service schemas on all service pages
+- FAQSchema on pages with FAQs
+- ReviewSchema on pages with testimonials
+- Article schema for blog posts
+
+**Sitemap & Robots:**
+
+- ✅ /sitemap.xml accessible and updated
+- ✅ /robots.txt accessible
+- Submit sitemap to Google Search Console
+
+### 3. CONTENT REQUIREMENTS
+
+**Service Pages (5 Required):**
+
+1. `/excel-automation` - Priority 1 (highest search volume)
+2. `/access-consulting` - Priority 2 (high intent)
+3. `/financial-modeling` - Priority 3 (niche, high value)
+4. `/database-migration` - Priority 4 (growing need)
+5. `/vba-development` - Priority 5 (technical audience)
+
+**Each Service Page MUST include:**
+
+- H1 with primary keyword
+- Intro paragraph (100-150 words)
+- "What I [Service Action]" section (10-12 bullet points)
+- "How It Works" section (5 steps)
+- "Pricing" section (3 tiers: Simple $1,500-$3,000, Advanced $3,000-$8,000, Enterprise $8,000+)
+- "Common Questions" section (5-7 FAQs with FAQSchema)
+- "Real Examples" section (3 case snippets)
+- Final CTA (contact form + phone: 801-616-3702)
+- Word count: 1,500-2,000 words
+- Internal links (3-5)
+- SEO component with proper meta tags
+
+**Case Studies Page (`/case-studies`):**
+
+- 3 detailed case studies (700-1,000 words each):
+  1. Manufacturing: "8 Hours to 15 Minutes" ($15k/year saved)
+  2. Finance: "3-Day Close to 10 Minutes" ($25k/year saved)
+  3. Operations: "6 Hours/Week to 5 Minutes" ($18k/year saved)
+- Each with: Problem, Solution, Results, Client quote (if available)
+- Before/after metrics
+- Links to service pages
+- CTA to contact form
+
+**Blog Requirements:**
+
+- Blog index page (`/blog`)
+- 24 blog posts total (2 per week for 12 weeks)
+- Each post: 1,500-2,000 words
+- Primary keyword in: H1, first 100 words, 2+ H2 subheadings, URL slug
+- 3-5 internal links per post
+- FAQ section (3-5 questions with FAQSchema)
+- CTA at end (calculator or consultation)
+- Author: Robert Terry
+- Date published
+- Estimated read time
+
+**First 4 Blog Posts (Week 4-6):**
+
+1. "10 Signs You Need Excel Automation" (1,500 words)
+2. "Why Your Access Database Keeps Crashing (And How to Fix It)" (1,800 words)
+3. "Excel Automation Cost: What to Expect in 2026" (1,600 words)
+4. "How to Speed Up Slow Excel Spreadsheets" (1,700 words)
+
+### 4. CONVERSION OPTIMIZATION - MANDATORY
+
+**Contact Form Enhancement:**
+
+- Two-step form implementation:
+  - Step 1: Service Selection (6 options: Excel Automation, Access Database Help, Financial Modeling, Database Migration, VBA Development, Not Sure/General Inquiry)
+  - Step 2: Detailed Information (What process takes too long? [textarea, required], Hours per week [number], Name [required], Email [required], Phone [optional], Company name [optional], Best time to call [dropdown])
+- Confirmation message: "Thanks! I'll review your project and get back to you within 24 hours."
+- Form validation
+- Mobile-friendly experience
+
+**Contact Information:**
+
+- Phone: 801-616-3702 (prominent, clickable tel: link)
+- Email: rob@excelaccessconsultant.com (clickable mailto: link)
+- Must be visible in contact section
+
+**Lead Magnets:**
+
+- Create 3 PDF resources:
+  1. "Excel Automation Readiness Checklist" (2-3 pages, 15-point checklist)
+  2. "Access Database Health Check Guide" (2-3 pages)
+  3. "VBA Best Practices Guide" (3-4 pages)
+- Landing page: `/free-checklist`
+- Email capture form (ConvertKit or Mailchimp free plan)
+- Auto-deliver PDF via email
+- Update lead magnet buttons to link to email capture
+
+### 5. ANALYTICS & TRACKING - MANDATORY
+
+**Google Analytics 4 Events (G-9ZT461HGG8):**
+
+- ✅ phone_click (tel: link clicks) - Verify working
+- ✅ calculator_use (ROI calculator submissions) - Verify working
+- ✅ form_submit (contact form) - Verify working
+- ⚠️ case_study_view (full case study page views) - Add when case studies page created
+- ⚠️ service_page_view (which service pages get traffic) - Add when service pages created
+- ⚠️ blog_read (scroll depth 75%+) - Add when blog created
+- ⚠️ email_link_click - Add tracking
+
+**Conversion Goals:**
+
+- Primary: Contact form submission, Phone call click, Email link click
+- Secondary: Calculator usage, Case study reads, Multiple page views (3+)
+
+**Weekly Reporting:**
+
+- Track: Organic sessions, Top 10 landing pages, Conversion rate, Top 5 keywords, Form submissions + phone clicks
+- Log in spreadsheet every Monday morning
+
+### 6. KEYWORD TARGETING - MANDATORY FOR SEO
+
+**Service Page Keywords:**
+
+**/excel-automation:**
+
+- Primary: "excel vba automation" (320/mo)
+- Secondary: "excel automation services" (880/mo)
+- Long-tail: "automate excel reporting" (890/mo)
+
+**/access-consulting:**
+
+- Primary: "access database consultant" (390/mo)
+- Secondary: "ms access expert" (210/mo)
+- Long-tail: "access database crashing fix" (190/mo)
+
+**/financial-modeling:**
+
+- Primary: "financial modeling consultant" (210/mo)
+- Secondary: "excel financial model" (480/mo)
+- Long-tail: "financial model help" (260/mo)
+
+**/database-migration:**
+
+- Primary: "access database migration" (210/mo)
+- Secondary: "migrate access to sql" (140/mo)
+- Long-tail: "access to cloud migration" (90/mo)
+
+**/vba-development:**
+
+- Primary: "excel vba developer" (320/mo)
+- Secondary: "hire vba programmer" (180/mo)
+- Long-tail: "excel macro development" (240/mo)
+
+**Blog Target Keywords (High Value):**
+
+- "excel automation" (2.9k/mo) ✅
+- "excel vba tutorial" (2.4k/mo) ✅
+- "access database" (1.6k/mo) ✅
+- "financial modeling" (1.3k/mo) ✅
+- "automate accounting close" (140/mo) - HIGH VALUE ✅
+- "excel consultant" (480/mo) - HIGH VALUE ✅
+- "access database repair" (170/mo) - HIGH VALUE ✅
+
+### 7. TECHNICAL AUDIT CHECKLIST - MUST COMPLETE
+
+**Week 1-2 Technical Audit:**
+
+- [ ] Run Screaming Frog audit (free version)
+- [ ] Fix all broken links (404s)
+- [ ] Add missing meta descriptions to all pages
+- [ ] Fix duplicate title tags (make unique)
+- [ ] Add alt text to all images without alt text
+- [ ] Page load speed <3 seconds (optimize if needed)
+- [ ] Mobile usability test (all breakpoints)
+- [ ] SSL certificate verification (HTTPS)
+- [ ] Verify /sitemap.xml accessible and complete
+- [ ] Verify /robots.txt accessible
+- [ ] Google Search Console setup and verification
+- [ ] Test all schema markup with Google Rich Results Test
+
+### 8. URL STRUCTURE - MANDATORY ROUTES
+
+**Current Routes:**
+
+- ✅ `/` (homepage)
+- ✅ `/thank-you`
+
+**Required New Routes:**
+
+- `/excel-automation` (service page)
+- `/access-consulting` (service page)
+- `/financial-modeling` (service page)
+- `/database-migration` (service page)
+- `/vba-development` (service page)
+- `/case-studies` (dedicated page)
+- `/blog` (blog index)
+- `/blog/[post-slug]` (individual blog posts)
+- `/contact` (dedicated contact page - optional, can use homepage section)
+- `/free-checklist` (lead magnet landing page)
+
+**Routing Implementation:**
+
+- Use React Router (already set up)
+- Update App.jsx Routes component
+- Create route components in appropriate folders
+- Test all routes work correctly
+- Update sitemap.xml with new routes
+
+### 9. DESIGN SYSTEM - MANDATORY
+
+**Styling Method:**
+
+- **Primary:** Tailwind CSS utility classes (extensively used)
+- **Custom Classes:** Defined via `@layer components` in `global.css`
+- **Legacy CSS:** Some custom CSS files exist but are not primary styling method
+
+**Typography System - STANDARD SIZES (MANDATORY):**
+
+**Font Family:**
+- **Primary: IBM Plex Sans** - Matches logo font style exactly
+- Font stack: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+- Weights: 400 (regular), 500 (medium), 600 (semibold), 700 (bold), 800 (extra bold)
+- **H1 uses weight 800 (extra bold) to match logo's bold, prominent appearance**
+
+**Display Sizes (Hero, Large Headings - Matches Logo Bold Style):**
+- `text-display-2xl`: 72px, line-height 1.1, weight 800 (extra bold), letter-spacing -0.02em (Desktop H1)
+- `text-display-xl`: 64px, line-height 1.1, weight 800 (extra bold), letter-spacing -0.02em (Tablet H1)
+- `text-display-lg`: 48px, line-height 1.2, weight 800 (extra bold), letter-spacing -0.01em (Mobile H1, Desktop H2)
+- `text-display-md`: 40px, line-height 1.2, weight 700 (bold), letter-spacing -0.01em (Tablet H2)
+- `text-display-sm`: 36px, line-height 1.2, weight 700 (bold), letter-spacing -0.01em (Mobile H2)
+
+**Heading Sizes (Section Titles, Subheadings):**
+- `text-heading-xl`: 32px, line-height 1.3, weight 700 (Desktop H3)
+- `text-heading-lg`: 28px, line-height 1.3, weight 700 (Tablet H3)
+- `text-heading-md`: 24px, line-height 1.4, weight 600 (Mobile H3, Desktop H4)
+- `text-heading-sm`: 20px, line-height 1.4, weight 600 (Tablet H4, Desktop H5)
+- `text-heading-xs`: 18px, line-height 1.4, weight 600 (Mobile H4, Desktop H6)
+
+**Body Sizes (Content, Paragraphs):**
+- `text-body-xl`: 20px, line-height 1.7, weight 400 (Large emphasis text)
+- `text-body-lg`: 18px, line-height 1.7, weight 400 (Intro paragraphs, important content)
+- `text-body-base`: 16px, line-height 1.6, weight 400 (Standard body text - DEFAULT)
+- `text-body-sm`: 14px, line-height 1.5, weight 400 (Secondary text, captions)
+- `text-body-xs`: 12px, line-height 1.5, weight 400 (Fine print, disclaimers)
+
+**Label Sizes (Form Labels, Small Text):**
+- `text-label-lg`: 16px, line-height 1.5, weight 500 (Form labels, navigation)
+- `text-label-base`: 14px, line-height 1.5, weight 500 (Standard labels)
+- `text-label-sm`: 12px, line-height 1.4, weight 500 (Small labels, badges)
+
+**Typography Usage Rules:**
+- **H1:** Use `text-display-lg md:text-display-xl lg:text-display-2xl` for main page titles
+- **H2:** Use `text-display-sm md:text-display-md lg:text-display-lg` for section titles
+- **H3:** Use `text-heading-md md:text-heading-lg` for subsection titles
+- **H4:** Use `text-heading-sm md:text-heading-md` for card titles
+- **Body:** Use `text-body-base` (default) or `text-body-lg` for emphasis
+- **Paragraphs:** Default to `text-body-base`, use `text-body-lg` for intro paragraphs
+- **All headings:** Must have consistent bottom margin (0.75em for H1/H2, 0.5em for H3-H6)
+- **All paragraphs:** Must have bottom margin of 1em (16px)
+
+**Spacing System - STANDARD SIZES (MANDATORY):**
+
+**Base Unit:** 4px (all spacing is multiples of 4px)
+
+**Standard Spacing Scale:**
+- `space-1`: 4px (0.25rem) - Tight spacing, icon padding
+- `space-2`: 8px (0.5rem) - xs - Small gaps between related items
+- `space-3`: 12px (0.75rem) - Tight gaps
+- `space-4`: 16px (1rem) - sm - Standard gaps, paragraph spacing
+- `space-5`: 20px (1.25rem) - Medium-small gaps
+- `space-6`: 24px (1.5rem) - md - Medium gaps between sections
+- `space-8`: 32px (2rem) - lg - Large gaps
+- `space-10`: 40px (2.5rem) - Extra large gaps
+- `space-12`: 48px (3rem) - xl - Section spacing
+- `space-16`: 64px (4rem) - 2xl - Major section spacing
+- `space-20`: 80px (5rem) - Very large spacing
+- `space-24`: 96px (6rem) - 3xl - Major section spacing
+
+**Semantic Spacing (Use for consistency):**
+- `xs` (8px): Small gaps between related items (icons and text, badges)
+- `sm` (16px): Standard gaps (between form fields, list items)
+- `md` (24px): Medium gaps between sections (card padding, section gaps)
+- `lg` (32px): Large gaps (between major elements)
+- `xl` (48px): Extra large gaps (section spacing)
+- `2xl` (64px): Major section spacing (between page sections)
+- `3xl` (96px): Maximum spacing (hero sections, major page breaks)
+
+**Spacing Usage Rules:**
+- **Padding:** Use `p-sm` (16px) for cards, `p-md` (24px) for sections, `p-lg` (32px) for large containers
+- **Margins:** Use `mb-sm` (16px) for paragraphs, `mb-md` (24px) for sections, `mb-lg` (32px) for major sections
+- **Gaps:** Use `gap-sm` (16px) for flex/grid with related items, `gap-md` (24px) for standard layouts, `gap-lg` (32px) for large layouts
+- **Section Spacing:** Use `py-md md:py-lg lg:py-xl` for vertical section padding (responsive)
+- **Container Padding:** Use `px-4 md:px-6 lg:px-8` for horizontal container padding (responsive)
+- **Always use semantic spacing** - never arbitrary values like `p-[13px]` or `m-[7px]`
+
+**Components:**
+
+- Buttons: Primary (red #C8102E), Secondary (outline)
+- Cards: White background, shadow on hover, `p-md` (24px) padding
+- Forms: Clean, accessible inputs with `text-body-base` and `space-sm` (16px) between fields
+
+**Brand Colors:**
+
+- Primary: #C8102E (Crimson Red - Access)
+- Primary Hover: #9a0c24 (Darker Red)
+- Secondary: #2D7A3E (Forest Green - Excel)
+- Secondary Hover: #1f5a2b (Darker Green)
+- Use consistently across all pages
+
+**Responsive Typography:**
+- Always use responsive classes: `text-[size] md:text-[larger-size] lg:text-[largest-size]`
+- Mobile-first approach: smallest size is base, larger sizes for md/lg breakpoints
+- Example: `text-display-lg md:text-display-xl lg:text-display-2xl` for H1
+
+**Responsive Spacing:**
+- Use responsive spacing for sections: `py-md md:py-lg lg:py-xl`
+- Use responsive padding for containers: `px-4 md:px-6 lg:px-8`
+- Use responsive gaps: `gap-sm md:gap-md lg:gap-lg`
+
+### 10. CONTENT QUALITY STANDARDS
+
+**Writing Requirements:**
+
+- Professional, clear, and helpful tone
+- Address pain points and solutions
+- Include real examples and case studies
+- Use Robert Terry's 15+ years experience and 200+ projects as credibility
+- Include specific metrics and ROI when possible
+- Always end with clear CTA
+
+**Internal Linking:**
+
+- 3-5 internal links per page
+- Link to relevant service pages
+- Link to case studies
+- Link to blog posts
+- Link to ROI calculator
+- Link to contact form
+
+**Images:**
+
+- All images MUST have descriptive alt text
+- Optimize images for web (compression)
+- Use appropriate file formats (WebP preferred, fallback to JPG/PNG)
+
+### 11. LOCAL SEO - MANDATORY
+
+**Google Business Profile:**
+
+- Business name: ExcelAccessConsultant.com
+- Category: Business Consultant
+- Secondary: Software Company
+- Description: 300-word pitch (include keywords)
+- Service area: United States (remote)
+- Phone: 801-616-3702
+- Website: excelaccessconsultant.com
+- Post 2x/week: Project completions, Blog post links, Excel tips, Case study snippets
+- Request reviews: Email 5 past clients/week, Target: 20 reviews in 6 months
+- Respond to all reviews within 48 hours
+
+**Local Citations:**
+
+- Submit to: Yelp, Bing Places, Apple Maps, Yellow Pages, Manta
+- Consistent NAP: Name: ExcelAccessConsultant.com, Address: Springville, UT, Phone: 801-616-3702
+
+### 12. BACKLINK BUILDING - ONGOING
+
+**Resource Page Links (Week 6-8):**
+
+- Research resource pages (10/week)
+- Send outreach emails (10/week)
+- Target: 5-10 links in 3 weeks
+
+**Guest Posting (Week 9-12):**
+
+- Research target sites (5/week)
+- Send pitches (5/week)
+- Target: 2-3 published posts
+
+**HARO Responses (Week 13-16):**
+
+- Sign up for helpareporter.com
+- Check daily (30 min/day)
+- Target: 1-2 mentions/month
+
+**Industry Directories (Week 17-20):**
+
+- Submit to: Clutch.co, GoodFirms, Expertise.com, Local Utah directories
+- Target: 10-15 directory listings
+
+**Total backlinks in 6 months: 30-50 quality links**
+
+### 13. EMAIL MARKETING - WEEK 8+
+
+**Email Sequences:**
+
+- Sequence 1: Checklist Download (4 emails over 14 days)
+- Sequence 2: Calculator Users (3 emails over 5 days)
+- Monthly Newsletter (1x/month, <300 words)
+
+**Email Tool:**
+
+- ConvertKit or Mailchimp (free plan)
+
+### 14. PAID TRAFFIC - MONTH 3+ (OPTIONAL)
+
+**Google Ads Test Campaign:**
+
+- Budget: $500/month (testing)
+- Campaign: High-Intent Services
+- Ad Groups: Excel Automation, Access Database
+- Landing pages: Dedicated service pages (not homepage)
+- Monitor ROAS: Scale if >300%, Pause if <200%
+
+### 15. SUCCESS METRICS - TRACK WEEKLY
+
+**Month 1-2 Targets:**
+
+- Technical SEO audit complete
+- 5 service pages live (1,500+ words each)
+- 3 case studies published
+- 8 blog posts published
+- Contact form upgraded
+- Google Analytics tracking verified
+
+**Month 3-4 Targets:**
+
+- 16 total blog posts
+- 10-15 backlinks acquired
+- Google Business Profile optimized
+- 10+ reviews
+- 500+ organic sessions/month
+- 8-10 leads/month
+
+**Month 5-6 Targets:**
+
+- 24 total blog posts
+- 30+ backlinks
+- 20+ reviews
+- 1,000+ organic sessions/month
+- 15+ leads/month
+- 3-4 projects closed/month
+- $15k-20k/month revenue from website
+
+---
+
+## DEVELOPMENT WORKFLOW
+
+### When Creating New Pages:
+
+1. ✅ Create route in App.jsx
+2. ✅ Create component file in appropriate folder
+3. ✅ Add SEO component with proper meta tags
+4. ✅ Add schema markup (if applicable)
+5. ✅ Add internal links (3-5)
+6. ✅ Test mobile responsiveness
+7. ✅ Test page load speed
+8. ✅ Add to sitemap.xml
+9. ✅ Verify in Google Search Console
+10. ✅ Test all functionality
+
+### When Writing Content:
+
+1. ✅ Research target keyword
+2. ✅ Include keyword in H1, first 100 words, 2+ H2s, URL slug
+3. ✅ Write 1,500-2,000 words (service pages) or 1,500-2,000 words (blog posts)
+4. ✅ Add 3-5 internal links
+5. ✅ Add FAQ section with FAQSchema (if applicable)
+6. ✅ Add CTA at end
+7. ✅ Include author (Robert Terry) and date (blog posts)
+8. ✅ Proofread and check grammar
+9. ✅ Verify mobile formatting
+
+### When Implementing Features:
+
+1. ✅ Use Tailwind CSS (primary styling method)
+2. ✅ Follow brand colors (#A32228)
+3. ✅ Ensure mobile-responsive
+4. ✅ Add Google Analytics tracking
+5. ✅ Test all functionality
+6. ✅ Verify accessibility
+7. ✅ Check page load speed
+
+---
+
+## CRITICAL REMINDERS
+
+1. **NEVER skip SEO requirements** - Every page needs meta tags, schema, internal links
+2. **NEVER skip mobile responsiveness** - Test on actual devices
+3. **NEVER skip analytics tracking** - All conversions must be tracked
+4. **NEVER skip internal linking** - 3-5 links per page minimum
+5. **NEVER skip CTAs** - Every page needs clear call-to-action
+6. **NEVER skip schema markup** - Use appropriate schemas for each page type
+7. **NEVER skip alt text** - All images must have descriptive alt text
+8. **NEVER skip testing** - Test all functionality before marking complete
+9. **NEVER skip sitemap updates** - Add all new pages to sitemap.xml
+10. **NEVER skip quality** - All content must be professional and helpful
+
+---
+
+## FILE STRUCTURE
+
+**Current Structure:**
+
+```
+src/
+├── App.jsx (main routing)
+├── components/
+│   ├── SEO/ (SEO.jsx, FAQSchema.jsx, ReviewSchema.jsx)
+│   ├── ContactForm/
+│   ├── Header/
+│   ├── Footer/
+│   └── ...
+├── pages/
+│   ├── Home/
+│   ├── Services/
+│   │   ├── ExcelAutomation/
+│   │   ├── MSAccessDevelopment/
+│   │   └── DataProcessing/
+│   ├── About/
+│   ├── Contact/
+│   ├── FAQ/
+│   └── ThankYou/
+└── styles/
+    └── global.css
+```
+
+**New Pages to Create:**
+
+- `src/pages/Services/FinancialModeling/FinancialModeling.jsx`
+- `src/pages/Services/DatabaseMigration/DatabaseMigration.jsx`
+- `src/pages/Services/VBADevelopment/VBADevelopment.jsx`
+- `src/pages/CaseStudies/CaseStudies.jsx`
+- `src/pages/Blog/Blog.jsx` (index)
+- `src/pages/Blog/[PostSlug]/[PostSlug].jsx` (individual posts)
+- `src/pages/LeadMagnet/LeadMagnet.jsx` (free-checklist)
+
+---
+
+## CONTACT INFORMATION - ALWAYS INCLUDE
+
+**Phone:** 801-616-3702 (clickable tel: link)
+**Email:** rob@excelaccessconsultant.com (clickable mailto: link)
+**Location:** Springville, Utah
+**Service Area:** United States (remote)
+
+---
+
+## LAST UPDATED
+
+January 24, 2026
+
+---
+
+**Remember:** This is a comprehensive SEO and conversion optimization project. Every task in TASK_BREAKDOWN.md must be completed. Nothing should be skipped. Quality and completeness are paramount.

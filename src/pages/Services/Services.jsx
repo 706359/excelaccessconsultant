@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Section from '../../components/Section/Section';
-import Card from '../../components/Card/Card';
+import Section from '../../components/Layout/Section/Section';
+import Card from '../../components/ui/Card/Card';
 
 const Services = () => {
   return (

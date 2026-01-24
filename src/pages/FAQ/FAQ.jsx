@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Section from '../../components/Section/Section';
+import SEO from '../../components/SEO/SEO';
+import '../../styles/global.css';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -63,53 +64,77 @@ const FAQ = () => {
   ];
 
   return (
-    <div className='FAQ'>
-      <Section background='secondary' className='FAQ-hero'>
-        <div className='FAQHero'>
-          <h1 className='FAQHero-title'>Frequently Asked Questions</h1>
-          <p className='FAQHero-subtitle'>
+    <div className='bg-base min-h-screen text-slate-900 font-sans'>
+      <SEO
+        title='FAQ | ExcelAccessConsultant.com'
+        description='Frequently asked questions about Excel and Access consulting services. Get answers about pricing, timelines, support, and more.'
+        keywords='excel consultant faq, access database faq, vba automation questions, excel consulting questions'
+        url='https://excelaccessconsultant.com/faq'
+        ogTitle='Frequently Asked Questions'
+      />
+
+      {/* Hero Section */}
+      <section className='py-8 md:py-12 bg-slate-50 border-b border-slate-200'>
+        <div className='max-w-7xl mx-auto px-6 text-center'>
+          <h1 className='text-display-lg md:text-display-xl lg:text-display-2xl font-bold mb-4 font-display text-slate-900'>
+            Frequently Asked Questions
+          </h1>
+          <p className='text-lg text-slate-700 max-w-7xl mx-auto leading-relaxed'>
             Find answers to common questions about our services and how we work.
           </p>
         </div>
-      </Section>
+      </section>
 
-      <Section>
-        <div className='FAQ-content'>
-          <div className='FAQ-list'>
+      {/* FAQ Content */}
+      <section className='py-8 md:py-12 bg-white'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <div className='space-y-4'>
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`FAQ-item ${openIndex === index ? 'FAQ-item--open' : ''}`}
+                className={`bg-slate-50 rounded-lg border border-slate-200 overflow-hidden transition-all duration-200 ${
+                  openIndex === index ? 'shadow-md' : ''
+                }`}
               >
                 <button
-                  className='FAQ-question'
+                  className='w-full p-6 text-left flex items-center justify-between hover:bg-slate-100 transition-colors duration-200'
                   onClick={() => toggleQuestion(index)}
                   aria-expanded={openIndex === index}
                 >
-                  <span className='FAQ-question-text'>{faq.question}</span>
-                  <span className='FAQ-question-icon'>{openIndex === index ? '−' : '+'}</span>
+                  <h3 className='text-lg font-bold font-display text-slate-900 pr-4'>
+                    {faq.question}
+                  </h3>
+                  <span className='text-primary text-2xl font-bold flex-shrink-0'>
+                    {openIndex === index ? '−' : '+'}
+                  </span>
                 </button>
                 {openIndex === index && (
-                  <div className='FAQ-answer'>
-                    <p>{faq.answer}</p>
+                  <div className='px-6 pb-6'>
+                    <p className='text-slate-600 leading-relaxed'>{faq.answer}</p>
                   </div>
                 )}
               </div>
             ))}
           </div>
 
-          <div className='FAQ-cta'>
-            <h2 className='FAQ-cta-title'>Still have questions?</h2>
-            <p className='FAQ-cta-text'>
+          {/* CTA Section */}
+          <div className='mt-12 text-center bg-slate-50 rounded-lg border border-slate-200 p-8'>
+            <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
+              Still have questions?
+            </h2>
+            <p className='text-lg text-slate-700 mb-6 max-w-7xl mx-auto leading-relaxed'>
               We&apos;re here to help. Contact us to discuss your specific needs and get
               personalized answers.
             </p>
-            <Link to='/contact' className='FAQ-cta-link'>
+            <Link
+              to='/contact'
+              className='inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white font-semibold px-8 py-4 text-base rounded-lg transition-all duration-standard shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+            >
               Contact Us
             </Link>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 };

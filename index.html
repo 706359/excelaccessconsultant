@@ -10,14 +10,22 @@
       function gtag(){dataLayer.push(arguments);}
       
       // Set default consent mode to denied until user accepts
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied'
-      });
-      
-      gtag('js', new Date());
-      gtag('config', 'G-9ZT461HGG8');
+      try {
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied'
+        });
+        
+        gtag('js', new Date());
+        gtag('config', 'G-9ZT461HGG8', {
+          // Suppress console errors for blocked requests
+          'send_page_view': true
+        });
+      } catch (error) {
+        // Silently fail if GA is blocked by browser
+        console.debug('Google Analytics initialization blocked:', error);
+      }
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8" onerror="console.debug('GA script blocked by browser')"></script>
 
     <!-- Primary Meta Tags -->
     <title>ExcelAccessConsultant - Expert Excel & Access Consulting Services</title>
@@ -31,7 +39,7 @@
     />
     <meta
       name="keywords"
-      content="Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel automation services, Access database consultant"
+      content="excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel automation services, Excel VBA consultant Utah, Access database consultant Springville, Excel consultant Springville Utah"
     />
     <meta name="author" content="ExcelAccessConsultant" />
     <meta name="robots" content="index, follow" />
@@ -62,13 +70,17 @@
     <meta property="twitter:image" content="https://excelaccessconsultant.com/logo.png" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -92,12 +104,13 @@
           "height": 60
         },
         "image": "https://excelaccessconsultant.com/logo.png",
-        "telephone": "+1-801-704-5604",
-        "email": "rob.infodatix@gmail.com",
+        "telephone": "+1-801-616-3702",
+        "email": "rob@excelaccessconsultant.com",
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "US",
-          "addressRegion": "UT"
+          "addressLocality": "Springville",
+          "addressRegion": "UT",
+          "addressCountry": "US"
         },
         "priceRange": "$90/hour",
         "areaServed": {
@@ -182,8 +195,8 @@
         "worksFor": {
           "@id": "https://excelaccessconsultant.com/#organization"
         },
-        "email": "rob.infodatix@gmail.com",
-        "telephone": "+1-801-704-5604",
+        "email": "rob@excelaccessconsultant.com",
+        "telephone": "+1-801-616-3702",
         "knowsAbout": [
           "Excel",
           "Microsoft Access",
@@ -192,6 +205,96 @@
           "Process Automation"
         ],
         "description": "20+ years of experience in Excel and Microsoft Access consulting"
+      }
+    </script>
+
+    <!-- Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://excelaccessconsultant.com/#localbusiness",
+        "name": "ExcelAccessConsultant.com",
+        "image": "https://excelaccessconsultant.com/logo.png",
+        "description": "Excel & Access Consulting for Finance Teams. Turn your 3-day accounting close into 10 minutes. 200+ automation projects delivered since 2010.",
+        "url": "https://excelaccessconsultant.com",
+        "telephone": "+1-801-616-3702",
+        "email": "rob@excelaccessconsultant.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Springville",
+          "addressLocality": "Springville",
+          "addressRegion": "UT",
+          "postalCode": "84663",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.1653",
+          "longitude": "-111.6106"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Robert Terry"
+        },
+        "foundingDate": "2010",
+        "yearsInOperation": "15",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        },
+        "priceRange": "$90/hour",
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "sameAs": [
+          "https://excelaccessconsultant.com"
+        ]
+      }
+    </script>
+
+    <!-- Structured Data - Service: Excel VBA Consulting -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Excel VBA Consulting",
+        "provider": {
+          "@id": "https://excelaccessconsultant.com/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "description": "Expert Excel VBA consultant services. Custom VBA macros, automation scripts, and Excel solutions for businesses. 20+ years of VBA programming experience.",
+        "name": "Excel VBA Consultant Services"
+      }
+    </script>
+
+    <!-- Structured Data - Service: Access Database Consulting -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Access Database Consulting",
+        "provider": {
+          "@id": "https://excelaccessconsultant.com/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "description": "Professional Access database consultant. Build stable, multi-user Access databases that don't crash. Database design, optimization, and repair services.",
+        "name": "Access Database Consultant Services"
       }
     </script>
 
@@ -217,7 +320,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "About",
-            "item": "https://excelaccessconsultant.com/about"
+            "item": "https://excelaccessconsultant.com/#about"
           }
         ]
       }

@@ -4,36 +4,99 @@ import {
   Route,
   BrowserRouter as Router,
   Routes,
-  useLocation,
   useNavigate,
 } from 'react-router-dom';
-import CookieConsent from './components/CookieConsent/CookieConsent';
+import Button from './components/ui/Button/Button';
+import Layout from './components/Layout/Layout';
 import FAQSchema from './components/SEO/FAQSchema';
+import ReviewSchema from './components/SEO/ReviewSchema';
 import SEO from './components/SEO/SEO';
-import ToastContainer from './components/Toast/ToastContainer';
-import TrustBadge from './components/TrustBadge/TrustBadge';
+import About from './pages/About/About';
+import AccessConsulting from './pages/AccessConsulting/AccessConsulting';
+import Blog from './pages/Blog/Blog';
+import TenSignsYouNeedExcelAutomation from './pages/Blog/Posts/10SignsYouNeedExcelAutomation';
+import AccessVsSQLServer from './pages/Blog/Posts/AccessVsSQLServer';
+import CommonExcelVBAMistakes from './pages/Blog/Posts/CommonExcelVBAMistakes';
+import ExcelAutomationCost from './pages/Blog/Posts/ExcelAutomationCost';
+import ExcelReportingAutomation from './pages/Blog/Posts/ExcelReportingAutomation';
+import FinancialModelingBestPractices from './pages/Blog/Posts/FinancialModelingBestPractices';
+import HowToSpeedUpSlowExcelSpreadsheets from './pages/Blog/Posts/HowToSpeedUpSlowExcelSpreadsheets';
+import WhyYourAccessDatabaseKeepsCrashing from './pages/Blog/Posts/WhyYourAccessDatabaseKeepsCrashing';
+import CaseStudies from './pages/CaseStudies/CaseStudies';
+import Contact from './pages/Contact/Contact';
+import DatabaseMigration from './pages/DatabaseMigration/DatabaseMigration';
+import ExcelAutomation from './pages/ExcelAutomation/ExcelAutomation';
+import FAQ from './pages/FAQ/FAQ';
+import FinancialModeling from './pages/FinancialModeling/FinancialModeling';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import ThankYou from './pages/ThankYou/ThankYou';
+import VBADevelopment from './pages/VBADevelopment/VBADevelopment';
 import './styles/global.css';
 
-// Scroll to top on route change
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [pathname]);
-
-  return null;
-}
+// Safe Google Analytics helper function
+const safeGtag = (...args) => {
+  try {
+    if (typeof window !== 'undefined' && window.gtag && typeof window.gtag === 'function') {
+      window.gtag(...args);
+    }
+  } catch (error) {
+    // Silently fail - analytics errors should not break the site
+    console.debug('Google Analytics error (blocked or failed):', error);
+  }
+};
 
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path='/thank-you' element={<ThankYou />} />
-        <Route path='/' element={<HomePage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path='/thank-you' element={<ThankYou />} />
+          <Route path='/excel-automation' element={<ExcelAutomation />} />
+          <Route path='/access-consulting' element={<AccessConsulting />} />
+          <Route path='/financial-modeling' element={<FinancialModeling />} />
+          <Route path='/database-migration' element={<DatabaseMigration />} />
+          <Route path='/vba-development' element={<VBADevelopment />} />
+          <Route path='/case-studies' element={<CaseStudies />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route
+            path='/blog/10-signs-you-need-excel-automation'
+            element={<TenSignsYouNeedExcelAutomation />}
+          />
+          <Route
+            path='/blog/why-your-access-database-keeps-crashing'
+            element={<WhyYourAccessDatabaseKeepsCrashing />}
+          />
+          <Route
+            path='/blog/excel-automation-cost-what-to-expect'
+            element={<ExcelAutomationCost />}
+          />
+          <Route
+            path='/blog/how-to-speed-up-slow-excel-spreadsheets'
+            element={<HowToSpeedUpSlowExcelSpreadsheets />}
+          />
+          <Route
+            path='/blog/access-vs-sql-server-when-to-migrate'
+            element={<AccessVsSQLServer />}
+          />
+          <Route
+            path='/blog/common-excel-vba-mistakes-and-how-to-fix-them'
+            element={<CommonExcelVBAMistakes />}
+          />
+          <Route
+            path='/blog/financial-modeling-best-practices'
+            element={<FinancialModelingBestPractices />}
+          />
+          <Route
+            path='/blog/excel-reporting-automation-complete-guide'
+            element={<ExcelReportingAutomation />}
+          />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/faq' element={<FAQ />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='/' element={<HomePage />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
@@ -43,43 +106,16 @@ function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [openCaseStudyIndex, setOpenCaseStudyIndex] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [captchaQuestion, setCaptchaQuestion] = useState('');
-  const [captchaAnswer, setCaptchaAnswer] = useState(0);
-  const [captchaInput, setCaptchaInput] = useState('');
-  const [captchaError, setCaptchaError] = useState(false);
-  const [captchaTimeLeft, setCaptchaTimeLeft] = useState(120); // 2 minutes in seconds
-  const [hasInteractedWithForm, setHasInteractedWithForm] = useState(false);
-  const [toasts, setToasts] = useState([]);
-  const [fieldErrors, setFieldErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const showToast = (message, type = 'info', duration = 3000) => {
-    const id = Date.now() + Math.random();
-    setToasts((prev) => [...prev, { id, message, type, duration }]);
-  };
-
-  const removeToast = (id) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  };
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       setIsMobileMenuOpen(false); // Close mobile menu when navigating
-      const headerOffset = 100;
+      const headerOffset = 100; // Account for fixed header
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      // Ensure we scroll to the top of the section
+      window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
     }
   };
 
@@ -90,47 +126,6 @@ function HomePage() {
   const toggleCaseStudy = (index) => {
     setOpenCaseStudyIndex(openCaseStudyIndex === index ? null : index);
   };
-
-  const generateCaptcha = () => {
-    // Generate single-digit math problems for user-friendly verification
-    const operations = ['+', '-'];
-    const operation = operations[Math.floor(Math.random() * operations.length)];
-
-    let num1, num2, answer, question;
-
-    switch (operation) {
-      case '+':
-        // Addition: 1-9 + 1-9 (results: 2-18)
-        num1 = Math.floor(Math.random() * 9) + 1; // 1-9
-        num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-        answer = num1 + num2;
-        question = `${num1} + ${num2}`;
-        break;
-      case '-':
-        // Subtraction: single digits, ensure positive result
-        num1 = Math.floor(Math.random() * 9) + 1; // 1-9
-        num2 = Math.floor(Math.random() * num1) + 1; // 1 to num1 (ensures num1 >= num2)
-        answer = num1 - num2;
-        question = `${num1} - ${num2}`;
-        break;
-      default:
-        num1 = 5;
-        num2 = 3;
-        answer = 8;
-        question = '5 + 3';
-    }
-
-    setCaptchaQuestion(question);
-    setCaptchaAnswer(answer);
-    setCaptchaInput('');
-    setCaptchaError(false);
-    setCaptchaTimeLeft(120); // Reset timer to 2 minutes
-  };
-
-  // Generate captcha on component mount
-  useEffect(() => {
-    generateCaptcha();
-  }, []);
 
   // Handle hash navigation on page load
   useEffect(() => {
@@ -143,182 +138,14 @@ function HomePage() {
     }
   }, []);
 
-  // Captcha expiration timer - only show warnings if user has interacted with form
-  useEffect(() => {
-    if (captchaTimeLeft <= 0) {
-      // Only show warning if user has interacted with the form
-      if (hasInteractedWithForm) {
-        showToast('Captcha expired. Please solve the new problem.', 'warning');
-      }
-      generateCaptcha();
-      return;
-    }
-
-    const timer = setInterval(() => {
-      setCaptchaTimeLeft((prev) => {
-        const newTime = prev - 1;
-        if (newTime <= 0) {
-          // Only show warning if user has interacted with the form
-          if (hasInteractedWithForm) {
-            setTimeout(() => {
-              showToast('Captcha expired. Please solve the new problem.', 'warning');
-            }, 0);
-          }
-          generateCaptcha();
-          return 0;
-        }
-        return newTime;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [captchaTimeLeft, hasInteractedWithForm]);
-
-  const validateForm = () => {
-    const errors = {
-      name: '',
-      email: '',
-      message: '',
-    };
-    let isValid = true;
-
-    // Validate name
-    if (!formData.name.trim()) {
-      errors.name = 'Full name is required';
-      isValid = false;
-    }
-
-    // Validate email
-    if (!formData.email.trim()) {
-      errors.email = 'Email address is required';
-      isValid = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Please enter a valid email address';
-      isValid = false;
-    }
-
-    // Validate message
-    if (!formData.message.trim()) {
-      errors.message = 'Message is required';
-      isValid = false;
-    }
-
-    setFieldErrors(errors);
-    return isValid;
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    // Clear previous errors
-    setFieldErrors({ name: '', email: '', message: '' });
-
-    // Validate form fields
-    if (!validateForm()) {
-      showToast('Please fill in all required fields correctly.', 'error', 5000);
-      return;
-    }
-
-    // Validate captcha
-    const userAnswer = parseInt(captchaInput.trim());
-    if (isNaN(userAnswer) || userAnswer !== captchaAnswer) {
-      setCaptchaError(true);
-      showToast('Incorrect answer. Please try again.', 'error', 5000);
-      generateCaptcha(); // Generate new captcha on error
-      return;
-    }
-
-    // Start submitting
-    setIsSubmitting(true);
-
-    try {
-      // Call API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || '',
-          message: formData.message,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        // Success - check email status
-        setIsSubmitting(false);
-
-        if (data.emailSent === false && data.message) {
-          // Email failed but form was received
-          showToast(
-            'Your message was received, but there was an issue sending the confirmation email. We will still get back to you.',
-            'warning',
-            8000
-          );
-          // Still redirect but show warning
-          setTimeout(() => {
-            navigate('/thank-you');
-          }, 2000);
-        } else {
-          // Full success
-          navigate('/thank-you');
-        }
-      } else {
-        // API returned an error
-        setIsSubmitting(false);
-        const errorMessage =
-          data.error || data.message || 'Failed to send message. Please try again.';
-        showToast(errorMessage, 'error', 8000);
-      }
-    } catch (error) {
-      // Network or other error
-      setIsSubmitting(false);
-
-      // Check if it's a timeout error
-      if (error.name === 'AbortError' || error.message?.includes('timeout')) {
-        showToast(
-          "Request timed out. Your message may have been received. Please contact us directly if you don't receive a confirmation.",
-          'warning',
-          8000
-        );
-      } else {
-        showToast(
-          'Network error. Please check your connection and try again, or contact us directly at rob.infodatix@gmail.com',
-          'error',
-          8000
-        );
-      }
-    }
-  };
-
-  const handleInputChange = (e) => {
-    setHasInteractedWithForm(true); // Mark that user has interacted with form
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
-    <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-excel selection:text-white'>
-      {/* Skip to main content link for accessibility */}
-      <a
-        href='#main-content'
-        className='sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-excel focus:text-white focus:rounded-md focus:font-medium'
-      >
-        Skip to main content
-      </a>
-
+    <>
       <SEO
-        title='Excel and Access Consulting That Actually Works | ExcelAccessConsultant'
-        description='Excel and Access consulting that actually works. 20+ years of experience fixing broken spreadsheets, building stable databases, and automating repetitive tasks. Free consultation available.'
-        keywords='Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development'
+        title='Excel VBA Consultant | Access Database Expert'
+        description='Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.'
+        keywords='excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel VBA consultant Utah, Access database consultant Springville'
         url='https://excelaccessconsultant.com/'
-        ogTitle='Excel and Access Consulting That Actually Works'
+        ogTitle='Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant'
       />
 
       <FAQSchema
@@ -341,7 +168,7 @@ function HomePage() {
           {
             question: 'How long do projects take?',
             answer:
-              "Depends on what you need. Simple automations? A few days to a week. Big database projects? Usually 4 to 8 weeks. I'll give you a timeline when we talk.",
+              'Depends on what you need. Simple automations? A few days to a week. Big database projects? Usually 4 to 8 weeks. I&apos;ll give you a timeline when we talk.',
           },
           {
             question: 'Do you provide documentation?',
@@ -351,7 +178,7 @@ function HomePage() {
           {
             question: 'Can you help with urgent issues?',
             answer:
-              "If I'm available, yes. I've done plenty of emergency fixes. Call me and we'll figure it out.",
+              'If I&apos;m available, yes. I&apos;ve done plenty of emergency fixes. Call me and we&apos;ll figure it out.',
           },
           {
             question: 'Do you work remotely?',
@@ -361,664 +188,753 @@ function HomePage() {
         ]}
       />
 
-      {/* Top Banner */}
-      <div className='bg-red-600 text-white py-3 text-center text-sm font-medium'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <p>
-            Call Us Today!{' '}
-            <a href='tel:8017045604' className='hover:underline font-semibold'>
-              (801) 704-5604
-            </a>
-            {' | '}
-            <a href='mailto:rob.infodatix@gmail.com' className='hover:underline font-semibold'>
-              rob.infodatix@gmail.com
-            </a>
-          </p>
-        </div>
-      </div>
+      <ReviewSchema
+        reviews={[
+          {
+            author: 'Manufacturing Company',
+            rating: '5',
+            text: "Robert fixed our Access database that was crashing multiple times a day. Zero crashes in 8 months. As an Access database consultant, he really knows what he's doing.",
+          },
+          {
+            author: 'Construction Firm',
+            rating: '5',
+            text: "The Excel VBA automation he built saves us 6 hours every week. What used to take all Friday afternoon now takes 30 seconds. Best investment we've made.",
+          },
+          {
+            author: 'Financial Services',
+            rating: '5',
+            text: "He connected our Excel to SQL database and eliminated all manual data entry. Saves us 500 hours a year. As an Excel VBA consultant, he's the real deal.",
+          },
+        ]}
+      />
 
-      {/* Navigation */}
-      <nav className='border-b border-slate-200 sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm'>
-        <div className='max-w-7xl mx-auto px-6 md:px-8'>
-          <div className='flex justify-between items-center py-6'>
-            <Link
-              to='/'
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className='flex items-center'
-            >
-              <img
-                src='/logo.png'
-                alt='ExcelAccessConsultant Logo'
-                className='h-14 md:h-16 w-auto'
-                width='200'
-                height='60'
-              />
-            </Link>
-            <div className='hidden md:flex items-center gap-8'>
-              <Link
-                to='/'
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                Home
-              </Link>
-              <a
-                href='#about'
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('about');
-                }}
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                About
-              </a>
-              <Link
-                to='/#services'
-                onClick={(e) => {
-                  if (window.location.pathname === '/') {
-                    e.preventDefault();
-                    scrollToSection('services');
-                  }
-                }}
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                Services
-              </Link>
-              <Link
-                to='/#faq'
-                onClick={(e) => {
-                  if (window.location.pathname === '/') {
-                    e.preventDefault();
-                    scrollToSection('faq');
-                  }
-                }}
-                className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors'
-              >
-                FAQ
-              </Link>
-              <Link
-                to='/#contact'
-                onClick={(e) => {
-                  if (window.location.pathname === '/') {
-                    e.preventDefault();
-                    scrollToSection('contact');
-                  }
-                }}
-                className='btn-primary'
-              >
-                Get Started
-              </Link>
-            </div>
-            <button
-              className='md:hidden text-slate-700 p-2'
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label='Toggle mobile menu'
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? (
-                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M6 18L18 6M6 6l12 12'
-                  />
-                </svg>
-              ) : (
-                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M4 6h16M4 12h16M4 18h16'
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className='md:hidden border-t border-slate-200 py-4'>
-              <div className='flex flex-col gap-4'>
-                <Link
-                  to='/'
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
-                >
-                  Home
-                </Link>
-                <a
-                  href='#about'
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    scrollToSection('about');
-                  }}
-                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
-                >
-                  About
-                </a>
-                <Link
-                  to='/#services'
-                  onClick={(e) => {
-                    setIsMobileMenuOpen(false);
-                    if (window.location.pathname === '/') {
-                      e.preventDefault();
-                      scrollToSection('services');
-                    }
-                  }}
-                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
-                >
-                  Services
-                </Link>
-                <Link
-                  to='/#faq'
-                  onClick={(e) => {
-                    setIsMobileMenuOpen(false);
-                    if (window.location.pathname === '/') {
-                      e.preventDefault();
-                      scrollToSection('faq');
-                    }
-                  }}
-                  className='text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors py-2'
-                >
-                  FAQ
-                </Link>
-                <Link
-                  to='/#contact'
-                  onClick={(e) => {
-                    setIsMobileMenuOpen(false);
-                    if (window.location.pathname === '/') {
-                      e.preventDefault();
-                      scrollToSection('contact');
-                    }
-                  }}
-                  className='btn-primary text-left w-full py-2 block'
-                >
-                  Get Started
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
-
-      <main id='main-content'>
-        {/* Hero Section */}
+      <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-primary selection:text-white'>
+        {/* Hero Section - Asymmetric Split: 55% content / 45% visual */}
         <section
           id='home'
-          className='relative w-full h-[600px] md:h-[700px] flex items-center justify-center text-center overflow-hidden bg-slate-100'
+          className='relative w-full min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden bg-slate-50'
         >
-          {/* Hero Background Image - Full Screen */}
-          <div className='absolute inset-0 z-0 overflow-hidden'>
-            <img
-              src='/hero.jpeg'
-              alt='Excel and Access Consulting'
-              className='w-full h-full object-cover'
-              loading='lazy'
-              style={{
-                objectPosition: 'center',
-                minHeight: '100%',
-                minWidth: '100%',
-                transform: 'scale(1.5)',
-              }}
-              onError={(e) => {
-                e.target.style.display = 'none';
-              }}
-            />
-          </div>
-          {/* Subtle overlay for text readability */}
-          <div className='absolute inset-0 z-[1] bg-gradient-to-b from-white/75 via-white/55 to-white/75'></div>
+          {/* Pattern Overlay */}
+          <div
+            className='absolute inset-0 opacity-10'
+            style={{
+              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+              backgroundSize: '40px 40px',
+            }}
+          ></div>
 
-          {/* Content Container */}
-          <div className='relative z-10 max-w-5xl mx-auto px-6 py-24'>
-            <div className='badge mb-8 text-excel border-excel/30 bg-white/90 backdrop-blur-sm'>
-              20 Years of Excel & Access Experience
-            </div>
+          <div className='relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8'>
+            <div className='grid md:grid-cols-[55%_45%] gap-6 md:gap-8 items-center py-8 md:py-12'>
+              {/* Content - 55% */}
+              <div className='text-slate-900'>
+                <div className='inline-block mb-6 px-3 py-1 bg-slate-100 rounded-full text-xs md:text-sm font-semibold text-slate-700 border border-slate-200'>
+                  200+ Projects Since 2010
+                </div>
 
-            <h1 className='text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 font-display drop-shadow-sm'>
-              Excel and Access consulting that actually works.
-            </h1>
+                <h1 className='text-display-lg md:text-display-xl lg:text-display-2xl font-extrabold mb-6 text-slate-900 max-w-[600px] leading-tight'>
+                  Turn Days of Manual Excel Work Into Minutes
+                </h1>
 
-            <p className='text-lg text-slate-700 max-w-2xl mx-auto mb-10 leading-relaxed font-medium'>
-              I fix broken spreadsheets, build databases that don&apos;t crash, and automate the
-              stuff that wastes your time. No fluff, just working systems.
-            </p>
+                <p className='text-lg md:text-xl text-slate-700 max-w-[500px] mb-8 leading-relaxed'>
+                  I automate repetitive Excel and Access tasks that waste your team's time—data
+                  consolidation, reporting, calculations, and more. Serving businesses nationwide
+                  for 15+ years.
+                </p>
 
-            <div className='flex flex-col sm:flex-row justify-center gap-4 mb-16'>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className='bg-excel hover:bg-excel-hover text-white px-8 py-4 text-base font-medium transition-colors'
-              >
-                Schedule a Free Consultation
-              </button>
-              <button onClick={() => scrollToSection('services')} className='btn-secondary'>
-                See What I Do →
-              </button>
-            </div>
+                {/* CTA Buttons - 16px gap */}
+                <div className='flex flex-col sm:flex-row gap-4 mb-6'>
+                  <a
+                    href='#calculator'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection('calculator');
+                    }}
+                    className='bg-primary hover:bg-primary-hover text-white px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg shadow-lg text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                  >
+                    Calculate Your Savings
+                  </a>
+                  <a
+                    href='tel:8016163702'
+                    className='bg-white hover:bg-slate-100 text-primary border-2 border-primary px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg text-center flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                  >
+                    <svg width='20' height='20' viewBox='0 0 20 20' fill='currentColor'>
+                      <path d='M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z' />
+                    </svg>
+                    <span>Call 801-616-3702</span>
+                  </a>
+                </div>
 
-            {/* Trust Bar */}
-            <div className='border-t border-slate-200 pt-10 text-slate-600 text-sm font-medium'>
-              <div className='flex flex-wrap justify-center items-center gap-4'>
-                <span>20+ Years Experience</span>
-                <span className='text-slate-400'>•</span>
-                <span>Excel & MS Access Specialist</span>
-                <span className='text-slate-400'>•</span>
-                <span>Direct Principal Access</span>
+                {/* Trust Line */}
+                <p className='text-slate-600 text-sm md:text-base'>
+                  Free 45-minute consultation. No sales pitch.
+                </p>
+              </div>
+
+              {/* Visual - 45% - High-quality image with subtle parallax */}
+              <div className='relative hidden md:block'>
+                <div className='relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-complex'>
+                  <img
+                    src='/hero.jpeg'
+                    alt='Excel and Access Consulting'
+                    className='w-full h-[400px] object-cover'
+                    loading='eager'
+                    fetchpriority='high'
+                    style={{
+                      transform: 'translateZ(0)',
+                      willChange: 'transform',
+                    }}
+                  />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent'></div>
+                </div>
+                {/* Floating Stats Cards */}
+                <div className='absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-4 transform hover:scale-105 transition-transform duration-standard'>
+                  <div className='text-2xl font-bold text-primary'>500+</div>
+                  <div className='text-sm text-slate-600'>Projects Delivered</div>
+                </div>
+                <div className='absolute -top-6 -right-6 bg-white rounded-lg shadow-xl p-4 transform hover:scale-105 transition-transform duration-standard'>
+                  <div className='text-2xl font-bold text-secondary'>20+</div>
+                  <div className='text-sm text-slate-600'>Years Experience</div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <section id='services' className='py-24 bg-white'>
-          <div className='max-w-6xl mx-auto px-6'>
-            <div className='text-center mb-16'>
-              <h2 className='text-4xl md:text-5xl font-bold mb-6 font-display text-slate-900'>
-                What I Do
+        {/* Problem-Solution Section - Modern Cards */}
+        <section className='py-8 md:py-12 bg-surface'>
+          <div className='max-w-7xl mx-auto px-6'>
+            <div className='text-center mb-8 md:mb-16'>
+              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
+                Still Doing Manual Excel Work?
               </h2>
-              <p className='text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed'>
-                I build Excel and Access systems for companies that actually use them every day. If
-                your spreadsheet crashes or your database is slow, I can fix it. If you&apos;re
-                doing the same thing manually every week, I can automate it.
+              <p className='text-body-lg text-slate-600 max-w-2xl mx-auto'>
+                These are the problems I solve every day:
               </p>
             </div>
 
-            <div className='space-y-6'>
-              {/* Service 01 */}
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>01</div>
-                  <div className='flex-1'>
-                    <h3 className='text-2xl font-bold mb-3 font-display text-slate-900'>
-                      Process Automation
-                    </h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      Stop doing the same thing over and over. I write VBA code that handles your
-                      repetitive tasks automatically, so you can focus on actual work.
-                    </p>
+            <div className='grid md:grid-cols-3 gap-6'>
+              {/* Problem Card 1 */}
+              <div className='card group'>
+                <div className='mb-4'>
+                  <div className='text-primary text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-standard'>
+                    ⏱️
                   </div>
-                </div>
-              </div>
-
-              {/* Service 02 */}
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>02</div>
-                  <div className='flex-1'>
-                    <h3 className='text-2xl font-bold mb-3 font-display text-slate-900'>
-                      Access Databases
-                    </h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      I build Access databases that multiple people can use without breaking.
-                      They&apos;re fast, they don&apos;t corrupt your data, and they&apos;ll still
-                      work in five years.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Service 03 */}
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>03</div>
-                  <div className='flex-1'>
-                    <h3 className='text-2xl font-bold mb-3 font-display text-slate-900'>
-                      Fixing Broken Systems
-                    </h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      Your spreadsheet takes forever to open? Your database crashes? I can usually
-                      fix it without starting over. I&apos;ll clean it up, speed it up, and make it
-                      stable again.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Service 04 */}
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>04</div>
-                  <div className='flex-1'>
-                    <h3 className='text-2xl font-bold mb-3 font-display text-slate-900'>
-                      Custom Business Rules
-                    </h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      I code your actual business rules into the system. That way your reports and
-                      calculations are right every time, not just when someone remembers to check.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Service 05 */}
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>05</div>
-                  <div className='flex-1'>
-                    <h3 className='text-2xl font-bold mb-3 font-display text-slate-900'>
-                      Connecting Systems
-                    </h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      I hook up your Excel and Access files to other systems—SQL databases, ERP
-                      software, whatever you&apos;re using. No more copying and pasting data between
-                      systems.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Case Studies */}
-              <div className='mt-20 pt-16 border-t border-slate-200'>
-                <div className='text-center mb-12'>
-                  <h3 className='text-3xl md:text-4xl font-bold mb-4 font-display text-slate-900'>
-                    Case Studies
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900 group-hover:text-primary transition-colors duration-micro'>
+                    Spending Hours on Weekly Reports?
                   </h3>
-                  <p className='text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed'>
-                    Real problems, real solutions. Here&apos;s what I&apos;ve fixed for clients.
-                  </p>
+                </div>
+                <p className='text-body-base text-slate-600 leading-relaxed mb-6'>
+                  Copying data from 10+ files, reformatting, checking formulas, emailing results.
+                  Same process every week.
+                </p>
+                <Link
+                  to='/excel-automation'
+                  className='text-primary hover:text-primary-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
+                >
+                  Automate It →
+                </Link>
+              </div>
+
+              {/* Problem Card 2 */}
+              <div className='card group'>
+                <div className='mb-4'>
+                  <div className='text-secondary text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-standard'>
+                    💥
+                  </div>
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900 group-hover:text-secondary transition-colors duration-micro'>
+                    Access Database Keeps Crashing?
+                  </h3>
+                </div>
+                <p className='text-body-base text-slate-600 leading-relaxed mb-6'>
+                  File corruption, slow queries, multi-user conflicts. Can't rely on your data
+                  anymore.
+                </p>
+                <Link
+                  to='/access-consulting'
+                  className='text-secondary hover:text-secondary-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
+                >
+                  Fix It →
+                </Link>
+              </div>
+
+              {/* Problem Card 3 */}
+              <div className='card group'>
+                <div className='mb-4'>
+                  <div className='text-accent text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-standard'>
+                    🔢
+                  </div>
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900 group-hover:text-accent transition-colors duration-micro'>
+                    Financial Model Too Slow?
+                  </h3>
+                </div>
+                <p className='text-body-base text-slate-600 leading-relaxed mb-6'>
+                  Recalculation takes 5+ minutes. Can't add more scenarios. Formulas breaking
+                  randomly.
+                </p>
+                <Link
+                  to='/financial-modeling'
+                  className='text-accent hover:text-accent-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
+                >
+                  Optimize It →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section - Modern Card Grid */}
+        <section id='services' className='py-12 md:py-16 bg-white'>
+          <div className='max-w-7xl mx-auto px-6'>
+            <div className='text-center mb-10 md:mb-14'>
+              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
+                What I Do
+              </h2>
+              <p className='text-body-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
+                I automate repetitive Excel and Access tasks that waste your team's time. Here's how
+                I can help.
+              </p>
+            </div>
+
+            {/* Services Grid - Clean Card Layout */}
+            <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6'>
+              {[
+                {
+                  num: '01',
+                  title: 'Excel VBA Process Automation',
+                  desc: 'Stop doing the same thing over and over. As an Excel VBA consultant, I write VBA code that handles your repetitive tasks automatically, so you can focus on actual work.',
+                  link: '/excel-automation',
+                  bgColor: 'bg-primary',
+                  textColor: 'text-primary',
+                  hoverBorder: 'hover:border-primary',
+                  hoverText: 'group-hover:text-primary',
+                  icon: '📊',
+                },
+                {
+                  num: '02',
+                  title: 'Access Database Development',
+                  desc: 'As an Access database consultant, I build databases that multiple people can use without breaking.',
+                  link: '/access-consulting',
+                  bgColor: 'bg-secondary',
+                  textColor: 'text-secondary',
+                  hoverBorder: 'hover:border-secondary',
+                  hoverText: 'group-hover:text-secondary',
+                  icon: '🗄️',
+                },
+                {
+                  num: '03',
+                  title: 'Financial Modeling',
+                  desc: 'Build accurate Excel financial models for forecasting, budgeting, and analysis.',
+                  link: '/financial-modeling',
+                  bgColor: 'bg-primary',
+                  textColor: 'text-primary',
+                  hoverBorder: 'hover:border-primary',
+                  hoverText: 'group-hover:text-primary',
+                  icon: '📈',
+                },
+                {
+                  num: '04',
+                  title: 'Database Migration',
+                  desc: 'Migrate Access databases to SQL Server for better performance and scalability.',
+                  link: '/database-migration',
+                  bgColor: 'bg-secondary',
+                  textColor: 'text-secondary',
+                  hoverBorder: 'hover:border-secondary',
+                  hoverText: 'group-hover:text-secondary',
+                  icon: '🔄',
+                },
+                {
+                  num: '05',
+                  title: 'VBA Development',
+                  desc: 'Custom VBA programming for Excel. Build macros, automation scripts, and Excel applications. Fix broken code or build from scratch.',
+                  link: '/vba-development',
+                  bgColor: 'bg-primary',
+                  textColor: 'text-primary',
+                  hoverBorder: 'hover:border-primary',
+                  hoverText: 'group-hover:text-primary',
+                  icon: '⚙️',
+                },
+              ].map((service, idx) => (
+                <Link
+                  key={service.num}
+                  to={service.link}
+                  className={`group relative bg-white rounded-xl border-2 border-slate-200 ${service.hoverBorder} p-6 md:p-7 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1`}
+                >
+                  {/* Number Badge */}
+                  <div className='flex items-start justify-between mb-4'>
+                    <div
+                      className={`w-12 h-12 ${service.bgColor} text-white rounded-lg flex items-center justify-center text-lg font-bold shadow-sm group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      {service.num}
+                    </div>
+                    <div className='text-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-300'>
+                      {service.icon}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div>
+                    <h3
+                      className={`text-heading-md md:text-heading-lg font-bold mb-3 font-display text-slate-900 ${service.hoverText} transition-colors duration-300`}
+                    >
+                      {service.title}
+                    </h3>
+                    <p className='text-body-sm text-slate-600 leading-relaxed mb-4'>
+                      {service.desc}
+                    </p>
+                    <span
+                      className={`inline-flex items-center gap-2 ${service.textColor} font-semibold text-sm group-hover:gap-3 transition-all duration-300`}
+                    >
+                      Learn More
+                      <svg
+                        className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300'
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M9 5l7 7-7 7'
+                        />
+                      </svg>
+                    </span>
+                  </div>
+
+                  {/* Hover Accent */}
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1 ${service.bgColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-xl`}
+                  ></div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Case Studies */}
+            <div className='mt-20 pt-16 border-t border-slate-200'>
+              <div className='text-center mb-8'>
+                <h3 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
+                  Case Studies
+                </h3>
+                <p className='text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed'>
+                  Real problems, real solutions. Here&apos;s what I&apos;ve fixed for clients.
+                </p>
+              </div>
+
+              <div className='space-y-4'>
+                <div className='card'>
+                  <button
+                    onClick={() => toggleCaseStudy(0)}
+                    className='w-full flex items-center justify-between text-left'
+                    aria-expanded={openCaseStudyIndex === 0}
+                  >
+                    <div className='flex items-start gap-4'>
+                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
+                        01
+                      </div>
+                      <div>
+                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
+                          Manufacturing Company - Inventory Tracking
+                        </h4>
+                        <p className='text-slate-500 text-sm mt-1'>
+                          Fixed a crashing Access database used by 15 people daily
+                        </p>
+                      </div>
+                    </div>
+                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
+                      {openCaseStudyIndex === 0 ? '−' : '+'}
+                    </span>
+                  </button>
+                  {openCaseStudyIndex === 0 && (
+                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
+                        <p>
+                          Their Access database crashed multiple times a day. Fifteen people were
+                          trying to use it at once, and it kept corrupting data. They were losing
+                          hours every week re-entering lost information.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
+                        <p>
+                          I rebuilt the database structure to handle concurrent users properly.
+                          Fixed the queries that were causing crashes. Added proper error handling
+                          so when something goes wrong, it doesn&apos;t lose data.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
+                        <p>
+                          Zero crashes in the last 8 months. All 15 people can use it simultaneously
+                          without issues. They&apos;re saving about 10 hours a week that they used
+                          to spend fixing problems.
+                        </p>
+                        <p className='mt-3'>
+                          <a
+                            href='#services'
+                            onClick={(e) => {
+                              e.preventDefault();
+                              scrollToSection('services');
+                            }}
+                            className='text-primary hover:text-primary-hover font-medium underline transition-colors duration-micro'
+                          >
+                            Learn more about Access database consulting services →
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className='space-y-4'>
-                  <div className='card'>
-                    <button
-                      onClick={() => toggleCaseStudy(0)}
-                      className='w-full flex items-center justify-between text-left'
-                      aria-expanded={openCaseStudyIndex === 0}
-                    >
-                      <div className='flex items-start gap-4'>
-                        <div className='text-excel font-bold text-xl font-mono flex-shrink-0'>
-                          01
-                        </div>
-                        <div>
-                          <h4 className='text-xl font-bold font-display text-slate-900'>
-                            Manufacturing Company - Inventory Tracking
-                          </h4>
-                          <p className='text-slate-500 text-sm mt-1'>
-                            Fixed a crashing Access database used by 15 people daily
-                          </p>
-                        </div>
+                <div className='card'>
+                  <button
+                    onClick={() => toggleCaseStudy(1)}
+                    className='w-full flex items-center justify-between text-left'
+                    aria-expanded={openCaseStudyIndex === 1}
+                  >
+                    <div className='flex items-start gap-4'>
+                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
+                        02
                       </div>
-                      <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                        {openCaseStudyIndex === 0 ? '−' : '+'}
-                      </span>
-                    </button>
-                    {openCaseStudyIndex === 0 && (
-                      <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                          <p>
-                            Their Access database crashed multiple times a day. Fifteen people were
-                            trying to use it at once, and it kept corrupting data. They were losing
-                            hours every week re-entering lost information.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                          <p>
-                            I rebuilt the database structure to handle concurrent users properly.
-                            Fixed the queries that were causing crashes. Added proper error handling
-                            so when something goes wrong, it doesn&apos;t lose data.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                          <p>
-                            Zero crashes in the last 8 months. All 15 people can use it
-                            simultaneously without issues. They&apos;re saving about 10 hours a week
-                            that they used to spend fixing problems.
-                          </p>
-                        </div>
+                      <div>
+                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
+                          Construction Firm - Automated Reporting
+                        </h4>
+                        <p className='text-slate-500 text-sm mt-1'>
+                          Eliminated 6 hours of weekly manual work
+                        </p>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
+                      {openCaseStudyIndex === 1 ? '−' : '+'}
+                    </span>
+                  </button>
+                  {openCaseStudyIndex === 1 && (
+                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
+                        <p>
+                          Every Friday, someone spent 6 hours pulling data from multiple
+                          spreadsheets, doing calculations, and creating reports. It was tedious,
+                          error-prone, and nobody wanted to do it.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
+                        <p>
+                          I wrote VBA code that automatically pulls data from all their
+                          spreadsheets, runs the calculations, and generates the reports. One button
+                          click, done in 30 seconds.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
+                        <p>
+                          They get their reports in 30 seconds instead of 6 hours. No more
+                          calculation errors. The person who used to do this manually now handles
+                          other work. Saves them about $15,000 a year in time.
+                        </p>
+                        <p className='mt-3'>
+                          <a
+                            href='#services'
+                            onClick={(e) => {
+                              e.preventDefault();
+                              scrollToSection('services');
+                            }}
+                            className='text-primary hover:text-primary-hover font-medium underline transition-colors duration-micro'
+                          >
+                            Learn more about Excel VBA automation services →
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                  <div className='card'>
-                    <button
-                      onClick={() => toggleCaseStudy(1)}
-                      className='w-full flex items-center justify-between text-left'
-                      aria-expanded={openCaseStudyIndex === 1}
-                    >
-                      <div className='flex items-start gap-4'>
-                        <div className='text-excel font-bold text-xl font-mono flex-shrink-0'>
-                          02
-                        </div>
-                        <div>
-                          <h4 className='text-xl font-bold font-display text-slate-900'>
-                            Construction Firm - Automated Reporting
-                          </h4>
-                          <p className='text-slate-500 text-sm mt-1'>
-                            Eliminated 6 hours of weekly manual work
-                          </p>
-                        </div>
+                <div className='card'>
+                  <button
+                    onClick={() => toggleCaseStudy(2)}
+                    className='w-full flex items-center justify-between text-left'
+                    aria-expanded={openCaseStudyIndex === 2}
+                  >
+                    <div className='flex items-start gap-4'>
+                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
+                        03
                       </div>
-                      <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                        {openCaseStudyIndex === 1 ? '−' : '+'}
-                      </span>
-                    </button>
-                    {openCaseStudyIndex === 1 && (
-                      <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                          <p>
-                            Every Friday, someone spent 6 hours pulling data from multiple
-                            spreadsheets, doing calculations, and creating reports. It was tedious,
-                            error-prone, and nobody wanted to do it.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                          <p>
-                            I wrote VBA code that automatically pulls data from all their
-                            spreadsheets, runs the calculations, and generates the reports. One
-                            button click, done in 30 seconds.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                          <p>
-                            They get their reports in 30 seconds instead of 6 hours. No more
-                            calculation errors. The person who used to do this manually now handles
-                            other work. Saves them about $15,000 a year in time.
-                          </p>
-                        </div>
+                      <div>
+                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
+                          Financial Services - Data Integration
+                        </h4>
+                        <p className='text-slate-500 text-sm mt-1'>
+                          Connected Excel to SQL database, eliminated manual data entry
+                        </p>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
+                      {openCaseStudyIndex === 2 ? '−' : '+'}
+                    </span>
+                  </button>
+                  {openCaseStudyIndex === 2 && (
+                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
+                        <p>
+                          They had client data in a SQL database but needed to work with it in
+                          Excel. Every day, someone exported data, cleaned it up in Excel, did
+                          analysis, then manually entered results back into the database. Took 2-3
+                          hours daily.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
+                        <p>
+                          I built an Excel workbook that connects directly to their SQL database. It
+                          pulls data automatically, runs their analysis, and can push results back
+                          to the database. All with a few clicks.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
+                        <p>
+                          What used to take 2-3 hours now takes 5 minutes. No more copy-paste
+                          errors. Data stays in sync automatically. They&apos;re saving about 500
+                          hours a year.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                  <div className='card'>
-                    <button
-                      onClick={() => toggleCaseStudy(2)}
-                      className='w-full flex items-center justify-between text-left'
-                      aria-expanded={openCaseStudyIndex === 2}
-                    >
-                      <div className='flex items-start gap-4'>
-                        <div className='text-excel font-bold text-xl font-mono flex-shrink-0'>
-                          03
-                        </div>
-                        <div>
-                          <h4 className='text-xl font-bold font-display text-slate-900'>
-                            Financial Services - Data Integration
-                          </h4>
-                          <p className='text-slate-500 text-sm mt-1'>
-                            Connected Excel to SQL database, eliminated manual data entry
-                          </p>
-                        </div>
+                <div className='card'>
+                  <button
+                    onClick={() => toggleCaseStudy(3)}
+                    className='w-full flex items-center justify-between text-left'
+                    aria-expanded={openCaseStudyIndex === 3}
+                  >
+                    <div className='flex items-start gap-4'>
+                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
+                        04
                       </div>
-                      <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                        {openCaseStudyIndex === 2 ? '−' : '+'}
-                      </span>
-                    </button>
-                    {openCaseStudyIndex === 2 && (
-                      <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                          <p>
-                            They had client data in a SQL database but needed to work with it in
-                            Excel. Every day, someone exported data, cleaned it up in Excel, did
-                            analysis, then manually entered results back into the database. Took 2-3
-                            hours daily.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                          <p>
-                            I built an Excel workbook that connects directly to their SQL database.
-                            It pulls data automatically, runs their analysis, and can push results
-                            back to the database. All with a few clicks.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                          <p>
-                            What used to take 2-3 hours now takes 5 minutes. No more copy-paste
-                            errors. Data stays in sync automatically. They&apos;re saving about 500
-                            hours a year.
-                          </p>
-                        </div>
+                      <div>
+                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
+                          Distribution Company - Slow Spreadsheet
+                        </h4>
+                        <p className='text-slate-500 text-sm mt-1'>
+                          Fixed a 50MB Excel file that took 5 minutes to open
+                        </p>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
+                      {openCaseStudyIndex === 3 ? '−' : '+'}
+                    </span>
+                  </button>
+                  {openCaseStudyIndex === 3 && (
+                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
+                        <p>
+                          Their main Excel file was 50MB and took 5 minutes to open. Every
+                          calculation took forever. It crashed regularly. They were afraid to add
+                          more data because it would get worse.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
+                        <p>
+                          I cleaned up the file structure, removed unnecessary formatting, optimized
+                          formulas, and moved some data to a separate Access database. The Excel
+                          file now handles the analysis, Access stores the data.
+                        </p>
+                      </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
+                        <p>
+                          File opens in 10 seconds instead of 5 minutes. Calculations run instantly.
+                          No more crashes. They can add as much data as they need without worrying
+                          about performance.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                  <div className='card'>
-                    <button
-                      onClick={() => toggleCaseStudy(3)}
-                      className='w-full flex items-center justify-between text-left'
-                      aria-expanded={openCaseStudyIndex === 3}
-                    >
-                      <div className='flex items-start gap-4'>
-                        <div className='text-excel font-bold text-xl font-mono flex-shrink-0'>
-                          04
-                        </div>
-                        <div>
-                          <h4 className='text-xl font-bold font-display text-slate-900'>
-                            Distribution Company - Slow Spreadsheet
-                          </h4>
-                          <p className='text-slate-500 text-sm mt-1'>
-                            Fixed a 50MB Excel file that took 5 minutes to open
-                          </p>
-                        </div>
+                <div className='card'>
+                  <button
+                    onClick={() => toggleCaseStudy(4)}
+                    className='w-full flex items-center justify-between text-left'
+                    aria-expanded={openCaseStudyIndex === 4}
+                  >
+                    <div className='flex items-start gap-4'>
+                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
+                        05
                       </div>
-                      <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                        {openCaseStudyIndex === 3 ? '−' : '+'}
-                      </span>
-                    </button>
-                    {openCaseStudyIndex === 3 && (
-                      <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                          <p>
-                            Their main Excel file was 50MB and took 5 minutes to open. Every
-                            calculation took forever. It crashed regularly. They were afraid to add
-                            more data because it would get worse.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                          <p>
-                            I cleaned up the file structure, removed unnecessary formatting,
-                            optimized formulas, and moved some data to a separate Access database.
-                            The Excel file now handles the analysis, Access stores the data.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                          <p>
-                            File opens in 10 seconds instead of 5 minutes. Calculations run
-                            instantly. No more crashes. They can add as much data as they need
-                            without worrying about performance.
-                          </p>
-                        </div>
+                      <div>
+                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
+                          Retail Chain - Pricing System
+                        </h4>
+                        <p className='text-slate-500 text-sm mt-1'>
+                          Automated complex pricing calculations with business rules
+                        </p>
                       </div>
-                    )}
-                  </div>
-
-                  <div className='card'>
-                    <button
-                      onClick={() => toggleCaseStudy(4)}
-                      className='w-full flex items-center justify-between text-left'
-                      aria-expanded={openCaseStudyIndex === 4}
-                    >
-                      <div className='flex items-start gap-4'>
-                        <div className='text-excel font-bold text-xl font-mono flex-shrink-0'>
-                          05
-                        </div>
-                        <div>
-                          <h4 className='text-xl font-bold font-display text-slate-900'>
-                            Retail Chain - Pricing System
-                          </h4>
-                          <p className='text-slate-500 text-sm mt-1'>
-                            Automated complex pricing calculations with business rules
-                          </p>
-                        </div>
+                    </div>
+                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
+                      {openCaseStudyIndex === 4 ? '−' : '+'}
+                    </span>
+                  </button>
+                  {openCaseStudyIndex === 4 && (
+                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
+                        <p>
+                          They had complicated pricing rules based on product type, quantity,
+                          customer tier, and promotions. Someone had to manually calculate prices
+                          for every order. Mistakes were common and expensive.
+                        </p>
                       </div>
-                      <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                        {openCaseStudyIndex === 4 ? '−' : '+'}
-                      </span>
-                    </button>
-                    {openCaseStudyIndex === 4 && (
-                      <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                          <p>
-                            They had complicated pricing rules based on product type, quantity,
-                            customer tier, and promotions. Someone had to manually calculate prices
-                            for every order. Mistakes were common and expensive.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                          <p>
-                            I built an Access database that stores all their pricing rules and an
-                            Excel interface that calculates prices automatically. Enter the product
-                            and customer info, it gives you the right price every time.
-                          </p>
-                        </div>
-                        <div>
-                          <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                          <p>
-                            Pricing is now instant and accurate. No more calculation errors. They
-                            can update pricing rules in one place and it applies everywhere. Saves
-                            them time and prevents costly mistakes.
-                          </p>
-                        </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
+                        <p>
+                          I built an Access database that stores all their pricing rules and an
+                          Excel interface that calculates prices automatically. Enter the product
+                          and customer info, it gives you the right price every time.
+                        </p>
                       </div>
-                    )}
-                  </div>
+                      <div>
+                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
+                        <p>
+                          Pricing is now instant and accurate. No more calculation errors. They can
+                          update pricing rules in one place and it applies everywhere. Saves them
+                          time and prevents costly mistakes.
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section id='about' className='py-24 bg-white border-y border-slate-200'>
-          <div className='max-w-6xl mx-auto px-6'>
+        {/* Testimonials Section - Modern Cards */}
+        <section className='py-8 md:py-12 bg-white border-y border-slate-200'>
+          <div className='max-w-7xl mx-auto px-6'>
+            <div className='text-center mb-8 md:mb-16'>
+              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900'>
+                What Clients Say
+              </h2>
+              <p className='text-body-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
+                Don&apos;t just take my word for it. Here&apos;s what businesses say about working
+                with an experienced Excel VBA consultant and Access database consultant.{' '}
+                <Link
+                  to='/contact'
+                  className='text-primary hover:text-primary-hover font-semibold underline transition-colors duration-micro'
+                >
+                  Get your free consultation →
+                </Link>
+              </p>
+            </div>
+
+            <div className='grid md:grid-cols-3 gap-6'>
+              <div className='card group animate-fade-in'>
+                <div className='mb-4'>
+                  <div className='flex text-primary mb-3'>
+                    {'★★★★★'.split('').map((star, i) => (
+                      <span
+                        key={i}
+                        className='text-xl transform group-hover:scale-110 transition-transform duration-micro'
+                        style={{ transitionDelay: `${i * 50}ms` }}
+                      >
+                        {star}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <p className='text-body-base text-slate-700 leading-relaxed mb-4 italic'>
+                  &quot;Robert fixed our Access database that was crashing multiple times a day.
+                  Zero crashes in 8 months. As an Access database consultant, he really knows what
+                  he&apos;s doing.&quot;
+                </p>
+                <div className='pt-4 border-t border-slate-200'>
+                  <p className='font-semibold text-slate-900'>Manufacturing Company</p>
+                  <p className='text-body-sm text-slate-600'>15-user Access database system</p>
+                </div>
+              </div>
+
+              <div className='card group animate-fade-in' style={{ animationDelay: '100ms' }}>
+                <div className='mb-4'>
+                  <div className='flex text-secondary mb-3'>
+                    {'★★★★★'.split('').map((star, i) => (
+                      <span
+                        key={i}
+                        className='text-xl transform group-hover:scale-110 transition-transform duration-micro'
+                        style={{ transitionDelay: `${i * 50}ms` }}
+                      >
+                        {star}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <p className='text-body-base text-slate-700 leading-relaxed mb-4 italic'>
+                  &quot;The Excel VBA automation he built saves us 6 hours every week. What used to
+                  take all Friday afternoon now takes 30 seconds. Best investment we&apos;ve
+                  made.&quot;
+                </p>
+                <div className='pt-4 border-t border-slate-200'>
+                  <p className='font-semibold text-slate-900'>Construction Firm</p>
+                  <p className='text-body-sm text-slate-600'>Automated reporting system</p>
+                </div>
+              </div>
+
+              <div className='card group animate-fade-in' style={{ animationDelay: '200ms' }}>
+                <div className='mb-4'>
+                  <div className='flex text-accent mb-3'>
+                    {'★★★★★'.split('').map((star, i) => (
+                      <span
+                        key={i}
+                        className='text-xl transform group-hover:scale-110 transition-transform duration-micro'
+                        style={{ transitionDelay: `${i * 50}ms` }}
+                      >
+                        {star}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <p className='text-body-base text-slate-700 leading-relaxed mb-4 italic'>
+                  &quot;He connected our Excel to SQL database and eliminated all manual data entry.
+                  Saves us 500 hours a year. As an Excel VBA consultant, he&apos;s the real
+                  deal.&quot;
+                </p>
+                <div className='pt-4 border-t border-slate-200'>
+                  <p className='font-semibold text-slate-900'>Financial Services</p>
+                  <p className='text-body-sm text-slate-600'>Data integration project</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section - Modern Design */}
+        <section id='about' className='py-8 md:py-12 bg-surface border-y border-slate-200'>
+          <div className='max-w-7xl mx-auto px-6'>
             {/* Header */}
-            <div className='relative max-w-5xl mx-auto text-center mb-16'>
-              <div className='absolute inset-0 -z-10 bg-excel/5 rounded-full blur-3xl'></div>
-              <h1 className='text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 font-display'>
+            <div className='relative max-w-7xl mx-auto px-6 text-center mb-8 md:mb-16'>
+              <div className='absolute inset-0 -z-10 bg-primary/5 rounded-full blur-3xl'></div>
+              <h2 className='text-heading-lg md:text-heading-xl font-extrabold tracking-tight mb-6 text-slate-900 font-display'>
                 A Specialist for Complex Enterprises.
-              </h1>
-              <p className='text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
+              </h2>
+              <p className='text-body-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
                 Direct access to 20+ years of enterprise-level Excel and Access expertise.
               </p>
             </div>
 
             {/* About Robert Terry */}
-            <div className='max-w-4xl mx-auto mb-16'>
-              <div className='space-y-8 text-lg text-slate-700 leading-relaxed'>
+            <div className='max-w-7xl mx-auto px-6 mb-8 md:mb-16'>
+              <div className='space-y-6 text-body-lg text-slate-700 leading-relaxed'>
                 <p>
-                  I&apos;m Robert Terry. For over 20 years, I&apos;ve worked at the intersection of
-                  business logic and Microsoft technology.
+                  I&apos;m Robert Terry, an Excel VBA consultant and Access database consultant
+                  based in Springville, Utah. For over 20 years, I&apos;ve worked at the
+                  intersection of business logic and Microsoft technology, serving businesses
+                  nationwide.
                 </p>
                 <p>
                   My approach is straightforward: I find the friction in your data processes and
@@ -1026,46 +942,56 @@ function HomePage() {
                 </p>
                 <p>
                   When you hire me, you&apos;re not getting just a programmer. You&apos;re getting a
-                  business partner who actually understands how your operations work.
+                  business partner who actually understands how your operations work. Whether
+                  you&apos;re in Utah or anywhere in the United States, I work remotely to deliver
+                  the same high-quality Excel and Access consulting services.
                 </p>
               </div>
 
-              <div className='mt-16 grid md:grid-cols-2 gap-8'>
-                <div className='card'>
-                  <h3 className='text-xl font-bold mb-4 font-display'>Direct Principal Access</h3>
-                  <p className='text-slate-600 leading-relaxed'>
+              <div className='mt-12 md:mt-16 grid md:grid-cols-2 gap-6'>
+                <div className='card group'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-primary transition-colors duration-micro'>
+                    Direct Principal Access
+                  </h3>
+                  <p className='text-body-base text-slate-600 leading-relaxed'>
                     Every conversation is with me. No account managers, no junior developers, no
                     outsourcing. The person who understands your business is the same person writing
                     your code.
                   </p>
                 </div>
 
-                <div className='card'>
-                  <h3 className='text-xl font-bold mb-4 font-display'>Code Ownership</h3>
-                  <p className='text-slate-600 leading-relaxed'>
+                <div className='card group'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-secondary transition-colors duration-micro'>
+                    Code Ownership
+                  </h3>
+                  <p className='text-body-base text-slate-600 leading-relaxed'>
                     You own 100% of what I build. No licenses, no lock-in, no recurring fees. The
                     systems I build are yours, period.
                   </p>
                 </div>
 
-                <div className='card'>
-                  <h3 className='text-xl font-bold mb-4 font-display'>Transparent Pricing</h3>
-                  <p className='text-slate-600 leading-relaxed mb-4'>
+                <div className='card group'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-accent transition-colors duration-micro'>
+                    Transparent Pricing
+                  </h3>
+                  <p className='text-body-base text-slate-600 leading-relaxed mb-4'>
                     Clear scope, clear milestones, clear expectations. No surprises, no hidden
                     costs.
                   </p>
                   <div className='pt-4 border-t border-slate-200'>
-                    <div className='text-excel text-2xl font-bold mb-2'>$90/hour</div>
-                    <div className='text-slate-600 text-sm'>Advisory</div>
-                    <div className='text-slate-600 text-sm mt-2'>
+                    <div className='text-primary text-3xl font-bold mb-2'>$90/hour</div>
+                    <div className='text-body-sm text-slate-600'>Advisory</div>
+                    <div className='text-body-sm text-slate-600 mt-2'>
                       Builds: Fixed-price after consultation
                     </div>
                   </div>
                 </div>
 
-                <div className='card'>
-                  <h3 className='text-xl font-bold mb-4 font-display'>Enterprise Security</h3>
-                  <p className='text-slate-600 leading-relaxed'>
+                <div className='card group'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-primary transition-colors duration-micro'>
+                    Enterprise Security
+                  </h3>
+                  <p className='text-body-base text-slate-600 leading-relaxed'>
                     All work happens in your IT environment. Your data never leaves your firewall.
                     I&apos;m ready to sign corporate NDAs right away.
                   </p>
@@ -1074,12 +1000,12 @@ function HomePage() {
             </div>
 
             {/* Expertise Section */}
-            <div className='max-w-4xl mx-auto py-16 bg-slate-50 border-y border-slate-200 rounded-lg px-8'>
-              <h2 className='text-4xl md:text-5xl font-bold mb-12 font-display text-center'>
+            <div className='max-w-7xl mx-auto px-6 py-12 md:py-16 bg-white border border-slate-200 rounded-card shadow-card'>
+              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-8 md:mb-8 font-display text-center'>
                 Specialization Over Generalization
               </h2>
 
-              <div className='space-y-6 text-lg text-slate-700 leading-relaxed'>
+              <div className='space-y-6 text-body-lg text-slate-700 leading-relaxed'>
                 <p>
                   I&apos;m not a creative designer. I&apos;m not generalist IT support. I&apos;m a
                   specialist in the Microsoft Data Stack—Excel, Access, VBA, and SQL Server.
@@ -1100,77 +1026,93 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className='py-24 bg-slate-50 border-y border-slate-200'>
-          <div className='max-w-4xl mx-auto px-6'>
-            <div className='text-center mb-16'>
-              <h2 className='text-4xl md:text-5xl font-bold mb-4 font-display text-slate-900'>
-                How I Work
+        {/* Process Section - Refined Card Design */}
+        <section className='py-12 md:py-16 bg-white border-y border-slate-200'>
+          <div className='max-w-7xl mx-auto px-6'>
+            <div className='text-center mb-10 md:mb-14'>
+              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
+                How It Works
               </h2>
+              <p className='text-body-lg text-slate-600 max-w-2xl mx-auto'>
+                Simple, transparent process from consultation to delivery
+              </p>
             </div>
 
-            <div className='space-y-8'>
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>01</div>
-                  <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display'>Understand</h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      Deep-dive audit of your current logic, workflows, and pain points. I
-                      don&apos;t assume—I verify how your business actually works.
-                    </p>
+            <div className='grid sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4'>
+              {[
+                {
+                  num: 1,
+                  title: 'Free Consultation',
+                  desc: '45-minute Zoom call to understand your process, pain points, and goals. No obligation.',
+                  bgColor: 'bg-primary',
+                  lightBg: 'bg-primary/5',
+                  textColor: 'text-primary',
+                },
+                {
+                  num: 2,
+                  title: 'Fixed-Price Quote',
+                  desc: 'Within 48 hours, you get a detailed proposal with scope, timeline, and exact cost. No surprises.',
+                  bgColor: 'bg-secondary',
+                  lightBg: 'bg-secondary/5',
+                  textColor: 'text-secondary',
+                },
+                {
+                  num: 3,
+                  title: 'Build & Test',
+                  desc: 'I develop your solution in 1-6 weeks (depending on complexity). You get progress updates weekly.',
+                  bgColor: 'bg-primary',
+                  lightBg: 'bg-primary/5',
+                  textColor: 'text-primary',
+                },
+                {
+                  num: 4,
+                  title: 'Training & Delivery',
+                  desc: "1-hour walkthrough session, written documentation, sample files. You're fully equipped to use it.",
+                  bgColor: 'bg-primary',
+                  lightBg: 'bg-primary/5',
+                  textColor: 'text-primary',
+                },
+                {
+                  num: 5,
+                  title: 'Ongoing Support',
+                  desc: "30-day warranty included. Optional maintenance plans available. I don't disappear after delivery.",
+                  bgColor: 'bg-secondary',
+                  lightBg: 'bg-secondary/5',
+                  textColor: 'text-secondary',
+                },
+              ].map((step, idx) => (
+                <div
+                  key={step.num}
+                  className={`group relative ${step.lightBg} rounded-xl border border-slate-200/60 p-4 md:p-5 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 hover:border-slate-300`}
+                  style={{ animationDelay: `${idx * 50}ms` }}
+                >
+                  {/* Badge - Centered at top */}
+                  <div className='flex flex-col items-center text-center mb-4'>
+                    <div
+                      className={`w-14 h-14 ${step.bgColor} text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-3 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}
+                    >
+                      {step.num}
+                    </div>
+                    <h3
+                      className={`text-heading-sm md:text-heading-md font-bold font-display ${step.textColor} mb-2`}
+                    >
+                      {step.title}
+                    </h3>
                   </div>
+                  {/* Description */}
+                  <p className='text-body-sm text-slate-600 leading-relaxed text-center'>{step.desc}</p>
                 </div>
-              </div>
-
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>02</div>
-                  <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display'>Design</h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      Structural architecture of the database or automation system. This includes
-                      data models, user interfaces, and error-handling that actually works.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>03</div>
-                  <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display'>Build</h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      Development in a sandbox environment. You&apos;ll see progress at each
-                      milestone, and we can tweak things before final deployment.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className='card'>
-                <div className='flex items-start gap-6'>
-                  <div className='text-excel font-bold text-2xl font-mono'>04</div>
-                  <div className='flex-1'>
-                    <h3 className='text-xl font-bold mb-3 font-display text-slate-900'>Support</h3>
-                    <p className='text-slate-600 leading-relaxed'>
-                      After I deliver it, I help you get comfortable using it. If something breaks
-                      or you need changes, I&apos;m here.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section id='faq' className='py-24 bg-slate-50 border-y border-slate-200'>
-          <div className='max-w-4xl mx-auto px-6'>
-            <div className='text-center mb-16'>
-              <h2 className='text-4xl md:text-5xl font-bold mb-4 font-display text-slate-900'>
-                FAQ
+        {/* FAQ Section - Modern Design */}
+        <section id='faq' className='py-8 md:py-12 bg-surface border-y border-slate-200'>
+          <div className='max-w-7xl mx-auto px-6'>
+            <div className='text-center mb-8 md:mb-16'>
+              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
+                Frequently Asked Questions
               </h2>
             </div>
 
@@ -1181,7 +1123,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 0}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     Who do you work with?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1202,7 +1144,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 1}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     Why hire a solo consultant instead of an agency?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1223,7 +1165,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 2}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     Do you work with existing systems?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1244,7 +1186,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 3}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     How long do projects take?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1265,7 +1207,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 4}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     Do you provide documentation?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1286,7 +1228,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 5}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     Can you help with urgent issues?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1307,7 +1249,7 @@ function HomePage() {
                   className='w-full flex items-center justify-between text-left'
                   aria-expanded={openFaqIndex === 6}
                 >
-                  <h3 className='text-xl font-bold font-display text-slate-900'>
+                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
                     Do you work remotely?
                   </h3>
                   <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
@@ -1326,512 +1268,45 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Pricing & Contact Section */}
-        <section id='contact' className='py-24 bg-white'>
-          <div className='max-w-7xl mx-auto px-6'>
-            <div className='text-center mb-16'>
-              <h2 className='text-4xl md:text-5xl font-bold mb-4 font-display text-slate-900'>
-                Let&apos;s Get to Work.
-              </h2>
-              <p className='text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed'>
-                Tell us what&apos;s broken or what you need built. We&apos;ll review your project
-                and get back to you within 24 hours to see if we&apos;re the right fit.
-              </p>
+        {/* Final CTA Section */}
+        <section className='py-8 md:py-12 bg-slate-100 text-slate-900 relative overflow-hidden'>
+          <div className='relative z-10 max-w-7xl mx-auto px-6 text-center'>
+            <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900'>
+              Ready to Stop Wasting Time on Manual Work?
+            </h2>
+            <p className='text-body-lg text-slate-700 max-w-2xl mx-auto mb-8 leading-relaxed'>
+              Free 45-minute consultation. We'll review your process and discuss automation options.
+              No obligation, no sales pitch.
+            </p>
+            <div className='flex flex-col sm:flex-row justify-center gap-4'>
+              <Link
+                to='/contact'
+                className='bg-primary hover:bg-primary-hover text-white hover:text-white px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg text-center shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+              >
+                Schedule Free Consultation
+              </Link>
+              <a
+                href='tel:8016163702'
+                className='bg-white hover:bg-slate-100 text-primary border-2 border-primary px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg text-center flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+              >
+                <svg
+                  width='20'
+                  height='20'
+                  viewBox='0 0 20 20'
+                  fill='currentColor'
+                  aria-hidden='true'
+                >
+                  <path d='M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z' />
+                </svg>
+                <span>Call 801-616-3702</span>
+              </a>
             </div>
-
-            <div className='grid md:grid-cols-2 gap-8 lg:gap-12'>
-              {/* Pricing Content */}
-              <div>
-                <h3 className='text-2xl md:text-3xl font-bold mb-6 font-display text-slate-900'>
-                  Pricing
-                </h3>
-                <div className='card space-y-6'>
-                  <div>
-                    <h4 className='text-xl font-bold mb-4 font-display text-slate-900'>
-                      Free consultation
-                    </h4>
-                    <p className='text-slate-600'>
-                      Let&apos;s talk about your problem. No charge for the first conversation.
-                    </p>
-                  </div>
-
-                  <div className='pt-4 border-t border-slate-200'>
-                    <div className='text-excel text-2xl font-bold mb-2'>$90/hour</div>
-                    <div className='text-slate-600 text-sm mb-4'>
-                      For consulting and diagnostic work
-                    </div>
-                  </div>
-
-                  <div className='pt-4 border-t border-slate-200 space-y-3 text-slate-600'>
-                    <p>• Most projects are fixed-price once we agree on scope</p>
-                    <p>• No monthly fees or licenses</p>
-                    <p>• You own everything I build</p>
-                  </div>
-
-                  <div className='pt-4 border-t border-slate-200'>
-                    <p className='text-slate-600'>
-                      I tell you what it costs before I start. No surprises.
-                    </p>
-                  </div>
-
-                  <div className='pt-6 border-t border-slate-200'>
-                    <div className='space-y-3'>
-                      <div>
-                        <p className='text-sm font-medium text-slate-700 mb-1'>Phone</p>
-                        <a
-                          href='tel:8017045604'
-                          className='text-excel hover:text-excel-hover font-medium'
-                        >
-                          (801) 704-5604
-                        </a>
-                      </div>
-                      <div>
-                        <p className='text-sm font-medium text-slate-700 mb-1'>Email</p>
-                        <a
-                          href='mailto:rob.infodatix@gmail.com'
-                          className='text-excel hover:text-excel-hover font-medium'
-                        >
-                          rob.infodatix@gmail.com
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contact Form */}
-              <div>
-                <div className='card'>
-                  <form className='space-y-6' onSubmit={handleFormSubmit} noValidate>
-                    <div>
-                      <label
-                        htmlFor='name'
-                        className='block text-sm font-medium text-slate-700 mb-2'
-                      >
-                        Full Name <span className='text-red-600'>*</span>
-                      </label>
-                      <input
-                        id='name'
-                        name='name'
-                        type='text'
-                        value={formData.name}
-                        onChange={(e) => {
-                          handleInputChange(e);
-                          if (fieldErrors.name) {
-                            setFieldErrors({ ...fieldErrors, name: '' });
-                          }
-                        }}
-                        className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
-                          fieldErrors.name && fieldErrors.name.trim() !== ''
-                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                            : 'border-slate-300 focus:border-excel'
-                        }`}
-                        placeholder='Your full name'
-                      />
-                      {fieldErrors.name && fieldErrors.name.trim() !== '' && (
-                        <p className='text-red-600 text-sm mt-1'>{fieldErrors.name}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label
-                        htmlFor='email'
-                        className='block text-sm font-medium text-slate-700 mb-2'
-                      >
-                        Email Address <span className='text-red-600'>*</span>
-                      </label>
-                      <input
-                        id='email'
-                        name='email'
-                        type='email'
-                        value={formData.email}
-                        onChange={(e) => {
-                          handleInputChange(e);
-                          if (fieldErrors.email) {
-                            setFieldErrors({ ...fieldErrors, email: '' });
-                          }
-                        }}
-                        className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel ${
-                          fieldErrors.email && fieldErrors.email.trim() !== ''
-                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                            : 'border-slate-300 focus:border-excel'
-                        }`}
-                        placeholder='your.email@company.com'
-                      />
-                      {fieldErrors.email && fieldErrors.email.trim() !== '' && (
-                        <p className='text-red-600 text-sm mt-1'>{fieldErrors.email}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label
-                        htmlFor='phone'
-                        className='block text-sm font-medium text-slate-700 mb-2'
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        id='phone'
-                        name='phone'
-                        type='tel'
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel'
-                        placeholder='Your phone number'
-                      />
-                    </div>
-                    <div>
-                      <div className='flex items-center justify-between mb-2'>
-                        <label
-                          htmlFor='message'
-                          className='block text-sm font-medium text-slate-700'
-                        >
-                          Message
-                        </label>
-                        <span className='text-xs text-slate-500'>
-                          {formData.message.length}/180
-                        </span>
-                      </div>
-                      <textarea
-                        id='message'
-                        name='message'
-                        rows='5'
-                        maxLength={180}
-                        value={formData.message}
-                        onChange={(e) => {
-                          handleInputChange(e);
-                          if (fieldErrors.message) {
-                            setFieldErrors({ ...fieldErrors, message: '' });
-                          }
-                        }}
-                        className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-excel resize-y ${
-                          fieldErrors.message && fieldErrors.message.trim() !== ''
-                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                            : 'border-slate-300 focus:border-excel'
-                        }`}
-                        placeholder='What do you need help with?'
-                      ></textarea>
-                      {fieldErrors.message && fieldErrors.message.trim() !== '' && (
-                        <p className='text-red-600 text-sm mt-1'>{fieldErrors.message}</p>
-                      )}
-                    </div>
-                    <div>
-                      <div className='flex items-center justify-between mb-2'>
-                        <label
-                          htmlFor='captcha'
-                          className='block text-sm font-medium text-slate-700'
-                        >
-                          Security Check <span className='text-red-600'>*</span>
-                        </label>
-                        <span
-                          className={`text-xs font-medium ${
-                            captchaTimeLeft <= 30
-                              ? 'text-red-600'
-                              : captchaTimeLeft <= 60
-                              ? 'text-yellow-600'
-                              : 'text-slate-500'
-                          }`}
-                        >
-                          {Math.floor(captchaTimeLeft / 60)}:
-                          {(captchaTimeLeft % 60).toString().padStart(2, '0')}
-                        </span>
-                      </div>
-                      <div className='flex items-center gap-3'>
-                        <div className='flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-50 border border-slate-300 rounded font-mono'>
-                          <span className='text-slate-900 font-bold text-xl'>
-                            {captchaQuestion}
-                          </span>
-                          <span className='text-slate-600 text-lg'>=</span>
-                        </div>
-                        <input
-                          id='captcha'
-                          type='number'
-                          required
-                          value={captchaInput}
-                          onChange={(e) => {
-                            setHasInteractedWithForm(true); // Mark that user has interacted with form
-                            setCaptchaInput(e.target.value);
-                            setCaptchaError(false);
-                          }}
-                          className={`w-24 px-4 py-3 bg-white border text-slate-900 text-center font-semibold focus:outline-none focus:ring-2 focus:ring-excel focus:border-excel ${
-                            captchaError
-                              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                              : 'border-slate-300'
-                          }`}
-                          placeholder='?'
-                          autoComplete='off'
-                        />
-                        <button
-                          type='button'
-                          onClick={generateCaptcha}
-                          className='px-3 py-3 text-slate-600 hover:text-slate-900 border border-slate-300 hover:border-slate-400 rounded transition-colors'
-                          aria-label='Refresh captcha'
-                          title='Get a new question'
-                        >
-                          <svg
-                            className='w-5 h-5'
-                            fill='none'
-                            stroke='currentColor'
-                            viewBox='0 0 24 24'
-                          >
-                            <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth={2}
-                              d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                      {captchaError && (
-                        <p className='text-red-600 text-sm mt-2'>
-                          Incorrect answer. Please try again.
-                        </p>
-                      )}
-                      <p className='text-xs text-slate-500 mt-2'>
-                        Solve the math problem to verify you&apos;re human
-                      </p>
-                    </div>
-                    <button
-                      type='submit'
-                      disabled={isSubmitting}
-                      className='btn-primary w-full py-4 text-base flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-white hover:text-white'
-                      aria-label='Submit contact form'
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <svg
-                            className='animate-spin h-5 w-5 text-white'
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                          >
-                            <circle
-                              className='opacity-25'
-                              cx='12'
-                              cy='12'
-                              r='10'
-                              stroke='currentColor'
-                              strokeWidth='4'
-                            ></circle>
-                            <path
-                              className='opacity-75'
-                              fill='currentColor'
-                              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                            ></path>
-                          </svg>
-                          <span>Sending...</span>
-                        </>
-                      ) : (
-                        <span>Send Message</span>
-                      )}
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
+            <p className='text-slate-600 text-body-sm mt-6'>Most projects start within 1-2 weeks</p>
           </div>
         </section>
-      </main>
 
-      {/* Footer */}
-      <footer className='bg-slate-900 text-slate-300 border-t border-slate-800'>
-        <div className='max-w-7xl mx-auto px-6 py-16'>
-          <div className='grid md:grid-cols-3 gap-12 mb-12'>
-            {/* Brand Section */}
-            <div className='md:col-span-1'>
-              <Link
-                to='/'
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className='flex items-center mb-4'
-              >
-                <img
-                  src='/logo.png'
-                  alt='ExcelAccessConsultant Logo'
-                  className='h-14 md:h-16 w-auto brightness-0 invert'
-                  width='200'
-                  height='60'
-                  loading='lazy'
-                />
-              </Link>
-              <p className='text-slate-400 text-sm leading-relaxed mb-4'>
-                Senior-level Excel and Microsoft Access consulting focused on automation, data
-                integrity, and operational clarity.
-              </p>
-              <div className='text-slate-400 text-sm'>
-                <p className='font-medium text-slate-300 mb-1'>Email</p>
-                <a
-                  href='mailto:rob.infodatix@gmail.com'
-                  className='hover:text-white transition-colors'
-                >
-                  rob.infodatix@gmail.com
-                </a>
-              </div>
-            </div>
-
-            {/* Navigation Links */}
-            <div>
-              <h4 className='font-bold mb-4 text-sm text-white uppercase tracking-wider'>
-                Navigation
-              </h4>
-              <ul className='space-y-3 text-slate-400 text-sm'>
-                <li>
-                  <Link
-                    to='/'
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href='#about'
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('about');
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <Link
-                    to='/#services'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('services');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to='/#faq'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('faq');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to='/#contact'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('contact');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Services Quick Links */}
-            <div>
-              <h4 className='font-bold mb-4 text-sm text-white uppercase tracking-wider'>
-                Services
-              </h4>
-              <ul className='space-y-3 text-slate-400 text-sm'>
-                <li>
-                  <Link
-                    to='/#services'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('services');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Process Automation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to='/#services'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('services');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Enterprise Access Databases
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to='/#services'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('services');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Data Rescue & Optimization
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to='/#contact'
-                    onClick={(e) => {
-                      if (window.location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('contact');
-                      }
-                    }}
-                    className='hover:text-white transition-colors'
-                  >
-                    Free Consultation
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className='pt-8 border-t border-slate-800'>
-            <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
-              <p className='text-slate-500 text-sm'>
-                © 2026 ExcelAccessConsultant. All rights reserved.
-              </p>
-              <div className='flex items-center gap-6 text-slate-500 text-sm'>
-                <span>20+ Years Experience</span>
-                <span className='hidden md:inline'>•</span>
-                <span>Excel & MS Access Specialist</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* Toast Notifications */}
-      <ToastContainer toasts={toasts} removeToast={removeToast} />
-
-      {/* Trust Building Components */}
-      <CookieConsent />
-      <TrustBadge />
-    </div>
+      </div>
+    </>
   );
 }
 

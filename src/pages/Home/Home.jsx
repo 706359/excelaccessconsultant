@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import Card from '../../components/Card/Card';
-import Section from '../../components/Section/Section';
+import Button from '../../components/ui/Button/Button';
+import Card from '../../components/ui/Card/Card';
+import Section from '../../components/Layout/Section/Section';
 
 const Home = () => {
   return (
@@ -192,22 +192,6 @@ const Home = () => {
                 </div>
               </div>
             </Card>
-          </div>
-        </div>
-      </Section>
-
-      {/* CTA Section */}
-      <Section>
-        <div className='CTA'>
-          <h2 className='CTA-title'>Ready to Stop Doing Things the Hard Way?</h2>
-          <p className='CTA-subtitle'>
-            Let&apos;s talk about what&apos;s slowing you down. I&apos;ll show you how to automate
-            the boring stuff and make your data actually useful.
-          </p>
-          <div className='CTA-actions'>
-            <Button variant='primary' size='large' as={Link} to='/contact'>
-              Let&apos;s Talk
-            </Button>
           </div>
         </div>
       </Section>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VBA Best Practices Guide - ExcelAccessConsultant.com</title>
+  <style>
+    @media print {
+      @page {
+        margin: 0.5in;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+    }
+    .header {
+      border-bottom: 3px solid #A32228;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    .logo {
+      color: #A32228;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #A32228;
+      font-size: 32px;
+      margin: 10px 0;
+    }
+    h2 {
+      color: #A32228;
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #A32228;
+      padding-bottom: 5px;
+    }
+    .intro {
+      background: #f8f9fa;
+      padding: 20px;
+      border-left: 4px solid #A32228;
+      margin-bottom: 30px;
+    }
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+    .best-practice {
+      margin: 15px 0;
+      padding: 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      background: #f8f9fa;
+    }
+    .best-practice strong {
+      color: #A32228;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .best-practice p {
+      margin: 5px 0;
+      color: #475569;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #A32228;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+    .cta {
+      background: #A32228;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      margin: 30px 0;
+      border-radius: 5px;
+    }
+    .cta a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">ExcelAccessConsultant.com</div>
+    <h1>VBA Best Practices Guide</h1>
+    <p style="color: #64748b; margin: 0;">Coding standards, error handling, and performance tips for professional VBA development</p>
+  </div>
+
+  <div class="intro">
+    <p><strong>Write VBA code that's maintainable, reliable, and fast.</strong></p>
+    <p>This guide covers essential best practices I've learned from 15+ years of VBA development. Follow these standards to create code that works today and can be maintained tomorrow.</p>
+  </div>
+
+  <h2>Coding Standards</h2>
+
+  <div class="best-practice">
+    <strong>1. Use Option Explicit</strong>
+    <p>Always start modules with <code>Option Explicit</code>. This forces variable declaration and catches typos at compile time.</p>
+    <div class="code-block">
+Option Explicit
+
+Sub ProcessData()
+    Dim ws As Worksheet
+    Dim i As Long
+    ' Your code here
+End Sub
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>2. Declare Variable Types Explicitly</strong>
+    <p>Don't use Variant unless necessary. Explicit types improve performance and catch errors early.</p>
+    <div class="code-block">
+' Good
+Dim rowCount As Long
+Dim fileName As String
+Dim isComplete As Boolean
+
+' Bad
+Dim rowCount
+Dim fileName
+Dim isComplete
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>3. Use Meaningful Variable Names</strong>
+    <p>Names should describe purpose, not type. Use camelCase or PascalCase consistently.</p>
+    <div class="code-block">
+' Good
+Dim customerCount As Long
+Dim lastRow As Long
+Dim isDataValid As Boolean
+
+' Bad
+Dim x As Long
+Dim temp As String
+Dim flag As Boolean
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>4. Avoid Magic Numbers</strong>
+    <p>Use named constants instead of hardcoded values. Makes code self-documenting.</p>
+    <div class="code-block">
+' Good
+Const MAX_ROWS As Long = 10000
+Const HEADER_ROW As Long = 1
+
+If rowCount > MAX_ROWS Then
+    ' Handle error
+End If
+
+' Bad
+If rowCount > 10000 Then
+    ' What does 10000 mean?
+End If
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>5. Keep Functions Small and Focused</strong>
+    <p>Each function should do one thing well. Break complex functions into smaller, reusable pieces.</p>
+    <div class="code-block">
+' Good - Single responsibility
+Function GetLastRow(ws As Worksheet) As Long
+    GetLastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+End Function
+
+' Bad - Does too much
+Sub DoEverything()
+    ' 200 lines of mixed logic
+End Sub
+    </div>
+  </div>
+
+  <h2>Error Handling</h2>
+
+  <div class="best-practice">
+    <strong>6. Always Use Error Handling</strong>
+    <p>Every procedure that can fail should have error handling. Use On Error GoTo pattern.</p>
+    <div class="code-block">
+Sub ProcessFile()
+    On Error GoTo ErrorHandler
+    
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Worksheets("Data")
+    
+    ' Your code here
+    
+    Exit Sub
+    
+ErrorHandler:
+    MsgBox "Error: " & Err.Description, vbCritical
+    ' Clean up resources
+    Set ws = Nothing
+End Sub
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>7. Clean Up Resources in Error Handler</strong>
+    <p>Close files, release objects, and reset settings even when errors occur.</p>
+    <div class="code-block">
+Sub ProcessData()
+    Dim wb As Workbook
+    On Error GoTo ErrorHandler
+    
+    Set wb = Workbooks.Open("C:\Data\file.xlsx")
+    ' Process data
+    
+    wb.Close SaveChanges:=False
+    Exit Sub
+    
+ErrorHandler:
+    If Not wb Is Nothing Then
+        wb.Close SaveChanges:=False
+    End If
+    MsgBox "Error processing file: " & Err.Description
+End Sub
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>8. Log Errors for Debugging</strong>
+    <p>Record errors to a log file or worksheet for troubleshooting.</p>
+    <div class="code-block">
+Sub LogError(errorMsg As String)
+    Dim logFile As String
+    logFile = ThisWorkbook.Path & "\error_log.txt"
+    
+    Open logFile For Append As #1
+    Print #1, Now & " - " & errorMsg
+    Close #1
+End Sub
+    </div>
+  </div>
+
+  <h2>Performance Tips</h2>
+
+  <div class="best-practice">
+    <strong>9. Turn Off Screen Updating</strong>
+    <p>Disable screen updates during long operations. Dramatically improves speed.</p>
+    <div class="code-block">
+Sub ProcessLargeDataset()
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    
+    ' Your code here
+    
+    Application.Calculation = xlCalculationAutomatic
+    Application.ScreenUpdating = True
+End Sub
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>10. Use Arrays Instead of Cell-by-Cell Operations</strong>
+    <p>Read/write data in bulk using arrays. 10-100x faster than looping through cells.</p>
+    <div class="code-block">
+' Good - Fast
+Dim dataArray As Variant
+dataArray = ws.Range("A1:C1000").Value
+' Process array
+ws.Range("A1:C1000").Value = dataArray
+
+' Bad - Slow
+Dim i As Long
+For i = 1 To 1000
+    ws.Cells(i, 1).Value = ProcessValue(ws.Cells(i, 1).Value)
+Next i
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>11. Avoid Select and Activate</strong>
+    <p>Work with objects directly. Select/Activate is slow and error-prone.</p>
+    <div class="code-block">
+' Good
+ws.Range("A1").Value = "Hello"
+
+' Bad
+ws.Select
+Range("A1").Select
+ActiveCell.Value = "Hello"
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>12. Use With Statements</strong>
+    <p>Reduces object references and improves readability.</p>
+    <div class="code-block">
+' Good
+With ws.Range("A1:C10")
+    .Font.Bold = True
+    .Interior.Color = RGB(255, 0, 0)
+    .NumberFormat = "#,##0"
+End With
+
+' Bad
+ws.Range("A1:C10").Font.Bold = True
+ws.Range("A1:C10").Interior.Color = RGB(255, 0, 0)
+ws.Range("A1:C10").NumberFormat = "#,##0"
+    </div>
+  </div>
+
+  <h2>Code Organization</h2>
+
+  <div class="best-practice">
+    <strong>13. Use Modules for Reusable Code</strong>
+    <p>Put reusable functions in standard modules. Keep worksheet-specific code in worksheet modules.</p>
+  </div>
+
+  <div class="best-practice">
+    <strong>14. Add Comments for Complex Logic</strong>
+    <p>Explain "why," not "what." Code should be self-documenting, but complex business logic needs comments.</p>
+    <div class="code-block">
+' Calculate weighted average using fiscal year weights
+' Weights are based on days in each quarter, not equal distribution
+Dim weightedAvg As Double
+weightedAvg = (Q1Value * Q1Days / TotalDays) + (Q2Value * Q2Days / TotalDays)
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>15. Version Control Your Code</strong>
+    <p>Export modules to text files and use version control (Git). Makes collaboration and rollback possible.</p>
+  </div>
+
+  <h2>Security & Reliability</h2>
+
+  <div class="best-practice">
+    <strong>16. Validate Input Data</strong>
+    <p>Never trust user input or external data. Validate before processing.</p>
+    <div class="code-block">
+Function IsValidEmail(email As String) As Boolean
+    If InStr(email, "@") = 0 Then
+        IsValidEmail = False
+        Exit Function
+    End If
+    ' More validation...
+    IsValidEmail = True
+End Function
+    </div>
+  </div>
+
+  <div class="best-practice">
+    <strong>17. Use Early Binding When Possible</strong>
+    <p>Early binding (with references) is faster and provides IntelliSense. Use late binding only for compatibility.</p>
+  </div>
+
+  <div class="best-practice">
+    <strong>18. Test with Real Data</strong>
+    <p>Test with actual data volumes and edge cases. Small test files hide performance problems.</p>
+  </div>
+
+  <div class="cta">
+    <p style="margin: 0;"><strong>Need Professional VBA Development?</strong></p>
+    <p style="margin: 10px 0 0 0;"><a href="https://excelaccessconsultant.com/#contact">Get a free consultation →</a></p>
+    <p style="margin: 5px 0 0 0; font-size: 14px;">Call: 801-616-3702</p>
+  </div>
+
+  <div class="footer">
+    <p><strong>ExcelAccessConsultant.com</strong></p>
+    <p>Excel VBA & Access Database Consulting | 15+ Years Experience | 200+ Projects</p>
+    <p>© 2026 ExcelAccessConsultant. All rights reserved.</p>
+  </div>
+</body>
+</html>

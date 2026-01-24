@@ -42,6 +42,133 @@ const createTransporter = () => {
 
 const transporter = createTransporter();
 
+// POST endpoint for email subscription (lead magnets)
+app.post('/api/subscribe', async (req, res) => {
+    try {
+        const { email, name, source } = req.body;
+
+        // Validate required fields
+        if (!email) {
+            return res.status(400).json({
+                success: false,
+                message: 'Email address is required'
+            });
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid email format'
+            });
+        }
+
+        const subscriptionData = {
+            email: email.trim(),
+            name: name?.trim() || 'Not provided',
+            source: source || 'unknown',
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('Email subscription:', subscriptionData);
+
+        // TODO: Integrate with email service (ConvertKit, Mailchimp, etc.)
+        // For now, we'll log the subscription and send a confirmation email
+        
+        // Send confirmation email with download links if transporter is configured
+        if (transporter) {
+            try {
+                const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER;
+                const downloadLinks = `
+                    <div style="margin: 20px 0;">
+                        <h3 style="color: #A32228;">Your Free Resources:</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin: 10px 0;">
+                                <a href="https://excelaccessconsultant.com/downloads/excel-automation-readiness-checklist.html" 
+                                   style="color: #A32228; text-decoration: none; font-weight: bold;">
+                                    📋 Excel Automation Readiness Checklist
+                                </a>
+                            </li>
+                            <li style="margin: 10px 0;">
+                                <a href="https://excelaccessconsultant.com/downloads/access-database-health-check.html" 
+                                   style="color: #A32228; text-decoration: none; font-weight: bold;">
+                                    🗄️ Access Database Health Check Guide
+                                </a>
+                            </li>
+                            <li style="margin: 10px 0;">
+                                <a href="https://excelaccessconsultant.com/downloads/vba-best-practices-guide.html" 
+                                   style="color: #A32228; text-decoration: none; font-weight: bold;">
+                                    ⚡ VBA Best Practices Guide
+                                </a>
+                            </li>
+                        </ul>
+                        <p style="margin-top: 15px; color: #6b7280; font-size: 12px;">
+                            Tip: Right-click each link and select "Print" then "Save as PDF" to convert to PDF format.
+                        </p>
+                    </div>
+                `;
+
+                const mailOptions = {
+                    from: `"ExcelAccessConsultant" <${fromEmail}>`,
+                    to: email.trim(),
+                    subject: 'Your Free Excel & Access Resources',
+                    html: `
+                        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
+                            <div style="background-color: #A32228; color: white; padding: 20px; text-align: center;">
+                                <h1 style="margin: 0; font-size: 24px;">ExcelAccessConsultant.com</h1>
+                            </div>
+                            <div style="padding: 30px 20px;">
+                                <h2 style="color: #A32228; margin-top: 0;">Thank You, ${name || 'Friend'}!</h2>
+                                <p>Thank you for subscribing! Here are your free resources:</p>
+                                ${downloadLinks}
+                                <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #A32228;">
+                                    <p style="margin: 0; font-weight: bold; color: #A32228;">Need Help Implementing These Practices?</p>
+                                    <p style="margin: 10px 0 0 0;">I can help you automate your Excel processes, fix your Access database, or optimize your VBA code.</p>
+                                    <p style="margin: 15px 0 0 0;">
+                                        <a href="https://excelaccessconsultant.com/#contact" 
+                                           style="color: #A32228; text-decoration: none; font-weight: bold;">
+                                            Schedule a Free Consultation →
+                                        </a>
+                                    </p>
+                                    <p style="margin: 10px 0 0 0; font-size: 14px;">
+                                        Or call: <a href="tel:8016163702" style="color: #A32228;">801-616-3702</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #6b7280;">
+                                <p style="margin: 0;">© 2026 ExcelAccessConsultant. All rights reserved.</p>
+                                <p style="margin: 10px 0 0 0;">
+                                    <a href="https://excelaccessconsultant.com/unsubscribe" style="color: #6b7280;">Unsubscribe</a>
+                                </p>
+                            </div>
+                        </div>
+                    `
+                };
+
+                await transporter.sendMail(mailOptions);
+                console.log('Confirmation email sent to:', email);
+            } catch (emailError) {
+                console.error('Error sending confirmation email:', emailError);
+                // Don't fail the subscription if email fails
+            }
+        }
+
+        // Return success
+        return res.status(200).json({
+            success: true,
+            message: 'Subscription successful'
+        });
+
+    } catch (error) {
+        console.error('Subscription error:', error);
+        return res.status(500).json({
+            success: false,
+            message: 'Unable to process subscription. Please try again later.'
+        });
+    }
+});
+
 // POST endpoint for contact form
 app.post('/api/contact', async (req, res) => {
     try {
@@ -92,7 +219,7 @@ app.post('/api/contact', async (req, res) => {
         if (transporter) {
             try {
                 const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER;
-                const toEmail = process.env.TO_EMAIL || 'rob.infodatix@gmail.com';
+                const toEmail = process.env.TO_EMAIL || 'rob@excelaccessconsultant.com';
 
                 // Build email body
                 let emailBody = `New Contact Form Submission\n\n`;
@@ -154,7 +281,7 @@ We have received your message and will review it carefully. Our team will get ba
 
 To help us schedule a convenient time for you, could you please provide us with 2-3 time slots that work best for you? We can arrange a Teams or Zoom call to discuss your requirements in detail.
 
-You can reply directly to this email with your preferred time slots, or call us at (801) 704-5604.
+You can reply directly to this email with your preferred time slots, or call us at 801-616-3702.
 
 To help me prepare for our consultation and make the most of our time together, please send any relevant files, spreadsheets, databases, or documentation that you would like me to review before our meeting. This will allow me to better understand your current setup and come prepared with specific recommendations.
 
@@ -163,8 +290,8 @@ We look forward to speaking with you soon.
 Best regards,
 Robert Terry
 ExcelAccessConsultant
-Phone: (801) 704-5604
-Email: rob.infodatix@gmail.com`;
+Phone: 801-616-3702
+Email: rob@excelaccessconsultant.com`;
 
                     const clientEmailHtml = `
                         <!DOCTYPE html>
@@ -200,7 +327,7 @@ Email: rob.infodatix@gmail.com`;
                                         To help us schedule a convenient time for you, could you please provide us with <strong>2-3 time slots</strong> that work best for you? We can arrange a <strong>Teams or Zoom call</strong> to discuss your requirements in detail.
                                     </p>
                                     <p style="margin: 0;">
-                                        You can reply directly to this email with your preferred time slots, or call us at <a href="tel:8017045604" style="color: #1e40af; text-decoration: none; font-weight: bold;">(801) 704-5604</a>.
+                                        You can reply directly to this email with your preferred time slots, or call us at <a href="tel:8016163702" style="color: #1e40af; text-decoration: none; font-weight: bold;">801-616-3702</a>.
                                     </p>
                                 </div>
 
@@ -228,10 +355,10 @@ Email: rob.infodatix@gmail.com`;
                                 <!-- Contact Info -->
                                 <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280;">
                                     <p style="margin: 5px 0;">
-                                        <strong>Phone:</strong> <a href="tel:8017045604" style="color: #1e40af; text-decoration: none;">(801) 704-5604</a>
+                                        <strong>Phone:</strong> <a href="tel:8016163702" style="color: #1e40af; text-decoration: none;">801-616-3702</a>
                                     </p>
                                     <p style="margin: 5px 0;">
-                                        <strong>Email:</strong> <a href="mailto:rob.infodatix@gmail.com" style="color: #1e40af; text-decoration: none;">rob.infodatix@gmail.com</a>
+                                        <strong>Email:</strong> <a href="mailto:rob@excelaccessconsultant.com" style="color: #1e40af; text-decoration: none;">rob@excelaccessconsultant.com</a>
                                     </p>
                                 </div>
                             </div>
@@ -240,7 +367,7 @@ Email: rob.infodatix@gmail.com`;
                             <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #6b7280;">
                                 <p style="margin: 0;">
                                     This is an automated response. Please do not reply directly to this email.<br>
-                                    If you have any questions, please contact us at <a href="mailto:rob.infodatix@gmail.com" style="color: #1e40af;">rob.infodatix@gmail.com</a>
+                                    If you have any questions, please contact us at <a href="mailto:rob@excelaccessconsultant.com" style="color: #1e40af;">rob@excelaccessconsultant.com</a>
                                 </p>
                             </div>
                         </body>
@@ -296,7 +423,7 @@ Email: rob.infodatix@gmail.com`;
                 success: false,
                 emailSent: false,
                 error: emailError || 'Failed to send email notification. Please try again or contact us directly.',
-                message: 'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob.infodatix@gmail.com or call (801) 704-5604.'
+                message: 'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob@excelaccessconsultant.com or call 801-616-3702.'
             });
         }
 
