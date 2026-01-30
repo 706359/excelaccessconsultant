@@ -17,7 +17,7 @@ const Home = () => {
             />
           </div>
           <div className='Hero-content'>
-            <h1 className='Hero-title'>Business Automation & Data Solutions</h1>
+            <h1 className='Hero-title'>Excel & Access Consultant | Business Automation & Data Solutions</h1>
             <p className='Hero-subtitle'>
               I build reliable systems, automation tools, and dashboards that actually work.
               Let&apos;s streamline your operations and get your team back to what matters.
