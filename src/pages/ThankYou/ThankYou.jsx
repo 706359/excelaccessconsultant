@@ -5,7 +5,7 @@ import '../../styles/global.css';
 
 function ThankYou() {
   return (
-    <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-primary selection:text-white'>
+    <div className='bg-base min-h-screen text-slate-900 font-sans'>
       <SEO
         title='Thank You - ExcelAccessConsultant'
         description="Thanks for reaching out. I'll get back to you within one business day."

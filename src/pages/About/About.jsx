@@ -5,7 +5,7 @@ import '../../styles/global.css';
 
 function About() {
   return (
-    <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-primary selection:text-white'>
+    <div className='bg-base min-h-screen text-slate-900 font-sans'>
       <SEO
         title='Operational Stability & Data Governance | ExcelAccessConsultant'
         description='I replace fragile spreadsheets with stable, audit-ready systems. Senior-level Excel and Access consulting for finance and operations—you work with me directly.'

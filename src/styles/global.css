@@ -20,6 +20,16 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Selection highlight (brand primary) - avoids Tailwind selection: utilities that trigger CSS minify warnings */
+  ::selection {
+    background-color: #C8102E;
+    color: white;
+  }
+  ::-moz-selection {
+    background-color: #C8102E;
+    color: white;
+  }
+
   /* Heading Hierarchy - Standard Sizes (Matches Logo Font Style) */
   h1,
   h2,

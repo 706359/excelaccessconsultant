@@ -39,11 +39,11 @@ const SEO = ({
     updateMetaTag('og:url', url, true);
     updateMetaTag('og:type', type, true);
 
-    // Update Twitter tags
-    updateMetaTag('twitter:card', 'summary_large_image', true);
-    updateMetaTag('twitter:title', ogTitle, true);
-    updateMetaTag('twitter:description', description, true);
-    updateMetaTag('twitter:image', `${url}${image}`, true);
+    // Update Twitter tags (Twitter uses name= not property=)
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:title', ogTitle);
+    updateMetaTag('twitter:description', description);
+    updateMetaTag('twitter:image', `${url}${image}`);
     
     // Update og:site_name
     updateMetaTag('og:site_name', 'ExcelAccessConsultant', true);

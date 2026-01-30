@@ -224,7 +224,7 @@ function HomePage() {
         ]}
       />
 
-      <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-primary selection:text-white'>
+      <div className='bg-base min-h-screen text-slate-800 font-sans'>
         {/* Hero Section - Editorial style with theme colors */}
         <section
           id='home'
@@ -233,7 +233,7 @@ function HomePage() {
           {/* Background image - bottom right, subtle grayscale */}
           <img
             src='/hero.jpeg'
-            alt=''
+            alt='Business automation and data solutions'
             className='absolute bottom-0 right-0 w-1/2 h-[70%] object-cover opacity-[0.28] grayscale contrast-110 pointer-events-none hidden md:block scale-y-[-1] translate-y-[-10%]'
           />
           {/* Little glass overlay */}

@@ -231,7 +231,7 @@ const Contact = () => {
         ogTitle='Contact - ExcelAccessConsultant.com'
       />
 
-      <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-primary selection:text-white'>
+      <div className='bg-base min-h-screen text-slate-800 font-sans'>
         {/* Pricing & Contact Section */}
         <section id='contact' className='py-8 md:py-12 bg-white'>
           <div className='max-w-7xl mx-auto px-6'>
