@@ -18,7 +18,7 @@ function HowToSpeedUpSlowExcelSpreadsheets() {
     slug: 'how-to-speed-up-slow-excel-spreadsheets',
     title: 'How to Speed Up Slow Excel Spreadsheets',
     category: 'Excel Tips',
-    date: '2026-01-24',
+    date: '2024-05-22',
     readTime: '9 min read',
     seoTitle: 'How to Speed Up Slow Excel Spreadsheets | Performance Tips',
     seoDescription:
@@ -227,7 +227,7 @@ function HowToSpeedUpSlowExcelSpreadsheets() {
           </div>
 
           {/* CTA Section */}
-          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
             <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
               Need Help Speeding Up Your Excel File?
             </h3>
@@ -235,7 +235,7 @@ function HowToSpeedUpSlowExcelSpreadsheets() {
               Get a free consultation to diagnose your Excel performance issues and get a
               fixed-price quote for optimization.
             </p>
-            <div className='flex flex-col sm:flex-row gap-4'>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link
                 to='/contact'
                 className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -249,7 +249,7 @@ function HowToSpeedUpSlowExcelSpreadsheets() {
                 Call 801-616-3702
               </a>
             </div>
-            <div className='mt-6'>
+            <div className='mt-6 flex justify-center'>
               <Link
                 to='/excel-automation'
                 className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'

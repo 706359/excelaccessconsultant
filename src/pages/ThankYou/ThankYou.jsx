@@ -8,7 +8,7 @@ function ThankYou() {
     <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-primary selection:text-white'>
       <SEO
         title='Thank You - ExcelAccessConsultant'
-        description='Thank you for contacting ExcelAccessConsultant. We will get back to you within one business day.'
+        description="Thanks for reaching out. I'll get back to you within one business day."
         keywords='thank you, contact confirmation'
         url='https://excelaccessconsultant.com/thank-you'
         ogTitle='Thank You - ExcelAccessConsultant'
@@ -41,7 +41,7 @@ function ThankYou() {
             </h1>
 
             <p className='text-xl text-slate-700 mb-8 max-w-7xl mx-auto leading-relaxed'>
-              We've received your message and appreciate you taking the time to contact us.
+              Got your message—thanks for reaching out.
             </p>
 
             <div className='bg-slate-50 border border-slate-200 rounded-lg p-8 mb-8 max-w-7xl mx-auto'>
@@ -56,7 +56,7 @@ function ThankYou() {
                   <div>
                     <p className='font-semibold mb-1'>We'll Review Your Message</p>
                     <p className='text-slate-600'>
-                      Our team will carefully review your project needs and requirements.
+                      I'll read through what you sent and figure out how I can help.
                     </p>
                   </div>
                 </div>
@@ -67,7 +67,7 @@ function ThankYou() {
                   <div>
                     <p className='font-semibold mb-1'>We'll Get Back to You</p>
                     <p className='text-slate-600'>
-                      You'll receive a response from us within one business day via email.
+                      You'll hear back from me within one business day by email.
                     </p>
                   </div>
                 </div>
@@ -78,8 +78,7 @@ function ThankYou() {
                   <div>
                     <p className='font-semibold mb-1'>Schedule a Consultation</p>
                     <p className='text-slate-600'>
-                      We'll work with you to find a convenient time for a Teams or Zoom call to
-                      discuss your project in detail.
+                      We'll find a time that works for a Teams or Zoom call and go through your project.
                     </p>
                   </div>
                 </div>
@@ -91,9 +90,7 @@ function ThankYou() {
                 <strong>📧 Check Your Email</strong>
               </p>
               <p className='text-slate-600 text-sm'>
-                We've sent you a confirmation email with next steps. Please check your inbox (and
-                spam folder) for a message from us. The email will include a request for your
-                preferred time slots for a consultation call.
+                I've sent a confirmation email with next steps. Check your inbox (and spam) for a message from me—it'll ask for your preferred times for a call.
               </p>
             </div>
 
@@ -107,13 +104,13 @@ function ThankYou() {
             </div>
 
             <div className='mt-12 pt-8 border-t border-slate-200'>
-              <p className='text-slate-600 mb-4'>Need immediate assistance?</p>
+              <p className='text-slate-600 mb-4'>Need to talk sooner?</p>
               <p className='text-lg'>
                 <a
                   href='tel:8016163702'
                   className='text-excel hover:text-excel-hover font-semibold'
                 >
-                  Call us at 801-616-3702
+                  Call 801-616-3702
                 </a>
               </p>
             </div>

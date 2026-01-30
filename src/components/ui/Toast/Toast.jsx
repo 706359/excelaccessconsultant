@@ -17,34 +17,32 @@ function Toast({ message, type = 'info', onClose, duration = 3000 }) {
   }, [duration]);
 
   const typeStyles = {
-    success: 'bg-green-500 text-white',
-    error: 'bg-red-500 text-white',
-    warning: 'bg-yellow-500 text-white',
-    info: 'bg-blue-500 text-white',
-  };
-
-  const iconStyles = {
-    success: '✓',
-    error: '✕',
-    warning: '⚠',
-    info: 'ℹ',
+    success: 'bg-green-50 border border-green-200 text-green-800',
+    error: 'bg-red-50 border border-red-200 text-red-800',
+    warning: 'bg-yellow-50 border border-yellow-200 text-yellow-800',
+    info: 'bg-blue-50 border border-blue-200 text-blue-800',
   };
 
   return (
     <div
-      className={`flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg min-w-[300px] max-w-md animate-slide-in ${
+      className={`relative px-4 py-3 pr-8 rounded-md shadow-sm min-w-[300px] max-w-md animate-slide-in ${
         typeStyles[type] || typeStyles.info
       }`}
       role='alert'
     >
-      <span className='text-xl font-bold'>{iconStyles[type] || iconStyles.info}</span>
-      <p className='flex-1 text-sm font-medium'>{message}</p>
+      <p className='text-sm font-medium pr-4'>{message}</p>
       <button
         onClick={onClose}
-        className='text-white hover:text-gray-200 text-xl font-bold leading-none'
+        className='absolute top-2 right-2 text-slate-400 hover:text-slate-600 transition-colors'
         aria-label='Close notification'
       >
-        ×
+        <svg className='w-4 h-4' fill='currentColor' viewBox='0 0 20 20'>
+          <path
+            fillRule='evenodd'
+            d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+            clipRule='evenodd'
+          />
+        </svg>
       </button>
     </div>
   );

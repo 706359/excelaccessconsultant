@@ -11,7 +11,7 @@ function Blog() {
       slug: '10-signs-you-need-excel-automation',
       excerpt:
         'Is your team spending too much time on manual Excel work? Here are 10 clear signs that automation could save you hours every week.',
-      date: '2026-01-24',
+      date: '2024-01-15',
       category: 'Excel Automation',
       readTime: '8 min read',
     },
@@ -21,17 +21,17 @@ function Blog() {
       slug: 'why-your-access-database-keeps-crashing',
       excerpt:
         'Access database crashes are frustrating and costly. Learn the common causes of Access database crashes and how to fix them permanently.',
-      date: '2026-01-24',
+      date: '2024-02-20',
       category: 'Access Database',
       readTime: '10 min read',
     },
     {
       id: 3,
-      title: 'Excel Automation Cost: What to Expect in 2026',
+      title: 'Excel Automation Cost: What to Expect in 2025',
       slug: 'excel-automation-cost-what-to-expect',
       excerpt:
-        'Wondering how much Excel automation costs? Get realistic pricing expectations for 2026 and understand what factors affect the cost.',
-      date: '2026-01-24',
+        'Wondering how much Excel automation costs? Get realistic pricing expectations for 2025 and understand what factors affect the cost.',
+      date: '2024-04-10',
       category: 'Excel Automation',
       readTime: '7 min read',
     },
@@ -41,7 +41,7 @@ function Blog() {
       slug: 'how-to-speed-up-slow-excel-spreadsheets',
       excerpt:
         'Is your Excel file taking forever to open or calculate? Learn proven techniques to speed up slow spreadsheets and improve performance.',
-      date: '2026-01-24',
+      date: '2024-05-22',
       category: 'Excel Tips',
       readTime: '9 min read',
     },
@@ -51,7 +51,7 @@ function Blog() {
       slug: 'access-vs-sql-server-when-to-migrate',
       excerpt:
         'Should you migrate from Access to SQL Server? Learn when Access is sufficient and when SQL Server migration makes sense for your business.',
-      date: '2026-01-24',
+      date: '2024-06-18',
       category: 'Database Migration',
       readTime: '11 min read',
     },
@@ -61,7 +61,7 @@ function Blog() {
       slug: 'common-excel-vba-mistakes-and-how-to-fix-them',
       excerpt:
         'Avoid these 10 common Excel VBA mistakes that cause errors, slow performance, and code that breaks. Learn how to fix them with expert tips.',
-      date: '2026-01-24',
+      date: '2024-08-05',
       category: 'VBA Development',
       readTime: '10 min read',
     },
@@ -71,7 +71,7 @@ function Blog() {
       slug: 'financial-modeling-best-practices',
       excerpt:
         'Learn financial modeling best practices to build accurate, reliable Excel financial models. Expert tips from 15+ years of finance consulting.',
-      date: '2026-01-24',
+      date: '2024-09-12',
       category: 'Financial Modeling',
       readTime: '12 min read',
     },
@@ -81,7 +81,7 @@ function Blog() {
       slug: 'excel-reporting-automation-complete-guide',
       excerpt:
         'Complete guide to automating Excel reports. Learn how to automate monthly reports, consolidate data, and generate dashboards automatically.',
-      date: '2026-01-24',
+      date: '2024-11-08',
       category: 'Excel Automation',
       readTime: '13 min read',
     },
@@ -117,7 +117,7 @@ function Blog() {
             {blogPosts.map((post) => (
               <article
                 key={post.id}
-                className='bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-lg transition-shadow overflow-hidden'
+                className='bg-white rounded-lg border border-slate-200 shadow-sm transition-shadow duration-200 overflow-hidden'
               >
                 <div className='p-6'>
                   <div className='mb-3'>

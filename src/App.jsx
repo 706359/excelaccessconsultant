@@ -4,9 +4,9 @@ import {
   Route,
   BrowserRouter as Router,
   Routes,
+  useLocation,
   useNavigate,
 } from 'react-router-dom';
-import Button from './components/ui/Button/Button';
 import Layout from './components/Layout/Layout';
 import FAQSchema from './components/SEO/FAQSchema';
 import ReviewSchema from './components/SEO/ReviewSchema';
@@ -45,10 +45,26 @@ const safeGtag = (...args) => {
   }
 };
 
+// ScrollToTop component - scrolls to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto', // Instant scroll, not smooth
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
       <Layout>
+        <ScrollToTop />
         <Routes>
           <Route path='/thank-you' element={<ThankYou />} />
           <Route path='/excel-automation' element={<ExcelAutomation />} />
@@ -209,106 +225,127 @@ function HomePage() {
       />
 
       <div className='bg-base min-h-screen text-slate-800 font-sans selection:bg-primary selection:text-white'>
-        {/* Hero Section - Asymmetric Split: 55% content / 45% visual */}
+        {/* Hero Section - Editorial style with theme colors */}
         <section
           id='home'
-          className='relative w-full min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden bg-slate-50'
+          className='relative min-h-screen flex items-center overflow-hidden bg-slate-100'
         >
-          {/* Pattern Overlay */}
+          {/* Background image - bottom right, subtle grayscale */}
+          <img
+            src='/hero.jpeg'
+            alt=''
+            className='absolute bottom-0 right-0 w-1/2 h-[70%] object-cover opacity-[0.28] grayscale contrast-110 pointer-events-none hidden md:block scale-y-[-1] translate-y-[-10%]'
+          />
+          {/* Little glass overlay */}
           <div
-            className='absolute inset-0 opacity-10'
-            style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '40px 40px',
-            }}
-          ></div>
+            className='absolute inset-0 z-[1] backdrop-blur-sm bg-white/15 pointer-events-none'
+            aria-hidden='true'
+          />
 
-          <div className='relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8'>
-            <div className='grid md:grid-cols-[55%_45%] gap-6 md:gap-8 items-center py-8 md:py-12'>
-              {/* Content - 55% */}
-              <div className='text-slate-900'>
-                <div className='inline-block mb-6 px-3 py-1 bg-slate-100 rounded-full text-xs md:text-sm font-semibold text-slate-700 border border-slate-200'>
-                  200+ Projects Since 2010
-                </div>
+          <div className='relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-10 md:pt-14 pb-20 md:pb-28'>
+            {/* Kicker - small label above headline */}
+            <div className='flex items-center gap-4 mb-4 md:mb-5'>
+              <span className='w-10 h-px bg-slate-800 flex-shrink-0' aria-hidden='true' />
+              <span className='text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] text-slate-800'>
+                200+ Projects • 15+ Years Experience
+              </span>
+            </div>
 
-                <h1 className='text-display-lg md:text-display-xl lg:text-display-2xl font-extrabold mb-6 text-slate-900 max-w-[600px] leading-tight'>
-                  Turn Days of Manual Excel Work Into Minutes
-                </h1>
+            {/* Headline - editorial display style, accent word in primary */}
+            <h1 className='font-display font-extrabold text-[#0f172a] leading-[0.95] tracking-[-0.03em] max-w-4xl mb-8 md:mb-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'>
+              Turn <span className='Hero-hours-highlight'>Hours</span> Into Minutes
+            </h1>
 
-                <p className='text-lg md:text-xl text-slate-700 max-w-[500px] mb-8 leading-relaxed'>
-                  I automate repetitive Excel and Access tasks that waste your team's time—data
-                  consolidation, reporting, calculations, and more. Serving businesses nationwide
-                  for 15+ years.
+            {/* Content grid - description + buttons, then services list */}
+            <div className='grid md:grid-cols-2 gap-10 lg:gap-16 mb-12 md:mb-16'>
+              <div>
+                <p className='text-base md:text-lg text-slate-700 leading-relaxed mb-8'>
+                  I handle the repetitive stuff: consolidation, reporting, modeling. So your team can focus on what actually matters. Clear scope, fixed price, no surprises.
                 </p>
-
-                {/* CTA Buttons - 16px gap */}
-                <div className='flex flex-col sm:flex-row gap-4 mb-6'>
-                  <a
-                    href='#calculator'
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('calculator');
-                    }}
-                    className='bg-primary hover:bg-primary-hover text-white px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg shadow-lg text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                {/* Both buttons - refined style */}
+                <div className='flex flex-wrap items-center gap-4'>
+                  <Link
+                    to='/contact'
+                    className='inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-8 py-3.5 text-base font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-100'
                   >
-                    Calculate Your Savings
-                  </a>
+                    Schedule Free Consultation
+                  </Link>
                   <a
                     href='tel:8016163702'
-                    className='bg-white hover:bg-slate-100 text-primary border-2 border-primary px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg text-center flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                    className='inline-flex items-center justify-center gap-2 bg-white text-slate-800 px-8 py-3.5 text-base font-semibold rounded-xl border-2 border-slate-300 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-100'
                   >
-                    <svg width='20' height='20' viewBox='0 0 20 20' fill='currentColor'>
+                    <svg
+                      width='18'
+                      height='18'
+                      viewBox='0 0 20 20'
+                      fill='currentColor'
+                      className='flex-shrink-0'
+                    >
                       <path d='M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z' />
                     </svg>
-                    <span>Call 801-616-3702</span>
+                    Call 801-616-3702
                   </a>
                 </div>
-
-                {/* Trust Line */}
-                <p className='text-slate-600 text-sm md:text-base'>
-                  Free 45-minute consultation. No sales pitch.
-                </p>
               </div>
+              <ul className='list-none p-0 m-0'>
+                <li className='py-4 border-b border-stone-200 flex items-center gap-4 text-sm md:text-base text-slate-900 font-medium'>
+                  <span className='text-primary font-bold text-lg'>→</span>
+                  Free 30-minute consultation
+                </li>
+                <li className='py-4 border-b border-stone-200 flex items-center gap-4 text-sm md:text-base text-slate-900 font-medium'>
+                  <span className='text-primary font-bold text-lg'>→</span>
+                  No obligation
+                </li>
+                <li className='py-4 border-b border-stone-200 flex items-center gap-4 text-sm md:text-base text-slate-900 font-medium'>
+                  <span className='text-primary font-bold text-lg'>→</span>
+                  Response within 24 hours
+                </li>
+              </ul>
+            </div>
 
-              {/* Visual - 45% - High-quality image with subtle parallax */}
-              <div className='relative hidden md:block'>
-                <div className='relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-complex'>
-                  <img
-                    src='/hero.jpeg'
-                    alt='Excel and Access Consulting'
-                    className='w-full h-[400px] object-cover'
-                    loading='eager'
-                    fetchpriority='high'
-                    style={{
-                      transform: 'translateZ(0)',
-                      willChange: 'transform',
-                    }}
-                  />
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent'></div>
+            {/* Info blocks - primary numbers */}
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10 py-10 md:py-14 border-t-2 border-b-2 border-slate-900 mb-12 md:mb-16'>
+              <div className='text-center'>
+                <div className='font-display font-bold text-4xl md:text-5xl text-primary leading-none mb-2'>
+                  95%
                 </div>
-                {/* Floating Stats Cards */}
-                <div className='absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-4 transform hover:scale-105 transition-transform duration-standard'>
-                  <div className='text-2xl font-bold text-primary'>500+</div>
-                  <div className='text-sm text-slate-600'>Projects Delivered</div>
+                <div className='text-sm uppercase tracking-wider text-stone-500 font-medium'>
+                  Time Saved
                 </div>
-                <div className='absolute -top-6 -right-6 bg-white rounded-lg shadow-xl p-4 transform hover:scale-105 transition-transform duration-standard'>
-                  <div className='text-2xl font-bold text-secondary'>20+</div>
-                  <div className='text-sm text-slate-600'>Years Experience</div>
+              </div>
+              <div className='text-center'>
+                <div className='font-display font-bold text-4xl md:text-5xl text-primary leading-none mb-2'>
+                  500+
+                </div>
+                <div className='text-sm uppercase tracking-wider text-stone-500 font-medium'>
+                  Happy Clients
+                </div>
+              </div>
+              <div className='text-center'>
+                <div className='font-display font-bold text-4xl md:text-5xl text-primary leading-none mb-2'>
+                  24hr
+                </div>
+                <div className='text-sm uppercase tracking-wider text-stone-500 font-medium'>
+                  Response Time
                 </div>
               </div>
             </div>
+
+            <p className='text-sm text-slate-600'>
+              Trusted by <strong className='text-slate-900 font-semibold'>500+ businesses</strong> nationwide
+            </p>
           </div>
         </section>
 
         {/* Problem-Solution Section - Modern Cards */}
-        <section className='py-8 md:py-12 bg-surface'>
+        <section className='py-12 md:py-16 bg-surface'>
           <div className='max-w-7xl mx-auto px-6'>
             <div className='text-center mb-8 md:mb-16'>
               <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
-                Still Doing Manual Excel Work?
+                Problems I Solve
               </h2>
               <p className='text-body-lg text-slate-600 max-w-2xl mx-auto'>
-                These are the problems I solve every day:
+                If this sounds familiar, we should talk.
               </p>
             </div>
 
@@ -316,66 +353,61 @@ function HomePage() {
               {/* Problem Card 1 */}
               <div className='card group'>
                 <div className='mb-4'>
-                  <div className='text-primary text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-standard'>
+                  <div className='text-primary text-4xl mb-4 transition-colors duration-200'>
                     ⏱️
                   </div>
-                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900 group-hover:text-primary transition-colors duration-micro'>
-                    Spending Hours on Weekly Reports?
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
+                    Hours Lost on Weekly Reports
                   </h3>
                 </div>
                 <p className='text-body-base text-slate-600 leading-relaxed mb-6'>
-                  Copying data from 10+ files, reformatting, checking formulas, emailing results.
-                  Same process every week.
+                  Pulling from multiple sources, reformatting, checking formulas, and distributing. The same manual process every period.
                 </p>
                 <Link
                   to='/excel-automation'
-                  className='text-primary hover:text-primary-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
+                  className='text-primary font-semibold inline-flex items-center gap-2'
                 >
-                  Automate It →
+                  Automate it →
                 </Link>
               </div>
 
               {/* Problem Card 2 */}
               <div className='card group'>
                 <div className='mb-4'>
-                  <div className='text-secondary text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-standard'>
+                  <div className='text-secondary text-4xl mb-4 transition-colors duration-200'>
                     💥
                   </div>
-                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900 group-hover:text-secondary transition-colors duration-micro'>
-                    Access Database Keeps Crashing?
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
+                    Access Database Unstable
                   </h3>
                 </div>
                 <p className='text-body-base text-slate-600 leading-relaxed mb-6'>
-                  File corruption, slow queries, multi-user conflicts. Can't rely on your data
-                  anymore.
+                  Corruption, slow queries, or multi-user conflicts. When you can’t rely on your data, operations suffer.
                 </p>
                 <Link
                   to='/access-consulting'
-                  className='text-secondary hover:text-secondary-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
+                  className='text-secondary font-semibold inline-flex items-center gap-2'
                 >
-                  Fix It →
+                  Fix it →
                 </Link>
               </div>
 
               {/* Problem Card 3 */}
               <div className='card group'>
                 <div className='mb-4'>
-                  <div className='text-accent text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-standard'>
-                    🔢
-                  </div>
-                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900 group-hover:text-accent transition-colors duration-micro'>
-                    Financial Model Too Slow?
+                  <div className='text-accent text-4xl mb-4 transition-colors duration-200'>🔢</div>
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
+                    Financial Models That Don’t Keep Up
                   </h3>
                 </div>
                 <p className='text-body-base text-slate-600 leading-relaxed mb-6'>
-                  Recalculation takes 5+ minutes. Can't add more scenarios. Formulas breaking
-                  randomly.
+                  Long recalc times, limited scenarios, or formulas that break. Your model should support decisions, not slow them down.
                 </p>
                 <Link
                   to='/financial-modeling'
-                  className='text-accent hover:text-accent-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
+                  className='text-accent font-semibold inline-flex items-center gap-2'
                 >
-                  Optimize It →
+                  Make it faster →
                 </Link>
               </div>
             </div>
@@ -387,11 +419,10 @@ function HomePage() {
           <div className='max-w-7xl mx-auto px-6'>
             <div className='text-center mb-10 md:mb-14'>
               <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
-                What I Do
+                Services
               </h2>
               <p className='text-body-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
-                I automate repetitive Excel and Access tasks that waste your team's time. Here's how
-                I can help.
+                Repetitive Excel and Access work goes away; your team gets time back for analysis and decisions. Here’s what I do.
               </p>
             </div>
 
@@ -401,80 +432,83 @@ function HomePage() {
                 {
                   num: '01',
                   title: 'Excel VBA Process Automation',
-                  desc: 'Stop doing the same thing over and over. As an Excel VBA consultant, I write VBA code that handles your repetitive tasks automatically, so you can focus on actual work.',
+                  desc: 'I build VBA solutions that run your repetitive Excel tasks automatically: consolidation, reporting, and workflows. Your team can focus on analysis and decisions.',
                   link: '/excel-automation',
                   bgColor: 'bg-primary',
                   textColor: 'text-primary',
-                  hoverBorder: 'hover:border-primary',
+                  hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-primary',
+                  iconHover: 'group-hover:text-primary',
                   icon: '📊',
                 },
                 {
                   num: '02',
                   title: 'Access Database Development',
-                  desc: 'As an Access database consultant, I build databases that multiple people can use without breaking.',
+                  desc: 'I design and build Access databases that support multiple users, clear workflows, and reliable data so your operations run without surprises.',
                   link: '/access-consulting',
                   bgColor: 'bg-secondary',
                   textColor: 'text-secondary',
-                  hoverBorder: 'hover:border-secondary',
+                  hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-secondary',
+                  iconHover: 'group-hover:text-secondary',
                   icon: '🗄️',
                 },
                 {
                   num: '03',
                   title: 'Financial Modeling',
-                  desc: 'Build accurate Excel financial models for forecasting, budgeting, and analysis.',
+                  desc: 'I build and audit Excel financial models for forecasting, budgeting, and analysis: structured, documented, and ready for stakeholders.',
                   link: '/financial-modeling',
                   bgColor: 'bg-primary',
                   textColor: 'text-primary',
-                  hoverBorder: 'hover:border-primary',
+                  hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-primary',
+                  iconHover: 'group-hover:text-primary',
                   icon: '📈',
                 },
                 {
                   num: '04',
                   title: 'Database Migration',
-                  desc: 'Migrate Access databases to SQL Server for better performance and scalability.',
+                  desc: 'I plan and execute Access-to-SQL Server migrations so you get better performance and scalability without losing data or workflows.',
                   link: '/database-migration',
                   bgColor: 'bg-secondary',
                   textColor: 'text-secondary',
-                  hoverBorder: 'hover:border-secondary',
+                  hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-secondary',
+                  iconHover: 'group-hover:text-secondary',
                   icon: '🔄',
                 },
                 {
                   num: '05',
                   title: 'VBA Development',
-                  desc: 'Custom VBA programming for Excel. Build macros, automation scripts, and Excel applications. Fix broken code or build from scratch.',
+                  desc: 'Custom VBA for Excel: macros, automation scripts, and applications. I fix broken code or build from scratch with clear scope and deliverables.',
                   link: '/vba-development',
                   bgColor: 'bg-primary',
                   textColor: 'text-primary',
-                  hoverBorder: 'hover:border-primary',
+                  hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-primary',
+                  iconHover: 'group-hover:text-primary',
                   icon: '⚙️',
                 },
               ].map((service, idx) => (
                 <Link
                   key={service.num}
                   to={service.link}
-                  className={`group relative bg-white rounded-xl border-2 border-slate-200 ${service.hoverBorder} p-6 md:p-7 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1`}
+                  className={`group relative bg-white rounded-xl border-2 border-slate-200 ${service.hoverBorder} p-6 md:p-7 transition-colors duration-200`}
                 >
                   {/* Number Badge */}
                   <div className='flex items-start justify-between mb-4'>
                     <div
-                      className={`w-12 h-12 ${service.bgColor} text-white rounded-lg flex items-center justify-center text-lg font-bold shadow-sm group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-12 h-12 ${service.bgColor} text-white rounded-lg flex items-center justify-center text-lg font-bold shadow-sm`}
                     >
                       {service.num}
                     </div>
-                    <div className='text-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-300'>
-                      {service.icon}
-                    </div>
+                    <div className={`text-3xl opacity-20 text-slate-300 transition-all duration-200 group-hover:opacity-100 ${service.iconHover}`}>{service.icon}</div>
                   </div>
 
                   {/* Content */}
                   <div>
                     <h3
-                      className={`text-heading-md md:text-heading-lg font-bold mb-3 font-display text-slate-900 ${service.hoverText} transition-colors duration-300`}
+                      className={`text-heading-md md:text-heading-lg font-bold mb-3 font-display text-slate-900`}
                     >
                       {service.title}
                     </h3>
@@ -482,11 +516,11 @@ function HomePage() {
                       {service.desc}
                     </p>
                     <span
-                      className={`inline-flex items-center gap-2 ${service.textColor} font-semibold text-sm group-hover:gap-3 transition-all duration-300`}
+                      className={`inline-flex items-center gap-2 ${service.textColor} font-medium text-sm group-hover:opacity-90 transition-opacity duration-200`}
                     >
                       Learn More
                       <svg
-                        className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300'
+                        className='w-4 h-4'
                         fill='none'
                         stroke='currentColor'
                         viewBox='0 0 24 24'
@@ -501,9 +535,9 @@ function HomePage() {
                     </span>
                   </div>
 
-                  {/* Hover Accent */}
+                  {/* Hover Accent - subtle bar */}
                   <div
-                    className={`absolute bottom-0 left-0 right-0 h-1 ${service.bgColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-xl`}
+                    className={`absolute bottom-0 left-0 right-0 h-0.5 bg-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-b-xl`}
                   ></div>
                 </Link>
               ))}
@@ -576,7 +610,7 @@ function HomePage() {
                               e.preventDefault();
                               scrollToSection('services');
                             }}
-                            className='text-primary hover:text-primary-hover font-medium underline transition-colors duration-micro'
+                            className='text-primary font-medium underline'
                           >
                             Learn more about Access database consulting services →
                           </a>
@@ -641,7 +675,7 @@ function HomePage() {
                               e.preventDefault();
                               scrollToSection('services');
                             }}
-                            className='text-primary hover:text-primary-hover font-medium underline transition-colors duration-micro'
+                            className='text-primary font-medium underline'
                           >
                             Learn more about Excel VBA automation services →
                           </a>
@@ -841,7 +875,7 @@ function HomePage() {
                     {'★★★★★'.split('').map((star, i) => (
                       <span
                         key={i}
-                        className='text-xl transform group-hover:scale-110 transition-transform duration-micro'
+                        className='text-xl transition-colors duration-200'
                         style={{ transitionDelay: `${i * 50}ms` }}
                       >
                         {star}
@@ -866,7 +900,7 @@ function HomePage() {
                     {'★★★★★'.split('').map((star, i) => (
                       <span
                         key={i}
-                        className='text-xl transform group-hover:scale-110 transition-transform duration-micro'
+                        className='text-xl transition-colors duration-200'
                         style={{ transitionDelay: `${i * 50}ms` }}
                       >
                         {star}
@@ -891,7 +925,7 @@ function HomePage() {
                     {'★★★★★'.split('').map((star, i) => (
                       <span
                         key={i}
-                        className='text-xl transform group-hover:scale-110 transition-transform duration-micro'
+                        className='text-xl transition-colors duration-200'
                         style={{ transitionDelay: `${i * 50}ms` }}
                       >
                         {star}
@@ -923,7 +957,7 @@ function HomePage() {
                 A Specialist for Complex Enterprises.
               </h2>
               <p className='text-body-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
-                Direct access to 20+ years of enterprise-level Excel and Access expertise.
+                Direct access to 20+ years of Excel and Access expertise.
               </p>
             </div>
 
@@ -937,7 +971,7 @@ function HomePage() {
                   nationwide.
                 </p>
                 <p>
-                  My approach is straightforward: I find the friction in your data processes and
+                  My approach is straight forward: I find the friction in your data processes and
                   build systems that get rid of it.
                 </p>
                 <p>
@@ -950,7 +984,7 @@ function HomePage() {
 
               <div className='mt-12 md:mt-16 grid md:grid-cols-2 gap-6'>
                 <div className='card group'>
-                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-primary transition-colors duration-micro'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display'>
                     Direct Principal Access
                   </h3>
                   <p className='text-body-base text-slate-600 leading-relaxed'>
@@ -961,9 +995,7 @@ function HomePage() {
                 </div>
 
                 <div className='card group'>
-                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-secondary transition-colors duration-micro'>
-                    Code Ownership
-                  </h3>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display'>Code Ownership</h3>
                   <p className='text-body-base text-slate-600 leading-relaxed'>
                     You own 100% of what I build. No licenses, no lock-in, no recurring fees. The
                     systems I build are yours, period.
@@ -971,7 +1003,7 @@ function HomePage() {
                 </div>
 
                 <div className='card group'>
-                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-accent transition-colors duration-micro'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display'>
                     Transparent Pricing
                   </h3>
                   <p className='text-body-base text-slate-600 leading-relaxed mb-4'>
@@ -988,7 +1020,7 @@ function HomePage() {
                 </div>
 
                 <div className='card group'>
-                  <h3 className='text-heading-lg font-bold mb-4 font-display group-hover:text-primary transition-colors duration-micro'>
+                  <h3 className='text-heading-lg font-bold mb-4 font-display'>
                     Enterprise Security
                   </h3>
                   <p className='text-body-base text-slate-600 leading-relaxed'>
@@ -1008,7 +1040,7 @@ function HomePage() {
               <div className='space-y-6 text-body-lg text-slate-700 leading-relaxed'>
                 <p>
                   I&apos;m not a creative designer. I&apos;m not generalist IT support. I&apos;m a
-                  specialist in the Microsoft Data Stack—Excel, Access, VBA, and SQL Server.
+                  specialist in the Microsoft Data Stack: Excel, Access, VBA, and SQL Server.
                 </p>
                 <p>
                   This focus means I understand the deep technical constraints and possibilities of
@@ -1043,7 +1075,7 @@ function HomePage() {
                 {
                   num: 1,
                   title: 'Free Consultation',
-                  desc: '45-minute Zoom call to understand your process, pain points, and goals. No obligation.',
+                  desc: '30-minute Zoom call to understand your process, pain points, and goals. No obligation.',
                   bgColor: 'bg-primary',
                   lightBg: 'bg-primary/5',
                   textColor: 'text-primary',
@@ -1083,13 +1115,13 @@ function HomePage() {
               ].map((step, idx) => (
                 <div
                   key={step.num}
-                  className={`group relative ${step.lightBg} rounded-xl border border-slate-200/60 p-4 md:p-5 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 hover:border-slate-300`}
+                  className={`group relative ${step.lightBg} rounded-xl border border-slate-200/60 p-4 md:p-5`}
                   style={{ animationDelay: `${idx * 50}ms` }}
                 >
                   {/* Badge - Centered at top */}
                   <div className='flex flex-col items-center text-center mb-4'>
                     <div
-                      className={`w-14 h-14 ${step.bgColor} text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-3 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}
+                      className={`w-14 h-14 ${step.bgColor} text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-3 shadow-md transition-colors duration-200`}
                     >
                       {step.num}
                     </div>
@@ -1100,7 +1132,9 @@ function HomePage() {
                     </h3>
                   </div>
                   {/* Description */}
-                  <p className='text-body-sm text-slate-600 leading-relaxed text-center'>{step.desc}</p>
+                  <p className='text-body-sm text-slate-600 leading-relaxed text-center'>
+                    {step.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -1269,25 +1303,24 @@ function HomePage() {
         </section>
 
         {/* Final CTA Section */}
-        <section className='py-8 md:py-12 bg-slate-100 text-slate-900 relative overflow-hidden'>
+        <section className='py-12 md:py-16 bg-slate-100 text-slate-900 relative overflow-hidden'>
           <div className='relative z-10 max-w-7xl mx-auto px-6 text-center'>
             <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900'>
-              Ready to Stop Wasting Time on Manual Work?
+              Ready to Cut the Manual Work?
             </h2>
             <p className='text-body-lg text-slate-700 max-w-2xl mx-auto mb-8 leading-relaxed'>
-              Free 45-minute consultation. We'll review your process and discuss automation options.
-              No obligation, no sales pitch.
+              Free 30-minute call. We’ll look at your process and talk through what can be automated. No obligation.
             </p>
             <div className='flex flex-col sm:flex-row justify-center gap-4'>
               <Link
                 to='/contact'
-                className='bg-primary hover:bg-primary-hover text-white hover:text-white px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg text-center shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                className='bg-primary hover:bg-primary-hover text-white px-8 py-4 text-base font-semibold transition-colors duration-150 rounded-lg text-center shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
               >
                 Schedule Free Consultation
               </Link>
               <a
                 href='tel:8016163702'
-                className='bg-white hover:bg-slate-100 text-primary border-2 border-primary px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg text-center flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                className='bg-white hover:bg-slate-50 text-primary border-2 border-primary px-8 py-4 text-base font-semibold transition-colors duration-150 rounded-lg text-center flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
               >
                 <svg
                   width='20'
@@ -1301,10 +1334,8 @@ function HomePage() {
                 <span>Call 801-616-3702</span>
               </a>
             </div>
-            <p className='text-slate-600 text-body-sm mt-6'>Most projects start within 1-2 weeks</p>
           </div>
         </section>
-
       </div>
     </>
   );

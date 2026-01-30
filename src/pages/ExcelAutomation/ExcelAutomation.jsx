@@ -570,7 +570,7 @@ function ExcelAutomation() {
           <div className='flex flex-col sm:flex-row justify-center gap-4'>
             <Link
               to='/contact'
-              className='inline-flex items-center justify-center bg-secondary hover:bg-secondary-hover text-white hover:text-white font-semibold px-8 py-4 text-base rounded-lg transition-all duration-standard shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2'
+              className='inline-flex items-center justify-center bg-secondary hover:bg-secondary-hover text-white hover:text-white font-semibold px-8 py-4 text-base rounded-lg transition-colors duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2'
             >
               Schedule Free Consultation
             </Link>

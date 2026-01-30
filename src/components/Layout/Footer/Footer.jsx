@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const establishedYear = 2020;
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -33,8 +34,7 @@ const Footer = () => {
               />
             </div>
             <p className="Footer-text">
-              Professional business automation and data solutions. 
-              We design reliable systems, automation tools, and internal dashboards.
+              Business automation and data solutions. I build reliable systems, automation tools, and internal dashboards.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ const Footer = () => {
 
         <div className="Footer-bottom">
           <p className="Footer-copyright">
-            © {currentYear} ExcelAccessConsultant. All rights reserved.
+            © {establishedYear}–{currentYear} ExcelAccessConsultant. All rights reserved.
           </p>
         </div>
       </div>

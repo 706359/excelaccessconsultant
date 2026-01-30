@@ -149,6 +149,37 @@
 }
 
 @layer components {
+  /* Global rule: Ensure all buttons/links with colored backgrounds keep white text on hover */
+  button.bg-primary:hover,
+  button.bg-secondary:hover,
+  button.bg-excel:hover,
+  a.bg-primary:hover,
+  a.bg-secondary:hover,
+  a.bg-excel:hover,
+  button[class*='bg-primary']:hover,
+  button[class*='bg-secondary']:hover,
+  button[class*='bg-excel']:hover,
+  a[class*='bg-primary']:hover,
+  a[class*='bg-secondary']:hover,
+  a[class*='bg-excel']:hover {
+    @apply text-white;
+  }
+  
+  button.bg-primary:hover *,
+  button.bg-secondary:hover *,
+  button.bg-excel:hover *,
+  a.bg-primary:hover *,
+  a.bg-secondary:hover *,
+  a.bg-excel:hover *,
+  button[class*='bg-primary']:hover *,
+  button[class*='bg-secondary']:hover *,
+  button[class*='bg-excel']:hover *,
+  a[class*='bg-primary']:hover *,
+  a[class*='bg-secondary']:hover *,
+  a[class*='bg-excel']:hover * {
+    color: white !important;
+  }
+
   /* Legacy button classes - kept for backward compatibility if needed */
   /* Use Button component instead for consistency */
   .btn-primary {
@@ -164,18 +195,15 @@
   }
 
   .card {
-    @apply bg-white border border-slate-200 shadow-card hover:shadow-card-hover transition-all duration-standard p-md rounded-card;
-  }
-
-  .card:hover {
-    @apply -translate-y-1;
+    @apply bg-white border border-slate-200 shadow-card p-md rounded-card;
   }
 
   .card-image {
     @apply aspect-video w-full object-cover rounded-t-card;
   }
 
-  .card button:not(.btn-primary):not([type='submit']) {
+  /* Only apply black text hover to non-colored buttons */
+  .card button:not(.btn-primary):not([type='submit']):not([class*='bg-primary']):not([class*='bg-secondary']):not([class*='bg-excel']) {
     @apply transition-colors hover:text-slate-900 cursor-pointer;
   }
 
@@ -184,11 +212,18 @@
     @apply text-white hover:text-white;
   }
 
+  /* Ensure all colored buttons stay white on hover */
+  .card button[class*='bg-primary']:hover,
+  .card button[class*='bg-secondary']:hover,
+  .card button[class*='bg-excel']:hover {
+    @apply text-white;
+  }
+
   .card button:hover h3 {
     @apply text-slate-900;
   }
 
-  .card button:not(.btn-primary):not([type='submit']):hover span {
+  .card button:not(.btn-primary):not([type='submit']):not([class*='bg-primary']):not([class*='bg-secondary']):not([class*='bg-excel']):hover span {
     @apply text-slate-600;
   }
 
@@ -201,6 +236,13 @@
   .card button[type='submit'].btn-primary:hover,
   .card .btn-primary:hover *,
   .card button[type='submit'].btn-primary:hover * {
+    color: white !important;
+  }
+
+  /* Ensure colored buttons and their children stay white on hover */
+  .card button[class*='bg-primary']:hover *,
+  .card button[class*='bg-secondary']:hover *,
+  .card button[class*='bg-excel']:hover * {
     color: white !important;
   }
 
@@ -219,6 +261,45 @@
 }
 
 @layer utilities {
+  /* Hero bullet list: force dark text (Free 30-min consultation, etc.) */
+  #home ul.list-none li,
+  section#home ul li {
+    color: rgb(15 23 42) !important; /* slate-900 */
+  }
+
+  /* At md breakpoint, ensure .md\:text-base uses dark text (not white) */
+  @media (min-width: 768px) {
+    .md\:text-base {
+      color: rgb(15 23 42) !important; /* slate-900 */
+    }
+  }
+
+  /* Force white text on hover for colored buttons */
+  .bg-primary:hover,
+  .bg-secondary:hover,
+  .bg-excel:hover {
+    color: white !important;
+  }
+  
+  .bg-primary:hover *,
+  .bg-secondary:hover *,
+  .bg-excel:hover * {
+    color: white !important;
+  }
+  
+  /* For buttons/links with hover background colors */
+  .hover\:bg-primary-hover:hover,
+  .hover\:bg-secondary-hover:hover,
+  .hover\:bg-excel-hover:hover {
+    color: white !important;
+  }
+  
+  .hover\:bg-primary-hover:hover *,
+  .hover\:bg-secondary-hover:hover *,
+  .hover\:bg-excel-hover:hover * {
+    color: white !important;
+  }
+
   @keyframes slide-in {
     from {
       transform: translateX(100%);
@@ -272,6 +353,26 @@
   /* Focus visible for accessibility */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Hero headline accent word (italic, primary color, solid underline) */
+  .Hero-hours-highlight {
+    font-style: italic;
+    font-weight: 800;
+    color: #C8102E;
+    position: relative;
+    display: inline;
+  }
+  .Hero-hours-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0.08em;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #C8102E;
+    opacity: 0.4;
+    z-index: -1;
   }
 
   /* Mobile menu smooth animations */

@@ -8,7 +8,7 @@ function AccessVsSQLServer() {
     slug: 'access-vs-sql-server-when-to-migrate',
     title: 'Access vs SQL Server: When to Migrate Your Database',
     category: 'Database Migration',
-    date: '2026-01-24',
+    date: '2024-06-18',
     readTime: '11 min read',
     seoTitle: 'Access vs SQL Server: When to Migrate | Database Migration Guide',
     seoDescription:
@@ -368,7 +368,7 @@ function AccessVsSQLServer() {
           </div>
 
           {/* CTA Section */}
-          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
             <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
               Need Help Deciding?
             </h3>
@@ -377,7 +377,7 @@ function AccessVsSQLServer() {
               right for you. I&apos;ll provide an honest assessment and fixed-price quote if
               migration makes sense.
             </p>
-            <div className='flex flex-col sm:flex-row gap-4'>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link
                 to='/contact'
                 className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -391,7 +391,7 @@ function AccessVsSQLServer() {
                 Call 801-616-3702
               </a>
             </div>
-            <div className='mt-6'>
+            <div className='mt-6 flex justify-center'>
               <Link
                 to='/database-migration'
                 className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'

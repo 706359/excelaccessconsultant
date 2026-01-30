@@ -52,11 +52,10 @@ const CookieConsent = () => {
         <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-4'>
           <div className='flex-1'>
             <h3 className='text-sm font-semibold text-slate-900 mb-1'>
-              We Value Your Privacy
+              Your privacy matters
             </h3>
             <p className='text-xs text-slate-600'>
-              We use cookies to analyze site usage and improve your experience. Your data is
-              secure and never shared with third parties.{' '}
+              This site uses cookies to understand how visitors use it. Your data stays here and isn't shared.{' '}
               <a
                 href='/privacy'
                 className='text-primary hover:underline font-medium transition-colors duration-micro'
@@ -78,7 +77,7 @@ const CookieConsent = () => {
             </button>
             <button
               onClick={handleAccept}
-              className='px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-hover rounded-md transition-colors'
+              className='px-4 py-2 text-sm font-medium text-white hover:text-white bg-primary hover:bg-primary-hover rounded-md transition-colors'
             >
               Accept Cookies
             </button>

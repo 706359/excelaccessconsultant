@@ -8,7 +8,7 @@ function TenSignsYouNeedExcelAutomation() {
     slug: '10-signs-you-need-excel-automation',
     title: '10 Signs You Need Excel Automation',
     category: 'Excel Automation',
-    date: '2026-01-24',
+    date: '2024-01-15',
     readTime: '8 min read',
     seoTitle: '10 Signs You Need Excel Automation | ExcelAccessConsultant',
     seoDescription:
@@ -255,7 +255,7 @@ function TenSignsYouNeedExcelAutomation() {
               </div>
 
               {/* CTA Section */}
-              <div className='mt-8 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+              <div className='mt-8 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
                 <h3 className='text-heading-md md:text-heading-lg font-bold mb-4 font-display text-slate-900'>
                   Ready to Automate Your Excel Work?
                 </h3>
@@ -263,7 +263,7 @@ function TenSignsYouNeedExcelAutomation() {
                   If you recognized any of these signs, automation could save you hours every week.
                   Get a free consultation to see how.
                 </p>
-                <div className='flex flex-col sm:flex-row gap-4'>
+                <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                   <Link
                     to='/contact'
                     className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -293,7 +293,7 @@ function TenSignsYouNeedExcelAutomation() {
                       to='/blog/excel-automation-cost-what-to-expect'
                       className='text-body-base text-slate-700 hover:text-primary transition-colors duration-micro block leading-relaxed'
                     >
-                      Excel Automation Cost: What to Expect in 2026
+                      Excel Automation Cost: What to Expect in 2025
                     </Link>
                   </li>
                   <li>
@@ -351,7 +351,7 @@ function TenSignsYouNeedExcelAutomation() {
                 <div className='space-y-3'>
                   <Link
                     to='/contact'
-                    className='block w-full bg-primary hover:bg-primary-hover text-white px-4 py-3 text-sm font-medium transition-colors rounded-md text-center'
+                    className='block w-full bg-primary hover:bg-primary-hover text-white hover:text-white px-4 py-3 text-sm font-medium transition-colors rounded-md text-center'
                   >
                     Free Consultation
                   </Link>

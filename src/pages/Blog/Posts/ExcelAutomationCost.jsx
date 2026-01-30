@@ -16,16 +16,16 @@ function ExcelAutomationCost() {
 
   const post = {
     slug: 'excel-automation-cost-what-to-expect',
-    title: 'Excel Automation Cost: What to Expect in 2026',
+    title: 'Excel Automation Cost: What to Expect in 2025',
     category: 'Excel Automation',
-    date: '2026-01-24',
+    date: '2024-04-10',
     readTime: '7 min read',
-    seoTitle: 'Excel Automation Cost: What to Expect in 2026 | Pricing Guide',
+    seoTitle: 'Excel Automation Cost: What to Expect in 2025 | Pricing Guide',
     seoDescription:
-      'Wondering how much Excel automation costs? Get realistic pricing expectations for 2026. Learn what factors affect cost and what you can expect to pay for Excel automation projects.',
+      'Wondering how much Excel automation costs? Get realistic pricing expectations for 2025. Learn what factors affect cost and what you can expect to pay for Excel automation projects.',
     keywords:
       'excel automation cost, excel automation pricing, vba development cost, excel consultant pricing, automation project cost',
-    ogTitle: 'Excel Automation Cost Guide 2026',
+    ogTitle: 'Excel Automation Cost Guide 2025',
     faqs: [
       {
         question: 'How much does Excel automation cost?',
@@ -93,12 +93,12 @@ function ExcelAutomationCost() {
           <div className='prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6'>
             <p className='text-lg text-slate-700 font-medium'>
               Wondering how much Excel automation costs? You&apos;re not alone. Here&apos;s
-              realistic pricing for 2026, what affects the cost, and how to determine if automation
+              realistic pricing for 2025, what affects the cost, and how to determine if automation
               is worth it for your business.
             </p>
 
             <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              Excel Automation Pricing Tiers (2026)
+              Excel Automation Pricing Tiers (2025)
             </h2>
             <p>Excel automation costs vary based on complexity. Here&apos;s what you can expect:</p>
 
@@ -238,7 +238,7 @@ function ExcelAutomationCost() {
           </div>
 
           {/* CTA Section */}
-          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
             <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
               Ready to Get Started?
             </h3>
@@ -246,7 +246,7 @@ function ExcelAutomationCost() {
               Get a free consultation and fixed-price quote for your Excel automation project. No
               obligation.
             </p>
-            <div className='flex flex-col sm:flex-row gap-4'>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link
                 to='/contact'
                 className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -260,7 +260,7 @@ function ExcelAutomationCost() {
                 Call 801-616-3702
               </a>
             </div>
-            <div className='mt-6'>
+            <div className='mt-6 flex justify-center'>
               <Link
                 to='/excel-automation'
                 className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'

@@ -8,7 +8,7 @@ function About() {
     <div className='bg-base min-h-screen text-slate-900 font-sans selection:bg-primary selection:text-white'>
       <SEO
         title='Operational Stability & Data Governance | ExcelAccessConsultant'
-        description='We replace fragile spreadsheets with robust, audit-ready systems. Senior-level consulting for US finance and operations teams.'
+        description='I replace fragile spreadsheets with stable, audit-ready systems. Senior-level Excel and Access consulting for finance and operations—you work with me directly.'
         keywords='operational stability, data governance, Excel consulting, Access consulting, audit-ready systems, business continuity, risk mitigation'
         url='https://excelaccessconsultant.com/about'
         ogTitle='Operational Stability & Data Governance | ExcelAccessConsultant'
@@ -20,10 +20,10 @@ function About() {
           <div className='absolute inset-0 -z-10 bg-excel/5 rounded-full blur-3xl'></div>
 
           <h1 className='text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-slate-900 font-display'>
-            A Specialist for Complex Enterprises.
+            Excel & Access Consulting
           </h1>
           <p className='text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed'>
-            Direct access to 20+ years of enterprise-level Excel and Access expertise.
+            15+ years of hands-on Excel and Access work for finance and operations teams. You work with me directly; no middlemen.
           </p>
         </section>
 
@@ -36,7 +36,7 @@ function About() {
                 business logic and Microsoft technology.
               </p>
               <p>
-                My approach is straightforward: I find the friction in your data processes and build
+                My approach is straight forward: I find the friction in your data processes and build
                 systems that get rid of it.
               </p>
               <p>
@@ -100,7 +100,7 @@ function About() {
             <div className='space-y-6 text-lg text-slate-700 leading-relaxed'>
               <p>
                 I&apos;m not a creative designer. I&apos;m not generalist IT support. I&apos;m a
-                specialist in the Microsoft Data Stack—Excel, Access, VBA, and SQL Server.
+                specialist in the Microsoft Data Stack: Excel, Access, VBA, and SQL Server.
               </p>
               <p>
                 This focus means I understand the deep technical constraints and possibilities of
@@ -132,7 +132,7 @@ function About() {
                     <h3 className='text-heading-lg font-bold mb-3 font-display'>Understand</h3>
                     <p className='text-slate-600 leading-relaxed'>
                       Deep-dive audit of your current logic, workflows, and pain points. I
-                      don&apos;t assume—I verify how your business actually works.
+                      don&apos;t assume; I verify how your business actually works.
                     </p>
                   </div>
                 </div>

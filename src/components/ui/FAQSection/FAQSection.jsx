@@ -10,7 +10,7 @@ const FAQSection = ({ scrollToSection }) => {
     {
       question: 'What types of businesses do you work with?',
       answer:
-        "I work with businesses of all sizes—from small startups to big companies, across pretty much any industry. Every project is different, and I'll build something that fits your specific needs, no matter what industry you're in or how big your company is.",
+        "All kinds. Small shops, big companies, and everything in between. I've worked across a lot of industries. Every project's different, and I build what fits your situation.",
     },
     {
       question: 'How long does a typical project take?',
@@ -25,12 +25,12 @@ const FAQSection = ({ scrollToSection }) => {
     {
       question: 'Can you work with our existing systems and data?',
       answer:
-        "Yes, definitely. I work with what you've already got—your existing data, databases, and workflows. I'll take a look at your current setup and build something that works with it, not against it.",
+        "Yeah. I work with what you've already got. I'll look at your current setup and build something that works with it, not against it.",
     },
     {
       question: 'What kind of support do you offer after project completion?',
       answer:
-        "I'm here if you need help after the project is done. That includes fixing bugs, updates, adding new features, or just answering questions. We can work out a support arrangement that fits what you need—whether that's calling me when something comes up or a regular maintenance plan.",
+        "I'm here after we're done. Bug fixes, updates, new features, or just questions. We can figure out what works for you: call when something comes up, or set up a regular check-in.",
     },
     {
       question: 'How do you ensure data security and privacy?',
@@ -40,7 +40,7 @@ const FAQSection = ({ scrollToSection }) => {
     {
       question: 'What is your pricing model?',
       answer:
-        "It depends on what you need—the scope, how complex it is, and your specific requirements. After we talk about your project, I'll give you a detailed quote. I do both fixed-price projects and hourly consulting, whatever works better for you.",
+        "Depends on what you need. Scope, complexity, that kind of thing. Once we talk through your project, I'll give you a real quote. I do fixed-price and hourly, whichever fits better.",
     },
     {
       question: 'Do you offer remote services?',
@@ -50,7 +50,7 @@ const FAQSection = ({ scrollToSection }) => {
     {
       question: 'Can you help with urgent or time-sensitive projects?',
       answer:
-        "I get it—sometimes you need something done yesterday. While I always recommend planning things out for the best results, I can work with tight deadlines. Give me a call and we'll talk about your timeline. I'll figure out what's possible.",
+        "Sometimes you need it yesterday. I get it. I'd rather plan things out when we can, but I've done plenty of rush jobs. Call me and we'll talk about your timeline.",
     },
     {
       question: 'What makes your solutions different from off-the-shelf software?',

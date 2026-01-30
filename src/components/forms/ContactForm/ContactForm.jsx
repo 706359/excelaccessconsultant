@@ -27,9 +27,7 @@ const ContactForm = () => {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -37,32 +35,15 @@ const ContactForm = () => {
 
       if (response.ok && data.success) {
         setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          message: ''
-        });
-
-        // Reset status message after 5 seconds
-        setTimeout(() => {
-          setSubmitStatus(null);
-        }, 5000);
+        setFormData({ name: '', email: '', company: '', message: '' });
+        setTimeout(() => setSubmitStatus(null), 5000);
       } else {
         setSubmitStatus('error');
-
-        // Reset error status after 5 seconds
-        setTimeout(() => {
-          setSubmitStatus(null);
-        }, 5000);
+        setTimeout(() => setSubmitStatus(null), 5000);
       }
     } catch (error) {
       setSubmitStatus('error');
-
-      // Reset error status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
+      setTimeout(() => setSubmitStatus(null), 5000);
     } finally {
       setIsSubmitting(false);
     }

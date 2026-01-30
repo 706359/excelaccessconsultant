@@ -69,8 +69,7 @@ const TrustBadge = () => {
               Your Data is Secure
             </h3>
             <p className='text-xs text-slate-600 mb-2'>
-              We sign NDAs, work in your systems (not ours), and never share your information.
-              20+ years of handling sensitive business data.
+              I sign NDAs, work in your systems (not mine), and don't share your information. 20+ years handling sensitive business data.
             </p>
             <a
               href='#contact'

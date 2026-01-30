@@ -18,7 +18,7 @@ function WhyYourAccessDatabaseKeepsCrashing() {
     slug: 'why-your-access-database-keeps-crashing',
     title: 'Why Your Access Database Keeps Crashing (And How to Fix It)',
     category: 'Access Database',
-    date: '2026-01-24',
+    date: '2024-02-20',
     readTime: '10 min read',
     seoTitle: 'Why Your Access Database Keeps Crashing | Fix Access Database',
     seoDescription:
@@ -237,7 +237,7 @@ function WhyYourAccessDatabaseKeepsCrashing() {
           </div>
 
           {/* CTA Section */}
-          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
             <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
               Ready to Fix Your Crashing Access Database?
             </h3>
@@ -245,7 +245,7 @@ function WhyYourAccessDatabaseKeepsCrashing() {
               Get a free consultation to diagnose your Access database issues and get a fixed-price
               quote for repairs.
             </p>
-            <div className='flex flex-col sm:flex-row gap-4'>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link
                 to='/contact'
                 className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -259,7 +259,7 @@ function WhyYourAccessDatabaseKeepsCrashing() {
                 Call 801-616-3702
               </a>
             </div>
-            <div className='mt-6'>
+            <div className='mt-6 flex justify-center'>
               <Link
                 to='/access-consulting'
                 className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'

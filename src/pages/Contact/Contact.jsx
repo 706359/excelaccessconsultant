@@ -13,9 +13,6 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    companyName: '',
-    bestTimeToCall: '',
-    hoursPerWeek: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -167,85 +164,52 @@ const Contact = () => {
       return;
     }
 
-    // Start submitting
     setIsSubmitting(true);
 
     try {
-      // Call API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: formData.phone || '',
-          companyName: formData.companyName || '',
-          bestTimeToCall: formData.bestTimeToCall || '',
-          hoursPerWeek: formData.hoursPerWeek || '',
           service: selectedService || '',
           message: formData.message,
         }),
       });
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        // Success - check email status
+      let data;
+      try {
+        data = await response.json();
+      } catch (_) {
         setIsSubmitting(false);
-
-        if (data.emailSent === false && data.message) {
-          // Email failed but form was received
-          showToast(
-            'Your message was received, but there was an issue sending the confirmation email. We will still get back to you.',
-            'warning',
-            8000
-          );
-          // Still redirect but show warning
-          setTimeout(() => {
-            navigate('/thank-you');
-          }, 2000);
-        } else {
-          // Full success - reset form
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            companyName: '',
-            bestTimeToCall: '',
-            hoursPerWeek: '',
-            message: '',
-          });
-          setSelectedService('');
-          setFormStep(1);
-          navigate('/thank-you');
-        }
-      } else {
-        // API returned an error
-        setIsSubmitting(false);
-        const errorMessage =
-          data.error || data.message || 'Failed to send message. Please try again.';
-        showToast(errorMessage, 'error', 8000);
-      }
-    } catch (error) {
-      // Network or other error
-      setIsSubmitting(false);
-
-      // Check if it's a timeout error
-      if (error.name === 'AbortError' || error.message?.includes('timeout')) {
         showToast(
-          'Request timed out. Your message may have been received. Please contact us directly if you don&apos;t receive a confirmation.',
-          'warning',
-          8000
-        );
-      } else {
-        showToast(
-          'Network error. Please check your connection and try again, or contact us directly at rob@excelaccessconsultant.com',
+          'The contact service is temporarily unavailable. Please email rob@excelaccessconsultant.com or call 801-616-3702.',
           'error',
           8000
         );
+        return;
       }
+
+      if (response.ok && data.success) {
+        setIsSubmitting(false);
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setSelectedService('');
+        setFormStep(1);
+        navigate('/thank-you');
+      } else {
+        setIsSubmitting(false);
+        const errorMessage = data.error || data.message || 'Failed to send message. Please try again.';
+        showToast(errorMessage, 'error', 8000);
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      showToast(
+        'Network error. Please check your connection and try again, or email rob@excelaccessconsultant.com / call 801-616-3702.',
+        'error',
+        8000
+      );
     }
   };
 
@@ -275,21 +239,20 @@ const Contact = () => {
               <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
                 Let&apos;s Get to Work.
               </h2>
-              <p className='text-body-lg text-slate-600 max-w-2xl mx-auto leading-relaxed'>
-                Tell us what&apos;s broken or what you need built. As an Excel VBA consultant and
-                Access database consultant serving businesses nationwide from Springville, Utah,
-                I&apos;ll review your project and get back to you within 24 hours to see if
-                we&apos;re the right fit.
+              <p className='text-body-lg text-slate-600 max-w-[44rem] mx-auto leading-relaxed'>
+                Tell me what&apos;s broken or what you need built. I&apos;m based in Springville, Utah, and work with
+                clients nationwide. I&apos;ll look at your project and get back to you within 24 hours so we can
+                see if we&apos;re a good fit.
               </p>
             </div>
 
-            <div className='grid md:grid-cols-2 gap-6 lg:gap-8'>
+            <div className='grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch'>
               {/* Pricing Content */}
-              <div>
+              <div className='flex flex-col'>
                 <h3 className='text-heading-md md:text-heading-lg font-bold mb-6 font-display text-slate-900'>
                   Pricing
                 </h3>
-                <div className='card space-y-6'>
+                <div className='bg-white border border-slate-200 shadow-card p-md rounded-card space-y-6 flex-1 flex flex-col min-h-0'>
                   <div>
                     <h4 className='text-heading-sm md:text-heading-md font-bold mb-4 font-display text-slate-900'>
                       Free consultation
@@ -324,7 +287,7 @@ const Contact = () => {
                         <p className='text-sm font-medium text-slate-700 mb-1'>Phone</p>
                         <a
                           href='tel:8016163702'
-                          className='text-primary hover:text-primary-hover font-semibold text-lg transition-colors duration-micro focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded'
+                          className='text-primary font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded'
                         >
                           801-616-3702
                         </a>
@@ -333,7 +296,7 @@ const Contact = () => {
                         <p className='text-body-sm font-medium text-slate-700 mb-1'>Email</p>
                         <a
                           href='mailto:rob@excelaccessconsultant.com'
-                          className='text-primary hover:text-primary-hover font-semibold transition-colors duration-micro focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded'
+                          className='text-primary font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded'
                         >
                           rob@excelaccessconsultant.com
                         </a>
@@ -344,11 +307,11 @@ const Contact = () => {
               </div>
 
               {/* Contact Form */}
-              <div>
+              <div className='flex flex-col'>
                 <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900'>
                   Get Started
                 </h2>
-                <div className='card'>
+                <div className='card flex-1 flex flex-col min-h-0'>
                   {/* Step Indicator */}
                   <div className='mb-6 flex items-center gap-2'>
                     <div
@@ -384,10 +347,10 @@ const Contact = () => {
                           ].map((service) => (
                             <label
                               key={service.value}
-                              className={`flex items-center p-4 border-2 rounded-card cursor-pointer transition-all duration-standard ${
+                              className={`flex items-center p-4 border-2 rounded-card cursor-pointer ${
                                 selectedService === service.value
                                   ? 'border-primary bg-primary/5 shadow-md'
-                                  : 'border-slate-200 hover:border-slate-300 hover:shadow-sm'
+                                  : 'border-slate-200'
                               }`}
                             >
                               <input
@@ -396,7 +359,7 @@ const Contact = () => {
                                 value={service.value}
                                 checked={selectedService === service.value}
                                 onChange={(e) => setSelectedService(e.target.value)}
-                                className='mr-3 w-4 h-4 text-primary focus:ring-primary focus:ring-2'
+                                className='mr-3 w-4 h-4 flex-shrink-0 text-primary border-slate-300 focus:ring-0 focus:ring-offset-0 focus:outline-none'
                               />
                               <span className='text-slate-900 font-medium'>{service.label}</span>
                             </label>
@@ -527,63 +490,6 @@ const Contact = () => {
                         )}
                       </div>
                       <div>
-                        <label
-                          htmlFor='hoursPerWeek'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Hours per week spent on this task
-                        </label>
-                        <input
-                          id='hoursPerWeek'
-                          name='hoursPerWeek'
-                          type='number'
-                          min='0'
-                          step='0.5'
-                          value={formData.hoursPerWeek}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary'
-                          placeholder='e.g., 5, 10, 20'
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor='companyName'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Company Name
-                        </label>
-                        <input
-                          id='companyName'
-                          name='companyName'
-                          type='text'
-                          value={formData.companyName}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary'
-                          placeholder='Your company name'
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor='bestTimeToCall'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Best time to call
-                        </label>
-                        <select
-                          id='bestTimeToCall'
-                          name='bestTimeToCall'
-                          value={formData.bestTimeToCall}
-                          onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary'
-                        >
-                          <option value=''>Select a time</option>
-                          <option value='morning'>Morning (8 AM - 12 PM)</option>
-                          <option value='afternoon'>Afternoon (12 PM - 5 PM)</option>
-                          <option value='evening'>Evening (5 PM - 8 PM)</option>
-                          <option value='anytime'>Anytime</option>
-                        </select>
-                      </div>
-                      <div>
                         <div className='flex items-center justify-between mb-2'>
                           <label
                             htmlFor='captcha'
@@ -632,7 +538,7 @@ const Contact = () => {
                           <button
                             type='button'
                             onClick={generateCaptcha}
-                            className='px-3 py-3 text-slate-600 hover:text-slate-900 border border-slate-300 hover:border-slate-400 rounded transition-colors'
+                            className='px-3 py-3 text-slate-600 border border-slate-300 rounded'
                             aria-label='Refresh captcha'
                             title='Get a new question'
                           >
@@ -652,9 +558,38 @@ const Contact = () => {
                           </button>
                         </div>
                         {captchaError && (
-                          <p className='text-red-600 text-sm mt-2'>
-                            Incorrect answer. Please try again.
-                          </p>
+                          <div className='mt-3 p-4 bg-primary rounded-lg shadow-md flex items-center justify-between'>
+                            <div className='flex items-center gap-3'>
+                              <svg
+                                className='w-5 h-5 text-white flex-shrink-0'
+                                fill='currentColor'
+                                viewBox='0 0 20 20'
+                              >
+                                <path
+                                  fillRule='evenodd'
+                                  d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z'
+                                  clipRule='evenodd'
+                                />
+                              </svg>
+                              <p className='text-sm font-semibold text-white'>
+                                Incorrect answer. Please try again.
+                              </p>
+                            </div>
+                            <button
+                              type='button'
+                              onClick={() => setCaptchaError(false)}
+                              className='text-white hover:text-slate-200 transition-colors ml-4'
+                              aria-label='Dismiss error'
+                            >
+                              <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 20 20'>
+                                <path
+                                  fillRule='evenodd'
+                                  d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                                  clipRule='evenodd'
+                                />
+                              </svg>
+                            </button>
+                          </div>
                         )}
                         <p className='text-xs text-slate-500 mt-2'>
                           Solve the math problem to verify you&apos;re human
@@ -664,7 +599,7 @@ const Contact = () => {
                         <button
                           type='button'
                           onClick={() => setFormStep(1)}
-                          className='flex-1 bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-300 px-6 py-4 text-base font-medium transition-colors rounded-md'
+                          className='flex-1 bg-white text-slate-700 border-2 border-slate-300 px-6 py-4 text-base font-medium rounded-md'
                         >
                           ← Back
                         </button>

@@ -17,7 +17,7 @@ function PostTemplate({ post }) {
   // Related blog posts - can be customized per post or use defaults
   const relatedPosts = post.relatedPosts || [
     {
-      title: 'Excel Automation Cost: What to Expect in 2026',
+      title: 'Excel Automation Cost: What to Expect in 2025',
       slug: 'excel-automation-cost-what-to-expect',
     },
     {
@@ -104,7 +104,7 @@ function PostTemplate({ post }) {
               </div>
 
               {/* CTA Section */}
-              <div className='mt-8 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+              <div className='mt-8 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
                 <h3 className='text-heading-md md:text-heading-lg font-bold mb-4 font-display text-slate-900'>
                   Ready to Automate Your Excel Work?
                 </h3>
@@ -112,7 +112,7 @@ function PostTemplate({ post }) {
                   If you recognized any of these signs, automation could save you hours every week.
                   Get a free consultation to see how.
                 </p>
-                <div className='flex flex-col sm:flex-row gap-4'>
+                <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                   <Link
                     to='/contact'
                     className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -180,7 +180,7 @@ function PostTemplate({ post }) {
                 <div className='space-y-3'>
                   <Link
                     to='/contact'
-                    className='block w-full bg-primary hover:bg-primary-hover text-white px-4 py-3 text-sm font-medium transition-colors rounded-md text-center'
+                    className='block w-full bg-primary hover:bg-primary-hover text-white hover:text-white px-4 py-3 text-sm font-medium transition-colors rounded-md text-center'
                   >
                     Free Consultation
                   </Link>

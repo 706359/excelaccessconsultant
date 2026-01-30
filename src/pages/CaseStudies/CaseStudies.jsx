@@ -33,7 +33,7 @@ function CaseStudies() {
             {/* Left Column - All Case Studies */}
             <div className='lg:col-span-2 space-y-12'>
               {/* Case Study 1: Manufacturing */}
-              <article className='bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-300'>
+              <article className='bg-white rounded-2xl p-8 md:p-10 shadow-md border border-slate-200 transition-shadow duration-200'>
                 <div className='mb-8'>
                   <span className='inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4'>
                     Manufacturing
@@ -156,14 +156,14 @@ function CaseStudies() {
                       investment we&apos;ve made this year.&quot;
                     </p>
                     <p className='text-slate-600 text-sm font-semibold'>
-                      — Operations Manager, Manufacturing Company
+                      – Operations Manager, Manufacturing Company
                     </p>
                   </div>
                 </div>
               </article>
 
               {/* Case Study 2: Finance */}
-              <article className='bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-300'>
+              <article className='bg-white rounded-2xl p-8 md:p-10 shadow-md border border-slate-200 transition-shadow duration-200'>
                 <div className='mb-8'>
                   <span className='inline-block px-4 py-2 bg-secondary/10 text-secondary text-sm font-semibold rounded-full mb-4'>
                     Finance & Accounting
@@ -196,8 +196,8 @@ function CaseStudies() {
                       The Solution
                     </h3>
                     <p className='mb-4'>
-                      I built a comprehensive Excel and Access automation system that handles the
-                      entire close process:
+                      I built an Excel and Access automation system that handles the
+                      whole close process:
                     </p>
                     <ul className='list-none space-y-2 mb-4'>
                       <li className='text-slate-600 flex items-start gap-2'>
@@ -289,14 +289,14 @@ function CaseStudies() {
                       Robert understood our process and built exactly what we needed.&quot;
                     </p>
                     <p className='text-slate-600 text-sm font-semibold'>
-                      — CFO, Financial Services Company
+                      – CFO, Financial Services Company
                     </p>
                   </div>
                 </div>
               </article>
 
               {/* Case Study 3: Operations */}
-              <article className='bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-300'>
+              <article className='bg-white rounded-2xl p-8 md:p-10 shadow-md border border-slate-200 transition-shadow duration-200'>
                 <div className='mb-8'>
                   <span className='inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4'>
                     Operations
@@ -421,7 +421,7 @@ function CaseStudies() {
                       visibility we never had before. Game changer for our operations.&quot;
                     </p>
                     <p className='text-slate-600 text-sm font-semibold'>
-                      — Operations Director, Multi-Location Business
+                      – Operations Director, Multi-Location Business
                     </p>
                   </div>
                 </div>

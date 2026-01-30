@@ -28,15 +28,9 @@ function FreeResources() {
     setIsSubmitting(true);
 
     try {
-      // TODO: Replace with actual email service API call
-      // Example: ConvertKit, Mailchimp, or custom API endpoint
-
-      // For now, we'll use a placeholder that can be replaced
       const response = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email.trim(),
           name: name.trim() || '',
@@ -44,9 +38,10 @@ function FreeResources() {
         }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setSubmitted(true);
-        // Track conversion
         try {
           if (typeof window !== 'undefined' && window.gtag && typeof window.gtag === 'function') {
             window.gtag('event', 'lead_magnet_signup', {
@@ -54,12 +49,10 @@ function FreeResources() {
               event_label: 'Free Resources',
             });
           }
-        } catch (error) {
-          // Silently fail - analytics errors should not break the site
-          console.debug('Google Analytics error (blocked or failed):', error);
+        } catch (err) {
+          console.debug('Google Analytics error (blocked or failed):', err);
         }
       } else {
-        const data = await response.json();
         setError(data.message || 'Something went wrong. Please try again.');
       }
     } catch (err) {
@@ -126,7 +119,7 @@ function FreeResources() {
                 {resources.map((resource, index) => (
                   <div
                     key={index}
-                    className='bg-white rounded-xl p-6 border border-slate-200 shadow-md hover:shadow-lg transition-all duration-300'
+                    className='bg-white rounded-xl p-6 border border-slate-200 shadow-md transition-colors duration-200'
                   >
                     <div className='flex items-start gap-4'>
                       <div className='text-4xl flex-shrink-0'>{resource.icon}</div>
@@ -179,11 +172,10 @@ function FreeResources() {
               {/* CTA Section */}
               <div className='bg-white rounded-xl p-8 border border-slate-200 shadow-md'>
                 <h3 className='text-heading-lg font-bold mb-4 font-display text-slate-900'>
-                  Need Help Implementing These Practices?
+                  Want help putting this into practice?
                 </h3>
                 <p className='text-slate-700 mb-6 leading-relaxed'>
-                  I can help you automate your Excel processes, fix your Access database, or
-                  optimize your VBA code. Get a free consultation.
+                  I can help you automate Excel, fix an Access database, or clean up VBA. Free consultation—no obligation.
                 </p>
                 <div className='flex flex-col sm:flex-row gap-4'>
                   <Link
@@ -256,7 +248,7 @@ function FreeResources() {
                     <button
                       type='submit'
                       disabled={isSubmitting}
-                      className='w-full bg-primary hover:bg-primary-hover text-white hover:text-white px-8 py-4 text-base font-semibold transition-all duration-standard rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2'
+                      className='w-full bg-primary hover:bg-primary-hover text-white hover:text-white px-8 py-4 text-base font-semibold transition-colors duration-200 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2'
                     >
                       {isSubmitting ? (
                         <>

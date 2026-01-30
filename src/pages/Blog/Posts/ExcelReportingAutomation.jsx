@@ -8,7 +8,7 @@ function ExcelReportingAutomation() {
     slug: 'excel-reporting-automation-complete-guide',
     title: 'Excel Reporting Automation: Complete Guide',
     category: 'Excel Automation',
-    date: '2026-01-24',
+    date: '2024-11-08',
     readTime: '13 min read',
     seoTitle: 'Excel Reporting Automation: Complete Guide | Automated Reports',
     seoDescription:
@@ -419,7 +419,7 @@ function ExcelReportingAutomation() {
           </div>
 
           {/* CTA Section */}
-          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200'>
+          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
             <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
               Ready to Automate Your Reports?
             </h3>
@@ -427,7 +427,7 @@ function ExcelReportingAutomation() {
               Get a free consultation to assess your reporting needs and get a fixed-price quote for
               automation. Most report automation projects pay for themselves within 3-6 months.
             </p>
-            <div className='flex flex-col sm:flex-row gap-4'>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link
                 to='/contact'
                 className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
@@ -441,7 +441,7 @@ function ExcelReportingAutomation() {
                 Call 801-616-3702
               </a>
             </div>
-            <div className='mt-6'>
+            <div className='mt-6 flex justify-center'>
               <Link
                 to='/excel-automation'
                 className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'
