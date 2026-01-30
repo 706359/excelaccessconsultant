@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5063;
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Middleware
@@ -317,6 +317,15 @@ if (isProduction) {
         res.sendFile(path.join(__dirname, 'dist', 'index.html'));
     });
 } else {
+    // Polyfill missing crypto.hash for Node versions that don't expose it (e.g., 20.9)
+    const cryptoModule = await import('node:crypto');
+    const crypto = cryptoModule && (cryptoModule.default || cryptoModule);
+    if (typeof crypto.hash !== 'function') {
+        crypto.hash = (algorithm, data, encoding) => {
+            return crypto.createHash(algorithm).update(data).digest(encoding);
+        };
+    }
+
     const { createServer } = await import('vite');
     const vite = await createServer({
         server: {
