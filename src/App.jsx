@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import {
   Link,
   Route,
@@ -11,27 +11,29 @@ import Layout from './components/Layout/Layout';
 import FAQSchema from './components/SEO/FAQSchema';
 import ReviewSchema from './components/SEO/ReviewSchema';
 import SEO from './components/SEO/SEO';
-import About from './pages/About/About';
-import AccessConsulting from './pages/AccessConsulting/AccessConsulting';
-import Blog from './pages/Blog/Blog';
-import TenSignsYouNeedExcelAutomation from './pages/Blog/Posts/10SignsYouNeedExcelAutomation';
-import AccessVsSQLServer from './pages/Blog/Posts/AccessVsSQLServer';
-import CommonExcelVBAMistakes from './pages/Blog/Posts/CommonExcelVBAMistakes';
-import ExcelAutomationCost from './pages/Blog/Posts/ExcelAutomationCost';
-import ExcelReportingAutomation from './pages/Blog/Posts/ExcelReportingAutomation';
-import FinancialModelingBestPractices from './pages/Blog/Posts/FinancialModelingBestPractices';
-import HowToSpeedUpSlowExcelSpreadsheets from './pages/Blog/Posts/HowToSpeedUpSlowExcelSpreadsheets';
-import WhyYourAccessDatabaseKeepsCrashing from './pages/Blog/Posts/WhyYourAccessDatabaseKeepsCrashing';
-import CaseStudies from './pages/CaseStudies/CaseStudies';
-import Contact from './pages/Contact/Contact';
-import DatabaseMigration from './pages/DatabaseMigration/DatabaseMigration';
-import ExcelAutomation from './pages/ExcelAutomation/ExcelAutomation';
-import FAQ from './pages/FAQ/FAQ';
-import FinancialModeling from './pages/FinancialModeling/FinancialModeling';
-import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
-import ThankYou from './pages/ThankYou/ThankYou';
-import VBADevelopment from './pages/VBADevelopment/VBADevelopment';
 import './styles/global.css';
+
+// Lazy load all route components for smaller initial bundle and faster FCP/LCP
+const About = lazy(() => import('./pages/About/About'));
+const AccessConsulting = lazy(() => import('./pages/AccessConsulting/AccessConsulting'));
+const Blog = lazy(() => import('./pages/Blog/Blog'));
+const TenSignsYouNeedExcelAutomation = lazy(() => import('./pages/Blog/Posts/10SignsYouNeedExcelAutomation'));
+const AccessVsSQLServer = lazy(() => import('./pages/Blog/Posts/AccessVsSQLServer'));
+const CommonExcelVBAMistakes = lazy(() => import('./pages/Blog/Posts/CommonExcelVBAMistakes'));
+const ExcelAutomationCost = lazy(() => import('./pages/Blog/Posts/ExcelAutomationCost'));
+const ExcelReportingAutomation = lazy(() => import('./pages/Blog/Posts/ExcelReportingAutomation'));
+const FinancialModelingBestPractices = lazy(() => import('./pages/Blog/Posts/FinancialModelingBestPractices'));
+const HowToSpeedUpSlowExcelSpreadsheets = lazy(() => import('./pages/Blog/Posts/HowToSpeedUpSlowExcelSpreadsheets'));
+const WhyYourAccessDatabaseKeepsCrashing = lazy(() => import('./pages/Blog/Posts/WhyYourAccessDatabaseKeepsCrashing'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies/CaseStudies'));
+const Contact = lazy(() => import('./pages/Contact/Contact'));
+const DatabaseMigration = lazy(() => import('./pages/DatabaseMigration/DatabaseMigration'));
+const ExcelAutomation = lazy(() => import('./pages/ExcelAutomation/ExcelAutomation'));
+const FAQ = lazy(() => import('./pages/FAQ/FAQ'));
+const FinancialModeling = lazy(() => import('./pages/FinancialModeling/FinancialModeling'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy/PrivacyPolicy'));
+const ThankYou = lazy(() => import('./pages/ThankYou/ThankYou'));
+const VBADevelopment = lazy(() => import('./pages/VBADevelopment/VBADevelopment'));
 
 // Safe Google Analytics helper function
 const safeGtag = (...args) => {
@@ -65,6 +67,7 @@ function App() {
     <Router>
       <Layout>
         <ScrollToTop />
+        <Suspense fallback={null}>
         <Routes>
           <Route path='/thank-you' element={<ThankYou />} />
           <Route path='/excel-automation' element={<ExcelAutomation />} />
@@ -112,6 +115,7 @@ function App() {
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/' element={<HomePage />} />
         </Routes>
+        </Suspense>
       </Layout>
     </Router>
   );
@@ -235,6 +239,10 @@ function HomePage() {
             src='/hero.jpeg'
             alt='Business automation and data solutions'
             className='absolute bottom-0 right-0 w-1/2 h-[70%] object-cover opacity-[0.28] grayscale contrast-110 pointer-events-none hidden md:block scale-y-[-1] translate-y-[-10%]'
+            width={800}
+            height={600}
+            loading='lazy'
+            decoding='async'
           />
           {/* Little glass overlay */}
           <div

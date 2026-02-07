@@ -4,38 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google tag (gtag.js) -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Set default consent mode to denied until user accepts
-      try {
-        gtag('consent', 'default', {
-          'analytics_storage': 'denied'
-        });
-        
-        gtag('js', new Date());
-        gtag('config', 'G-9ZT461HGG8', {
-          // Suppress console errors for blocked requests
-          'send_page_view': true
-        });
-      } catch (error) {
-        // Silently fail if GA is blocked by browser
-        console.debug('Google Analytics initialization blocked:', error);
-      }
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8" onerror="console.debug('GA script blocked by browser')"></script>
-
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "u4jfo35ajg");
-    </script>
-
     <!-- Primary Meta Tags -->
     <title>ExcelAccessConsultant - Expert Excel & Access Consulting Services</title>
     <meta
@@ -85,13 +53,28 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Preconnect for Performance -->
+    <!-- Preload LCP image (hero) for faster Largest Contentful Paint -->
+    <link rel="preload" as="image" href="/hero.jpeg" />
+
+    <!-- Preconnect for third-party origins (used after load) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.clarity.ms" />
+
+    <!-- Fonts: load async so they don't block render (display=swap avoids FOIT) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://excelaccessconsultant.com/" />
@@ -338,5 +321,36 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Defer third-party scripts until after page is interactive (improves LCP/FCP) -->
+    <script>
+      function loadAfterIdle() {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(run, { timeout: 3000 });
+        } else {
+          setTimeout(run, 1);
+        }
+      }
+      function run() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        try {
+          gtag('consent', 'default', { 'analytics_storage': 'denied' });
+          gtag('js', new Date());
+          gtag('config', 'G-9ZT461HGG8', { 'send_page_view': true });
+        } catch (e) {}
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8';
+        document.head.appendChild(s);
+
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u4jfo35ajg");
+      }
+      if (document.readyState === 'complete') loadAfterIdle();
+      else window.addEventListener('load', loadAfterIdle);
+    </script>
   </body>
 </html>

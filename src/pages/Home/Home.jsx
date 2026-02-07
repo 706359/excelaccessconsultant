@@ -14,6 +14,11 @@ const Home = () => {
               src='/hero.jpeg'
               alt='Business Automation & Data Solutions'
               className='Hero-image-element'
+              width={1200}
+              height={630}
+              fetchPriority='high'
+              loading='eager'
+              decoding='async'
             />
           </div>
           <div className='Hero-content'>
