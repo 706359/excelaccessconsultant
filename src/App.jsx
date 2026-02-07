@@ -8,10 +8,13 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
+import LazyWhenVisible from './components/LazyWhenVisible/LazyWhenVisible';
 import FAQSchema from './components/SEO/FAQSchema';
 import ReviewSchema from './components/SEO/ReviewSchema';
 import SEO from './components/SEO/SEO';
 import './styles/global.css';
+
+const HomeFAQSection = lazy(() => import('./components/HomeFAQSection/HomeFAQSection'));
 
 // Lazy load all route components for smaller initial bundle and faster FCP/LCP
 const About = lazy(() => import('./pages/About/About'));
@@ -123,7 +126,6 @@ function App() {
 
 function HomePage() {
   const navigate = useNavigate();
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [openCaseStudyIndex, setOpenCaseStudyIndex] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -137,10 +139,6 @@ function HomePage() {
       // Ensure we scroll to the top of the section
       window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
     }
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
   const toggleCaseStudy = (index) => {
@@ -1149,166 +1147,10 @@ function HomePage() {
           </div>
         </section>
 
-        {/* FAQ Section - Modern Design */}
-        <section id='faq' className='py-8 md:py-12 bg-surface border-y border-slate-200'>
-          <div className='max-w-7xl mx-auto px-6'>
-            <div className='text-center mb-8 md:mb-16'>
-              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
-                Frequently Asked Questions
-              </h2>
-            </div>
-
-            <div className='space-y-4'>
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(0)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 0}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    Who do you work with?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 0 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 0 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    Companies that use Excel and Access every day to run their business. If your
-                    spreadsheets are critical to operations, I can help.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(1)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 1}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    Why hire a solo consultant instead of an agency?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 1 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 1 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    Agencies hand your project to junior developers. I do the work myself. You get
-                    20 years of experience, not someone learning on your dime.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(2)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 2}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    Do you work with existing systems?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 2 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 2 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    Yes. Most of what I do is fixing or improving stuff that already exists. I
-                    rarely start from scratch unless you want me to.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(3)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 3}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    How long do projects take?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 3 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 3 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    Depends on what you need. Simple automations? A few days to a week. Big database
-                    projects? Usually 4 to 8 weeks. I&apos;ll give you a timeline when we talk.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(4)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 4}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    Do you provide documentation?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 4 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 4 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    Yes. I write documentation that explains how things work. You shouldn&apos;t
-                    need me to explain it every time you use it.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(5)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 5}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    Can you help with urgent issues?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 5 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 5 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    If I&apos;m available, yes. I&apos;ve done plenty of emergency fixes. Call me
-                    and we&apos;ll figure it out.
-                  </p>
-                )}
-              </div>
-
-              <div className='card'>
-                <button
-                  onClick={() => toggleFaq(6)}
-                  className='w-full flex items-center justify-between text-left'
-                  aria-expanded={openFaqIndex === 6}
-                >
-                  <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                    Do you work remotely?
-                  </h3>
-                  <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                    {openFaqIndex === 6 ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === 6 && (
-                  <p className='text-slate-600 leading-relaxed mt-4'>
-                    Yes. I work remotely. We&apos;ll use screen sharing, secure file transfer,
-                    whatever works for you. I&apos;ve been doing remote work long before it was
-                    trendy.
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* FAQ Section - lazy loaded when in view for faster FCP/LCP */}
+        <LazyWhenVisible id="faq" fallbackMinHeight="600px">
+          <HomeFAQSection />
+        </LazyWhenVisible>
 
         {/* Final CTA Section */}
         <section className='py-12 md:py-16 bg-slate-100 text-slate-900 relative overflow-hidden'>
