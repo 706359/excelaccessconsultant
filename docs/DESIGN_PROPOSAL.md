@@ -26,13 +26,15 @@ Color Palette
 **NO BLUE - REMOVED | NO GRADIENTS - SOLID COLORS ONLY**
 
 Primary: #C8102E (Crimson Red - Access)
+
 - Usage: Access pages, general pages, navigation, footer, homepage sections
 - Hover: #9a0c24 (Darker Red)
 - Pages: Homepage, `/access-consulting`, `/database-migration`, general content
 
-Secondary: #2D7A3E (Forest Green - Excel)
+Secondary: #107C41 (Green - Excel, matches logo)
+
 - Usage: Excel-related pages, Excel service features
-- Hover: #1f5a2b (Darker Green)
+- Hover: #0D6535 (Darker Green)
 - Pages: `/excel-automation`, `/vba-development`, `/financial-modeling`
 
 Neutrals:
@@ -44,6 +46,7 @@ Neutrals:
 - Text Secondary: #6b7280 (Gray 500)
 
 **Color Application Rules:**
+
 - Excel pages: All buttons, links, headings, CTAs use `secondary` (green)
 - Access pages: All buttons, links, headings, CTAs use `primary` (red)
 - General pages: All buttons, links, headings, CTAs use `primary` (red)

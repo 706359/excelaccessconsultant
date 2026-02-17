@@ -1,26 +1,30 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,jsx,ts,tsx}',
+    './src/components/**/*.{js,jsx,ts,tsx}',
+    './src/app/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
-        // Brand Colors from Logo (NO BLUE - REMOVED)
+        // Brand Colors - match logo (Excel = green, Access = red) | NO BLUE
         primary: {
-          DEFAULT: '#C8102E', // Crimson Red - Access (Primary color)
+          DEFAULT: '#C8102E', // Red - Access (matches logo)
           hover: '#9a0c24', // Darker red for hover
         },
         secondary: {
-          DEFAULT: '#2D7A3E', // Forest Green - Excel
-          hover: '#1f5a2b', // Darker green for hover
+          DEFAULT: '#107C41', // Green - Excel (matches logo)
+          hover: '#0D6535', // Darker green for hover
         },
-        // Legacy brand colors (keeping for compatibility)
-        excel: '#2D7A3E', // Forest Green (Excel)
-        'excel-hover': '#1f5a2b',
-        access: '#C8102E', // Crimson Red (Access)
+        // Legacy / aliases (logo-matched)
+        excel: '#107C41', // Excel green (logo)
+        'excel-hover': '#0D6535',
+        access: '#C8102E', // Access red (logo)
         'access-hover': '#9a0c24',
-        'excel-green': '#2D7A3E', // Forest Green
-        'excel-green-hover': '#1f5a2b',
-        'excel-green-dark': '#154a2e',
+        'excel-green': '#107C41',
+        'excel-green-hover': '#0D6535',
+        'excel-green-dark': '#0a4d28',
         // Neutrals
         slate: {
           50: '#f9fafb', // Gray 50
@@ -38,8 +42,22 @@ export default {
         surface: '#f9fafb', // Surface
       },
       fontFamily: {
-        sans: ['IBM Plex Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        display: ['IBM Plex Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: [
+          'IBM Plex Sans',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'sans-serif',
+        ],
+        display: [
+          'IBM Plex Sans',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'sans-serif',
+        ],
         mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
       },
       fontSize: {
@@ -67,44 +85,44 @@ export default {
         'label-sm': ['12px', { lineHeight: '1.4', fontWeight: '500' }],
       },
       spacing: {
-        // Standard Spacing Scale (4px base unit)
-        '0': '0px',
-        '1': '4px',   // 0.25rem - Tight spacing
-        '2': '8px',   // 0.5rem - xs
-        '3': '12px',   // 0.75rem
-        '4': '16px',  // 1rem - sm
-        '5': '20px',  // 1.25rem
-        '6': '24px',  // 1.5rem - md
-        '8': '32px',  // 2rem - lg
-        '10': '40px', // 2.5rem
-        '12': '48px', // 3rem - xl
-        '16': '64px', // 4rem - 2xl
-        '20': '80px', // 5rem
-        '24': '96px', // 6rem - 3xl
-        // Semantic Spacing (for consistency)
-        'xs': '8px',   // Small gaps between related items
-        'sm': '16px',  // Standard gaps
-        'md': '24px',  // Medium gaps between sections
-        'lg': '32px',  // Large gaps
-        'xl': '48px',  // Extra large gaps
-        '2xl': '64px', // Section spacing
-        '3xl': '96px', // Major section spacing
+        // Standard Spacing Scale (4px base unit) - matches .cursorrules
+        0: '0px',
+        1: '4px', // 0.25rem - Tight spacing
+        2: '8px', // 0.5rem - xs
+        3: '12px', // 0.75rem
+        4: '16px', // 1rem - sm
+        5: '20px', // 1.25rem
+        6: '24px', // 1.5rem - md
+        8: '32px', // 2rem - lg
+        10: '40px', // 2.5rem
+        12: '48px', // 3rem - xl
+        16: '64px', // 4rem - 2xl
+        20: '80px', // 5rem
+        24: '96px', // 6rem - 3xl
+        // Semantic Spacing (matches .cursorrules)
+        xs: '8px',
+        sm: '16px',
+        md: '24px',
+        lg: '32px',
+        xl: '48px',
+        '2xl': '64px',
+        '3xl': '96px',
       },
       borderRadius: {
-        'card': '12px',
+        card: '12px',
       },
       boxShadow: {
-        'card': '0 1px 3px rgba(0, 0, 0, 0.1)',
+        card: '0 1px 3px rgba(0, 0, 0, 0.1)',
         'card-hover': '0 10px 25px rgba(0, 0, 0, 0.15)',
-        'nav': '0 1px 3px rgba(0, 0, 0, 0.1)',
+        nav: '0 1px 3px rgba(0, 0, 0, 0.1)',
       },
       transitionDuration: {
-        'micro': '150ms',
-        'standard': '300ms',
-        'complex': '500ms',
+        micro: '150ms',
+        standard: '300ms',
+        complex: '500ms',
       },
       transitionTimingFunction: {
-        'smooth': 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+        smooth: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
       },
       backgroundImage: {
         // NO GRADIENTS - Solid colors only
