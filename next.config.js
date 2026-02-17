@@ -7,8 +7,6 @@ const nextConfig = {
     remotePatterns: [],
   },
   trailingSlash: false,
-  // Set to false when lint is clean so builds fail on lint errors
-  eslint: { ignoreDuringBuilds: true },
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
@@ -27,6 +25,11 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias['@'] = path.join(__dirname, 'src');
     return config;
+  },
+  turbopack: {
+    resolveAlias: {
+      '@': path.join(__dirname, 'src'),
+    },
   },
 };
 
