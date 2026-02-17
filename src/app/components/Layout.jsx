@@ -275,7 +275,7 @@ export default function Layout({ children }) {
                 <img
                   src='/logo.png'
                   alt='ExcelAccessConsultant Logo'
-                  className='h-10 md:h-11 w-auto'
+                  className='h-10 md:h-11 w-auto brightness-0 invert'
                   width='180'
                   height='48'
                   loading='lazy'

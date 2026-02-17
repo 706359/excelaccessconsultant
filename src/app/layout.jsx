@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 // Note: Using IBM Plex Sans from global.css, not Inter
 
 export const metadata = {
+  metadataBase: new URL('https://excelaccessconsultant.com'),
   title: 'Excel VBA Consultant | Access Database Expert',
   description: 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.',
   keywords: 'excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel VBA consultant Utah, Access database consultant Springville',

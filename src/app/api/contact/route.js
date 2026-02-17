@@ -1,5 +1,36 @@
-import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
+// In-memory rate limit: 5 requests per IP per 15 minutes (optional: replace with Upstash/Redis for multi-instance)
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const store = new Map();
+
+function getClientIp(request) {
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  const cf = request.headers.get('cf-connecting-ip');
+  const ip = cf || (forwarded ? forwarded.split(',')[0].trim() : null) || realIp || 'unknown';
+  return ip;
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const entry = store.get(ip);
+  if (!entry) {
+    store.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  }
+  if (now >= entry.resetAt) {
+    store.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  }
+  entry.count += 1;
+  if (entry.count > RATE_LIMIT_MAX) {
+    return { allowed: false, retryAfter: Math.ceil((entry.resetAt - now) / 1000) };
+  }
+  return { allowed: true };
+}
 
 // Configure nodemailer transporter
 const createTransporter = () => {
@@ -24,6 +55,23 @@ const createTransporter = () => {
 
 export async function POST(request) {
   try {
+    const ip = getClientIp(request);
+    const rate = checkRateLimit(ip);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Too many requests. Please try again later.',
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rate.retryAfter || 60),
+          },
+        },
+      );
+    }
+
     const body = await request.json();
     const { name, email, phone, company, message } = body;
 
@@ -34,7 +82,7 @@ export async function POST(request) {
           success: false,
           error: 'Missing required fields: name, email, and message are required',
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -46,7 +94,7 @@ export async function POST(request) {
           success: false,
           error: 'Invalid email format',
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -57,7 +105,7 @@ export async function POST(request) {
           success: false,
           error: 'Message is too long. Please keep it under 5000 characters.',
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -70,7 +118,9 @@ export async function POST(request) {
       timestamp: new Date().toISOString(),
     };
 
-    console.log('Contact form submission:', submissionData);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Contact form submission:', submissionData);
+    }
 
     const transporter = createTransporter();
     let emailSent = false;
@@ -115,7 +165,7 @@ export async function POST(request) {
 
         const emailPromise = transporter.sendMail(mailOptions);
         const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Email sending timeout after 30 seconds')), 30000)
+          setTimeout(() => reject(new Error('Email sending timeout after 30 seconds')), 30000),
         );
 
         await Promise.race([emailPromise, timeoutPromise]);
@@ -222,7 +272,7 @@ Email: rob.infodatix@gmail.com`;
 
           const autoReplyPromise = transporter.sendMail(clientMailOptions);
           const autoReplyTimeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Auto-reply email timeout after 30 seconds')), 30000)
+            setTimeout(() => reject(new Error('Auto-reply email timeout after 30 seconds')), 30000),
           );
 
           await Promise.race([autoReplyPromise, autoReplyTimeoutPromise]);
@@ -254,10 +304,13 @@ Email: rob.infodatix@gmail.com`;
         {
           success: false,
           emailSent: false,
-          error: emailError || 'Failed to send email notification. Please try again or contact us directly.',
-          message: 'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob.infodatix@gmail.com or call (801) 704-5604.',
+          error:
+            emailError ||
+            'Failed to send email notification. Please try again or contact us directly.',
+          message:
+            'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob.infodatix@gmail.com or call (801) 704-5604.',
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
   } catch (error) {
@@ -267,7 +320,7 @@ Email: rob.infodatix@gmail.com`;
         success: false,
         error: 'Internal server error. Please try again later.',
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
