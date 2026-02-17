@@ -1,31 +1,34 @@
 # EXECUTION PLAN - ExcelAccessConsultant.com
+
 **Status: In Progress | Goal: 15+ qualified leads/month in 6 months**
 
 ---
 
 ## CURRENT STATE (Verified)
 
-**Domain:** excelaccessconsultant.com  
-**Owner:** Robert Terry  
-**Location:** Springville, Utah  
-**Phone:** 801-616-3702  
-**Email:** rob@excelaccessconsultant.com  
+**Domain:** excelaccessconsultant.com
+**Owner:** Robert Terry
+**Location:** Springville, Utah
+**Phone:** 801-616-3702
+**Email:** rob@excelaccessconsultant.com
 
-**Service:** Excel VBA + Access Database Consulting  
-**Experience:** 15+ years, 200+ projects  
-**Tech Stack:** React, Tailwind CSS ✅ (Confirmed Active), Node.js/Express  
-**Current Traffic:** <500/month organic (estimated)  
-**Current Leads:** 3-5/month (estimated)  
+**Service:** Excel VBA + Access Database Consulting
+**Experience:** 15+ years, 200+ projects
+**Tech Stack:** React, Tailwind CSS ✅ (Confirmed Active), Node.js/Express
+**Current Traffic:** <500/month organic (estimated)
+**Current Leads:** 3-5/month (estimated)
 
 **Brand Colors:** Logo-based color scheme (NO BLUE - REMOVED | NO GRADIENTS - SOLID COLORS ONLY)
+
 - Primary: #C8102E (Crimson Red - Access) - Access pages, general pages
-- Secondary: #2D7A3E (Forest Green - Excel) - Excel pages
+- Secondary: #107C41 (Green - Excel, matches logo) - Excel pages
 
 ---
 
 ## ✅ ALREADY COMPLETED (Status Check)
 
 ### Technical Foundation
+
 - ✅ React-based single-page application
 - ✅ Tailwind CSS styling system
 - ✅ Mobile-responsive design
@@ -35,6 +38,7 @@
 - ✅ SSL certificate (assumed)
 
 ### SEO Implementation
+
 - ✅ LocalBusiness schema markup (homepage)
 - ✅ Service schemas (Excel VBA, Access Database)
 - ✅ ReviewSchema component
@@ -45,6 +49,7 @@
 - ✅ Canonical URLs
 
 ### Content & Conversion
+
 - ✅ Homepage hero section (finance-focused)
 - ✅ Problem-Solution section (3 cards)
 - ✅ ROI Calculator (interactive, gtag tracking)
@@ -58,6 +63,7 @@
 - ✅ Thank you page
 
 ### Current Homepage Structure
+
 1. Hero: "Stop Wasting 10+ Hours Per Week on Excel Reports"
 2. Problem-Solution: 3 pain point cards
 3. ROI Calculator: Interactive savings calculator
@@ -77,6 +83,7 @@
 ### Week 1: Technical Audit
 
 **Day 1-2: Run Comprehensive Audit**
+
 ```
 Tools Required:
 □ Screaming Frog (free up to 500 URLs)
@@ -98,6 +105,7 @@ Checklist:
 ```
 
 **Day 3-4: Enhance Schema Markup**
+
 ```
 Current Status: ✅ Basic schemas exist
 Enhancements Needed:
@@ -124,6 +132,7 @@ Enhancements Needed:
 ```
 
 **Day 5-7: Site Structure & URL Planning**
+
 ```
 Current: Single-page React app
 Future Structure Needed:
@@ -156,6 +165,7 @@ Action Items:
 ### Week 2: Service Pages (5 Pages)
 
 **Priority Order:**
+
 1. `/excel-automation` (highest search volume)
 2. `/access-consulting` (high intent)
 3. `/financial-modeling` (niche, high value)
@@ -170,17 +180,20 @@ Action Items:
 ## H1: [Primary Keyword] Services
 
 ### Intro (100-150 words)
+
 - What the service is
 - Who needs it (target audience)
 - Why Robert/ExcelAccessConsultant
 - Key benefit statement
 
 ### H2: What I [Service Action]
+
 - Bullet list (10-12 specific items)
 - Real examples
 - Use cases
 
 ### H2: How It Works
+
 1. Free consultation (15-30 min)
 2. Fixed-price quote (within 24 hours)
 3. Build & test (in sandbox)
@@ -190,34 +203,41 @@ Action Items:
 Timeline: [X-Y weeks typical]
 
 ### H2: Pricing
+
 **Simple Projects:** $1,500-$3,000
+
 - Basic automation
 - Single process
 - 1-2 weeks
 
 **Advanced Projects:** $3,000-$8,000
+
 - Complex workflows
 - Multi-file processing
 - 3-6 weeks
 
 **Enterprise Projects:** $8,000+
+
 - Full system integration
 - Custom database design
 - 6+ weeks
 
-*All projects include documentation and training*
+_All projects include documentation and training_
 
 ### H2: Common Questions
+
 - 5-7 FAQs with answers
 - Add FAQSchema markup
 - Address objections
 
 ### H2: Real Examples
+
 - 3 brief case snippets
 - Link to full case studies
 - Results (time saved, ROI)
 
 ### Final CTA
+
 "Ready to automate your [process]?"
 [Contact Form] or [Call 801-616-3702]
 ```
@@ -229,6 +249,7 @@ Timeline: [X-Y weeks typical]
 **Create `/case-studies` page with:**
 
 1. **Manufacturing Case Study**
+
    - Title: "How a Manufacturing Company Reduced Production Reporting from 8 Hours to 15 Minutes"
    - Problem: Manual data entry, errors, delays
    - Solution: Automated Access database + Excel reporting
@@ -236,6 +257,7 @@ Timeline: [X-Y weeks typical]
    - ROI: $15,000/year saved
 
 2. **Finance Case Study**
+
    - Title: "How a Finance Team Automated Their 3-Day Accounting Close into 10 Minutes"
    - Problem: Manual close process, reconciliation errors
    - Solution: Excel VBA automation + Access database
@@ -250,6 +272,7 @@ Timeline: [X-Y weeks typical]
    - ROI: $18,000/year saved
 
 **Each Case Study:**
+
 - 700-1,000 words
 - Before/after metrics
 - Client quote (if available)
@@ -259,6 +282,7 @@ Timeline: [X-Y weeks typical]
 ### Week 4-6: Blog Content Foundation
 
 **Create `/blog` index page**
+
 - List all blog posts
 - Categories/tags
 - Search functionality
@@ -272,6 +296,7 @@ Timeline: [X-Y weeks typical]
 4. "How to Speed Up Slow Excel Spreadsheets" (1,700 words)
 
 **Blog Post Template:**
+
 - H1 with primary keyword
 - Intro (100 words) with keyword
 - 3-5 H2 sections
@@ -319,6 +344,7 @@ Confirmation Message:
 ```
 
 **Also Add:**
+
 - Phone number prominent: 801-616-3702 (already in hero)
 - Email: rob@excelaccessconsultant.com (add to contact section)
 - No chatbots (confirmed - not needed)
@@ -328,6 +354,7 @@ Confirmation Message:
 **Current Status:** ✅ Lead magnets section exists (3 offers)
 
 **Action Items:**
+
 ```
 □ Create actual PDF resources:
   1. "Excel Automation Readiness Checklist" (2-3 pages)
@@ -353,58 +380,71 @@ Confirmation Message:
 **Month 1 (Weeks 5-8): Problem-Aware Content**
 
 **Week 5:**
+
 - "10 Signs You Need Excel Automation" (1,500 words)
 - "Why Your Access Database Keeps Crashing" (1,800 words)
 
 **Week 6:**
+
 - "Excel Automation Cost: What to Expect in 2026" (1,600 words)
 - "Access vs SQL Server: When to Migrate" (1,700 words)
 
 **Week 7:**
+
 - "How to Speed Up Slow Excel Spreadsheets" (1,700 words)
 - "Common Excel VBA Mistakes (And How to Fix Them)" (1,600 words)
 
 **Week 8:**
+
 - "Financial Modeling Best Practices" (1,800 words)
 - "Excel Reporting Automation: Complete Guide" (2,000 words)
 
 **Month 2 (Weeks 9-12): Solution-Aware Content**
 
 **Week 9:**
+
 - "How to Choose an Excel Consultant" (1,600 words)
 - "Access Database Migration Checklist" (1,700 words)
 
 **Week 10:**
+
 - "VBA vs Python for Excel Automation" (1,800 words)
 - "What Can You Automate in Excel?" (1,500 words)
 
 **Week 11:**
+
 - "Excel Automation ROI Calculator Guide" (1,600 words)
 - "Before You Hire: Questions to Ask an Excel Consultant" (1,700 words)
 
 **Week 12:**
+
 - "Case Study: Manufacturing Automation Success Story" (1,800 words)
 - "Case Study: Finance Team Automation" (1,800 words)
 
 **Month 3 (Weeks 13-16): Tutorial Content**
 
 **Week 13:**
+
 - "VLOOKUP Tutorial for Beginners" (1,500 words)
 - "Pivot Table Automation with VBA" (1,700 words)
 
 **Week 14:**
+
 - "How to Connect Excel to Access Database" (1,600 words)
 - "Excel Macro Basics: Getting Started" (1,500 words)
 
 **Week 15:**
+
 - "Advanced Excel Formulas for Business" (1,800 words)
 - "Access Database Design Tutorial" (1,700 words)
 
 **Week 16:**
+
 - "Excel Dashboard Creation Guide" (1,600 words)
 - "VBA Code Examples for Common Tasks" (1,700 words)
 
 **Blog Post Requirements:**
+
 - Length: 1,500-2,000 words
 - Primary keyword in:
   - H1 (title)
@@ -425,26 +465,31 @@ Confirmation Message:
 ### Primary Keywords (Service Pages)
 
 **Page: /excel-automation**
+
 - Primary: "excel vba automation" (320/mo)
 - Secondary: "excel automation services" (880/mo)
 - Long-tail: "automate excel reporting" (890/mo)
 
 **Page: /access-consulting**
+
 - Primary: "access database consultant" (390/mo)
 - Secondary: "ms access expert" (210/mo)
 - Long-tail: "access database crashing fix" (190/mo)
 
 **Page: /financial-modeling**
+
 - Primary: "financial modeling consultant" (210/mo)
 - Secondary: "excel financial model" (480/mo)
 - Long-tail: "financial model help" (260/mo)
 
 **Page: /database-migration**
+
 - Primary: "access database migration" (210/mo)
 - Secondary: "migrate access to sql" (140/mo)
 - Long-tail: "access to cloud migration" (90/mo)
 
 **Page: /vba-development**
+
 - Primary: "excel vba developer" (320/mo)
 - Secondary: "hire vba programmer" (180/mo)
 - Long-tail: "excel macro development" (240/mo)
@@ -452,18 +497,21 @@ Confirmation Message:
 ### Content Keywords (Blog Posts)
 
 **High Volume (Competitive):**
+
 - "vlookup tutorial" (33k/mo) - Easy to rank, low intent
 - "excel formulas" (27k/mo) - Competitive
 - "pivot table" (49k/mo) - Very competitive
 - "excel macros" (8.1k/mo) - Medium competition
 
 **Medium Volume (Better Targets):**
+
 - "excel automation" (2.9k/mo) ✅ Target
 - "excel vba tutorial" (2.4k/mo) ✅ Target
 - "access database" (1.6k/mo) ✅ Target
 - "financial modeling" (1.3k/mo) ✅ Target
 
 **Low Volume (High Intent - HIGH VALUE):**
+
 - "automate accounting close" (140/mo) - HIGH VALUE ✅
 - "excel consultant" (480/mo) - HIGH VALUE ✅
 - "access database repair" (170/mo) - HIGH VALUE ✅
@@ -475,6 +523,7 @@ Confirmation Message:
 ### White-Hat Only (No Spam)
 
 **Week 6-8: Resource Page Links**
+
 ```
 Find pages with:
 - "excel resources"
@@ -495,6 +544,7 @@ Target: 5-10 links in 3 weeks
 ```
 
 **Week 9-12: Guest Posting**
+
 ```
 Target sites:
 - AccountingWEB
@@ -514,6 +564,7 @@ Each guest post = 1 link back to homepage or service page
 ```
 
 **Week 13-16: HARO Responses**
+
 ```
 Sign up: helpareporter.com
 
@@ -528,6 +579,7 @@ Target: 1-2 mentions/month
 ```
 
 **Week 17-20: Industry Directories**
+
 ```
 Submit to:
 - Clutch.co (software companies)
@@ -550,6 +602,7 @@ Target: 10-15 directory listings
 ### Google Business Profile
 
 **Week 2: Setup**
+
 ```
 Claim/optimize:
 - Business name: ExcelAccessConsultant.com
@@ -563,6 +616,7 @@ Claim/optimize:
 ```
 
 **Week 3-6: Content**
+
 ```
 Post 2x/week:
 - Project completions
@@ -577,6 +631,7 @@ Ask for reviews:
 ```
 
 ### Local Citations
+
 ```
 List business on:
 - Yelp
@@ -601,6 +656,7 @@ Phone: 801-616-3702
 **Current Status:** ✅ GA4 installed (G-9ZT461HGG8)
 
 **Events to Track:**
+
 ```
 1. phone_click (tel: link clicks) ✅ Implemented
 2. calculator_use (ROI calculator submissions) ✅ Implemented
@@ -613,16 +669,19 @@ Phone: 801-616-3702
 ### Goal Tracking
 
 **Primary Conversions:**
+
 - Contact form submission ✅
 - Phone call click ✅
 - Email link click - Add tracking
 
 **Secondary:**
+
 - Calculator usage ✅
 - Case study reads - Add
 - Multiple page views (3+) - Add
 
 **Track Source:**
+
 - Organic search
 - Direct
 - Referral
@@ -631,6 +690,7 @@ Phone: 801-616-3702
 ### Weekly Reports
 
 **Every Monday morning:**
+
 - Organic sessions (week over week)
 - Top 10 landing pages
 - Conversion rate
@@ -647,6 +707,7 @@ Phone: 801-616-3702
 ### Google Ads - Search Only
 
 **Month 3: Test Campaign**
+
 ```
 Budget: $500/month (testing)
 
@@ -674,6 +735,7 @@ Landing pages: Dedicated service pages (not homepage)
 ```
 
 **Month 4-6: Scale If Working**
+
 ```
 If ROAS > 300%:
 - Increase budget to $1,200/month
@@ -694,6 +756,7 @@ If ROAS < 200%:
 ### Lead Magnet
 
 **Week 8: Create Free Resource**
+
 ```
 Title: "Excel Automation Readiness Checklist"
 
@@ -714,6 +777,7 @@ Tool: ConvertKit or Mailchimp (free plan)
 ### Email Sequences
 
 **Sequence 1: Checklist Download**
+
 ```
 Email 1 (immediate): Deliver checklist
 Email 2 (day 3): "3 Excel tasks you can automate this week"
@@ -725,6 +789,7 @@ One clear CTA: Schedule consultation
 ```
 
 **Sequence 2: Calculator Users**
+
 ```
 Email 1 (immediate): "Your automation savings report"
 Email 2 (day 2): Case study matching their use case
@@ -734,6 +799,7 @@ Personalize with their calculated savings
 ```
 
 ### Monthly Newsletter (Optional)
+
 ```
 Send 1x/month to all subscribers:
 - New blog post
@@ -749,6 +815,7 @@ Keep under 300 words
 ## ✅ SUCCESS METRICS
 
 ### Month 1-2 Targets
+
 ```
 □ Technical SEO audit complete
 □ Homepage optimized (current: ✅ Done)
@@ -761,6 +828,7 @@ Keep under 300 words
 ```
 
 ### Month 3-4 Targets
+
 ```
 □ 16 total blog posts
 □ 10-15 backlinks acquired
@@ -773,6 +841,7 @@ Keep under 300 words
 ```
 
 ### Month 5-6 Targets
+
 ```
 □ 24 total blog posts
 □ 30+ backlinks
@@ -788,6 +857,7 @@ Keep under 300 words
 ## 💵 BUDGET BREAKDOWN
 
 ### One-Time Costs
+
 ```
 - Technical SEO audit: $0 (DIY with free tools)
 - Schema markup: $0 (✅ Already done)
@@ -797,6 +867,7 @@ Total: $0
 ```
 
 ### Monthly Costs
+
 ```
 Month 1-2:
 - Content writing (if outsourced): $0-500
@@ -813,6 +884,7 @@ Total: $500-1,725/month
 ```
 
 ### Time Investment
+
 ```
 Week 1-4: 20 hours/week (foundation)
 Week 5-12: 10 hours/week (content + SEO)
@@ -824,6 +896,7 @@ Week 13+: 5 hours/week (maintenance)
 ## 📋 EXECUTION CHECKLIST
 
 ### Week 1:
+
 ```
 □ Run Screaming Frog audit
 □ Fix broken links
@@ -833,6 +906,7 @@ Week 13+: 5 hours/week (maintenance)
 ```
 
 ### Week 2:
+
 ```
 □ Write /excel-automation page
 □ Write /access-consulting page
@@ -842,6 +916,7 @@ Week 13+: 5 hours/week (maintenance)
 ```
 
 ### Week 3:
+
 ```
 □ Write /financial-modeling page
 □ Write /database-migration page
@@ -851,6 +926,7 @@ Week 13+: 5 hours/week (maintenance)
 ```
 
 ### Week 4:
+
 ```
 □ Write 3 detailed case studies
 □ Upgrade contact form (two-step)
@@ -860,6 +936,7 @@ Week 13+: 5 hours/week (maintenance)
 ```
 
 ### Week 5-16:
+
 ```
 □ Publish 2 blog posts/week (24 total)
 □ Build 2-3 backlinks/week
@@ -869,6 +946,7 @@ Week 13+: 5 hours/week (maintenance)
 ```
 
 ### Month 3:
+
 ```
 □ Launch Google Ads ($500 test)
 □ Create lead magnet PDFs
@@ -877,6 +955,7 @@ Week 13+: 5 hours/week (maintenance)
 ```
 
 ### Month 4-6:
+
 ```
 □ Scale what's working
 □ Pause what isn't
@@ -904,26 +983,31 @@ Week 13+: 5 hours/week (maintenance)
 ## 🎨 DESIGN SYSTEM (Current Implementation)
 
 **Brand Colors:** Logo-based color scheme (NO GRADIENTS - SOLID COLORS ONLY)
+
 - Primary: `#2B5C9E` (Royal Blue - Consultant) - General pages
-- Secondary: `#2D7A3E` (Forest Green - Excel) - Excel pages
+- Secondary: `#107C41` (Green - Excel, matches logo) - Excel pages
 - Accent: `#C8102E` (Crimson Red - Access) - Access pages
 
 **Tech Stack:**
+
 - React (single-page app)
 - Tailwind CSS ✅ **CONFIRMED ACTIVE** (installed and used throughout)
 - Node.js/Express (backend)
 
 **Styling Method:**
+
 - **Primary:** Tailwind CSS utility classes (extensively used)
 - **Custom Classes:** Defined via `@layer components` in `global.css`
 - **Legacy CSS:** Some custom CSS files exist but are not primary styling method
 
 **Typography:**
+
 - Font: IBM Plex Sans
 - Headings: Bold, tight tracking
 - Body: Regular, 1.6 line height
 
 **Components:**
+
 - Buttons: Use `primary` (red) for Access/general pages, `secondary` (green) for Excel pages
 - Cards: White background, shadow on hover
 - Forms: Clean, accessible inputs
@@ -943,5 +1027,5 @@ Week 13+: 5 hours/week (maintenance)
 
 ---
 
-**Last Updated:** January 24, 2026  
+**Last Updated:** January 24, 2026
 **Next Review:** Week 2 completion

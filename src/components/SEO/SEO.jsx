@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 
 const SEO = ({
   title = 'Excel VBA Consultant | Access Database Expert',
-  description = 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.',
-  keywords = 'excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel VBA consultant Utah, Access database consultant Springville',
+  description = 'Professional Excel VBA & Access database consultant based in the USA. 20+ years experience. Serving clients across the United States and worldwide. Free consultation.',
+  keywords = 'excel vba consultant, access database consultant, USA Excel consultant, Excel consulting, Access consulting, Excel automation, worldwide Excel Access consulting, Excel VBA consultant USA',
   ogTitle = 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
   image = '/logo.png',
   url = 'https://excelaccessconsultant.com',
@@ -44,7 +44,7 @@ const SEO = ({
     updateMetaTag('twitter:title', ogTitle);
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', `${url}${image}`);
-    
+
     // Update og:site_name
     updateMetaTag('og:site_name', 'ExcelAccessConsultant', true);
 

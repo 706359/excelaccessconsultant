@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'dataSecurityDisclaimerDismissed';
 
@@ -33,7 +33,7 @@ const DataSecurityDisclaimer = () => {
           <p className='text-xs text-slate-600 leading-relaxed'>
             We do not share or sell your information. Data is handled in line with our{' '}
             <Link
-              to='/privacy-policy'
+              href='/privacy-policy'
               className='text-primary hover:text-primary-hover underline font-medium'
             >
               Privacy Policy
@@ -48,7 +48,12 @@ const DataSecurityDisclaimer = () => {
           aria-label='Dismiss data security notice'
         >
           <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth={2}
+              d='M6 18L18 6M6 6l12 12'
+            />
           </svg>
         </button>
       </div>

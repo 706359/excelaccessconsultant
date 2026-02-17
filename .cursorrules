@@ -8,20 +8,22 @@
 
 **Domain:** excelaccessconsultant.com
 **Owner:** Robert Terry
-**Location:** Springville, Utah
+**Location:** Springville, Utah, USA
 **Phone:** 801-616-3702
 **Email:** rob@excelaccessconsultant.com
 **Service:** Excel VBA + Access Database Consulting
 **Experience:** 15+ years, 500+ projects
+**Positioning:** USA-based professional service provider. Serving clients across the United States and worldwide. All copy and meta must reflect this professional, USA-based, worldwide-service approach.
 
-**Brand Colors:** Logo-based color scheme (NO BLUE - REMOVED, NO GRADIENTS - solid colors only)
+**Brand Colors:** Logo-based color scheme (NO BLUE - REMOVED, NO GRADIENTS - solid colors only). Green and red match the logo.
 
-- Primary: `#C8102E` (Crimson Red - Access) - Access pages, general pages, navigation, footer
+- Primary: `#C8102E` (Red - Access) - Access pages, general pages, navigation, footer
 - Primary Hover: `#9a0c24` (Darker Red)
-- Secondary: `#2D7A3E` (Forest Green - Excel) - Excel-related pages (`/excel-automation`, `/vba-development`, `/financial-modeling`)
-- Secondary Hover: `#1f5a2b` (Darker Green)
+- Secondary: `#107C41` (Green - Excel, matches logo) - Excel-related pages (`/excel-automation`, `/vba-development`, `/financial-modeling`)
+- Secondary Hover: `#0D6535` (Darker Green)
 
 **Color Usage:**
+
 - Excel pages: Use `secondary` (green) for buttons, links, headings, CTAs
 - Access pages: Use `primary` (red) for buttons, links, headings, CTAs
 - General pages: Use `primary` (red) for buttons, links, headings, CTAs
@@ -293,12 +295,14 @@
 **Typography System - STANDARD SIZES (MANDATORY):**
 
 **Font Family:**
+
 - **Primary: IBM Plex Sans** - Matches logo font style exactly
 - Font stack: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
 - Weights: 400 (regular), 500 (medium), 600 (semibold), 700 (bold), 800 (extra bold)
 - **H1 uses weight 800 (extra bold) to match logo's bold, prominent appearance**
 
 **Display Sizes (Hero, Large Headings - Matches Logo Bold Style):**
+
 - `text-display-2xl`: 72px, line-height 1.1, weight 800 (extra bold), letter-spacing -0.02em (Desktop H1)
 - `text-display-xl`: 64px, line-height 1.1, weight 800 (extra bold), letter-spacing -0.02em (Tablet H1)
 - `text-display-lg`: 48px, line-height 1.2, weight 800 (extra bold), letter-spacing -0.01em (Mobile H1, Desktop H2)
@@ -306,6 +310,7 @@
 - `text-display-sm`: 36px, line-height 1.2, weight 700 (bold), letter-spacing -0.01em (Mobile H2)
 
 **Heading Sizes (Section Titles, Subheadings):**
+
 - `text-heading-xl`: 32px, line-height 1.3, weight 700 (Desktop H3)
 - `text-heading-lg`: 28px, line-height 1.3, weight 700 (Tablet H3)
 - `text-heading-md`: 24px, line-height 1.4, weight 600 (Mobile H3, Desktop H4)
@@ -313,6 +318,7 @@
 - `text-heading-xs`: 18px, line-height 1.4, weight 600 (Mobile H4, Desktop H6)
 
 **Body Sizes (Content, Paragraphs):**
+
 - `text-body-xl`: 20px, line-height 1.7, weight 400 (Large emphasis text)
 - `text-body-lg`: 18px, line-height 1.7, weight 400 (Intro paragraphs, important content)
 - `text-body-base`: 16px, line-height 1.6, weight 400 (Standard body text - DEFAULT)
@@ -320,11 +326,13 @@
 - `text-body-xs`: 12px, line-height 1.5, weight 400 (Fine print, disclaimers)
 
 **Label Sizes (Form Labels, Small Text):**
+
 - `text-label-lg`: 16px, line-height 1.5, weight 500 (Form labels, navigation)
 - `text-label-base`: 14px, line-height 1.5, weight 500 (Standard labels)
 - `text-label-sm`: 12px, line-height 1.4, weight 500 (Small labels, badges)
 
 **Typography Usage Rules:**
+
 - **H1:** Use `text-display-lg md:text-display-xl lg:text-display-2xl` for main page titles
 - **H2:** Use `text-display-sm md:text-display-md lg:text-display-lg` for section titles
 - **H3:** Use `text-heading-md md:text-heading-lg` for subsection titles
@@ -339,6 +347,7 @@
 **Base Unit:** 4px (all spacing is multiples of 4px)
 
 **Standard Spacing Scale:**
+
 - `space-1`: 4px (0.25rem) - Tight spacing, icon padding
 - `space-2`: 8px (0.5rem) - xs - Small gaps between related items
 - `space-3`: 12px (0.75rem) - Tight gaps
@@ -353,6 +362,7 @@
 - `space-24`: 96px (6rem) - 3xl - Major section spacing
 
 **Semantic Spacing (Use for consistency):**
+
 - `xs` (8px): Small gaps between related items (icons and text, badges)
 - `sm` (16px): Standard gaps (between form fields, list items)
 - `md` (24px): Medium gaps between sections (card padding, section gaps)
@@ -362,6 +372,7 @@
 - `3xl` (96px): Maximum spacing (hero sections, major page breaks)
 
 **Spacing Usage Rules:**
+
 - **Padding:** Use `p-sm` (16px) for cards, `p-md` (24px) for sections, `p-lg` (32px) for large containers
 - **Margins:** Use `mb-sm` (16px) for paragraphs, `mb-md` (24px) for sections, `mb-lg` (32px) for major sections
 - **Gaps:** Use `gap-sm` (16px) for flex/grid with related items, `gap-md` (24px) for standard layouts, `gap-lg` (32px) for large layouts
@@ -379,16 +390,18 @@
 
 - Primary: #C8102E (Crimson Red - Access)
 - Primary Hover: #9a0c24 (Darker Red)
-- Secondary: #2D7A3E (Forest Green - Excel)
-- Secondary Hover: #1f5a2b (Darker Green)
+- Secondary: #107C41 (Green - Excel, matches logo)
+- Secondary Hover: #0D6535 (Darker Green)
 - Use consistently across all pages
 
 **Responsive Typography:**
+
 - Always use responsive classes: `text-[size] md:text-[larger-size] lg:text-[largest-size]`
 - Mobile-first approach: smallest size is base, larger sizes for md/lg breakpoints
 - Example: `text-display-lg md:text-display-xl lg:text-display-2xl` for H1
 
 **Responsive Spacing:**
+
 - Use responsive spacing for sections: `py-md md:py-lg lg:py-xl`
 - Use responsive padding for containers: `px-4 md:px-6 lg:px-8`
 - Use responsive gaps: `gap-sm md:gap-md lg:gap-lg`
