@@ -123,11 +123,8 @@
     @apply text-primary hover:text-primary-hover transition-colors duration-micro;
   }
 
-  /* Override link hover color for button-styled links (higher specificity) */
-  a.bg-primary,
-  a.bg-secondary,
-  a.bg-excel,
-  a.bg-excel-green,
+  /* Override link hover color for button-styled links (higher specificity).
+   * Use attribute selectors only to avoid parser gluing "a" with ":hover" (e.g. :hovera). */
   a[class*='bg-primary'],
   a[class*='bg-secondary'],
   a[class*='bg-excel'],
@@ -161,13 +158,8 @@
 }
 
 @layer components {
-  /* Global rule: Ensure all buttons/links with colored backgrounds keep white text on hover */
-  button.bg-primary:hover,
-  button.bg-secondary:hover,
-  button.bg-excel:hover,
-  a.bg-primary:hover,
-  a.bg-secondary:hover,
-  a.bg-excel:hover,
+  /* Global rule: Ensure all buttons/links with colored backgrounds keep white text on hover.
+   * Use attribute selectors only to avoid parser gluing "button"/"a" with ":hover" (e.g. :hoverbutton, :hovera). */
   button[class*='bg-primary']:hover,
   button[class*='bg-secondary']:hover,
   button[class*='bg-excel']:hover,
@@ -177,12 +169,6 @@
     @apply text-white;
   }
 
-  button.bg-primary:hover *,
-  button.bg-secondary:hover *,
-  button.bg-excel:hover *,
-  a.bg-primary:hover *,
-  a.bg-secondary:hover *,
-  a.bg-excel:hover *,
   button[class*='bg-primary']:hover *,
   button[class*='bg-secondary']:hover *,
   button[class*='bg-excel']:hover *,
