@@ -14,7 +14,7 @@ export const metadata = {
     url: 'https://excelaccessconsultant.com/',
     title: 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
     description: 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.',
-    images: ['/logo.png'],
+    images: [{ url: 'https://excelaccessconsultant.com/logo.png', width: 512, height: 512, alt: 'ExcelAccessConsultant' }],
     siteName: 'ExcelAccessConsultant',
     locale: 'en_US',
   },
@@ -22,7 +22,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
     description: 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks.',
-    images: ['/logo.png'],
+    images: ['https://excelaccessconsultant.com/logo.png'],
   },
   robots: {
     index: true,
@@ -59,13 +59,14 @@ export default function RootLayout({ children }) {
         />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8" />
         
-        {/* Structured Data */}
+        {/* Structured Data - schema.org LocalBusiness (valid properties only) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
+              "@id": "https://excelaccessconsultant.com/#localbusiness",
               "name": "ExcelAccessConsultant.com",
               "image": "https://excelaccessconsultant.com/logo.png",
               "description": "Excel & Access Consulting for Finance Teams. Turn your 3-day accounting close into 10 minutes. 200+ automation projects delivered since 2010.",
@@ -84,8 +85,7 @@ export default function RootLayout({ children }) {
                 "name": "Robert Terry"
               },
               "foundingDate": "2010",
-              "yearsInOperation": "15",
-              "priceRange": "$90/hour",
+              "priceRange": "$",
               "areaServed": {
                 "@type": "Country",
                 "name": "United States"

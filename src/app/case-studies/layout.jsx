@@ -1,14 +1,27 @@
+const BASE = 'https://excelaccessconsultant.com';
+const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+
 export const metadata = {
   title: 'Case Studies - Excel & Access Automation Success Stories',
   description:
-    'Real Excel and Access automation case studies. See how we reduced manual work from hours to minutes. Manufacturing, finance, and operations examples. 200+ projects completed.',
+    'Excel & Access automation case studies. See how we cut manual work from hours to minutes. 200+ projects completed.',
   openGraph: {
+    type: 'website',
+    url: `${BASE}/case-studies`,
     title: 'Case Studies - Excel & Access Automation Success Stories',
     description:
-      'Real Excel and Access automation case studies. See how we reduced manual work from hours to minutes.',
-    url: 'https://excelaccessconsultant.com/case-studies',
+      'Excel & Access automation case studies. See how we cut manual work from hours to minutes. 200+ projects completed.',
+    images: [OG_IMAGE],
+    siteName: 'ExcelAccessConsultant',
+    locale: 'en_US',
   },
-  alternates: { canonical: 'https://excelaccessconsultant.com/case-studies' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Case Studies - Excel & Access Automation Success Stories',
+    description: 'Excel & Access automation case studies. Hours to minutes. 200+ projects completed.',
+    images: [`${BASE}/logo.png`],
+  },
+  alternates: { canonical: `${BASE}/case-studies` },
 };
 
 export default function CaseStudiesLayout({ children }) {

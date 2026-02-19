@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import FAQSchema from '../../../../components/SEO/FAQSchema';
 import SEO from '../../../../components/SEO/SEO';
+import BlogPostSidebar from '../BlogPostSidebar';
 
 function AccessVsSQLServer() {
   const post = {
@@ -79,6 +80,8 @@ function AccessVsSQLServer() {
             </div>
           </div>
 
+          <div className='grid lg:grid-cols-[1fr_320px] gap-6 lg:gap-8'>
+            <div className='max-w-none'>
           {/* Article Content */}
           <div className='prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6'>
             <p className='text-lg text-slate-700 font-medium'>
@@ -399,6 +402,9 @@ function AccessVsSQLServer() {
                 Learn more about Database Migration Services →
               </Link>
             </div>
+          </div>
+            </div>
+            <BlogPostSidebar currentSlug={post.slug} />
           </div>
         </div>
       </article>

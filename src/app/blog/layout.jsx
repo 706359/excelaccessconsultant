@@ -1,14 +1,27 @@
+const BASE = 'https://excelaccessconsultant.com';
+const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+
 export const metadata = {
   title: 'Blog - Excel & Access Automation Tips & Guides',
   description:
-    'Excel and Access automation tips, tutorials, and guides. Learn how to automate Excel work, fix Access databases, and improve productivity. Expert advice from 20+ years of experience.',
+    'Excel & Access automation tips and guides. Automate work, fix databases, boost productivity. Expert advice, 20+ years.',
   openGraph: {
+    type: 'website',
+    url: `${BASE}/blog`,
     title: 'Blog - Excel & Access Automation Tips & Guides',
     description:
-      'Excel and Access automation tips, tutorials, and guides. Expert advice from 20+ years of experience.',
-    url: 'https://excelaccessconsultant.com/blog',
+      'Excel & Access automation tips and guides. Automate work, fix databases, boost productivity. Expert advice, 20+ years.',
+    images: [OG_IMAGE],
+    siteName: 'ExcelAccessConsultant',
+    locale: 'en_US',
   },
-  alternates: { canonical: 'https://excelaccessconsultant.com/blog' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog - Excel & Access Automation Tips & Guides',
+    description: 'Excel & Access automation tips and guides. Expert advice, 20+ years.',
+    images: [`${BASE}/logo.png`],
+  },
+  alternates: { canonical: `${BASE}/blog` },
 };
 
 export default function BlogLayout({ children }) {

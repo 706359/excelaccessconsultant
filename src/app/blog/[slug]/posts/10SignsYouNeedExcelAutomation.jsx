@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import FAQSchema from '../../../../components/SEO/FAQSchema';
 import SEO from '../../../../components/SEO/SEO';
+import BlogPostSidebar from '../BlogPostSidebar';
 
 function TenSignsYouNeedExcelAutomation() {
   const post = {
@@ -280,100 +281,8 @@ function TenSignsYouNeedExcelAutomation() {
               </div>
             </div>
 
-            {/* Right Sidebar - Quick Links */}
-            <aside className='lg:sticky lg:top-24 h-fit space-y-6'>
-              {/* Quick Links - Related Posts */}
-              <div className='bg-white border border-slate-200 rounded-lg p-6 shadow-sm'>
-                <h3 className='text-heading-sm font-bold mb-4 font-display text-slate-900'>
-                  Related Articles
-                </h3>
-                <ul className='space-y-3'>
-                  <li>
-                    <Link
-                      href='/blog/excel-automation-cost-what-to-expect'
-                      className='text-body-base text-slate-700 hover:text-primary transition-colors duration-micro block leading-relaxed'
-                    >
-                      Excel Automation Cost: What to Expect in 2025
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/blog/how-to-speed-up-slow-excel-spreadsheets'
-                      className='text-body-base text-slate-700 hover:text-primary transition-colors duration-micro block leading-relaxed'
-                    >
-                      How to Speed Up Slow Excel Spreadsheets
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/blog/common-excel-vba-mistakes-and-how-to-fix-them'
-                      className='text-body-base text-slate-700 hover:text-primary transition-colors duration-micro block leading-relaxed'
-                    >
-                      Common Excel VBA Mistakes (And How to Fix Them)
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Related Services */}
-              <div className='bg-white border border-slate-200 rounded-lg p-6 shadow-sm'>
-                <h3 className='text-heading-sm font-bold mb-4 font-display text-slate-900'>
-                  Related Services
-                </h3>
-                <ul className='space-y-3'>
-                  <li>
-                    <Link
-                      href='/excel-automation'
-                      className='text-body-base text-slate-700 hover:text-primary transition-colors duration-micro block leading-relaxed'
-                    >
-                      Excel Automation →
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/vba-development'
-                      className='text-body-base text-slate-700 hover:text-primary transition-colors duration-micro block leading-relaxed'
-                    >
-                      VBA Development →
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Quick Contact CTA */}
-              <div className='bg-primary/10 border-2 border-primary/20 rounded-lg p-6'>
-                <h3 className='text-heading-sm font-bold mb-3 font-display text-slate-900'>
-                  Need Help?
-                </h3>
-                <p className='text-body-sm text-slate-700 mb-4'>
-                  Get a free consultation to discuss your project.
-                </p>
-                <div className='space-y-3'>
-                  <Link
-                    href='/contact'
-                    className='block w-full bg-primary hover:bg-primary-hover text-white hover:text-white px-4 py-3 text-sm font-medium transition-colors rounded-md text-center'
-                  >
-                    Free Consultation
-                  </Link>
-                  <a
-                    href='tel:8016163702'
-                    className='block w-full bg-white hover:bg-slate-50 text-primary border-2 border-primary px-4 py-3 text-sm font-medium transition-colors rounded-md text-center'
-                  >
-                    Call 801-616-3702
-                  </a>
-                </div>
-              </div>
-
-              {/* All Blog Posts Link */}
-              <div className='bg-slate-50 border border-slate-200 rounded-lg p-6'>
-                <Link
-                  href='/blog'
-                  className='text-body-base text-primary hover:text-primary-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
-                >
-                  ← View All Blog Posts
-                </Link>
-              </div>
-            </aside>
+            {/* Right Sidebar - Related Articles, Related Services, Need Help?, View All */}
+            <BlogPostSidebar currentSlug={post.slug} />
           </div>
         </div>
       </article>
