@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import CookieConsent from '../../components/SEO/CookieConsent/CookieConsent';
-import DataSecurityDisclaimer from '../../components/SEO/DataSecurityDisclaimer/DataSecurityDisclaimer';
 import TrustBadge from '../../components/SEO/TrustBadge/TrustBadge';
 import Button from '../../components/ui/Button/Button';
 import Breadcrumb from './Breadcrumb';
@@ -59,7 +58,7 @@ export default function Layout({ children }) {
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className='flex items-center shrink-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-white rounded-lg transition-opacity hover:opacity-90'
+              className='flex items-center shrink-0 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-white rounded-lg transition-opacity hover:opacity-90'
               aria-label='ExcelAccessConsultant – Home'
             >
               <img
@@ -432,7 +431,6 @@ export default function Layout({ children }) {
       </footer>
 
       <CookieConsent />
-      <DataSecurityDisclaimer />
       <TrustBadge />
     </>
   );

@@ -175,7 +175,7 @@ export default function Contact() {
         showToast(
           'The contact service is temporarily unavailable. Please email rob@excelaccessconsultant.com or call 801-616-3702.',
           'error',
-          8000
+          8000,
         );
         return;
       }
@@ -197,7 +197,7 @@ export default function Contact() {
       showToast(
         'Network error. Please check your connection and try again, or email rob@excelaccessconsultant.com / call 801-616-3702.',
         'error',
-        8000
+        8000,
       );
     }
   };
@@ -223,17 +223,6 @@ export default function Contact() {
       <div className='bg-base min-h-screen text-slate-800 font-sans'>
         <section id='contact' className='py-8 md:py-12 bg-white'>
           <div className='max-w-7xl mx-auto px-6'>
-            <div className='text-center mb-8 md:mb-16'>
-              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
-                Let&apos;s Get to Work.
-              </h2>
-              <p className='text-body-lg text-slate-600 max-w-[44rem] mx-auto leading-relaxed'>
-                Tell me what&apos;s broken or what you need built. I&apos;m based in Springville,
-                Utah, and work with clients nationwide. I&apos;ll look at your project and get back
-                to you within 24 hours so we can see if we&apos;re a good fit.
-              </p>
-            </div>
-
             <div className='grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch'>
               <div className='flex flex-col'>
                 <h3 className='text-heading-md md:text-heading-lg font-bold mb-6 font-display text-slate-900'>
@@ -489,8 +478,8 @@ export default function Contact() {
                               captchaTimeLeft <= 30
                                 ? 'text-red-600'
                                 : captchaTimeLeft <= 60
-                                ? 'text-yellow-600'
-                                : 'text-slate-500'
+                                  ? 'text-yellow-600'
+                                  : 'text-slate-500'
                             }`}
                           >
                             {Math.floor(captchaTimeLeft / 60)}:
