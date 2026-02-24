@@ -6,25 +6,29 @@ const ReviewSchema = ({ reviews }) => {
 
     const reviewSchema = {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://excelaccessconsultant.com/#localbusiness",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": reviews.length.toString()
-      },
-      "review": reviews.map(review => ({
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": review.author || "Client"
+      "@graph": [
+        {
+          "@type": "AggregateRating",
+          "itemReviewed": { "@id": "https://excelaccessconsultant.com/#localbusiness" },
+          "ratingValue": "5",
+          "bestRating": "5",
+          "reviewCount": reviews.length.toString()
         },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": review.rating || "5"
-        },
-        "reviewBody": review.text
-      }))
+        ...reviews.map(review => ({
+          "@type": "Review",
+          "itemReviewed": { "@id": "https://excelaccessconsultant.com/#localbusiness" },
+          "author": {
+            "@type": "Person",
+            "name": review.author || "Client"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": review.rating || "5",
+            "bestRating": "5"
+          },
+          "reviewBody": review.text
+        }))
+      ]
     };
 
     // Remove existing review schema if present

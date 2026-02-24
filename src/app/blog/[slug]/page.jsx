@@ -6,7 +6,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const meta = POST_META[params.slug];
+  const { slug } = await params;
+  const meta = POST_META[slug];
   if (!meta) return { title: 'Blog | ExcelAccessConsultant' };
   return {
     title: meta.title,
@@ -15,14 +16,15 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: meta.ogTitle,
       description: meta.description,
-      url: `https://excelaccessconsultant.com/blog/${params.slug}`,
+      url: `https://excelaccessconsultant.com/blog/${slug}`,
     },
-    alternates: { canonical: `https://excelaccessconsultant.com/blog/${params.slug}` },
+    alternates: { canonical: `https://excelaccessconsultant.com/blog/${slug}` },
   };
 }
 
 export default async function BlogPostPage({ params }) {
-  const loader = SLUG_TO_COMPONENT[params.slug];
+  const { slug } = await params;
+  const loader = SLUG_TO_COMPONENT[slug];
   if (!loader) notFound();
   const PostComponent = await loader();
   return <PostComponent />;
