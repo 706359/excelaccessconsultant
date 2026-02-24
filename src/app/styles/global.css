@@ -41,7 +41,7 @@
     font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
       sans-serif;
     @apply tracking-tight text-slate-900;
-    margin-bottom: 0.75em; /* 12px - consistent heading spacing */
+    margin-bottom: 16px; /* spacing-4 - consistent heading spacing */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -53,7 +53,7 @@
     font-weight: 800; /* Extra bold to match logo's bold appearance */
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 1em; /* 16px */
+    margin-bottom: 24px; /* spacing-6 */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -64,7 +64,7 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.01em;
-    margin-bottom: 0.75em; /* 12px */
+    margin-bottom: 16px; /* spacing-4 */
   }
 
   /* H3 - Subsection Titles */
@@ -72,7 +72,7 @@
     @apply text-heading-md md:text-heading-lg;
     font-weight: 700;
     line-height: 1.3;
-    margin-bottom: 0.5em; /* 8px */
+    margin-bottom: 12px; /* spacing-3 */
   }
 
   /* H4 - Card Titles, Small Section Headings */
@@ -80,7 +80,7 @@
     @apply text-heading-sm md:text-heading-md;
     font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 0.5em; /* 8px */
+    margin-bottom: 8px; /* spacing-2 */
   }
 
   /* H5 - Small Headings */
@@ -88,7 +88,7 @@
     @apply text-heading-xs md:text-heading-sm;
     font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 0.5em; /* 8px */
+    margin-bottom: 8px; /* spacing-2 */
   }
 
   /* H6 - Smallest Headings */
@@ -96,7 +96,7 @@
     @apply text-label-lg;
     font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 0.5em; /* 8px */
+    margin-bottom: 8px; /* spacing-2 */
   }
 
   /* Paragraph Styles */
@@ -176,16 +176,6 @@
   a[class*='bg-secondary']:hover *,
   a[class*='bg-excel']:hover * {
     color: white !important;
-  }
-
-  /* Legacy button classes - kept for backward compatibility if needed */
-  /* Use Button component instead for consistency */
-  .btn-primary {
-    @apply bg-excel hover:bg-excel-hover text-white hover:text-white px-6 py-3 text-sm font-medium transition-colors;
-  }
-
-  .btn-secondary {
-    @apply text-excel hover:text-excel-hover text-base font-medium transition-colors border border-excel hover:border-excel-hover px-8 py-4 bg-white hover:bg-excel hover:text-white;
   }
 
   .badge {

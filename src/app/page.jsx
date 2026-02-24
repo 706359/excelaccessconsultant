@@ -6,6 +6,16 @@ import FAQSchema from '../components/SEO/FAQSchema';
 import ReviewSchema from '../components/SEO/ReviewSchema';
 import SEO from '../components/SEO/SEO';
 import Button from '../components/ui/Button/Button';
+import {
+  IconAlertCircle,
+  IconChart,
+  IconClock,
+  IconDatabase,
+  IconRefresh,
+  IconSettings,
+  IconTable,
+  IconTrendingUp,
+} from '../components/ui/Icons/Icons';
 
 export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
@@ -127,10 +137,10 @@ export default function HomePage() {
             aria-hidden='true'
           />
 
-          <div className='relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-10 md:pt-14 pb-20 md:pb-28'>
+          <div className='relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-10 md:pt-12 pb-20 md:pb-24'>
             <div className='flex items-center gap-4 mb-4 md:mb-5'>
               <span className='w-10 h-px bg-slate-800 flex-shrink-0' aria-hidden='true' />
-              <span className='text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] text-slate-800'>
+              <span className='text-xs font-semibold uppercase tracking-[0.25em] text-slate-800'>
                 200+ Projects • 15+ Years Experience
               </span>
             </div>
@@ -162,6 +172,7 @@ export default function HomePage() {
                       viewBox='0 0 20 20'
                       fill='currentColor'
                       className='flex-shrink-0'
+                      aria-hidden='true'
                     >
                       <path d='M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z' />
                     </svg>
@@ -185,7 +196,7 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10 py-10 md:py-14 border-t-2 border-b-2 border-slate-900 mb-12 md:mb-16'>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10 py-10 md:py-16 border-t-2 border-b-2 border-slate-900 mb-12 md:mb-16'>
               <div className='text-center'>
                 <div className='font-display font-bold text-4xl md:text-5xl text-primary leading-none mb-2'>
                   95%
@@ -234,8 +245,11 @@ export default function HomePage() {
             <div className='grid md:grid-cols-3 gap-6'>
               <div className='card group'>
                 <div className='mb-4'>
-                  <div className='text-primary text-4xl mb-4 transition-colors duration-200'>
-                    ⏱️
+                  <div
+                    className='text-slate-400 group-hover:text-primary mb-4 transition-colors duration-300 ease-in-out'
+                    aria-hidden='true'
+                  >
+                    <IconClock size={40} />
                   </div>
                   <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
                     Hours Lost on Weekly Reports
@@ -255,8 +269,11 @@ export default function HomePage() {
 
               <div className='card group'>
                 <div className='mb-4'>
-                  <div className='text-secondary text-4xl mb-4 transition-colors duration-200'>
-                    💥
+                  <div
+                    className='text-slate-400 group-hover:text-secondary mb-4 transition-colors duration-300 ease-in-out'
+                    aria-hidden='true'
+                  >
+                    <IconAlertCircle size={40} />
                   </div>
                   <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
                     Access Database Unstable
@@ -276,7 +293,12 @@ export default function HomePage() {
 
               <div className='card group'>
                 <div className='mb-4'>
-                  <div className='text-accent text-4xl mb-4 transition-colors duration-200'>🔢</div>
+                  <div
+                    className='text-slate-400 group-hover:text-primary mb-4 transition-colors duration-300 ease-in-out'
+                    aria-hidden='true'
+                  >
+                    <IconTrendingUp size={40} />
+                  </div>
                   <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
                     Financial Models That Don't Keep Up
                   </h3>
@@ -299,7 +321,7 @@ export default function HomePage() {
         {/* Services Section */}
         <section id='services' className='py-12 md:py-16 bg-white'>
           <div className='max-w-7xl mx-auto px-6'>
-            <div className='text-center mb-10 md:mb-14'>
+            <div className='text-center mb-10 md:mb-16'>
               <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
                 Services
               </h2>
@@ -321,7 +343,7 @@ export default function HomePage() {
                   hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-primary',
                   iconHover: 'group-hover:text-primary',
-                  icon: '📊',
+                  icon: <IconTable size={28} />,
                 },
                 {
                   num: '02',
@@ -333,7 +355,7 @@ export default function HomePage() {
                   hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-secondary',
                   iconHover: 'group-hover:text-secondary',
-                  icon: '🗄️',
+                  icon: <IconDatabase size={28} />,
                 },
                 {
                   num: '03',
@@ -345,7 +367,7 @@ export default function HomePage() {
                   hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-primary',
                   iconHover: 'group-hover:text-primary',
-                  icon: '📈',
+                  icon: <IconChart size={28} />,
                 },
                 {
                   num: '04',
@@ -357,7 +379,7 @@ export default function HomePage() {
                   hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-secondary',
                   iconHover: 'group-hover:text-secondary',
-                  icon: '🔄',
+                  icon: <IconRefresh size={28} />,
                 },
                 {
                   num: '05',
@@ -369,7 +391,7 @@ export default function HomePage() {
                   hoverBorder: 'hover:border-slate-300',
                   hoverText: 'group-hover:text-primary',
                   iconHover: 'group-hover:text-primary',
-                  icon: '⚙️',
+                  icon: <IconSettings size={28} />,
                 },
               ].map((service, idx) => (
                 <Link
@@ -377,17 +399,11 @@ export default function HomePage() {
                   href={service.link}
                   className={`group relative bg-white rounded-xl border-2 border-slate-200 ${service.hoverBorder} p-6 md:p-7 transition-colors duration-200`}
                 >
-                  <div className='flex items-start justify-between mb-4'>
-                    <div
-                      className={`w-12 h-12 ${service.bgColor} text-white rounded-lg flex items-center justify-center text-lg font-bold shadow-sm`}
-                    >
-                      {service.num}
-                    </div>
-                    <div
-                      className={`text-3xl opacity-20 text-slate-300 transition-all duration-200 group-hover:opacity-100 ${service.iconHover}`}
-                    >
-                      {service.icon}
-                    </div>
+                  <div
+                    className={`mb-4 ${service.textColor} transition-colors duration-200`}
+                    aria-hidden='true'
+                  >
+                    {service.icon}
                   </div>
 
                   <div>
@@ -408,6 +424,7 @@ export default function HomePage() {
                         fill='none'
                         stroke='currentColor'
                         viewBox='0 0 24 24'
+                        aria-hidden='true'
                       >
                         <path
                           strokeLinecap='round'
@@ -754,7 +771,7 @@ export default function HomePage() {
             <div className='grid md:grid-cols-3 gap-6'>
               <div className='card group animate-fade-in'>
                 <div className='mb-4'>
-                  <div className='flex text-primary mb-3'>
+                  <div className='flex text-primary mb-3' role='img' aria-label='5 out of 5 stars'>
                     {'★★★★★'.split('').map((star, i) => (
                       <span
                         key={i}
@@ -779,7 +796,11 @@ export default function HomePage() {
 
               <div className='card group animate-fade-in' style={{ animationDelay: '100ms' }}>
                 <div className='mb-4'>
-                  <div className='flex text-secondary mb-3'>
+                  <div
+                    className='flex text-secondary mb-3'
+                    role='img'
+                    aria-label='5 out of 5 stars'
+                  >
                     {'★★★★★'.split('').map((star, i) => (
                       <span
                         key={i}
@@ -804,7 +825,7 @@ export default function HomePage() {
 
               <div className='card group animate-fade-in' style={{ animationDelay: '200ms' }}>
                 <div className='mb-4'>
-                  <div className='flex text-accent mb-3'>
+                  <div className='flex text-accent mb-3' role='img' aria-label='5 out of 5 stars'>
                     {'★★★★★'.split('').map((star, i) => (
                       <span
                         key={i}
@@ -941,7 +962,7 @@ export default function HomePage() {
         {/* Process Section */}
         <section className='py-12 md:py-16 bg-white border-y border-slate-200'>
           <div className='max-w-7xl mx-auto px-6'>
-            <div className='text-center mb-10 md:mb-14'>
+            <div className='text-center mb-10 md:mb-16'>
               <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
                 How It Works
               </h2>
@@ -995,22 +1016,18 @@ export default function HomePage() {
               ].map((step, idx) => (
                 <div
                   key={step.num}
-                  className={`group relative ${step.lightBg} rounded-xl border border-slate-200/60 p-4 md:p-5`}
+                  className='group relative bg-white rounded-xl border border-slate-200 p-5 md:p-6'
                   style={{ animationDelay: `${idx * 50}ms` }}
                 >
-                  <div className='flex flex-col items-center text-center mb-4'>
-                    <div
-                      className={`w-14 h-14 ${step.bgColor} text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-3 shadow-md transition-colors duration-200`}
-                    >
-                      {step.num}
-                    </div>
-                    <h3
-                      className={`text-heading-sm md:text-heading-md font-bold font-display ${step.textColor} mb-2`}
-                    >
+                  <div className='mb-3'>
+                    <span className={`text-xs font-bold tracking-widest uppercase ${step.textColor}`}>
+                      Step {step.num}
+                    </span>
+                    <h3 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900 mt-1'>
                       {step.title}
                     </h3>
                   </div>
-                  <p className='text-body-sm text-slate-600 leading-relaxed text-center'>
+                  <p className='text-body-sm text-slate-600 leading-relaxed'>
                     {step.desc}
                   </p>
                 </div>

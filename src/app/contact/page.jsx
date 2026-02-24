@@ -223,14 +223,16 @@ export default function Contact() {
       <div className='bg-base min-h-screen text-slate-800 font-sans'>
         <section id='contact' className='py-8 md:py-12 bg-white'>
           <div className='max-w-7xl mx-auto px-6'>
-            <h1 className='text-display-lg md:text-display-xl font-extrabold text-slate-900 text-center mb-8 md:mb-12'>
-              Contact
-            </h1>
+            <div className='text-center mb-8 md:mb-12'>
+              <h1 className='text-heading-xl md:text-display-md font-bold text-slate-900 mb-3'>
+                Get in Touch
+              </h1>
+              <p className='text-body-lg text-slate-600 max-w-2xl mx-auto'>
+                Tell me about your project. I&apos;ll get back to you within 24 hours.
+              </p>
+            </div>
             <div className='grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch'>
               <div className='flex flex-col'>
-                <h2 className='text-heading-md md:text-heading-lg font-bold mb-6 font-display text-slate-900'>
-                  Pricing
-                </h2>
                 <div className='bg-white border border-slate-200 shadow-card p-md rounded-card space-y-6 flex-1 flex flex-col min-h-0'>
                   <div>
                     <h3 className='text-heading-sm md:text-heading-md font-bold mb-4 font-display text-slate-900'>
@@ -286,9 +288,6 @@ export default function Contact() {
               </div>
 
               <div className='flex flex-col'>
-                <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900'>
-                  Get Started
-                </h2>
                 <div className='card flex-1 flex flex-col min-h-0'>
                   <div className='mb-6 flex items-center gap-2'>
                     <div
@@ -526,6 +525,7 @@ export default function Contact() {
                               fill='none'
                               stroke='currentColor'
                               viewBox='0 0 24 24'
+                              aria-hidden='true'
                             >
                               <path
                                 strokeLinecap='round'
@@ -543,6 +543,7 @@ export default function Contact() {
                                 className='w-5 h-5 text-white flex-shrink-0'
                                 fill='currentColor'
                                 viewBox='0 0 20 20'
+                                aria-hidden='true'
                               >
                                 <path
                                   fillRule='evenodd'
@@ -560,7 +561,12 @@ export default function Contact() {
                               className='text-white hover:text-slate-200 transition-colors ml-4'
                               aria-label='Dismiss error'
                             >
-                              <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 20 20'>
+                              <svg
+                                className='w-5 h-5'
+                                fill='currentColor'
+                                viewBox='0 0 20 20'
+                                aria-hidden='true'
+                              >
                                 <path
                                   fillRule='evenodd'
                                   d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
@@ -597,6 +603,7 @@ export default function Contact() {
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
                                 viewBox='0 0 24 24'
+                                aria-hidden='true'
                               >
                                 <circle
                                   className='opacity-25'

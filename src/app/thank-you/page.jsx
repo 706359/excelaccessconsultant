@@ -25,6 +25,7 @@ export default function ThankYou() {
                   fill='none'
                   stroke='currentColor'
                   viewBox='0 0 24 24'
+                  aria-hidden='true'
                 >
                   <path
                     strokeLinecap='round'
@@ -88,7 +89,7 @@ export default function ThankYou() {
 
             <div className='bg-slate-50 border-l-4 border-excel p-6 mb-8 max-w-7xl mx-auto text-left'>
               <p className='text-slate-700 mb-2'>
-                <strong>📧 Check Your Email</strong>
+                <strong><span aria-hidden='true'>📧</span> Check Your Email</strong>
               </p>
               <p className='text-slate-600 text-sm'>
                 I've sent a confirmation email with next steps. Check your inbox (and spam) for a

@@ -47,7 +47,7 @@ const DataSecurityDisclaimer = () => {
           className='flex-shrink-0 p-1 rounded text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1'
           aria-label='Dismiss data security notice'
         >
-          <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
             <path
               strokeLinecap='round'
               strokeLinejoin='round'

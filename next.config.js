@@ -26,11 +26,7 @@ const nextConfig = {
     config.resolve.alias['@'] = path.join(__dirname, 'src');
     return config;
   },
-  turbopack: {
-    resolveAlias: {
-      '@': path.join(__dirname, 'src'),
-    },
-  },
+  turbopack: {},
 };
 
 module.exports = nextConfig;
