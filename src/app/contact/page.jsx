@@ -223,16 +223,19 @@ export default function Contact() {
       <div className='bg-base min-h-screen text-slate-800 font-sans'>
         <section id='contact' className='py-8 md:py-12 bg-white'>
           <div className='max-w-7xl mx-auto px-6'>
+            <h1 className='text-display-lg md:text-display-xl font-extrabold text-slate-900 text-center mb-8 md:mb-12'>
+              Contact
+            </h1>
             <div className='grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch'>
               <div className='flex flex-col'>
-                <h3 className='text-heading-md md:text-heading-lg font-bold mb-6 font-display text-slate-900'>
+                <h2 className='text-heading-md md:text-heading-lg font-bold mb-6 font-display text-slate-900'>
                   Pricing
-                </h3>
+                </h2>
                 <div className='bg-white border border-slate-200 shadow-card p-md rounded-card space-y-6 flex-1 flex flex-col min-h-0'>
                   <div>
-                    <h4 className='text-heading-sm md:text-heading-md font-bold mb-4 font-display text-slate-900'>
+                    <h3 className='text-heading-sm md:text-heading-md font-bold mb-4 font-display text-slate-900'>
                       Free consultation
-                    </h4>
+                    </h3>
                     <p className='text-slate-600'>
                       Let&apos;s talk about your problem. No charge for the first conversation.
                     </p>
