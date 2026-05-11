@@ -13,8 +13,7 @@ export default function AccessConsulting() {
     <div className='bg-base min-h-screen text-slate-800 font-sans'>
       <SEO
         title='Access Database Consultant | MS Access Expert'
-        description='Access database consultant. Build stable multi-user databases, fix crashing systems, optimize performance. 20+ years experience. Fixed pricing. Free consultation.'
-        keywords='access database consultant, ms access expert, access database crashing fix, access database repair, access database development, ms access consultant'
+        description='MS Access database consultant. Fix crashes, multi-user conflicts, slow queries. Design and rebuild Access databases that run reliably. 20+ years experience. Free consultation.'
         url='https://excelaccessconsultant.com/access-consulting'
         ogTitle='Access Database Consultant Services'
       />
@@ -452,6 +451,49 @@ export default function AccessConsulting() {
               className='text-primary hover:text-primary/80 font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
             >
               View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className='py-8 md:py-12 bg-white border-t border-slate-200'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900 text-center'>
+            Related Services & Resources
+          </h2>
+          <div className='grid sm:grid-cols-3 gap-4'>
+            <Link
+              href='/database-migration'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Database Migration
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Migrate Access to SQL Server for better performance and scalability.
+              </p>
+            </Link>
+            <Link
+              href='/case-studies/manufacturing-inventory-tracking'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Case Study: Zero Crashes
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                How I fixed a crashing Access database used by 15 people daily.
+              </p>
+            </Link>
+            <Link
+              href='/excel-automation'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Excel Automation
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Automate repetitive Excel tasks with custom VBA solutions.
+              </p>
             </Link>
           </div>
         </div>

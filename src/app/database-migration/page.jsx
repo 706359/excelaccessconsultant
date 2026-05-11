@@ -13,8 +13,7 @@ export default function DatabaseMigrationPage() {
     <div className='bg-base min-h-screen text-slate-800 font-sans'>
       <SEO
         title='Access Database Migration | Migrate Access to SQL'
-        description='Access database migration services. Migrate Access to SQL Server, optimize performance, scale to more users. 20+ years experience. Fixed pricing. Free consultation.'
-        keywords='access database migration, migrate access to sql, access to cloud migration, access to sql server, database migration services'
+        description='Access to SQL Server migration consultant. Plan and execute database migrations without data loss. Better performance and scalability. Free consultation.'
         url='https://excelaccessconsultant.com/database-migration'
         ogTitle='Access Database Migration Services'
       />
@@ -373,6 +372,49 @@ export default function DatabaseMigrationPage() {
               className='text-primary hover:text-primary-hover font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
             >
               View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className='py-8 md:py-12 bg-white border-t border-slate-200'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900 text-center'>
+            Related Services & Resources
+          </h2>
+          <div className='grid sm:grid-cols-3 gap-4'>
+            <Link
+              href='/access-consulting'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Access Database Consulting
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Fix crashes, rebuild databases, and scale for multi-user access.
+              </p>
+            </Link>
+            <Link
+              href='/case-studies/distribution-slow-spreadsheet'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Case Study: 5 Min → 10 Seconds
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                How I optimized a 50MB Excel file and moved data to Access.
+              </p>
+            </Link>
+            <Link
+              href='/excel-automation'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Excel Automation
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Automate repetitive Excel tasks with custom VBA solutions.
+              </p>
             </Link>
           </div>
         </div>

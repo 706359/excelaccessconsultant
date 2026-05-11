@@ -19,7 +19,6 @@ import {
 
 export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
-  const [openCaseStudyIndex, setOpenCaseStudyIndex] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id) => {
@@ -37,10 +36,6 @@ export default function HomePage() {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  const toggleCaseStudy = (index) => {
-    setOpenCaseStudyIndex(openCaseStudyIndex === index ? null : index);
-  };
-
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -54,49 +49,41 @@ export default function HomePage() {
   return (
     <>
       <SEO
-        title='Excel VBA Consultant | Access Database Expert'
-        description='Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.'
-        keywords='excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel VBA consultant Utah, Access database consultant Springville'
+        title='Excel VBA Consultant & Access Database Consultant | Robert Terry'
+        description='Excel VBA and Access database consultant with 20+ years experience. Fix broken spreadsheets, automate reports, build stable databases. Fixed price. Free 30-min consultation.'
         url='https://excelaccessconsultant.com/'
-        ogTitle='Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant'
+        ogTitle='Excel VBA Consultant & Access Database Consultant | Robert Terry'
       />
 
       <FAQSchema
         faqs={[
           {
             question: 'Who do you work with?',
-            answer:
-              'Companies that use Excel and Access every day to run their business. If your spreadsheets are critical to operations, I can help.',
+            answer: 'Small to mid-size businesses that rely on Excel and Access for daily operations — manufacturing, finance, construction, distribution, and healthcare industries.',
           },
           {
             question: 'Why hire a solo consultant instead of an agency?',
-            answer:
-              'Agencies hand your project to junior developers. I do the work myself. You get 20 years of experience, not someone learning on your dime.',
-          },
-          {
-            question: 'Do you work with existing systems?',
-            answer:
-              'Yes. Most of what I do is fixing or improving stuff that already exists. I rarely start from scratch unless you want me to.',
+            answer: 'Direct access to the expert on every call. No account managers, no junior developers. The person scoping your project is the same person building it.',
           },
           {
             question: 'How long do projects take?',
-            answer:
-              'Depends on what you need. Simple automations? A few days to a week. Big database projects? Usually 4 to 8 weeks. I&apos;ll give you a timeline when we talk.',
-          },
-          {
-            question: 'Do you provide documentation?',
-            answer:
-              "Yes. I write documentation that explains how things work. You shouldn't need me to explain it every time you use it.",
-          },
-          {
-            question: 'Can you help with urgent issues?',
-            answer:
-              'If I&apos;m available, yes. I&apos;ve done plenty of emergency fixes. Call me and we&apos;ll figure it out.',
+            answer: 'Most projects take 1–6 weeks depending on complexity. You get weekly progress updates and a fixed price before work begins.',
           },
           {
             question: 'Do you work remotely?',
-            answer:
-              "Yes. I work remotely. We'll use screen sharing, secure file transfer, whatever works for you. I've been doing remote work long before it was trendy.",
+            answer: 'Yes. All work is done remotely, serving businesses nationwide. All work happens in your IT environment — your data never leaves your firewall.',
+          },
+          {
+            question: 'How much does Excel VBA consulting cost?',
+            answer: 'Advisory work is $90/hour. Builds are quoted at a fixed price after a free 30-minute consultation. No surprises, no hidden costs.',
+          },
+          {
+            question: 'Do you provide documentation?',
+            answer: "Yes. I write documentation that explains how things work. You shouldn't need me to explain it every time you use it.",
+          },
+          {
+            question: 'Can you help with urgent issues?',
+            answer: "If I'm available, yes. I've done plenty of emergency fixes. Call me and we'll figure it out.",
           },
         ]}
       />
@@ -455,295 +442,62 @@ export default function HomePage() {
               </div>
 
               <div className='space-y-4'>
-                <div className='card'>
-                  <button
-                    onClick={() => toggleCaseStudy(0)}
-                    className='w-full flex items-center justify-between text-left'
-                    aria-expanded={openCaseStudyIndex === 0}
+                {[
+                  {
+                    num: '01',
+                    slug: 'manufacturing-inventory-tracking',
+                    title: 'Manufacturing Company - Inventory Tracking',
+                    desc: 'Fixed a crashing Access database used by 15 people daily',
+                  },
+                  {
+                    num: '02',
+                    slug: 'construction-automated-reporting',
+                    title: 'Construction Firm - Automated Reporting',
+                    desc: 'Eliminated 6 hours of weekly manual work',
+                  },
+                  {
+                    num: '03',
+                    slug: 'financial-services-data-integration',
+                    title: 'Financial Services - Data Integration',
+                    desc: 'Connected Excel to SQL database, eliminated manual data entry',
+                  },
+                  {
+                    num: '04',
+                    slug: 'distribution-slow-spreadsheet',
+                    title: 'Distribution Company - Slow Spreadsheet',
+                    desc: 'Fixed a 50MB Excel file that took 5 minutes to open',
+                  },
+                  {
+                    num: '05',
+                    slug: 'retail-pricing-system',
+                    title: 'Retail Chain - Pricing System',
+                    desc: 'Automated complex pricing calculations with business rules',
+                  },
+                ].map((cs) => (
+                  <Link
+                    key={cs.slug}
+                    href={`/case-studies/${cs.slug}`}
+                    className='card group block hover:border-slate-300 transition-colors'
                   >
                     <div className='flex items-start gap-4'>
                       <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
-                        01
+                        {cs.num}
                       </div>
-                      <div>
-                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                          Manufacturing Company - Inventory Tracking
+                      <div className='flex-1'>
+                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900 group-hover:text-primary transition-colors'>
+                          {cs.title}
                         </h4>
-                        <p className='text-slate-500 text-sm mt-1'>
-                          Fixed a crashing Access database used by 15 people daily
-                        </p>
+                        <p className='text-slate-500 text-sm mt-1'>{cs.desc}</p>
+                        <span className='inline-flex items-center gap-1 text-primary text-sm font-medium mt-3'>
+                          Read Full Case Study
+                          <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
+                          </svg>
+                        </span>
                       </div>
                     </div>
-                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                      {openCaseStudyIndex === 0 ? '−' : '+'}
-                    </span>
-                  </button>
-                  {openCaseStudyIndex === 0 && (
-                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                        <p>
-                          Their Access database crashed multiple times a day. Fifteen people were
-                          trying to use it at once, and it kept corrupting data. They were losing
-                          hours every week re-entering lost information.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                        <p>
-                          I rebuilt the database structure to handle concurrent users properly.
-                          Fixed the queries that were causing crashes. Added proper error handling
-                          so when something goes wrong, it doesn&apos;t lose data.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                        <p>
-                          Zero crashes in the last 8 months. All 15 people can use it simultaneously
-                          without issues. They&apos;re saving about 10 hours a week that they used
-                          to spend fixing problems.
-                        </p>
-                        <p className='mt-3'>
-                          <a
-                            href='#services'
-                            onClick={(e) => {
-                              e.preventDefault();
-                              scrollToSection('services');
-                            }}
-                            className='text-primary font-medium underline'
-                          >
-                            Learn more about Access database consulting services →
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className='card'>
-                  <button
-                    onClick={() => toggleCaseStudy(1)}
-                    className='w-full flex items-center justify-between text-left'
-                    aria-expanded={openCaseStudyIndex === 1}
-                  >
-                    <div className='flex items-start gap-4'>
-                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
-                        02
-                      </div>
-                      <div>
-                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                          Construction Firm - Automated Reporting
-                        </h4>
-                        <p className='text-slate-500 text-sm mt-1'>
-                          Eliminated 6 hours of weekly manual work
-                        </p>
-                      </div>
-                    </div>
-                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                      {openCaseStudyIndex === 1 ? '−' : '+'}
-                    </span>
-                  </button>
-                  {openCaseStudyIndex === 1 && (
-                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                        <p>
-                          Every Friday, someone spent 6 hours pulling data from multiple
-                          spreadsheets, doing calculations, and creating reports. It was tedious,
-                          error-prone, and nobody wanted to do it.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                        <p>
-                          I wrote VBA code that automatically pulls data from all their
-                          spreadsheets, runs the calculations, and generates the reports. One button
-                          click, done in 30 seconds.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                        <p>
-                          They get their reports in 30 seconds instead of 6 hours. No more
-                          calculation errors. The person who used to do this manually now handles
-                          other work. Saves them about $15,000 a year in time.
-                        </p>
-                        <p className='mt-3'>
-                          <a
-                            href='#services'
-                            onClick={(e) => {
-                              e.preventDefault();
-                              scrollToSection('services');
-                            }}
-                            className='text-primary font-medium underline'
-                          >
-                            Learn more about Excel VBA automation services →
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className='card'>
-                  <button
-                    onClick={() => toggleCaseStudy(2)}
-                    className='w-full flex items-center justify-between text-left'
-                    aria-expanded={openCaseStudyIndex === 2}
-                  >
-                    <div className='flex items-start gap-4'>
-                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
-                        03
-                      </div>
-                      <div>
-                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                          Financial Services - Data Integration
-                        </h4>
-                        <p className='text-slate-500 text-sm mt-1'>
-                          Connected Excel to SQL database, eliminated manual data entry
-                        </p>
-                      </div>
-                    </div>
-                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                      {openCaseStudyIndex === 2 ? '−' : '+'}
-                    </span>
-                  </button>
-                  {openCaseStudyIndex === 2 && (
-                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                        <p>
-                          They had client data in a SQL database but needed to work with it in
-                          Excel. Every day, someone exported data, cleaned it up in Excel, did
-                          analysis, then manually entered results back into the database. Took 2-3
-                          hours daily.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                        <p>
-                          I built an Excel workbook that connects directly to their SQL database. It
-                          pulls data automatically, runs their analysis, and can push results back
-                          to the database. All with a few clicks.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                        <p>
-                          What used to take 2-3 hours now takes 5 minutes. No more copy-paste
-                          errors. Data stays in sync automatically. They&apos;re saving about 500
-                          hours a year.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className='card'>
-                  <button
-                    onClick={() => toggleCaseStudy(3)}
-                    className='w-full flex items-center justify-between text-left'
-                    aria-expanded={openCaseStudyIndex === 3}
-                  >
-                    <div className='flex items-start gap-4'>
-                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
-                        04
-                      </div>
-                      <div>
-                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                          Distribution Company - Slow Spreadsheet
-                        </h4>
-                        <p className='text-slate-500 text-sm mt-1'>
-                          Fixed a 50MB Excel file that took 5 minutes to open
-                        </p>
-                      </div>
-                    </div>
-                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                      {openCaseStudyIndex === 3 ? '−' : '+'}
-                    </span>
-                  </button>
-                  {openCaseStudyIndex === 3 && (
-                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                        <p>
-                          Their main Excel file was 50MB and took 5 minutes to open. Every
-                          calculation took forever. It crashed regularly. They were afraid to add
-                          more data because it would get worse.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                        <p>
-                          I cleaned up the file structure, removed unnecessary formatting, optimized
-                          formulas, and moved some data to a separate Access database. The Excel
-                          file now handles the analysis, Access stores the data.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                        <p>
-                          File opens in 10 seconds instead of 5 minutes. Calculations run instantly.
-                          No more crashes. They can add as much data as they need without worrying
-                          about performance.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className='card'>
-                  <button
-                    onClick={() => toggleCaseStudy(4)}
-                    className='w-full flex items-center justify-between text-left'
-                    aria-expanded={openCaseStudyIndex === 4}
-                  >
-                    <div className='flex items-start gap-4'>
-                      <div className='text-primary font-bold text-xl font-mono flex-shrink-0'>
-                        05
-                      </div>
-                      <div>
-                        <h4 className='text-heading-sm md:text-heading-md font-bold font-display text-slate-900'>
-                          Retail Chain - Pricing System
-                        </h4>
-                        <p className='text-slate-500 text-sm mt-1'>
-                          Automated complex pricing calculations with business rules
-                        </p>
-                      </div>
-                    </div>
-                    <span className='text-2xl font-light text-slate-400 ml-4 flex-shrink-0'>
-                      {openCaseStudyIndex === 4 ? '−' : '+'}
-                    </span>
-                  </button>
-                  {openCaseStudyIndex === 4 && (
-                    <div className='mt-4 pt-4 border-t border-slate-200 text-slate-600 leading-relaxed space-y-4'>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Problem:</p>
-                        <p>
-                          They had complicated pricing rules based on product type, quantity,
-                          customer tier, and promotions. Someone had to manually calculate prices
-                          for every order. Mistakes were common and expensive.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>What I Did:</p>
-                        <p>
-                          I built an Access database that stores all their pricing rules and an
-                          Excel interface that calculates prices automatically. Enter the product
-                          and customer info, it gives you the right price every time.
-                        </p>
-                      </div>
-                      <div>
-                        <p className='font-semibold text-slate-900 mb-2'>The Result:</p>
-                        <p>
-                          Pricing is now instant and accurate. No more calculation errors. They can
-                          update pricing rules in one place and it applies everywhere. Saves them
-                          time and prevents costly mistakes.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

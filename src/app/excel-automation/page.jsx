@@ -22,8 +22,7 @@ export default function ExcelAutomation() {
     <div className='bg-base min-h-screen text-slate-800 font-sans'>
       <SEO
         title='Excel VBA Automation Services | ExcelAccessConsultant'
-        description='Excel VBA automation services. Custom macros, automated reporting, data processing. 20+ years experience. Fixed pricing. Free consultation. Turn manual work into minutes.'
-        keywords='excel vba automation, excel automation services, automate excel reporting, excel macro development, vba programming, excel consultant'
+        description='Excel VBA automation consultant. I build custom VBA solutions that eliminate repetitive Excel work — consolidation, reporting, and workflows. Fixed price. Free consultation.'
         url='https://excelaccessconsultant.com/excel-automation'
         ogTitle='Excel VBA Automation Services'
       />
@@ -551,6 +550,49 @@ export default function ExcelAutomation() {
               className='text-secondary hover:text-secondary/80 font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
             >
               View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className='py-8 md:py-12 bg-white border-t border-slate-200'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900 text-center'>
+            Related Services & Resources
+          </h2>
+          <div className='grid sm:grid-cols-3 gap-4'>
+            <Link
+              href='/vba-development'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                VBA Development
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Custom VBA macros, scripts, and applications built from scratch or fixed.
+              </p>
+            </Link>
+            <Link
+              href='/case-studies/construction-automated-reporting'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Case Study: 6 Hours → 30 Seconds
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                How VBA automation eliminated weekly manual reporting for a construction firm.
+              </p>
+            </Link>
+            <Link
+              href='/access-consulting'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Access Database Consulting
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Fix crashes, rebuild databases, and scale for multi-user access.
+              </p>
             </Link>
           </div>
         </div>

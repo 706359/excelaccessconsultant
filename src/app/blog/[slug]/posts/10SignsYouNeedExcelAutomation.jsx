@@ -52,9 +52,15 @@ function TenSignsYouNeedExcelAutomation() {
         </h2>
         <p>
           If you&apos;re spending more than 5 hours per week doing the same Excel tasks
-          repeatedly—data entry, formatting, copying between files, running the same
-          calculations—automation can eliminate that time entirely. What takes you hours can be done
-          in minutes with the right automation.
+          repeatedly—data entry, formatting, copying between files, running the same calculations—
+          <Link
+            href='/excel-automation'
+            className='text-primary font-semibold hover:text-primary-hover'
+          >
+            Excel VBA automation
+          </Link>{' '}
+          can eliminate that time entirely. What takes you hours can be done in minutes with the
+          right automation.
         </p>
         <p>
           <strong>Example:</strong> A finance team was spending 6 hours every Friday compiling
@@ -82,8 +88,14 @@ function TenSignsYouNeedExcelAutomation() {
         </h2>
         <p>
           If your Excel files take forever to open, calculate, or save, automation can help. I can
-          optimize file structure, move data to Access databases, and create efficient workflows
-          that don&apos;t require massive Excel files.
+          optimize file structure, move data to{' '}
+          <Link
+            href='/access-consulting'
+            className='text-primary font-semibold hover:text-primary-hover'
+          >
+            Access databases
+          </Link>
+          , and create efficient workflows that don&apos;t require massive Excel files.
         </p>
         <p>
           <strong>Example:</strong> A company had a 50MB Excel file that took 5 minutes to open.
@@ -233,7 +245,9 @@ function TenSignsYouNeedExcelAutomation() {
               {post.title}
             </h1>
             <div className='flex items-center gap-4 text-slate-600 text-sm'>
-              <span>By Robert Terry</span>
+              <Link href='/about' className='hover:text-primary transition-colors'>
+                By Robert Terry
+              </Link>
               <span>•</span>
               <span>
                 {new Date(post.date).toLocaleDateString('en-US', {

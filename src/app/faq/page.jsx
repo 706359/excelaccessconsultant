@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
 import Button from '../../components/ui/Button/Button';
 
@@ -74,6 +75,7 @@ export default function FAQ() {
         url='https://excelaccessconsultant.com/faq'
         ogTitle='Frequently Asked Questions'
       />
+      <FAQSchema faqs={faqs} />
 
       <section className='py-8 md:py-12 bg-slate-50 border-b border-slate-200'>
         <div className='max-w-7xl mx-auto px-6 text-center'>

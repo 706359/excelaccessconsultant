@@ -374,6 +374,22 @@ export default function Layout({ children }) {
                     FAQ
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href='/excel-consultant-utah'
+                    className='text-white hover:text-slate-200 transition-colors'
+                  >
+                    Excel Consultant Utah
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='/hire-excel-vba-consultant'
+                    className='text-white hover:text-slate-200 transition-colors'
+                  >
+                    Hire Excel VBA Consultant
+                  </Link>
+                </li>
               </ul>
             </div>
 

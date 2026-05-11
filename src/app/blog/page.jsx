@@ -92,8 +92,7 @@ export default function BlogPage() {
     <div className='bg-base min-h-screen text-slate-800 font-sans'>
       <SEO
         title='Blog - Excel & Access Automation Tips & Guides'
-        description='Excel and Access automation tips, tutorials, and guides. Learn how to automate Excel work, fix Access databases, and improve productivity. Expert advice from 20+ years of experience.'
-        keywords='excel automation tips, access database tips, excel tutorials, vba guides, excel automation blog, access database blog'
+        description='Excel VBA and Access database tips, tutorials, and guides. Expert advice from 20+ years automating business processes.'
         url='https://excelaccessconsultant.com/blog'
         ogTitle='Excel & Access Automation Blog'
       />

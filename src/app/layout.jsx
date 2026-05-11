@@ -1,28 +1,37 @@
-import './styles/global.css'
-import Layout from './components/Layout'
+import Layout from './components/Layout';
+import './styles/global.css';
 
 // Note: Using IBM Plex Sans from global.css, not Inter
 
 export const metadata = {
   metadataBase: new URL('https://excelaccessconsultant.com'),
-  title: 'Excel VBA Consultant | Access Database Expert',
-  description: 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.',
-  keywords: 'excel vba consultant, access database consultant, Excel consulting, Access consulting, Excel automation, VBA programming, MS Access database, Excel expert, Access expert, database repair, spreadsheet automation, Excel macros, Access database development, Excel VBA consultant Utah, Access database consultant Springville',
+  title: 'Excel VBA Consultant & Access Database Consultant | Robert Terry',
+  description:
+    'Excel VBA and Access database consultant with 20+ years experience. Fix broken spreadsheets, automate reports, build stable databases. Fixed price. Free 30-min consultation.',
   authors: [{ name: 'ExcelAccessConsultant' }],
   openGraph: {
     type: 'website',
     url: 'https://excelaccessconsultant.com/',
-    title: 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
-    description: 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks. Nationwide service. Free consultation.',
-    images: [{ url: 'https://excelaccessconsultant.com/logo.png', width: 512, height: 512, alt: 'ExcelAccessConsultant' }],
+    title: 'Excel VBA Consultant & Access Database Consultant | Robert Terry',
+    description:
+      'Excel VBA and Access database consultant with 20+ years experience. Fix broken spreadsheets, automate reports, build stable databases. Fixed price. Free 30-min consultation.',
+    images: [
+      {
+        url: 'https://excelaccessconsultant.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'ExcelAccessConsultant - Excel VBA & Access Database Consultant',
+      },
+    ],
     siteName: 'ExcelAccessConsultant',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
-    description: 'Excel VBA & Access database consultant. 20+ years. Fix broken spreadsheets, build stable databases, automate tasks.',
-    images: ['https://excelaccessconsultant.com/logo.png'],
+    title: 'Excel VBA Consultant & Access Database Consultant | Robert Terry',
+    description:
+      'Excel VBA and Access database consultant with 20+ years experience. Fix broken spreadsheets, automate reports, build stable databases. Fixed price. Free 30-min consultation.',
+    images: ['https://excelaccessconsultant.com/og-image.png'],
   },
   robots: {
     index: true,
@@ -31,12 +40,19 @@ export const metadata = {
   alternates: {
     canonical: 'https://excelaccessconsultant.com/',
   },
-}
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
+        {/* Google Fonts - IBM Plex Sans */}
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+        <link
+          href='https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap'
+          rel='stylesheet'
+        />
         {/* Google Analytics */}
         <script
           dangerouslySetInnerHTML={{
@@ -57,39 +73,60 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8" />
-        
-        {/* Structured Data - schema.org LocalBusiness (valid properties only) */}
+        <script async src='https://www.googletagmanager.com/gtag/js?id=G-9ZT461HGG8' />
+
+        {/* Structured Data - schema.org LocalBusiness + Person */}
         <script
-          type="application/ld+json"
+          type='application/ld+json'
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "@id": "https://excelaccessconsultant.com/#localbusiness",
-              "name": "ExcelAccessConsultant.com",
-              "image": "https://excelaccessconsultant.com/logo.png",
-              "description": "Excel & Access Consulting for Finance Teams. Turn your 3-day accounting close into 10 minutes. 200+ automation projects delivered since 2010.",
-              "url": "https://excelaccessconsultant.com",
-              "telephone": "+1-801-616-3702",
-              "email": "rob@excelaccessconsultant.com",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Springville",
-                "addressRegion": "UT",
-                "postalCode": "84663",
-                "addressCountry": "US"
-              },
-              "founder": {
-                "@type": "Person",
-                "name": "Robert Terry"
-              },
-              "foundingDate": "2010",
-              "priceRange": "$",
-              "areaServed": {
-                "@type": "Country",
-                "name": "United States"
-              }
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'LocalBusiness',
+                  '@id': 'https://excelaccessconsultant.com/#localbusiness',
+                  name: 'ExcelAccessConsultant',
+                  url: 'https://excelaccessconsultant.com',
+                  logo: 'https://excelaccessconsultant.com/logo.png',
+                  image: 'https://excelaccessconsultant.com/logo.png',
+                  description:
+                    'Excel VBA and Access database consultant with 20+ years experience serving businesses nationwide.',
+                  telephone: '+18016163702',
+                  email: 'rob@excelaccessconsultant.com',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Springville',
+                    addressRegion: 'UT',
+                    addressCountry: 'US',
+                  },
+                  areaServed: 'US',
+                  priceRange: '$90/hour',
+                  openingHours: 'Mo-Fr 09:00-17:00',
+                  sameAs: [],
+                },
+                {
+                  '@type': 'Person',
+                  name: 'Robert Terry',
+                  jobTitle: 'Excel VBA & Access Database Consultant',
+                  url: 'https://excelaccessconsultant.com/about',
+                  worksFor: {
+                    '@type': 'LocalBusiness',
+                    name: 'ExcelAccessConsultant',
+                  },
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Springville',
+                    addressRegion: 'UT',
+                  },
+                  knowsAbout: [
+                    'Excel VBA',
+                    'Microsoft Access',
+                    'SQL Server',
+                    'Financial Modeling',
+                    'Database Migration',
+                  ],
+                },
+              ],
             }),
           }}
         />
@@ -98,5 +135,5 @@ export default function RootLayout({ children }) {
         <Layout>{children}</Layout>
       </body>
     </html>
-  )
+  );
 }

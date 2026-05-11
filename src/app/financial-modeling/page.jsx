@@ -13,8 +13,7 @@ export default function FinancialModeling() {
     <div className='bg-base min-h-screen text-slate-800 font-sans'>
       <SEO
         title='Financial Modeling Consultant | Excel Financial Models'
-        description='Financial modeling consultant. Build accurate Excel financial models, forecasts, and budgets. 20+ years experience. Fixed pricing. Free consultation.'
-        keywords='financial modeling consultant, excel financial model, financial model help, financial forecasting, budget modeling, excel consultant'
+        description='Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.'
         url='https://excelaccessconsultant.com/financial-modeling'
         ogTitle='Financial Modeling Consultant Services'
       />
@@ -403,6 +402,49 @@ export default function FinancialModeling() {
               className='text-secondary hover:text-secondary/80 font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
             >
               View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className='py-8 md:py-12 bg-white border-t border-slate-200'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900 text-center'>
+            Related Services & Resources
+          </h2>
+          <div className='grid sm:grid-cols-3 gap-4'>
+            <Link
+              href='/excel-automation'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Excel Automation
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Automate repetitive Excel tasks with custom VBA solutions.
+              </p>
+            </Link>
+            <Link
+              href='/case-studies/financial-services-data-integration'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Case Study: 500 Hours Saved
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                How Excel-to-SQL integration eliminated manual data entry.
+              </p>
+            </Link>
+            <Link
+              href='/vba-development'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                VBA Development
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Custom VBA macros and applications for Excel and Access.
+              </p>
             </Link>
           </div>
         </div>

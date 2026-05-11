@@ -13,8 +13,7 @@ export default function VBADevelopmentPage() {
     <div className='bg-base min-h-screen text-slate-800 font-sans'>
       <SEO
         title='Excel VBA Developer | Hire VBA Programmer'
-        description='Excel VBA developer services. Custom VBA macros, automation scripts, Excel programming. 20+ years experience. Fixed pricing. Free consultation.'
-        keywords='excel vba developer, hire vba programmer, excel macro development, vba programming services, excel vba consultant, vba code development'
+        description='Custom VBA development for Excel and Access. Build macros, automation scripts, and applications. Fix broken code or build from scratch. Fixed scope, fixed price.'
         url='https://excelaccessconsultant.com/vba-development'
         ogTitle='Excel VBA Development Services'
       />
@@ -374,6 +373,49 @@ export default function VBADevelopmentPage() {
               className='text-secondary hover:text-secondary/80 font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
             >
               View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className='py-8 md:py-12 bg-white border-t border-slate-200'>
+        <div className='max-w-7xl mx-auto px-6'>
+          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900 text-center'>
+            Related Services & Resources
+          </h2>
+          <div className='grid sm:grid-cols-3 gap-4'>
+            <Link
+              href='/excel-automation'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Excel Automation
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                End-to-end Excel process automation with VBA.
+              </p>
+            </Link>
+            <Link
+              href='/case-studies/retail-pricing-system'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Case Study: Pricing System
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Automated complex pricing calculations with VBA and Access.
+              </p>
+            </Link>
+            <Link
+              href='/access-consulting'
+              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
+            >
+              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
+                Access Database Consulting
+              </h3>
+              <p className='text-body-sm text-slate-600'>
+                Fix crashes, rebuild databases, and scale for multi-user access.
+              </p>
             </Link>
           </div>
         </div>

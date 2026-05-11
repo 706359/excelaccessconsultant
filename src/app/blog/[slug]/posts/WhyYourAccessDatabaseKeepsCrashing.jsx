@@ -76,7 +76,9 @@ function WhyYourAccessDatabaseKeepsCrashing() {
               {post.title}
             </h1>
             <div className='flex items-center gap-4 text-slate-600 text-sm'>
-              <span>By Robert Terry</span>
+              <Link href='/about' className='hover:text-primary transition-colors'>
+                By Robert Terry
+              </Link>
               <span>•</span>
               <span>
                 {new Date(post.date).toLocaleDateString('en-US', {
@@ -93,185 +95,198 @@ function WhyYourAccessDatabaseKeepsCrashing() {
           {/* Two Column Layout: Content + Sidebar */}
           <div className='grid lg:grid-cols-[1fr_320px] gap-6 lg:gap-8'>
             <div className='max-w-none'>
-          {/* Article Content */}
-          <div className='prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6'>
-            <p className='text-lg text-slate-700 font-medium'>
-              Access database crashes are frustrating, costly, and can bring your business
-              operations to a halt. If your Access database keeps crashing, you&apos;re not
-              alone—and there are proven solutions. Here&apos;s what causes Access crashes and how
-              to fix them permanently.
-            </p>
+              {/* Article Content */}
+              <div className='prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6'>
+                <p className='text-lg text-slate-700 font-medium'>
+                  Access database crashes are frustrating, costly, and can bring your business
+                  operations to a halt. If your Access database keeps crashing, you&apos;re not
+                  alone—and there are proven solutions. As an experienced{' '}
+                  <Link
+                    href='/access-consulting'
+                    className='text-primary font-semibold hover:text-primary-hover'
+                  >
+                    Access database consultant
+                  </Link>
+                  , here&apos;s what causes Access crashes and how to fix them permanently.
+                </p>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              Common Cause #1: Too Many Concurrent Users
-            </h2>
-            <p>
-              Access databases have limits on concurrent users. When too many people try to access
-              the database simultaneously, it can crash. The database file gets locked, conflicts
-              occur, and the system becomes unstable.
-            </p>
-            <p>
-              <strong>Solution:</strong> Use a split database architecture (front-end/back-end),
-              implement proper record locking, or migrate to SQL Server if you need 50+ concurrent
-              users. I can help you determine the best approach for your situation.
-            </p>
-            <p>
-              <strong>Real Example:</strong> A manufacturing company had 15 users accessing an
-              Access database that kept crashing. After implementing proper locking and split
-              architecture, crashes stopped completely. Zero crashes in 8 months.
-            </p>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  Common Cause #1: Too Many Concurrent Users
+                </h2>
+                <p>
+                  Access databases have limits on concurrent users. When too many people try to
+                  access the database simultaneously, it can crash. The database file gets locked,
+                  conflicts occur, and the system becomes unstable.
+                </p>
+                <p>
+                  <strong>Solution:</strong> Use a split database architecture (front-end/back-end),
+                  implement proper record locking, or{' '}
+                  <Link
+                    href='/database-migration'
+                    className='text-primary font-semibold hover:text-primary-hover'
+                  >
+                    migrate to SQL Server
+                  </Link>{' '}
+                  if you need 50+ concurrent users. I can help you determine the best approach for
+                  your situation.
+                </p>
+                <p>
+                  <strong>Real Example:</strong> A manufacturing company had 15 users accessing an
+                  Access database that kept crashing. After implementing proper locking and split
+                  architecture, crashes stopped completely. Zero crashes in 8 months.
+                </p>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              Common Cause #2: Database Bloat and Corruption
-            </h2>
-            <p>
-              Over time, Access databases grow in size (bloat) and can become corrupted. Deleted
-              records, fragmented data, and accumulated temporary objects cause the database file to
-              become unstable and crash-prone.
-            </p>
-            <p>
-              <strong>Solution:</strong> Regular compact and repair operations, proper database
-              maintenance routines, and optimization of data structures. I can set up automated
-              maintenance or perform one-time optimization.
-            </p>
-            <p>
-              <strong>Real Example:</strong> A finance team&apos;s Access database grew from 10MB to
-              150MB over 2 years and started crashing daily. After compacting and optimizing, the
-              database reduced to 25MB and crashes stopped.
-            </p>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  Common Cause #2: Database Bloat and Corruption
+                </h2>
+                <p>
+                  Over time, Access databases grow in size (bloat) and can become corrupted. Deleted
+                  records, fragmented data, and accumulated temporary objects cause the database
+                  file to become unstable and crash-prone.
+                </p>
+                <p>
+                  <strong>Solution:</strong> Regular compact and repair operations, proper database
+                  maintenance routines, and optimization of data structures. I can set up automated
+                  maintenance or perform one-time optimization.
+                </p>
+                <p>
+                  <strong>Real Example:</strong> A finance team&apos;s Access database grew from
+                  10MB to 150MB over 2 years and started crashing daily. After compacting and
+                  optimizing, the database reduced to 25MB and crashes stopped.
+                </p>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              Common Cause #3: Inefficient Queries
-            </h2>
-            <p>
-              Complex queries without proper indexes, queries that scan entire tables, or queries
-              with circular references can cause Access to crash or freeze. Poor query design is a
-              leading cause of database instability.
-            </p>
-            <p>
-              <strong>Solution:</strong> Optimize queries, add proper indexes, eliminate circular
-              references, and restructure complex queries. I can analyze your queries and optimize
-              them for performance and stability.
-            </p>
-            <p>
-              <strong>Real Example:</strong> A client had a query that took 5 minutes to run and
-              often crashed. After optimization and indexing, the same query runs in 5 seconds and
-              never crashes.
-            </p>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  Common Cause #3: Inefficient Queries
+                </h2>
+                <p>
+                  Complex queries without proper indexes, queries that scan entire tables, or
+                  queries with circular references can cause Access to crash or freeze. Poor query
+                  design is a leading cause of database instability.
+                </p>
+                <p>
+                  <strong>Solution:</strong> Optimize queries, add proper indexes, eliminate
+                  circular references, and restructure complex queries. I can analyze your queries
+                  and optimize them for performance and stability.
+                </p>
+                <p>
+                  <strong>Real Example:</strong> A client had a query that took 5 minutes to run and
+                  often crashed. After optimization and indexing, the same query runs in 5 seconds
+                  and never crashes.
+                </p>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              Common Cause #4: Network Issues
-            </h2>
-            <p>
-              Access databases shared over networks are sensitive to network interruptions. Dropped
-              connections, slow networks, or network timeouts can cause database locks, corruption,
-              and crashes.
-            </p>
-            <p>
-              <strong>Solution:</strong> Optimize network settings, use persistent connections,
-              implement proper error handling, or consider migrating to SQL Server for better
-              network stability.
-            </p>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  Common Cause #4: Network Issues
+                </h2>
+                <p>
+                  Access databases shared over networks are sensitive to network interruptions.
+                  Dropped connections, slow networks, or network timeouts can cause database locks,
+                  corruption, and crashes.
+                </p>
+                <p>
+                  <strong>Solution:</strong> Optimize network settings, use persistent connections,
+                  implement proper error handling, or consider migrating to SQL Server for better
+                  network stability.
+                </p>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              Common Cause #5: Missing or Corrupted System Files
-            </h2>
-            <p>
-              Access requires specific system files and libraries. Missing, outdated, or corrupted
-              Access runtime files can cause crashes. This is especially common after Windows
-              updates or software installations.
-            </p>
-            <p>
-              <strong>Solution:</strong> Reinstall Access runtime, update to latest version, or
-              repair Office installation. I can help diagnose and fix system-level issues.
-            </p>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  Common Cause #5: Missing or Corrupted System Files
+                </h2>
+                <p>
+                  Access requires specific system files and libraries. Missing, outdated, or
+                  corrupted Access runtime files can cause crashes. This is especially common after
+                  Windows updates or software installations.
+                </p>
+                <p>
+                  <strong>Solution:</strong> Reinstall Access runtime, update to latest version, or
+                  repair Office installation. I can help diagnose and fix system-level issues.
+                </p>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              How to Fix Access Database Crashes
-            </h2>
-            <p>The fix depends on the root cause. Here&apos;s my proven approach:</p>
-            <ol className='list-decimal list-inside space-y-4 ml-4'>
-              <li>
-                <strong>Diagnosis:</strong> I analyze your database structure, queries, user
-                patterns, and error logs to identify the exact cause of crashes.
-              </li>
-              <li>
-                <strong>Immediate Fix:</strong> Repair corrupted data, compact the database, and
-                restore from backup if needed.
-              </li>
-              <li>
-                <strong>Structural Fixes:</strong> Rebuild database structure, optimize queries, add
-                indexes, implement proper locking.
-              </li>
-              <li>
-                <strong>Prevention:</strong> Set up maintenance routines, optimize for your user
-                count, and implement best practices.
-              </li>
-            </ol>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  How to Fix Access Database Crashes
+                </h2>
+                <p>The fix depends on the root cause. Here&apos;s my proven approach:</p>
+                <ol className='list-decimal list-inside space-y-4 ml-4'>
+                  <li>
+                    <strong>Diagnosis:</strong> I analyze your database structure, queries, user
+                    patterns, and error logs to identify the exact cause of crashes.
+                  </li>
+                  <li>
+                    <strong>Immediate Fix:</strong> Repair corrupted data, compact the database, and
+                    restore from backup if needed.
+                  </li>
+                  <li>
+                    <strong>Structural Fixes:</strong> Rebuild database structure, optimize queries,
+                    add indexes, implement proper locking.
+                  </li>
+                  <li>
+                    <strong>Prevention:</strong> Set up maintenance routines, optimize for your user
+                    count, and implement best practices.
+                  </li>
+                </ol>
 
-            <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-              When to Consider SQL Server Migration
-            </h2>
-            <p>
-              If you have 50+ concurrent users, need better performance, or require cloud access,
-              migrating to SQL Server may be the better solution. Access has limits, and SQL Server
-              handles enterprise-level requirements better.
-            </p>
-            <p>
-              I can help you decide if migration is right for you, or if optimizing your current
-              Access database is sufficient. Most businesses can stay on Access with proper
-              optimization.
-            </p>
+                <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
+                  When to Consider SQL Server Migration
+                </h2>
+                <p>
+                  If you have 50+ concurrent users, need better performance, or require cloud
+                  access, migrating to SQL Server may be the better solution. Access has limits, and
+                  SQL Server handles enterprise-level requirements better.
+                </p>
+                <p>
+                  I can help you decide if migration is right for you, or if optimizing your current
+                  Access database is sufficient. Most businesses can stay on Access with proper
+                  optimization.
+                </p>
 
-            <div className='bg-excel/10 p-6 rounded-lg border border-excel/20 mt-8'>
-              <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
-                The Bottom Line
-              </h3>
-              <p className='text-slate-700 mb-4'>
-                Access database crashes are usually fixable. The key is identifying the root cause
-                and implementing the right solution. Most crashes are caused by improper design,
-                lack of maintenance, or exceeding Access limits.
-              </p>
-              <p className='text-slate-700'>
-                I&apos;ve fixed hundreds of crashing Access databases. Most repairs take 1-2 weeks
-                and cost $1,500-$8,000. The cost of continued crashes (lost productivity, data loss,
-                frustrated teams) far exceeds the cost of fixing the problem.
-              </p>
-            </div>
-          </div>
+                <div className='bg-excel/10 p-6 rounded-lg border border-excel/20 mt-8'>
+                  <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
+                    The Bottom Line
+                  </h3>
+                  <p className='text-slate-700 mb-4'>
+                    Access database crashes are usually fixable. The key is identifying the root
+                    cause and implementing the right solution. Most crashes are caused by improper
+                    design, lack of maintenance, or exceeding Access limits.
+                  </p>
+                  <p className='text-slate-700'>
+                    I&apos;ve fixed hundreds of crashing Access databases. Most repairs take 1-2
+                    weeks and cost $1,500-$8,000. The cost of continued crashes (lost productivity,
+                    data loss, frustrated teams) far exceeds the cost of fixing the problem.
+                  </p>
+                </div>
+              </div>
 
-          {/* CTA Section */}
-          <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
-            <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
-              Ready to Fix Your Crashing Access Database?
-            </h3>
-            <p className='text-slate-700 mb-6'>
-              Get a free consultation to diagnose your Access database issues and get a fixed-price
-              quote for repairs.
-            </p>
-            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-              <Link
-                href='/contact'
-                className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
-              >
-                Schedule Free Consultation
-              </Link>
-              <a
-                href='tel:8016163702'
-                className='bg-white hover:bg-slate-50 text-excel border-2 border-excel px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
-              >
-                Call 801-616-3702
-              </a>
-            </div>
-            <div className='mt-6 flex justify-center'>
-              <Link
-                href='/access-consulting'
-                className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'
-              >
-                Learn more about Access Database Consulting →
-              </Link>
-            </div>
-          </div>
+              {/* CTA Section */}
+              <div className='mt-12 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
+                <h3 className='text-2xl font-bold mb-4 font-display text-slate-900'>
+                  Ready to Fix Your Crashing Access Database?
+                </h3>
+                <p className='text-slate-700 mb-6'>
+                  Get a free consultation to diagnose your Access database issues and get a
+                  fixed-price quote for repairs.
+                </p>
+                <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                  <Link
+                    href='/contact'
+                    className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
+                  >
+                    Schedule Free Consultation
+                  </Link>
+                  <a
+                    href='tel:8016163702'
+                    className='bg-white hover:bg-slate-50 text-excel border-2 border-excel px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
+                  >
+                    Call 801-616-3702
+                  </a>
+                </div>
+                <div className='mt-6 flex justify-center'>
+                  <Link
+                    href='/access-consulting'
+                    className='text-excel hover:text-excel-hover font-semibold text-sm inline-flex items-center gap-2'
+                  >
+                    Learn more about Access Database Consulting →
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* Right Sidebar */}

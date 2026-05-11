@@ -4,13 +4,13 @@ const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'Excel
 export const metadata = {
   title: 'Blog - Excel & Access Automation Tips & Guides',
   description:
-    'Excel & Access automation tips and guides. Automate work, fix databases, boost productivity. Expert advice, 20+ years.',
+    'Excel VBA and Access database tips, tutorials, and guides. Expert advice from 20+ years automating business processes.',
   openGraph: {
     type: 'website',
     url: `${BASE}/blog`,
     title: 'Blog - Excel & Access Automation Tips & Guides',
     description:
-      'Excel & Access automation tips and guides. Automate work, fix databases, boost productivity. Expert advice, 20+ years.',
+      'Excel VBA and Access database tips, tutorials, and guides. Expert advice from 20+ years automating business processes.',
     images: [OG_IMAGE],
     siteName: 'ExcelAccessConsultant',
     locale: 'en_US',
@@ -18,7 +18,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Blog - Excel & Access Automation Tips & Guides',
-    description: 'Excel & Access automation tips and guides. Expert advice, 20+ years.',
+    description: 'Excel VBA and Access database tips, tutorials, and guides. Expert advice from 20+ years automating business processes.',
     images: [`${BASE}/logo.png`],
   },
   alternates: { canonical: `${BASE}/blog` },
