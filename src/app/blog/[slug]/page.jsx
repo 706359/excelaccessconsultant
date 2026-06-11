@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }) {
       />
       <BlogReadTracker slug={canonical} />
       <PostComponent />
-      <BlogPostCTA slug={canonical} />
+      <BlogPostCTA />
       <AuthorBio />
     </>
   );

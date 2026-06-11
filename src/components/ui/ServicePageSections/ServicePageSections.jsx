@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ICON_SIZE } from '../../../constants/iconSizes';
-import ContactCTAs from '../ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../ContactCTAs/ContactCTAs';
 import FAQAccordion from '../FAQAccordion/FAQAccordion';
 import { IconArrowRight, IconCheck } from '../Icons/Icons';
 
@@ -69,18 +69,17 @@ export function BenefitsSection({ title = 'Business Benefits', benefits }) {
   );
 }
 
-export function MidPageCTA({ heading, subtext, green = false }) {
+export function ServiceHeroCTAs() {
+  return <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} />;
+}
+
+export function MidPageCTA({ heading, subtext }) {
   return (
     <section className='mid-page-cta'>
       <div className='mid-page-cta__inner'>
         <h2 className='mid-page-cta__title'>{heading}</h2>
         {subtext && <p className='mid-page-cta__text'>{subtext}</p>}
-        <ContactCTAs
-          green={green}
-          primaryVariant='inverse'
-          secondaryVariant='outline-white'
-          center
-        />
+        <ContactCTAs {...CTA_BUTTON_VARIANTS.onDark} center />
       </div>
     </section>
   );
@@ -117,6 +116,88 @@ export function ServiceFAQSection({ title = 'Common Questions', faqs }) {
       <div className='service-section__inner'>
         <h2 className='service-section__title'>{title}</h2>
         <FAQAccordion items={faqs} />
+      </div>
+    </section>
+  );
+}
+
+export function ServiceCapabilitiesSection({ title, accent = 'primary', sidebar, children }) {
+  return (
+    <section
+      className={`page-section page-section--compact page-section--alt service-capabilities service-capabilities--${accent}`}
+    >
+      <div className='container'>
+        <div className='grid-sidebar'>
+          <div className='grid-sidebar__main'>
+            <h2 className='service-section__title'>{title}</h2>
+            {children}
+          </div>
+          <div className='grid-sidebar__aside'>{sidebar}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ServiceTimelineBox({ timelines, provide, deliver }) {
+  if (!timelines?.length) return null;
+
+  return (
+    <div className='highlight-box'>
+      <p>
+        <strong>Timeline Expectations:</strong>
+      </p>
+      <ul className='highlight-box__list'>
+        {timelines.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      {provide && (
+        <p className='text-muted'>
+          <strong>What You Provide:</strong> {provide}
+        </p>
+      )}
+      {deliver && (
+        <p className='text-muted'>
+          <strong>What You Get:</strong> {deliver}
+        </p>
+      )}
+    </div>
+  );
+}
+
+export function ServiceRelatedSection({ links }) {
+  if (!links?.length) return null;
+
+  return (
+    <section className='page-section page-section--compact page-section--white page-section--border-t'>
+      <div className='container'>
+        <h2 className='service-section__title page-section--centered'>
+          Related Services & Resources
+        </h2>
+        <div className='grid-3'>
+          {links.map(({ href, title, description }) => (
+            <Link key={href} href={href} className='related-tile'>
+              <h3>{title}</h3>
+              <p className='text-muted-sm'>{description}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ServiceFinalCTASection({ heading, body }) {
+  return (
+    <section
+      id='contact'
+      className='page-section page-section--compact page-section--alt service-final-cta page-section--centered'
+    >
+      <div className='container page-section--centered'>
+        <h2 className='service-section__title'>{heading}</h2>
+        <p className='text-lead service-final-cta'>{body}</p>
+        <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} center />
       </div>
     </section>
   );

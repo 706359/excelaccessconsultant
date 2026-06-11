@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
 
       <section className='page-hero'>
         <div className='container page-section--centered'>
-          <h1 className='page-hero__title'>Privacy Policy</h1>
+          <h1 className='page-hero__title page-hero__title--compact'>Privacy Policy</h1>
           <p className='page-hero__lead text-muted'>
             Last updated:{' '}
             {new Date().toLocaleDateString('en-US', {

@@ -101,7 +101,7 @@ export default function ThankYou() {
               Return to Home
             </Button>
             <Button
-              variant='secondary'
+              variant='outline-access'
               size='large'
               as='a'
               href='mailto:rob@excelaccessconsultant.com'

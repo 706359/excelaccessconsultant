@@ -61,7 +61,7 @@ export default async function LegacyDatedBlogPage({ params }) {
       />
       <BlogReadTracker slug={canonical} />
       <PostComponent />
-      <BlogPostCTA slug={canonical} />
+      <BlogPostCTA />
       <AuthorBio />
     </>
   );

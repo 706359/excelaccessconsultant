@@ -1,19 +1,22 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
-import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import {
   BenefitsSection,
   MidPageCTA,
   ProblemSection,
+  ServiceCapabilitiesSection,
   ServiceFAQSection,
+  ServiceFinalCTASection,
+  ServiceHeroCTAs,
+  ServiceRelatedSection,
   ServiceSidebar,
+  ServiceTimelineBox,
   SolutionSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
@@ -97,7 +100,7 @@ export default function AccessDatabaseRepair() {
             restore multi-user access, and harden your system against repeat failures. {TRUST.years}{' '}
             of experience. {TRUST.projects} projects. Fixed-price repair quotes. Free consultation.
           </p>
-          <ContactCTAs phoneLocation='access-database-repair-hero' />
+          <ServiceHeroCTAs />
         </div>
       </section>
 
@@ -105,60 +108,55 @@ export default function AccessDatabaseRepair() {
       <SolutionSection paragraphs={content.solutionParagraphs} bullets={content.solutionBullets} />
       <BenefitsSection benefits={content.benefits} />
 
-      <section className='page-section page-section--lg page-section--alt'>
-        <div className='container'>
-          <div className='grid-sidebar'>
-            <div className='grid-sidebar__main'>
-              <h2>What I Repair</h2>
-              <div className='grid-2'>
-                {[
-                  {
-                    title: 'Corruption Recovery',
-                    desc: 'Repair damaged tables, recover records, and rebuild relationships after compact/repair failures.',
-                  },
-                  {
-                    title: 'Crash Diagnosis',
-                    desc: 'Find root causes of daily crashes, locking, bloat, network, or bad queries.',
-                  },
-                  {
-                    title: 'Multi-User Lockouts',
-                    desc: 'Resolve .laccdb lock files, ghost sessions, and record-locking conflicts.',
-                  },
-                  {
-                    title: 'Performance Recovery',
-                    desc: 'Decompile, reindex, and optimize queries so the database opens and runs normally again.',
-                  },
-                  {
-                    title: 'Data Validation',
-                    desc: 'Verify recovered data integrity and flag gaps before you go back to production.',
-                  },
-                  {
-                    title: 'Prevention Setup',
-                    desc: 'Automated backups, maintenance schedules, and split-database architecture when needed.',
-                  },
-                ].map((item) => (
-                  <div key={item.title} className='card card--interactive'>
-                    <h3>{item.title}</h3>
-                    <p className='text-muted'>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+      <ServiceCapabilitiesSection
+        title={content.capabilitiesTitle}
+        accent={content.cardAccent}
+        sidebar={
+          <ServiceSidebar
+            tagline={getServiceSidebarTagline('access-database-repair')}
+            examples={content.sidebarExamples}
+            accent='secondary'
+          />
+        }
+      >
+        <div className='grid-2'>
+          {[
+            {
+              title: 'Corruption Recovery',
+              desc: 'Repair damaged tables, recover records, and rebuild relationships after compact/repair failures.',
+            },
+            {
+              title: 'Crash Diagnosis',
+              desc: 'Find root causes of daily crashes, locking, bloat, network, or bad queries.',
+            },
+            {
+              title: 'Multi-User Lockouts',
+              desc: 'Resolve .laccdb lock files, ghost sessions, and record-locking conflicts.',
+            },
+            {
+              title: 'Performance Recovery',
+              desc: 'Decompile, reindex, and optimize queries so the database opens and runs normally again.',
+            },
+            {
+              title: 'Data Validation',
+              desc: 'Verify recovered data integrity and flag gaps before you go back to production.',
+            },
+            {
+              title: 'Prevention Setup',
+              desc: 'Automated backups, maintenance schedules, and split-database architecture when needed.',
+            },
+          ].map((item) => (
+            <div key={item.title} className='card card--interactive'>
+              <h3>{item.title}</h3>
+              <p className='text-muted'>{item.desc}</p>
             </div>
-            <div className='grid-sidebar__aside'>
-              <ServiceSidebar
-                tagline={getServiceSidebarTagline('access-database-repair')}
-                examples={content.sidebarExamples}
-                accent='secondary'
-              />
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </ServiceCapabilitiesSection>
 
-      <ServiceHowItWorks
-        steps={SERVICE_PROCESS_STEPS['access-database-repair']}
-        accent='secondary'
-      />
+      <ServiceHowItWorks steps={SERVICE_PROCESS_STEPS['access-database-repair']} accent='secondary'>
+        <ServiceTimelineBox {...content.timelineBox} />
+      </ServiceHowItWorks>
 
       <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} />
 
@@ -166,26 +164,9 @@ export default function AccessDatabaseRepair() {
 
       <ServiceFAQSection faqs={serviceFaqs} />
 
-      <section className='page-section page-section--compact page-section--alt'>
-        <div className='container page-section--centered'>
-          <h2>Access Database Down? Let&apos;s Fix It.</h2>
-          <p className='text-lead service-final-cta'>
-            Book a free consultation or request a fixed-price repair estimate. I will assess
-            recovery options and give you a clear path forward.
-          </p>
-          <ContactCTAs phoneLocation='access-database-repair-final' center />
-          <p className='service-final-cta__links'>
-            Also see{' '}
-            <Link href='/access-consulting' className='text-link text-link--underline'>
-              Access Database Development
-            </Link>{' '}
-            and{' '}
-            <Link href='/database-migration' className='text-link text-link--underline'>
-              Database Migration
-            </Link>
-          </p>
-        </div>
-      </section>
+      <ServiceRelatedSection links={content.relatedLinks} />
+
+      <ServiceFinalCTASection heading={content.finalCta.heading} body={content.finalCta.body} />
     </div>
   );
 }

@@ -55,7 +55,7 @@ export default function LeadMagnetHub({
       <section className='page-hero page-hero--centered'>
         <div className='container'>
           <span className='chip-primary lead-magnet-hero__eyebrow'>Free Downloads</span>
-          <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
+          <h1 className='page-hero__title page-hero__title--compact'>
             Free Excel &amp; Access Resources
           </h1>
           <p className='page-hero__lead'>

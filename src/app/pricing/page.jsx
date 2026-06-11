@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import FAQAccordion from '../../components/ui/FAQAccordion/FAQAccordion';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import PricingTierGrid from '../../components/ui/PricingTierGrid/PricingTierGrid';
@@ -37,7 +37,7 @@ export default function PricingPage() {
             migrations. {TRUST.years} of experience. {TRUST.projects} projects delivered. You get a
             fixed quote after a free consultation, no hourly billing surprises.
           </p>
-          <ContactCTAs green center />
+          <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} center />
         </div>
       </section>
 
@@ -163,7 +163,6 @@ export default function PricingPage() {
       <PageCTASection
         heading='Get Your Fixed-Price Quote'
         subtext='Free 30-minute consultation. I will review your process and send a detailed quote within 24–48 hours.'
-        green
       />
     </div>
   );

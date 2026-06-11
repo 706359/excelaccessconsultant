@@ -284,9 +284,7 @@ export default function Contact() {
             <span className='chip-primary lead-magnet-hero__eyebrow'>
               Free 30-Minute Consultation
             </span>
-            <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
-              Get in Touch
-            </h1>
+            <h1 className='page-hero__title page-hero__title--compact'>Get in Touch</h1>
             <p className='page-hero__lead'>
               Tell me about your Excel or Access project, a crashing database, a report that eats
               half a day, or a migration you have been putting off. I respond within 24 hours, with{' '}

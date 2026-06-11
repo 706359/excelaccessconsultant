@@ -1,19 +1,22 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
-import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import {
   BenefitsSection,
   MidPageCTA,
   ProblemSection,
+  ServiceCapabilitiesSection,
   ServiceFAQSection,
+  ServiceFinalCTASection,
+  ServiceHeroCTAs,
+  ServiceRelatedSection,
   ServiceSidebar,
+  ServiceTimelineBox,
   SolutionSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
@@ -116,7 +119,7 @@ export default function FinancialModeling() {
             {TRUST.projects} financial modeling projects. MBA in Accounting. Fixed pricing. Free
             consultation.
           </p>
-          <ContactCTAs green phoneLocation='financial-modeling-hero' />
+          <ServiceHeroCTAs />
         </div>
       </section>
 
@@ -124,12 +127,17 @@ export default function FinancialModeling() {
       <SolutionSection paragraphs={content.solutionParagraphs} bullets={content.solutionBullets} />
       <BenefitsSection benefits={content.benefits} />
 
-      <section className='page-section page-section--lg page-section--alt'>
-        <div className='container'>
-          <div className='grid-sidebar'>
-            <div className='grid-sidebar__main'>
-              <h2>What I Build</h2>
-              <div className='grid-2'>
+      <ServiceCapabilitiesSection
+        title={content.capabilitiesTitle}
+        accent={content.cardAccent}
+        sidebar={
+          <ServiceSidebar
+            tagline={getServiceSidebarTagline('financial-modeling')}
+            examples={content.sidebarExamples}
+          />
+        }
+      >
+        <div className='grid-2'>
                 <div className='card card--interactive'>
                   <h3>3-Statement Financial Models</h3>
                   <p className='text-muted'>
@@ -202,40 +210,13 @@ export default function FinancialModeling() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className='grid-sidebar__aside'>
-              <ServiceSidebar
-                tagline={getServiceSidebarTagline('financial-modeling')}
-                examples={content.sidebarExamples}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      </ServiceCapabilitiesSection>
 
       <ServiceHowItWorks steps={SERVICE_PROCESS_STEPS['financial-modeling']} accent='primary'>
-        <div className='highlight-box'>
-          <p>
-            <strong>Timeline Expectations:</strong>
-          </p>
-          <ul className='highlight-box__list'>
-            <li>Simple models: 2-3 weeks</li>
-            <li>Medium complexity: 4-6 weeks</li>
-            <li>Complex models: 6-10 weeks</li>
-          </ul>
-          <p className='text-muted'>
-            <strong>What You Provide:</strong> Historical financial data, business assumptions,
-            growth projections, access to accounting systems (if needed)
-          </p>
-          <p className='text-muted'>
-            <strong>What You Get:</strong> Working financial model, documentation, training, 100%
-            ownership
-          </p>
-        </div>
+        <ServiceTimelineBox {...content.timelineBox} />
       </ServiceHowItWorks>
 
-      <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} green />
+      <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} />
 
       <ServicePricingSection
         variant='excel'
@@ -245,45 +226,12 @@ export default function FinancialModeling() {
 
       <ServiceFAQSection faqs={serviceFaqs} />
 
-      <section className='page-section page-section--compact page-section--white page-section--border-t'>
-        <div className='container'>
-          <h2 className='page-section--centered'>Related Services & Resources</h2>
-          <div className='grid-3'>
-            <Link href='/excel-automation' className='related-tile'>
-              <h3>Excel Automation</h3>
-              <p className='text-muted-sm'>
-                Automate repetitive Excel tasks with custom VBA solutions.
-              </p>
-            </Link>
-            <Link href='/case-studies/financial-services-data-integration' className='related-tile'>
-              <h3>Case Study: 500 Hours Saved</h3>
-              <p className='text-muted-sm'>
-                How Excel-to-SQL integration eliminated manual data entry.
-              </p>
-            </Link>
-            <Link href='/vba-development' className='related-tile'>
-              <h3>VBA Development</h3>
-              <p className='text-muted-sm'>
-                Custom VBA macros and applications for Excel and Access.
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ServiceRelatedSection links={content.relatedLinks} />
 
-      <section
-        id='contact'
-        className='page-section page-section--compact page-section--alt service-final-cta page-section--centered'
-      >
-        <div className='container page-section--centered'>
-          <h2>Ready to Build or Fix Your Financial Model?</h2>
-          <p className='text-lead service-final-cta'>
-            Stop struggling with slow or broken financial models. Get a free consultation and see
-            how I can help.
-          </p>
-          <ContactCTAs green phoneLocation='financial-modeling-final' center />
-        </div>
-      </section>
+      <ServiceFinalCTASection
+        heading={content.finalCta.heading}
+        body={content.finalCta.body}
+      />
     </div>
   );
 }

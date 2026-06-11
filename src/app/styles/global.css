@@ -3,6 +3,7 @@
 @import './utilities/interactions.css';
 @import './base/reset.css';
 @import './base/typography.css';
+@import './utilities/typography-utilities.css';
 @import './layout/container.css';
 @import './components/Button.css';
 @import './components/card.css';

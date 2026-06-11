@@ -1,19 +1,22 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
-import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import {
   BenefitsSection,
   MidPageCTA,
   ProblemSection,
+  ServiceCapabilitiesSection,
   ServiceFAQSection,
+  ServiceFinalCTASection,
+  ServiceHeroCTAs,
+  ServiceRelatedSection,
   ServiceSidebar,
+  ServiceTimelineBox,
   SolutionSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
@@ -115,7 +118,7 @@ export default function DatabaseMigrationPage() {
             cloud access. Preserve all data and functionality. {TRUST.years} of migration
             experience. {TRUST.projects} migration projects. Fixed pricing. Free consultation.
           </p>
-          <ContactCTAs phoneLocation='database-migration-hero' />
+          <ServiceHeroCTAs />
         </div>
       </section>
 
@@ -123,13 +126,19 @@ export default function DatabaseMigrationPage() {
       <SolutionSection paragraphs={content.solutionParagraphs} bullets={content.solutionBullets} />
       <BenefitsSection benefits={content.benefits} />
 
-      <section className='page-section page-section--lg page-section--alt'>
-        <div className='container'>
-          <div className='grid-sidebar'>
-            <div className='grid-sidebar__main'>
-              <h2>What I Migrate</h2>
-              <div className='grid-2'>
-                {[
+      <ServiceCapabilitiesSection
+        title={content.capabilitiesTitle}
+        accent={content.cardAccent}
+        sidebar={
+          <ServiceSidebar
+            tagline={getServiceSidebarTagline('database-migration')}
+            examples={content.sidebarExamples}
+            accent='secondary'
+          />
+        }
+      >
+        <div className='grid-2'>
+          {[
                   {
                     title: 'Access to SQL Server',
                     desc: 'Migrate Access databases to SQL Server. Preserve all tables, relationships, data types, and constraints. Optimize for SQL Server performance.',
@@ -176,38 +185,11 @@ export default function DatabaseMigrationPage() {
                     <p className='text-muted'>{item.desc}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className='grid-sidebar__aside'>
-              <ServiceSidebar
-                tagline={getServiceSidebarTagline('database-migration')}
-                examples={content.sidebarExamples}
-                accent='secondary'
-              />
-            </div>
-          </div>
         </div>
-      </section>
+      </ServiceCapabilitiesSection>
 
       <ServiceHowItWorks steps={SERVICE_PROCESS_STEPS['database-migration']} accent='secondary'>
-        <div className='highlight-box'>
-          <p>
-            <strong>Timeline Expectations:</strong>
-          </p>
-          <ul className='highlight-box__list'>
-            <li>Simple databases: 3-4 weeks</li>
-            <li>Medium complexity: 5-8 weeks</li>
-            <li>Complex systems: 8-12 weeks</li>
-          </ul>
-          <p className='text-muted'>
-            <strong>What You Provide:</strong> Current Access database, access to SQL Server (or I
-            can set up), requirements for new system
-          </p>
-          <p className='text-muted'>
-            <strong>What You Get:</strong> Migrated SQL Server database, documentation, training,
-            100% ownership
-          </p>
-        </div>
+        <ServiceTimelineBox {...content.timelineBox} />
       </ServiceHowItWorks>
 
       <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} />
@@ -220,47 +202,12 @@ export default function DatabaseMigrationPage() {
 
       <ServiceFAQSection faqs={serviceFaqs} />
 
-      <section className='page-section page-section--compact page-section--white page-section--border-t'>
-        <div className='container'>
-          <h2 className='page-section--centered'>Related Services & Resources</h2>
-          <div className='grid-3'>
-            <Link href='/access-consulting' className='related-tile'>
-              <h3>Access Database Consulting</h3>
-              <p className='text-muted-sm'>
-                Fix crashes, rebuild databases, and scale for multi-user access.
-              </p>
-            </Link>
-            <Link href='/case-studies/access-sql-migration-enterprise' className='related-tile'>
-              <h3>Case Study: Access to SQL Migration</h3>
-              <p className='text-muted-sm'>
-                50-user system migrated with zero data loss. Reports in 15 seconds.
-              </p>
-            </Link>
-            <Link href='/excel-automation' className='related-tile'>
-              <h3>Excel Automation</h3>
-              <p className='text-muted-sm'>
-                Automate repetitive Excel tasks with custom VBA solutions.
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ServiceRelatedSection links={content.relatedLinks} />
 
-      <section
-        id='contact'
-        className='page-section page-section--compact page-section--alt service-final-cta'
-      >
-        <div className='container page-section--centered'>
-          <div className='container page-section--centered'>
-            <h2>Ready to Migrate Your Access Database?</h2>
-            <p className='text-lead service-final-cta'>
-              Scale beyond Access limits. Get better performance and cloud access. Get a free
-              consultation to see if migration is right for you.
-            </p>
-            <ContactCTAs phoneLocation='database-migration-final' center />
-          </div>
-        </div>
-      </section>
+      <ServiceFinalCTASection
+        heading={content.finalCta.heading}
+        body={content.finalCta.body}
+      />
     </div>
   );
 }

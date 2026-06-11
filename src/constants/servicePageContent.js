@@ -64,6 +64,39 @@ export const SERVICE_CONTENT = {
     midCtaHeading: 'Ready to stabilize your Access database?',
     midCtaSubtext:
       'Book a free consultation. I will review your system and outline a fixed-price path forward.',
+    capabilitiesTitle: 'What I Build',
+    cardAccent: 'secondary',
+    timelineBox: {
+      timelines: [
+        'Simple databases: 2-3 weeks',
+        'Medium complexity: 4-6 weeks',
+        'Complex multi-user systems: 6-10 weeks',
+      ],
+      provide:
+        'Current database (if fixing), requirements, sample data, access to systems (if needed)',
+      deliver: 'Working database, documentation, training, 100% ownership',
+    },
+    relatedLinks: [
+      {
+        href: '/database-migration',
+        title: 'Database Migration',
+        description: 'Migrate Access to SQL Server for better performance and scalability.',
+      },
+      {
+        href: '/access-database-repair',
+        title: 'Access Database Repair',
+        description: 'Emergency repair and recovery for corrupted or crashing Access databases.',
+      },
+      {
+        href: '/case-studies/manufacturing-inventory-tracking',
+        title: 'Case Study: Zero Crashes',
+        description: 'How I fixed a crashing Access database used by 15 people daily.',
+      },
+    ],
+    finalCta: {
+      heading: 'Ready to Fix or Build Your Access Database?',
+      body: 'Stop dealing with crashes and slow performance. Get a free consultation and see how I can fix or build your Access database.',
+    },
   },
   'access-database-repair': {
     problems: [
@@ -127,6 +160,40 @@ export const SERVICE_CONTENT = {
     midCtaHeading: 'Access database down or corrupted?',
     midCtaSubtext:
       'Call or book a consultation. I will assess recovery options and give you a fixed-price repair quote.',
+    capabilitiesTitle: 'What I Repair',
+    cardAccent: 'secondary',
+    timelineBox: {
+      timelines: [
+        'Simple repairs: 1-2 weeks',
+        'Advanced recovery: 2-4 weeks',
+        'Rebuild when repair is not enough: 4-8 weeks',
+      ],
+      provide:
+        'Copy of the Access file, description of symptoms, and list of users or workflows affected',
+      deliver:
+        'Repaired database, recovery summary, prevention recommendations, and 100% ownership',
+    },
+    relatedLinks: [
+      {
+        href: '/access-consulting',
+        title: 'Access Database Consulting',
+        description: 'Fix crashes, rebuild databases, and scale for multi-user access.',
+      },
+      {
+        href: '/database-migration',
+        title: 'Database Migration',
+        description: 'Migrate Access to SQL Server when repair alone is not enough.',
+      },
+      {
+        href: '/case-studies/manufacturing-inventory-tracking',
+        title: 'Case Study: Crash Recovery',
+        description: 'Fixed daily crashes for a 15-user manufacturing inventory system.',
+      },
+    ],
+    finalCta: {
+      heading: 'Access Database Down? Let\'s Fix It.',
+      body: 'Book a free consultation or request a fixed-price repair estimate. I will assess recovery options and give you a clear path forward.',
+    },
   },
   'excel-automation': {
     problems: [
@@ -190,7 +257,39 @@ export const SERVICE_CONTENT = {
     midCtaHeading: 'Still doing the same Excel work every week?',
     midCtaSubtext:
       'Book a free consultation. I will map what can be automated and send a fixed-price estimate.',
-    green: true,
+    capabilitiesTitle: 'What I Automate',
+    cardAccent: 'primary',
+    timelineBox: {
+      timelines: [
+        'Simple automations: 1-2 weeks',
+        'Advanced automations: 3-6 weeks',
+        'Complex multi-process systems: 6-8 weeks',
+      ],
+      provide:
+        'Sample files, process documentation, access to data sources (if needed)',
+      deliver: 'Working automation, documentation, training, 100% code ownership',
+    },
+    relatedLinks: [
+      {
+        href: '/vba-development',
+        title: 'VBA Development',
+        description: 'Custom VBA macros, scripts, and applications built from scratch or fixed.',
+      },
+      {
+        href: '/case-studies/construction-automated-reporting',
+        title: 'Case Study: 6 Hours → 30 Seconds',
+        description: 'How VBA automation eliminated weekly manual reporting for a construction firm.',
+      },
+      {
+        href: '/access-consulting',
+        title: 'Access Database Consulting',
+        description: 'Fix crashes, rebuild databases, and scale for multi-user access.',
+      },
+    ],
+    finalCta: {
+      heading: 'Ready to Automate Your Excel Workflows?',
+      body: 'Stop wasting hours on manual Excel work. Get a free consultation and see how automation can save your team time and eliminate errors.',
+    },
   },
   'database-migration': {
     problems: [
@@ -254,6 +353,39 @@ export const SERVICE_CONTENT = {
     midCtaHeading: 'Outgrowing Microsoft Access?',
     midCtaSubtext:
       'Book a consultation. I will assess whether migration, hybrid, or optimization is the right move.',
+    capabilitiesTitle: 'What I Migrate',
+    cardAccent: 'secondary',
+    timelineBox: {
+      timelines: [
+        'Simple databases: 3-4 weeks',
+        'Medium complexity: 5-8 weeks',
+        'Complex systems: 8-12 weeks',
+      ],
+      provide:
+        'Current Access database, access to SQL Server (or I can set up), requirements for new system',
+      deliver: 'Migrated SQL Server database, documentation, training, 100% ownership',
+    },
+    relatedLinks: [
+      {
+        href: '/access-consulting',
+        title: 'Access Database Consulting',
+        description: 'Fix crashes, rebuild databases, and scale for multi-user access.',
+      },
+      {
+        href: '/case-studies/access-sql-migration-enterprise',
+        title: 'Case Study: Access to SQL Migration',
+        description: '50-user system migrated with zero data loss. Reports in 15 seconds.',
+      },
+      {
+        href: '/excel-automation',
+        title: 'Excel Automation',
+        description: 'Automate repetitive Excel tasks with custom VBA solutions.',
+      },
+    ],
+    finalCta: {
+      heading: 'Ready to Migrate Your Access Database?',
+      body: 'Scale beyond Access limits. Get better performance and cloud access. Get a free consultation to see if migration is right for you.',
+    },
   },
   'vba-development': {
     problems: [
@@ -310,7 +442,39 @@ export const SERVICE_CONTENT = {
     ],
     midCtaHeading: 'Need a VBA developer who delivers?',
     midCtaSubtext: 'Book a free consultation for macro repair or custom VBA development.',
-    green: true,
+    capabilitiesTitle: 'What I Develop',
+    cardAccent: 'primary',
+    timelineBox: {
+      timelines: [
+        'Simple macros: 1-2 weeks',
+        'Medium complexity: 2-4 weeks',
+        'Complex applications: 4-8 weeks',
+      ],
+      provide:
+        'Requirements, sample files, access to data sources (if needed), existing code (if fixing)',
+      deliver: 'Working VBA code, documentation, training, 100% code ownership',
+    },
+    relatedLinks: [
+      {
+        href: '/excel-automation',
+        title: 'Excel Automation',
+        description: 'End-to-end Excel process automation with VBA.',
+      },
+      {
+        href: '/case-studies/retail-pricing-system',
+        title: 'Case Study: Pricing System',
+        description: 'Automated complex pricing calculations with VBA and Access.',
+      },
+      {
+        href: '/access-consulting',
+        title: 'Access Database Consulting',
+        description: 'Fix crashes, rebuild databases, and scale for multi-user access.',
+      },
+    ],
+    finalCta: {
+      heading: 'Ready to Automate with VBA?',
+      body: 'Stop doing manual Excel work. Get custom VBA code that automates your processes. Get a free consultation.',
+    },
   },
   'financial-modeling': {
     problems: [
@@ -370,7 +534,39 @@ export const SERVICE_CONTENT = {
     ],
     midCtaHeading: 'Need a financial model that keeps up?',
     midCtaSubtext: 'Book a consultation for model build, audit, or optimization.',
-    green: true,
+    capabilitiesTitle: 'What I Build',
+    cardAccent: 'primary',
+    timelineBox: {
+      timelines: [
+        'Simple models: 2-3 weeks',
+        'Medium complexity: 4-6 weeks',
+        'Complex models: 6-10 weeks',
+      ],
+      provide:
+        'Historical financial data, business assumptions, growth projections, access to accounting systems (if needed)',
+      deliver: 'Working financial model, documentation, training, 100% ownership',
+    },
+    relatedLinks: [
+      {
+        href: '/excel-automation',
+        title: 'Excel Automation',
+        description: 'Automate repetitive Excel tasks with custom VBA solutions.',
+      },
+      {
+        href: '/case-studies/financial-services-data-integration',
+        title: 'Case Study: 500 Hours Saved',
+        description: 'How Excel-to-SQL integration eliminated manual data entry.',
+      },
+      {
+        href: '/vba-development',
+        title: 'VBA Development',
+        description: 'Custom VBA macros and applications for Excel and Access.',
+      },
+    ],
+    finalCta: {
+      heading: 'Ready to Build or Fix Your Financial Model?',
+      body: 'Stop struggling with slow or broken financial models. Get a free consultation and see how I can help.',
+    },
   },
 };
 

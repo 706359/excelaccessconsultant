@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
 import { ABOUT_RELATED_LINKS, ABOUT_WORKFLOW } from '../../constants/aboutPage';
@@ -39,16 +39,14 @@ export default function About() {
       <section className='page-hero page-hero--centered'>
         <div className='container'>
           <span className='chip-primary lead-magnet-hero__eyebrow'>{TRUST.eyebrow}</span>
-          <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
-            {CONSULTANTS.displayName}
-          </h1>
+          <h1 className='page-hero__title page-hero__title--compact'>{CONSULTANTS.displayName}</h1>
           <p className='text-body-lg text-muted about-hero__role'>{CONSULTANTS.title}</p>
           <p className='page-hero__lead'>
             {TRUST.years} of direct Excel and Access work for finance and operations teams:
             multi-user databases, SQL Server migrations, and VBA automation that replaces manual
             reporting. You work with me directly: no account managers, no handoffs, no middlemen.
           </p>
-          <ContactCTAs center />
+          <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} center />
         </div>
       </section>
 

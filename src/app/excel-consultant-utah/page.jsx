@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
 import { CONSULTANTS, CTA, TRUST } from '../../constants/site';
@@ -93,7 +93,7 @@ export default function ExcelConsultantUtah() {
       <section className='page-hero'>
         <div className='container'>
           <span className='chip-secondary lead-magnet-hero__eyebrow'>Utah · Springville</span>
-          <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
+          <h1 className='page-hero__title page-hero__title--compact'>
             Excel VBA Consultant Serving Utah Businesses
           </h1>
           <p className='page-hero__lead'>
@@ -107,7 +107,7 @@ export default function ExcelConsultantUtah() {
             in Utah, you get the same direct consulting, with the added benefit of being local.
             In-person meetings are available in Utah County and along the Wasatch Front.
           </p>
-          <ContactCTAs phoneLocation='utah-hero' />
+          <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} />
         </div>
       </section>
 
@@ -116,8 +116,8 @@ export default function ExcelConsultantUtah() {
           <div className='section-header section-header--lg'>
             <h2 className='section-header__title'>Services for Utah Businesses</h2>
             <p className='section-header__desc'>
-              From small teams in Provo to enterprise groups in Salt Lake City, fixed-price
-              projects with training so your team can maintain what I build.
+              From small teams in Provo to enterprise groups in Salt Lake City, fixed-price projects
+              with training so your team can maintain what I build.
             </p>
           </div>
 

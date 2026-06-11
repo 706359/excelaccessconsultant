@@ -1,9 +1,8 @@
-import ContactCTAs from '../ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../ContactCTAs/ContactCTAs';
 
 export default function PageCTASection({
   heading = 'Ready to Talk About Your Project?',
   subtext = 'Book a free consultation or request a fixed-price estimate. I respond within 24 hours.',
-  green = false,
   dark = false,
   solidPrimary = false,
   className = '',
@@ -24,9 +23,7 @@ export default function PageCTASection({
         <h2 className='page-cta__title'>{heading}</h2>
         <p className='page-cta__text'>{subtext}</p>
         <ContactCTAs
-          green={green}
-          primaryVariant={isDark ? 'inverse' : undefined}
-          secondaryVariant={isDark ? 'outline-white' : undefined}
+          {...(isDark ? CTA_BUTTON_VARIANTS.onDark : CTA_BUTTON_VARIANTS.onLight)}
           center
         />
       </div>

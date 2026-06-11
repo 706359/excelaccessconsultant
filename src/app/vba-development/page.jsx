@@ -1,19 +1,22 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
-import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import {
   BenefitsSection,
   MidPageCTA,
   ProblemSection,
+  ServiceCapabilitiesSection,
   ServiceFAQSection,
+  ServiceFinalCTASection,
+  ServiceHeroCTAs,
+  ServiceRelatedSection,
   ServiceSidebar,
+  ServiceTimelineBox,
   SolutionSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
@@ -111,7 +114,7 @@ export default function VBADevelopmentPage() {
             {TRUST.years} of VBA experience. {TRUST.projects} VBA projects. Fixed pricing. Free
             consultation.
           </p>
-          <ContactCTAs green phoneLocation='vba-development-hero' />
+          <ServiceHeroCTAs />
         </div>
       </section>
 
@@ -119,13 +122,18 @@ export default function VBADevelopmentPage() {
       <SolutionSection paragraphs={content.solutionParagraphs} bullets={content.solutionBullets} />
       <BenefitsSection benefits={content.benefits} />
 
-      <section className='page-section page-section--lg page-section--alt'>
-        <div className='container'>
-          <div className='grid-sidebar'>
-            <div className='grid-sidebar__main'>
-              <h2>What I Develop</h2>
-              <div className='grid-2'>
-                {[
+      <ServiceCapabilitiesSection
+        title={content.capabilitiesTitle}
+        accent={content.cardAccent}
+        sidebar={
+          <ServiceSidebar
+            tagline={getServiceSidebarTagline('vba-development')}
+            examples={content.sidebarExamples}
+          />
+        }
+      >
+        <div className='grid-2'>
+          {[
                   {
                     title: 'Custom VBA Macros',
                     desc: 'Macros tailored to your specific workflows. Automate data entry, calculations, formatting, and repetitive tasks. One-click solutions.',
@@ -180,82 +188,25 @@ export default function VBADevelopmentPage() {
                     <p className='text-muted'>{item.desc}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className='grid-sidebar__aside'>
-              <ServiceSidebar
-                tagline={getServiceSidebarTagline('vba-development')}
-                examples={content.sidebarExamples}
-              />
-            </div>
-          </div>
         </div>
-      </section>
+      </ServiceCapabilitiesSection>
 
       <ServiceHowItWorks steps={SERVICE_PROCESS_STEPS['vba-development']} accent='primary'>
-        <div className='highlight-box'>
-          <p>
-            <strong>Timeline Expectations:</strong>
-          </p>
-          <ul className='highlight-box__list'>
-            <li>Simple macros: 1-2 weeks</li>
-            <li>Medium complexity: 2-4 weeks</li>
-            <li>Complex applications: 4-8 weeks</li>
-          </ul>
-          <p className='text-muted'>
-            <strong>What You Provide:</strong> Requirements, sample files, access to data sources
-            (if needed), existing code (if fixing)
-          </p>
-          <p className='text-muted'>
-            <strong>What You Get:</strong> Working VBA code, documentation, training, 100% code
-            ownership
-          </p>
-        </div>
+        <ServiceTimelineBox {...content.timelineBox} />
       </ServiceHowItWorks>
 
-      <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} green />
+      <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} />
 
       <ServicePricingSection variant='excel' tiers={servicePricingTiers} />
 
       <ServiceFAQSection faqs={serviceFaqs} />
 
-      <section className='page-section page-section--compact page-section--white page-section--border-t'>
-        <div className='container'>
-          <h2 className='page-section--centered'>Related Services & Resources</h2>
-          <div className='grid-3'>
-            <Link href='/excel-automation' className='related-tile'>
-              <h3>Excel Automation</h3>
-              <p className='text-muted-sm'>End-to-end Excel process automation with VBA.</p>
-            </Link>
-            <Link href='/case-studies/retail-pricing-system' className='related-tile'>
-              <h3>Case Study: Pricing System</h3>
-              <p className='text-muted-sm'>
-                Automated complex pricing calculations with VBA and Access.
-              </p>
-            </Link>
-            <Link href='/access-consulting' className='related-tile'>
-              <h3>Access Database Consulting</h3>
-              <p className='text-muted-sm'>
-                Fix crashes, rebuild databases, and scale for multi-user access.
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ServiceRelatedSection links={content.relatedLinks} />
 
-      <section
-        id='contact'
-        className='page-section page-section--compact page-section--alt service-final-cta page-section--centered'
-      >
-        <div className='container page-section--centered'>
-          <h2>Ready to Automate with VBA?</h2>
-          <p className='text-lead service-final-cta'>
-            Stop doing manual Excel work. Get custom VBA code that automates your processes. Get a
-            free consultation.
-          </p>
-          <ContactCTAs green phoneLocation='vba-development-final' center />
-        </div>
-      </section>
+      <ServiceFinalCTASection
+        heading={content.finalCta.heading}
+        body={content.finalCta.body}
+      />
     </div>
   );
 }

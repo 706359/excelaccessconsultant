@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import FAQAccordion from '../../components/ui/FAQAccordion/FAQAccordion';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
 import { FAQ_PAGE_ITEMS, FAQ_RELATED_LINKS, FAQ_SECTIONS } from '../../constants/faqPage';
@@ -41,9 +41,7 @@ export default function FAQ() {
       <section className='page-hero page-hero--centered'>
         <div className='container'>
           <span className='chip-primary lead-magnet-hero__eyebrow'>Questions &amp; Answers</span>
-          <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
-            Frequently Asked Questions
-          </h1>
+          <h1 className='page-hero__title page-hero__title--compact'>Frequently Asked Questions</h1>
           <p className='page-hero__lead'>
             Answers about pricing, project timelines, remote delivery, and what to expect when you
             hand off a broken spreadsheet or database, from a consultant with {TRUST.years} of
@@ -81,7 +79,7 @@ export default function FAQ() {
               If your situation is not covered here, book a free consultation or send a message, I
               respond within 24 hours.
             </p>
-            <ContactCTAs center />
+            <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} center />
           </div>
         </div>
       </ScrollReveal>

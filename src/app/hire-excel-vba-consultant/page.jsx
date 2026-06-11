@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import { CONSULTANTS, CTA } from '../../constants/site';
 
@@ -100,7 +100,7 @@ export default function HireExcelVBAConsultant() {
             That&apos;s what I do. I bring 20+ years of Excel VBA and Access development, 500+
             completed projects, and a straightforward process that eliminates guesswork.
           </p>
-          <ContactCTAs green phoneLocation='hire-vba-hero' />
+          <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} />
         </div>
       </section>
 
@@ -449,8 +449,6 @@ export default function HireExcelVBAConsultant() {
       <PageCTASection
         heading='Schedule Your Free Consultation'
         subtext="30 minutes. No cost. No pressure. Tell me about your process and I'll outline what automation can do, and what it would cost."
-        phoneLocation='hire-vba-footer'
-        green
       />
 
       {/* Internal Links */}
