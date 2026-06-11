@@ -1,7 +1,9 @@
 import ServiceSchema from '../../components/SEO/ServiceSchema';
 
-const BASE = 'https://excelaccessconsultant.com';
-const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
+
+const BASE = SITE_URL;
+const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
   title: 'Financial Modeling Consultant | Excel Financial Models',
@@ -20,8 +22,9 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Financial Modeling Consultant | Excel Financial Models',
-    description: 'Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.',
-    images: [`${BASE}/logo.png`],
+    description:
+      'Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.',
+    images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/financial-modeling` },
 };
@@ -30,9 +33,9 @@ export default function FinancialModelingLayout({ children }) {
   return (
     <>
       <ServiceSchema
-        serviceType="Financial Modeling"
-        description="Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation."
-        url="https://excelaccessconsultant.com/financial-modeling"
+        serviceType='Financial Modeling'
+        description='Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.'
+        url='https://excelaccessconsultant.com/financial-modeling'
       />
       {children}
     </>

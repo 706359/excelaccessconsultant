@@ -1,5 +1,7 @@
-const BASE = 'https://excelaccessconsultant.com';
-const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
+
+const BASE = SITE_URL;
+const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
   title: 'Privacy Policy | ExcelAccessConsultant.com',
@@ -19,7 +21,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Privacy Policy | ExcelAccessConsultant.com',
     description: 'Privacy Policy for ExcelAccessConsultant.com.',
-    images: [`${BASE}/logo.png`],
+    images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/privacy-policy` },
 };

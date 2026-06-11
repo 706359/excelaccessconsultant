@@ -59,4 +59,39 @@ export const BLOG_SIDEBAR_CONFIG = {
       { href: '/vba-development', label: 'VBA Development' },
     ],
   },
+  'access-database-repair-guide': {
+    relatedArticles: ['why-your-access-database-keeps-crashing', 'when-to-migrate-from-access'],
+    relatedServices: [
+      { href: '/access-database-repair', label: 'Access Database Repair' },
+      { href: '/access-consulting', label: 'Access Consulting' },
+    ],
+  },
+  'is-microsoft-access-still-relevant-2026': {
+    relatedArticles: ['access-vs-power-apps-when-to-stay-on-access', 'when-to-migrate-from-access'],
+    relatedServices: [
+      { href: '/access-consulting', label: 'Access Consulting' },
+      { href: '/database-migration', label: 'Database Migration' },
+    ],
+  },
+  'access-vs-power-apps-when-to-stay-on-access': {
+    relatedArticles: ['is-microsoft-access-still-relevant-2026', 'access-vs-sql-server-when-to-migrate'],
+    relatedServices: [
+      { href: '/access-consulting', label: 'Access Consulting' },
+      { href: '/database-migration', label: 'Database Migration' },
+    ],
+  },
+  'when-to-migrate-from-access': {
+    relatedArticles: ['access-vs-sql-server-when-to-migrate', 'access-database-repair-guide'],
+    relatedServices: [
+      { href: '/database-migration', label: 'Database Migration' },
+      { href: '/access-consulting', label: 'Access Consulting' },
+    ],
+  },
+  'access-vs-excel-when-to-use-each': {
+    relatedArticles: ['is-microsoft-access-still-relevant-2026', '10-signs-you-need-excel-automation'],
+    relatedServices: [
+      { href: '/access-consulting', label: 'Access Consulting' },
+      { href: '/excel-automation', label: 'Excel Automation' },
+    ],
+  },
 };

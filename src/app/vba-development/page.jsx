@@ -1,16 +1,98 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import Button from '../../components/ui/Button/Button';
+import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
+import {
+  BenefitsSection,
+  MidPageCTA,
+  ProblemSection,
+  ServiceFAQSection,
+  ServiceSidebar,
+  SolutionSection,
+} from '../../components/ui/ServicePageSections/ServicePageSections';
+import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
+import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
+import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
+import { TRUST } from '../../constants/site';
+import { trackServicePageView } from '../../utils/analytics';
+
+const content = SERVICE_CONTENT['vba-development'];
+
+const serviceFaqs = [
+  {
+    question: 'What can VBA do in Excel?',
+    answer:
+      'VBA can automate almost anything in Excel: data processing, report generation, file operations, email sending, database connections, user interfaces, calculations, and more. If you can do it manually in Excel, VBA can automate it.',
+  },
+  {
+    question: 'How long does VBA development take?',
+    answer:
+      'Simple macros: 1-2 weeks. Medium complexity: 2-4 weeks. Complex applications: 4-8 weeks. Timeline depends on requirements and complexity.',
+  },
+  {
+    question: 'Do I need to know programming to use VBA macros?',
+    answer:
+      'No. I build user-friendly interfaces with buttons and forms. Your team just clicks a button to run the macro. I provide training and documentation.',
+  },
+  {
+    question: 'Can you fix existing VBA code?',
+    answer:
+      'Yes. I can debug, optimize, and enhance existing VBA code. I fix errors, improve performance, add features, and refactor code for better maintainability.',
+  },
+  {
+    question: 'What if my Excel version changes?',
+    answer:
+      'I write VBA code that works across Excel versions (2010, 2013, 2016, 2019, 365). I test compatibility and provide version-specific solutions when needed.',
+  },
+];
+
+const servicePricingTiers = [
+  {
+    name: 'Simple Projects',
+    price: '$1,500-$3,000',
+    description: 'Basic macros, single process, 1-2 weeks',
+    features: ['Simple VBA macros', 'Basic automation', 'Code documentation', 'Training included'],
+    highlighted: false,
+  },
+  {
+    name: 'Advanced Projects',
+    price: '$3,000-$8,000',
+    description: 'Complex scripts, user forms, 2-4 weeks',
+    features: [
+      'Complex VBA applications',
+      'User forms & interfaces',
+      'Database integration',
+      'Performance optimization',
+      'Full documentation',
+    ],
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise Projects',
+    price: '$8,000+',
+    description: 'Complete Excel applications, 4-8 weeks',
+    features: [
+      'Complete Excel applications',
+      'Add-in development',
+      'System integration',
+      'Team walkthrough and written guides',
+      'Extended support',
+    ],
+    highlighted: false,
+  },
+];
 
 export default function VBADevelopmentPage() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  useEffect(() => {
+    trackServicePageView('vba-development');
+  }, []);
 
   return (
-    <div className='bg-base min-h-screen text-slate-800 font-sans'>
+    <div className='page'>
       <SEO
         title='Excel VBA Developer | Hire VBA Programmer'
         description='Custom VBA development for Excel and Access. Build macros, automation scripts, and applications. Fix broken code or build from scratch. Fixed scope, fixed price.'
@@ -18,65 +100,31 @@ export default function VBADevelopmentPage() {
         ogTitle='Excel VBA Development Services'
       />
 
-      <FAQSchema
-        faqs={[
-          {
-            question: 'What can VBA do in Excel?',
-            answer:
-              'VBA can automate almost anything in Excel: data processing, report generation, file operations, email sending, database connections, user interfaces, calculations, and more. If you can do it manually in Excel, VBA can automate it.',
-          },
-          {
-            question: 'How long does VBA development take?',
-            answer:
-              'Simple macros: 1-2 weeks. Medium complexity: 2-4 weeks. Complex applications: 4-8 weeks. Timeline depends on requirements and complexity.',
-          },
-          {
-            question: 'Do I need to know programming to use VBA macros?',
-            answer:
-              'No. I build user-friendly interfaces with buttons and forms. Your team just clicks a button to run the macro. I provide training and documentation.',
-          },
-          {
-            question: 'Can you fix existing VBA code?',
-            answer:
-              'Yes. I can debug, optimize, and enhance existing VBA code. I fix errors, improve performance, add features, and refactor code for better maintainability.',
-          },
-          {
-            question: 'What if my Excel version changes?',
-            answer:
-              'I write VBA code that works across Excel versions (2010, 2013, 2016, 2019, 365). I test compatibility and provide version-specific solutions when needed.',
-          },
-        ]}
-      />
+      <FAQSchema faqs={serviceFaqs} />
 
-      <section className='py-8 md:py-12 bg-white border-b border-slate-200'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <h1 className='text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 font-display text-slate-900'>
-            Excel VBA Development Services
-          </h1>
-          <p className='text-lg md:text-xl text-slate-700 mb-8 leading-relaxed'>
+      <section className='page-hero'>
+        <div className='container'>
+          <h1 className='page-hero__title'>Excel VBA Development Services</h1>
+          <p className='page-hero__lead'>
             Custom VBA programming for Excel. Build macros, automation scripts, and Excel
-            applications. Fix broken code, optimize performance, or build from scratch. 20+ years of
-            VBA experience. Fixed pricing. Free consultation.
+            applications. Fix broken code, optimize performance, or build from scratch.{' '}
+            {TRUST.years} of VBA experience. {TRUST.projects} VBA projects. Fixed pricing. Free
+            consultation.
           </p>
-          <div className='flex flex-col sm:flex-row gap-4'>
-            <Button variant='primary-green' size='large' as={Link} href='/contact'>
-              Get Free Consultation
-            </Button>
-            <Button variant='secondary-green' size='large' as='a' href='tel:8016163702'>
-              Call 801-616-3702
-            </Button>
-          </div>
+          <ContactCTAs green phoneLocation='vba-development-hero' />
         </div>
       </section>
 
-      <section className='py-12 md:py-16 bg-slate-50'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <div className='grid lg:grid-cols-3 gap-8 lg:gap-10'>
-            <div className='lg:col-span-2'>
-              <h2 className='text-heading-lg md:text-heading-xl font-bold mb-10 font-display text-slate-900'>
-                What I Develop
-              </h2>
-              <div className='grid md:grid-cols-2 gap-6'>
+      <ProblemSection problems={content.problems} />
+      <SolutionSection paragraphs={content.solutionParagraphs} bullets={content.solutionBullets} />
+      <BenefitsSection benefits={content.benefits} />
+
+      <section className='page-section page-section--lg page-section--alt'>
+        <div className='container'>
+          <div className='grid-sidebar'>
+            <div className='grid-sidebar__main'>
+              <h2>What I Develop</h2>
+              <div className='grid-2'>
                 {[
                   {
                     title: 'Custom VBA Macros',
@@ -127,293 +175,67 @@ export default function VBADevelopmentPage() {
                     desc: 'Build Excel add-ins that extend Excel functionality. Custom functions, commands, and features available across all workbooks.',
                   },
                 ].map((item) => (
-                  <div key={item.title} className='card group'>
-                    <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
-                      {item.title}
-                    </h3>
-                    <p className='text-slate-600'>{item.desc}</p>
+                  <div key={item.title} className='card card--interactive'>
+                    <h3>{item.title}</h3>
+                    <p className='text-muted'>{item.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className='lg:col-span-1'>
-              <div className='sticky top-28'>
-                <div className='bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-slate-200'>
-                  <div className='flex items-center gap-3 mb-5'>
-                    <div className='w-1 h-8 bg-secondary rounded-full'></div>
-                    <h2 className='text-heading-md md:text-heading-lg font-bold font-display text-slate-900'>
-                      Real Examples
-                    </h2>
-                  </div>
-                  <p className='text-slate-600 text-sm mb-6 leading-relaxed'>
-                    Enterprise-level solutions delivering measurable results
-                  </p>
-                  <div className='space-y-5'>
-                    <Link
-                      href='/case-studies'
-                      className='block group pb-5 border-b border-slate-200 last:border-0 last:pb-0 hover:translate-x-1 transition-all duration-200'
-                    >
-                      <h3 className='text-base md:text-lg font-bold mb-2 font-display text-slate-900 group-hover:text-secondary transition-colors duration-200 leading-tight'>
-                        Construction Firm - Automated Reporting
-                      </h3>
-                      <p className='text-slate-600 text-sm leading-relaxed'>
-                        Reports generate in 30 seconds. Saves 6 hours per week. Zero errors.
-                      </p>
-                    </Link>
-                    <Link
-                      href='/case-studies'
-                      className='block group pb-5 border-b border-slate-200 last:border-0 last:pb-0 hover:translate-x-1 transition-all duration-200'
-                    >
-                      <h3 className='text-base md:text-lg font-bold mb-2 font-display text-slate-900 group-hover:text-secondary transition-colors duration-200 leading-tight'>
-                        Finance Team - Data Integration
-                      </h3>
-                      <p className='text-slate-600 text-sm leading-relaxed'>
-                        Data imports automatically in 5 minutes. Saves 500 hours per year.
-                      </p>
-                    </Link>
-                    <Link
-                      href='/case-studies'
-                      className='block group pb-5 border-b border-slate-200 last:border-0 last:pb-0 hover:translate-x-1 transition-all duration-200'
-                    >
-                      <h3 className='text-base md:text-lg font-bold mb-2 font-display text-slate-900 group-hover:text-secondary transition-colors duration-200 leading-tight'>
-                        Operations - Multi-File Processing
-                      </h3>
-                      <p className='text-slate-600 text-sm leading-relaxed'>
-                        All files process automatically in 10 minutes. Saves 8 hours monthly.
-                      </p>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+            <div className='grid-sidebar__aside'>
+              <ServiceSidebar
+                tagline={getServiceSidebarTagline('vba-development')}
+                examples={content.sidebarExamples}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section className='py-8 md:py-12 bg-white'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-8 font-display text-slate-900'>
-            How It Works
-          </h2>
-          <div className='space-y-8'>
-            {[
-              {
-                num: '1',
-                title: 'Free Consultation (15-30 minutes)',
-                text: 'We discuss your VBA needs, review existing code (if any), and I provide an initial assessment. No obligation.',
-              },
-              {
-                num: '2',
-                title: 'Fixed-Price Quote (within 24 hours)',
-                text: "I provide a detailed quote with timeline, deliverables, and fixed price. You know exactly what you're getting and the cost.",
-              },
-              {
-                num: '3',
-                title: 'Development & Testing',
-                text: 'I write clean, documented VBA code in a test environment. You can test and provide feedback. I make adjustments as needed.',
-              },
-              {
-                num: '4',
-                title: 'Training & Delivery',
-                text: 'I provide code documentation and training on how to use the VBA macros. You own 100% of the code. No licenses, no recurring fees.',
-              },
-              {
-                num: '5',
-                title: 'Ongoing Support (optional)',
-                text: "Need code updates, new features, or bug fixes? I'm available for support. We can set up a maintenance plan or handle requests as needed.",
-              },
-            ].map((step) => (
-              <div key={step.num} className='flex gap-6'>
-                <div className='text-secondary font-bold text-3xl font-mono flex-shrink-0'>
-                  {step.num}
-                </div>
-                <div>
-                  <h3 className='text-heading-lg font-bold mb-2 font-display text-slate-900'>
-                    {step.title}
-                  </h3>
-                  <p className='text-slate-600 leading-relaxed'>{step.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className='mt-8 bg-slate-50 p-6 rounded-lg border border-slate-200'>
-            <p className='text-slate-700 font-medium mb-2'>
-              <strong>Timeline Expectations:</strong>
-            </p>
-            <ul className='text-slate-600 space-y-1 list-disc list-inside'>
-              <li>Simple macros: 1-2 weeks</li>
-              <li>Medium complexity: 2-4 weeks</li>
-              <li>Complex applications: 4-8 weeks</li>
-            </ul>
-            <p className='text-slate-600 mt-4'>
-              <strong>What You Provide:</strong> Requirements, sample files, access to data sources
-              (if needed), existing code (if fixing)
-            </p>
-            <p className='text-slate-600 mt-2'>
-              <strong>What You Get:</strong> Working VBA code, documentation, training, 100% code
-              ownership
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className='py-8 md:py-12 bg-slate-50'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-8 font-display text-slate-900'>
-            Pricing
-          </h2>
-          <p className='text-lg text-slate-700 mb-8 leading-relaxed'>
-            Fixed pricing. No hourly billing. No surprises. You know the cost before we start.
+      <ServiceHowItWorks steps={SERVICE_PROCESS_STEPS['vba-development']} accent='primary'>
+        <div className='highlight-box'>
+          <p>
+            <strong>Timeline Expectations:</strong>
           </p>
-          <div className='grid md:grid-cols-3 gap-6'>
-            <div className='bg-white p-6 rounded-lg border-2 border-slate-200'>
-              <h3 className='text-heading-lg font-bold mb-4 font-display text-slate-900'>
-                Simple Projects
-              </h3>
-              <div className='text-3xl font-bold text-secondary mb-2'>$1,500-$3,000</div>
-              <p className='text-slate-600 mb-4 text-sm'>Basic macros, single process, 1-2 weeks</p>
-              <ul className='text-slate-600 space-y-2 text-sm'>
-                <li>✓ Simple VBA macros</li>
-                <li>✓ Basic automation</li>
-                <li>✓ Code documentation</li>
-                <li>✓ Training included</li>
-              </ul>
-            </div>
-            <div className='bg-white p-6 rounded-lg border-2 border-secondary'>
-              <h3 className='text-heading-lg font-bold mb-4 font-display text-slate-900'>
-                Advanced Projects
-              </h3>
-              <div className='text-3xl font-bold text-secondary mb-2'>$3,000-$8,000</div>
-              <p className='text-slate-600 mb-4 text-sm'>Complex scripts, user forms, 2-4 weeks</p>
-              <ul className='text-slate-600 space-y-2 text-sm'>
-                <li>✓ Complex VBA applications</li>
-                <li>✓ User forms & interfaces</li>
-                <li>✓ Database integration</li>
-                <li>✓ Performance optimization</li>
-                <li>✓ Full documentation</li>
-              </ul>
-            </div>
-            <div className='bg-white p-6 rounded-lg border-2 border-slate-200'>
-              <h3 className='text-heading-lg font-bold mb-4 font-display text-slate-900'>
-                Enterprise Projects
-              </h3>
-              <div className='text-3xl font-bold text-secondary mb-2'>$8,000+</div>
-              <p className='text-slate-600 mb-4 text-sm'>Complete Excel applications, 4-8 weeks</p>
-              <ul className='text-slate-600 space-y-2 text-sm'>
-                <li>✓ Complete Excel applications</li>
-                <li>✓ Add-in development</li>
-                <li>✓ System integration</li>
-                <li>✓ Comprehensive training</li>
-                <li>✓ Extended support</li>
-              </ul>
-            </div>
-          </div>
-          <p className='text-center text-slate-600 mt-8'>
-            <strong>All projects include:</strong> Documentation, training, 100% code ownership, no
-            recurring fees
+          <ul className='highlight-box__list'>
+            <li>Simple macros: 1-2 weeks</li>
+            <li>Medium complexity: 2-4 weeks</li>
+            <li>Complex applications: 4-8 weeks</li>
+          </ul>
+          <p className='text-muted'>
+            <strong>What You Provide:</strong> Requirements, sample files, access to data sources
+            (if needed), existing code (if fixing)
+          </p>
+          <p className='text-muted'>
+            <strong>What You Get:</strong> Working VBA code, documentation, training, 100% code
+            ownership
           </p>
         </div>
-      </section>
+      </ServiceHowItWorks>
 
-      <section className='py-8 md:py-12 bg-white'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-8 font-display text-slate-900'>
-            Common Questions
-          </h2>
-          <div className='space-y-4'>
-            {[
-              {
-                q: 'What can VBA do in Excel?',
-                a: 'VBA can automate almost anything in Excel: data processing, report generation, file operations, email sending, database connections, user interfaces, calculations, and more. If you can do it manually in Excel, VBA can automate it.',
-              },
-              {
-                q: 'How long does VBA development take?',
-                a: 'Simple macros: 1-2 weeks. Medium complexity: 2-4 weeks. Complex applications: 4-8 weeks. Timeline depends on requirements and complexity.',
-              },
-              {
-                q: 'Do I need to know programming to use VBA macros?',
-                a: 'No. I build user-friendly interfaces with buttons and forms. Your team just clicks a button to run the macro. I provide training and documentation.',
-              },
-              {
-                q: 'Can you fix existing VBA code?',
-                a: 'Yes. I can debug, optimize, and enhance existing VBA code. I fix errors, improve performance, add features, and refactor code for better maintainability.',
-              },
-              {
-                q: 'What if my Excel version changes?',
-                a: 'I write VBA code that works across Excel versions (2010, 2013, 2016, 2019, 365). I test compatibility and provide version-specific solutions when needed.',
-              },
-            ].map((faq, i) => (
-              <div
-                key={i}
-                className={`bg-slate-50 rounded-lg border border-slate-200 overflow-hidden transition-all duration-200 ${
-                  openFaqIndex === i ? 'shadow-md' : ''
-                }`}
-              >
-                <button
-                  onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
-                  className='w-full p-6 text-left flex items-center justify-between hover:bg-slate-100 transition-colors duration-200'
-                  aria-expanded={openFaqIndex === i}
-                >
-                  <h3 className='text-lg font-bold font-display text-slate-900 pr-4'>{faq.q}</h3>
-                  <span className='text-secondary text-2xl font-bold flex-shrink-0'>
-                    {openFaqIndex === i ? '−' : '+'}
-                  </span>
-                </button>
-                {openFaqIndex === i && (
-                  <div className='px-6 pb-6'>
-                    <p className='text-slate-600'>{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className='mt-8 text-center'>
-            <Link
-              href='/faq'
-              className='text-secondary hover:text-secondary/80 font-semibold inline-flex items-center gap-2 transition-colors duration-micro'
-            >
-              View All FAQs →
-            </Link>
-          </div>
-        </div>
-      </section>
+      <MidPageCTA heading={content.midCtaHeading} subtext={content.midCtaSubtext} green />
 
-      <section className='py-8 md:py-12 bg-white border-t border-slate-200'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900 text-center'>
-            Related Services & Resources
-          </h2>
-          <div className='grid sm:grid-cols-3 gap-4'>
-            <Link
-              href='/excel-automation'
-              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
-            >
-              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
-                Excel Automation
-              </h3>
-              <p className='text-body-sm text-slate-600'>
-                End-to-end Excel process automation with VBA.
-              </p>
+      <ServicePricingSection variant='excel' tiers={servicePricingTiers} />
+
+      <ServiceFAQSection faqs={serviceFaqs} />
+
+      <section className='page-section page-section--compact page-section--white page-section--border-t'>
+        <div className='container'>
+          <h2 className='page-section--centered'>Related Services & Resources</h2>
+          <div className='grid-3'>
+            <Link href='/excel-automation' className='related-tile'>
+              <h3>Excel Automation</h3>
+              <p className='text-muted-sm'>End-to-end Excel process automation with VBA.</p>
             </Link>
-            <Link
-              href='/case-studies/retail-pricing-system'
-              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
-            >
-              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
-                Case Study: Pricing System
-              </h3>
-              <p className='text-body-sm text-slate-600'>
+            <Link href='/case-studies/retail-pricing-system' className='related-tile'>
+              <h3>Case Study: Pricing System</h3>
+              <p className='text-muted-sm'>
                 Automated complex pricing calculations with VBA and Access.
               </p>
             </Link>
-            <Link
-              href='/access-consulting'
-              className='group p-5 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors'
-            >
-              <h3 className='text-heading-sm font-bold font-display text-slate-900 mb-2'>
-                Access Database Consulting
-              </h3>
-              <p className='text-body-sm text-slate-600'>
+            <Link href='/access-consulting' className='related-tile'>
+              <h3>Access Database Consulting</h3>
+              <p className='text-muted-sm'>
                 Fix crashes, rebuild databases, and scale for multi-user access.
               </p>
             </Link>
@@ -421,23 +243,17 @@ export default function VBADevelopmentPage() {
         </div>
       </section>
 
-      <section id='contact' className='py-8 md:py-12 bg-slate-50 text-slate-900'>
-        <div className='max-w-7xl mx-auto px-6 text-center'>
-          <h2 className='text-heading-lg md:text-heading-xl font-bold mb-6 font-display text-slate-900'>
-            Ready to Automate with VBA?
-          </h2>
-          <p className='text-lg mb-8 text-slate-700 max-w-7xl mx-auto leading-relaxed'>
+      <section
+        id='contact'
+        className='page-section page-section--compact page-section--alt service-final-cta page-section--centered'
+      >
+        <div className='container page-section--centered'>
+          <h2>Ready to Automate with VBA?</h2>
+          <p className='text-lead service-final-cta'>
             Stop doing manual Excel work. Get custom VBA code that automates your processes. Get a
             free consultation.
           </p>
-          <div className='flex flex-col sm:flex-row justify-center gap-4'>
-            <Button variant='primary-green' size='large' as={Link} href='/contact'>
-              Schedule Free Consultation
-            </Button>
-            <Button variant='secondary-green' size='large' as='a' href='tel:8016163702'>
-              Call 801-616-3702
-            </Button>
-          </div>
+          <ContactCTAs green phoneLocation='vba-development-final' center />
         </div>
       </section>
     </div>

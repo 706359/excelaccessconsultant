@@ -1,0 +1,68 @@
+---
+description: Homepage section markup — case-study card patterns
+globs: src/app/page.jsx,src/components/HomeHero/**,src/components/ui/FAQAccordion/**,src/components/ui/PageCTASection/**
+alwaysApply: false
+---
+
+# Homepage Section Patterns
+
+Reference implementation: `src/app/page.jsx`
+
+## Problems I Solve → `cs-result-card`
+
+```jsx
+<Link href={href} className={`cs-result-card cs-result-card--${accent}`}>
+  <div className="cs-result-card__top">
+    <span className="chip-primary">{category}</span>
+    <span className="cs-result-card__num">01</span>
+  </div>
+  <div className="cs-result-card__metric cs-result-card__metric--title">{title}</div>
+  <div className="cs-result-card__transform">...</div>
+  <p className="cs-result-card__desc">...</p>
+  <span className="cs-result-card__cta">Automate it →</span>
+</Link>
+```
+
+Section shell: `page-section page-section--white page-section--border`
+
+## Services → `cs-item` grid
+
+Use `cs-grid` (not `service-tile` or `grid-3--services`):
+
+```jsx
+<Link href={link} className={`cs-item cs-item--${accent}`}>
+  <span className="cs-item__num">01</span>
+  <div className="cs-item__body">
+    <span className="cs-item__industry">Excel</span>
+    <h3 className="cs-item__title">...</h3>
+    <p className="cs-item__outcome">...</p>
+  </div>
+  <svg className="cs-item__arrow">...</svg>
+</Link>
+```
+
+## Specialization block → static featured card
+
+```jsx
+<div className="cs-result-card cs-result-card--primary cs-result-card--featured cs-result-card--static">
+```
+
+No `about-panel`, `page-hero__glow`, or radial background wrappers.
+
+## FAQ → `FAQAccordion`
+
+```jsx
+<FAQAccordion items={HOME_FAQS} className="faq-list--numbered" />
+```
+
+Numbered pills are rendered inside the component (`faq-item--primary|secondary`).
+
+## Bottom CTA
+
+```jsx
+<PageCTASection
+  heading="..."
+  subtext="..."
+  solidPrimary
+/>
+```

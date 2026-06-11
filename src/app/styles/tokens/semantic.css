@@ -1,34 +1,35 @@
 /* ============================================================
-   SEMANTIC TOKENS - Component-Specific Mappings
+   SEMANTIC TOKENS — Component-Specific Mappings
+   Aligned with logo-exact brand colors
    ============================================================ */
 
 :root {
   /* Button Component Semantic Tokens */
   --button-default-foreground: var(--color-button-foreground);
   --button-default-background: var(--color-button-background);
-  --button-default-border: var(--color-button-border);
+  --button-default-border: #e2e8f0; /* slate-200 */
 
   --button-hover-foreground: var(--color-button-hover-foreground);
   --button-hover-background: var(--color-button-hover-background);
-  --button-hover-border: var(--color-button-border);
+  --button-hover-border: var(--color-button-hover-background);
 
   --button-pressed-foreground: var(--color-button-pressed-foreground);
-  --button-pressed-background: var(--color-button-hover-background);
-  --button-pressed-border: var(--color-button-border);
+  --button-pressed-background: var(--color-button-pressed-background);
+  --button-pressed-border: var(--color-button-pressed-background);
 
   --button-active-foreground: var(--color-button-pressed-foreground);
-  --button-active-background: var(--color-button-hover-background);
-  --button-active-border: var(--color-button-border);
+  --button-active-background: var(--color-button-pressed-background);
+  --button-active-border: var(--color-button-pressed-background);
 
-  /* Focus States */
+  /* Focus States — Excel green ring */
   --button-focus-foreground: var(--color-button-foreground);
   --button-focus-background: var(--color-button-background);
-  --button-focus-border: var(--color-button-hover-foreground);
-  --button-focus-ring: var(--color-button-hover-foreground);
+  --button-focus-border: #1b5e20;
+  --button-focus-ring: rgba(27, 94, 32, 0.25);
 
   /* Disabled States */
-  --button-disabled-foreground: rgb(128, 128, 128);
-  --button-disabled-background: rgb(240, 240, 240);
-  --button-disabled-border: rgb(200, 200, 200);
+  --button-disabled-foreground: #94a3b8;
+  --button-disabled-background: #f1f5f9;
+  --button-disabled-border: #e2e8f0;
 }
 

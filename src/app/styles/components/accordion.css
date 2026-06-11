@@ -1,0 +1,101 @@
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color var(--transition-standard);
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: var(--space-4);
+}
+
+.accordion-trigger:hover {
+  background-color: var(--color-slate-50);
+}
+
+.accordion-trigger:focus {
+  outline: none;
+}
+
+.accordion-trigger:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-primary);
+  outline-offset: 2px;
+}
+
+.accordion-panel {
+  padding: 0 var(--space-4) var(--space-4);
+  color: var(--color-slate-700);
+  line-height: 1.6;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.faq-item {
+  border: 1px solid var(--color-slate-200);
+  border-radius: var(--radius-card);
+  background-color: white;
+  overflow: hidden;
+}
+
+.accordion-trigger__question {
+  font-size: var(--font-heading-sm);
+  font-weight: 700;
+  color: var(--color-slate-900);
+}
+
+@media (min-width: 768px) {
+  .accordion-trigger__question {
+    font-size: var(--font-heading-md);
+  }
+}
+
+.accordion-trigger__icon {
+  color: var(--color-slate-400);
+  flex-shrink: 0;
+}
+
+.faq-list--spaced {
+  gap: var(--space-4);
+}
+
+.faq-list--numbered {
+  gap: var(--space-3);
+}
+
+.faq-item .accordion-trigger {
+  align-items: flex-start;
+  padding: var(--space-4) var(--space-5);
+}
+
+.faq-item__num {
+  margin-top: 2px;
+}
+
+.faq-item--primary .faq-item__num {
+  background: var(--color-primary-50);
+  color: var(--color-primary);
+  border: 1px solid rgba(27, 94, 32, 0.15);
+}
+
+.faq-item--secondary .faq-item__num {
+  background: var(--color-secondary-50);
+  color: var(--color-secondary);
+  border: 1px solid rgba(139, 26, 26, 0.15);
+}
+
+.faq-item .accordion-trigger__question {
+  flex: 1;
+  font-size: var(--font-heading-sm);
+}
+
+.faq-item .accordion-panel {
+  padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 2.5rem);
+}

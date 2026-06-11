@@ -1,0 +1,36 @@
+/**
+ * Smooth hover baseline — fills gaps where components omit transition rules.
+ * Imported before component CSS so specific rules can still override.
+ */
+
+@media (hover: hover) {
+  :where(
+    a,
+    button,
+    [role='button'],
+    summary,
+    .card,
+    .home-card-glow,
+    .icon-wrap,
+    .mobile-nav__phone,
+    .captcha-refresh,
+    .captcha-error-banner__dismiss,
+    .site-nav__link,
+    .site-nav__trigger,
+    .site-nav__dropdown-item,
+    .mobile-nav__link,
+    .blog-content a,
+    .blog-author__contact,
+    .service-sidebar__link,
+    .more-study-card,
+    .related-tile
+  ) {
+    transition: var(--transition-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(a, button, [role='button'], .card, .home-card-glow, .icon-wrap) {
+    transition-duration: 0.01ms !important;
+  }
+}

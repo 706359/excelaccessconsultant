@@ -1,0 +1,51 @@
+/* Uniform card borders — no accent rails or bold edges */
+
+.fact-card,
+.cs-result-card,
+.service-problem-item,
+.blog-card,
+.service-tile,
+.pricing-card,
+.process-card,
+.case-study-card,
+.industry-tile,
+.testimonial-card {
+  border: 1px solid var(--color-slate-200);
+  transition: box-shadow var(--transition-complex);
+}
+
+.fact-card:hover,
+.cs-result-card:hover,
+.service-problem-item:hover,
+.blog-card:hover,
+.service-tile:hover,
+.pricing-card:hover,
+.process-card:hover,
+.case-study-card:hover,
+.industry-tile:hover,
+.testimonial-card:hover {
+  box-shadow: var(--elevation-3);
+}
+
+.pricing-card--featured {
+  box-shadow: var(--elevation-2);
+}
+
+.pricing-card--featured:hover {
+  box-shadow: var(--elevation-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fact-card,
+  .cs-result-card,
+  .service-problem-item,
+  .blog-card,
+  .service-tile,
+  .pricing-card,
+  .process-card,
+  .case-study-card,
+  .industry-tile,
+  .testimonial-card {
+    transition: none;
+  }
+}

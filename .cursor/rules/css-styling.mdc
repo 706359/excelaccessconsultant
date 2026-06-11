@@ -1,0 +1,44 @@
+---
+description: CSS conventions — tokens, flat surfaces, no gradients
+globs: src/app/styles/**/*.css
+alwaysApply: false
+---
+
+# CSS Styling Rules
+
+## File organization
+
+- Tokens: `src/app/styles/tokens/design-tokens.css`
+- Buttons: `src/app/styles/components/Button.css` (imported by `global.css`)
+- Homepage cards: `src/app/styles/components/homepage.css`
+- CTAs: `src/app/styles/components/cta.css`
+- Accordion/FAQ: `src/app/styles/components/accordion.css`
+
+## Forbidden in new CSS
+
+- `linear-gradient` / `radial-gradient` for colors, fades, or glows
+- `backdrop-filter` / glass morphism on cards
+- 3D button depth: `box-shadow: 0 Npx 0`, `translateY` on `:active`
+- Deprecated classes: `.problem-card`, `.service-tile`, `.home-cta-premium`, `.home-faq-item`, `.about-panel::before`
+- Card `::before` / `::after` top or bottom accent bars (green/crimson strips)
+
+## Solid replacements
+
+```css
+/* chips */
+background: var(--color-primary-50);
+
+/* cards — uniform border only; no ::before/::after accent bars */
+border: 1px solid var(--color-slate-200);
+
+/* section surfaces */
+background: white; /* or var(--color-slate-50) */
+```
+
+## Elevation
+
+Use semantic tokens: `var(--elevation-1)`, `var(--elevation-2)`, `var(--elevation-3)` — not custom multi-layer gradient shadows.
+
+## Transitions
+
+Use design-token transitions: `var(--transition-standard)`, `var(--transition-complex)`. Respect `prefers-reduced-motion`.

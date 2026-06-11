@@ -1,0 +1,8 @@
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.brand-logo--invert {
+  filter: brightness(0) invert(1);
+}

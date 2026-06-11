@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+# ExcelAccessConsultant.com — Agent Brief
+
+Full SEO, CRO, content, and trust rules live in:
+
+- `.cursor/rules/seo-cro-strategy.mdc` (primary strategy)
+- `.cursor/rules/content-voice.mdc` (voice and language)
+- `.cursor/rules/homepage-section-patterns.mdc` (homepage markup)
+- `.cursor/rules/ui-flat-design-system.mdc` (flat UI, no gradients/glass)
+
+Audit and content roadmap: `docs/SEO_CRO_AUDIT.md`, `docs/CONTENT_EXPANSION_ROADMAP.md`.
+
+Do not redesign. Improve existing sections. Write like Robert Terry.

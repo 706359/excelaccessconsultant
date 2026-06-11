@@ -1,10 +1,12 @@
-const BASE = 'https://excelaccessconsultant.com';
-const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
+
+const BASE = SITE_URL;
+const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
   title: 'Operational Stability & Data Governance | ExcelAccessConsultant',
   description:
-    'I replace fragile spreadsheets with stable, audit-ready systems. Senior-level Excel and Access consulting for finance and operations—you work with me directly.',
+    'I replace fragile spreadsheets with stable, audit-ready systems. Senior-level Excel and Access consulting for finance and operations. You work with me directly.',
   openGraph: {
     type: 'website',
     url: `${BASE}/about`,
@@ -19,7 +21,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Operational Stability & Data Governance | ExcelAccessConsultant',
     description: 'I replace fragile spreadsheets with stable, audit-ready systems. Senior-level Excel and Access consulting.',
-    images: [`${BASE}/logo.png`],
+    images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/about` },
 };

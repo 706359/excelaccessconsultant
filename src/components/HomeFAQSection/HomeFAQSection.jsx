@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import FAQAccordion from '../ui/FAQAccordion/FAQAccordion';
 
 const FAQ_ITEMS = [
   { q: 'Who do you work with?', a: 'Companies that use Excel and Access every day to run their business. If your spreadsheets are critical to operations, I can help.' },
@@ -11,39 +11,13 @@ const FAQ_ITEMS = [
 ];
 
 export default function HomeFAQSection() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const toggle = (i) => setOpenIndex((prev) => (prev === i ? null : i));
-
   return (
-    <section id="faq" className="py-8 md:py-12 bg-surface border-y border-slate-200">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-8 md:mb-16">
-          <h2 className="text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900">
-            Frequently Asked Questions
-          </h2>
+    <section id='faq' className='home-faq-section'>
+      <div className='service-section__inner'>
+        <div className='home-faq-section__header'>
+          <h2 className='home-faq-section__title'>Frequently Asked Questions</h2>
         </div>
-        <div className="space-y-4">
-          {FAQ_ITEMS.map((item, i) => (
-            <div key={i} className="card">
-              <button
-                type="button"
-                onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between text-left"
-                aria-expanded={openIndex === i}
-              >
-                <h3 className="text-heading-sm md:text-heading-md font-bold font-display text-slate-900">
-                  {item.q}
-                </h3>
-                <span className="text-2xl font-light text-slate-400 ml-4 flex-shrink-0">
-                  {openIndex === i ? '−' : '+'}
-                </span>
-              </button>
-              {openIndex === i && (
-                <p className="text-slate-600 leading-relaxed mt-4">{item.a}</p>
-              )}
-            </div>
-          ))}
-        </div>
+        <FAQAccordion items={FAQ_ITEMS} />
       </div>
     </section>
   );

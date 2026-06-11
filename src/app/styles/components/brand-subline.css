@@ -1,0 +1,53 @@
+/* ── Brand sub-line — hero eyebrow (lines + uppercase tagline) ─── */
+
+.brand-subline {
+  margin: 0;
+}
+
+.brand-subline--centered {
+  justify-content: center;
+}
+
+.brand-subline--eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-subline__line {
+  width: 2.5rem;
+  height: 2px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition:
+    width var(--transition-standard),
+    opacity var(--transition-standard);
+}
+
+.brand-subline__line--excel {
+  background-color: var(--color-primary);
+}
+
+.brand-subline__line--access {
+  background-color: var(--color-secondary);
+}
+
+.brand-subline__eyebrow-text {
+  font-family: var(--font-sans);
+  font-size: var(--font-body-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(15, 23, 42, 0.7);
+  white-space: nowrap;
+}
+
+.brand-subline--eyebrow:hover .brand-subline__line {
+  width: 3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-subline--eyebrow:hover .brand-subline__line {
+    width: 2.5rem;
+  }
+}

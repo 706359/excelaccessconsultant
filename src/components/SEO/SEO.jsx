@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
+import { BRAND_LOGO } from '../../config/brand';
 
 const SEO = ({
   title = 'Excel VBA Consultant | Access Database Expert',
   description = 'Professional Excel VBA & Access database consultant based in the USA. 20+ years experience. Serving clients across the United States and worldwide. Free consultation.',
   keywords = 'excel vba consultant, access database consultant, USA Excel consultant, Excel consulting, Access consulting, Excel automation, worldwide Excel Access consulting, Excel VBA consultant USA',
   ogTitle = 'Excel VBA Consultant & Access Database Consultant | ExcelAccessConsultant',
-  image = '/logo.png',
+  image = BRAND_LOGO.src,
   url = 'https://excelaccessconsultant.com',
   type = 'website',
 }) => {

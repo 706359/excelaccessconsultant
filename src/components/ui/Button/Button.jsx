@@ -11,39 +11,31 @@ const Button = ({
   as: Component,
   ...props
 }) => {
-  // Base button classes
-  const baseClasses =
-    'inline-flex items-center justify-center font-medium transition-colors rounded-md cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed';
-
-  // Variant classes — .cursorrules: Primary (red #C8102E), Secondary (outline). Excel pages use secondary (green).
   const variantClasses = {
-    primary: 'bg-primary hover:bg-primary-hover text-white hover:text-white',
-    secondary: 'bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white',
-    'primary-green': 'bg-secondary hover:bg-secondary-hover text-white hover:text-white',
-    'secondary-green':
-      'bg-white border-2 border-secondary text-secondary hover:bg-secondary hover:text-white',
-    outline:
-      'border-2 border-primary text-primary hover:bg-primary hover:text-white bg-transparent',
-    'outline-green':
-      'border-2 border-secondary text-secondary hover:bg-secondary hover:text-white bg-transparent',
-    'outline-white': 'border-2 border-white text-white hover:bg-white/20 bg-transparent',
-    ghost: 'text-slate-700 hover:text-slate-900 hover:bg-slate-100 bg-transparent',
+    primary: 'btn btn--primary',
+    secondary: 'btn btn--secondary',
+    access: 'btn btn--access',
+    'primary-green': 'btn btn--primary',
+    'secondary-green': 'btn btn--secondary',
+    outline: 'btn btn--secondary',
+    'outline-access': 'btn btn--outline-access',
+    'outline-green': 'btn btn--outline-access',
+    'outline-white': 'btn btn--outline-white',
+    inverse: 'btn btn--inverse',
+    ghost: 'btn btn--ghost',
   };
 
-  // Size classes — one standard across site (base has rounded-md)
   const sizeClasses = {
-    small: 'px-4 py-2 text-sm',
-    medium: 'px-5 py-2 text-sm',
-    large: 'px-6 py-3 text-base',
+    small: 'btn--small',
+    medium: '',
+    large: 'btn--large',
   };
 
-  const classes = `${baseClasses} ${variantClasses[variant] || variantClasses.primary} ${
-    sizeClasses[size] || sizeClasses.medium
+  const classes = `${variantClasses[variant] || variantClasses.primary} ${
+    sizeClasses[size] || ''
   } ${className}`.trim();
 
-  // If Component is provided (like Link or 'a'), use it instead of button
   if (Component) {
-    // If Component is a string (like 'a'), use createElement for HTML elements
     if (typeof Component === 'string') {
       return createElement(
         Component,
@@ -52,10 +44,9 @@ const Button = ({
           onClick,
           ...props,
         },
-        children
+        children,
       );
     }
-    // If Component is a React component (like Link), render it normally
     return (
       <Component className={classes} onClick={onClick} {...props}>
         {children}
@@ -63,7 +54,6 @@ const Button = ({
     );
   }
 
-  // Default to button element
   return (
     <button type={type} className={classes} onClick={onClick} disabled={disabled} {...props}>
       {children}

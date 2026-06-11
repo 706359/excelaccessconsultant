@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { CONSULTANTS, CTA } from '../../../constants/site';
 
 // In-memory rate limit: 5 requests per IP per 15 minutes (optional: replace with Upstash/Redis for multi-instance)
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
@@ -73,7 +74,7 @@ export async function POST(request) {
     }
 
     const body = await request.json();
-    const { name, email, phone, company, message } = body;
+    const { name, email, phone, company, message, service, hoursPerWeek, bestTimeToCall } = body;
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -114,6 +115,9 @@ export async function POST(request) {
       email,
       phone: phone || 'Not provided',
       company: company || 'Not provided',
+      service: service || 'Not provided',
+      hoursPerWeek: hoursPerWeek || 'Not provided',
+      bestTimeToCall: bestTimeToCall || 'Not provided',
       message,
       timestamp: new Date().toISOString(),
     };
@@ -132,7 +136,7 @@ export async function POST(request) {
         const fromEmail = process.env.FROM_EMAIL || process.env.SMTP_USER;
         const toEmail = process.env.TO_EMAIL || 'rob.infodatix@gmail.com';
 
-        const emailBody = `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nCompany: ${company || 'Not provided'}\n\nMessage:\n${message}\n\nSubmitted at: ${new Date().toLocaleString()}`;
+        const emailBody = `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nCompany: ${company || 'Not provided'}\nService: ${service || 'Not provided'}\nHours per week: ${hoursPerWeek || 'Not provided'}\nBest time to call: ${bestTimeToCall || 'Not provided'}\n\nMessage:\n${message}\n\nSubmitted at: ${new Date().toLocaleString()}`;
 
         const mailOptions = {
           from: `"${name}" <${fromEmail}>`,
@@ -148,6 +152,9 @@ export async function POST(request) {
                 <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
                 <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
                 <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+                <p><strong>Service:</strong> ${service || 'Not provided'}</p>
+                <p><strong>Hours per week:</strong> ${hoursPerWeek || 'Not provided'}</p>
+                <p><strong>Best time to call:</strong> ${bestTimeToCall || 'Not provided'}</p>
               </div>
               <div style="margin: 20px 0;">
                 <h3 style="color: #1e40af;">Message:</h3>
@@ -183,16 +190,16 @@ We have received your message and will review it carefully. Our team will get ba
 
 To help us schedule a convenient time for you, could you please provide us with 2-3 time slots that work best for you? We can arrange a Teams or Zoom call to discuss your requirements in detail.
 
-You can reply directly to this email with your preferred time slots, or call us at (801) 704-5604.
+You can reply directly to this email with your preferred time slots, or call us at (385) 386-3860.
 
 To help me prepare for our consultation and make the most of our time together, please send any relevant files, spreadsheets, databases, or documentation that you would like me to review before our meeting. This will allow me to better understand your current setup and come prepared with specific recommendations.
 
 We look forward to speaking with you soon.
 
 Best regards,
-Robert Terry
+${CONSULTANTS.displayName}
 ExcelAccessConsultant
-Phone: (801) 704-5604
+Phone: (385) 386-3860
 Email: rob.infodatix@gmail.com`;
 
           const clientEmailHtml = `
@@ -222,7 +229,7 @@ Email: rob.infodatix@gmail.com`;
                     To help us schedule a convenient time for you, could you please provide us with <strong>2-3 time slots</strong> that work best for you? We can arrange a <strong>Teams or Zoom call</strong> to discuss your requirements in detail.
                   </p>
                   <p style="margin: 0;">
-                    You can reply directly to this email with your preferred time slots, or call us at <a href="tel:8017045604" style="color: #1e40af; text-decoration: none; font-weight: bold;">(801) 704-5604</a>.
+                    You can reply directly to this email with your preferred time slots, or call us at <a href="${CTA.phoneHref}" style="color: #1e40af; text-decoration: none; font-weight: bold;">${CTA.phone}</a>.
                   </p>
                 </div>
                 <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 25px 0; border-radius: 4px;">
@@ -238,13 +245,13 @@ Email: rob.infodatix@gmail.com`;
                   <p style="margin: 0 0 10px 0;">We look forward to speaking with you soon.</p>
                   <p style="margin: 0 0 5px 0;">
                     <strong>Best regards,</strong><br>
-                    Robert Terry<br>
+                    ${CONSULTANTS.displayName}<br>
                     ExcelAccessConsultant
                   </p>
                 </div>
                 <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280;">
                   <p style="margin: 5px 0;">
-                    <strong>Phone:</strong> <a href="tel:8017045604" style="color: #1e40af; text-decoration: none;">(801) 704-5604</a>
+                    <strong>Phone:</strong> <a href="${CTA.phoneHref}" style="color: #1e40af; text-decoration: none;">${CTA.phone}</a>
                   </p>
                   <p style="margin: 5px 0;">
                     <strong>Email:</strong> <a href="mailto:rob.infodatix@gmail.com" style="color: #1e40af; text-decoration: none;">rob.infodatix@gmail.com</a>
@@ -308,7 +315,7 @@ Email: rob.infodatix@gmail.com`;
             emailError ||
             'Failed to send email notification. Please try again or contact us directly.',
           message:
-            'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob.infodatix@gmail.com or call (801) 704-5604.',
+            'We received your message, but there was an issue sending the confirmation email. Please contact us directly at rob.infodatix@gmail.com or call (385) 386-3860.',
         },
         { status: 500 },
       );

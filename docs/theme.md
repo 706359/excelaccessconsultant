@@ -1,70 +1,59 @@
-# Design System - ExcelAccessConsultant.com
+# Design System — ExcelAccessConsultant.com
 
-**Current Implementation:** Tailwind CSS (Primary) + Custom CSS (Legacy Components)
+**Implementation:** Tailwind CSS (primary) + Custom CSS tokens
 
-**Status:** ✅ Tailwind CSS is installed and actively used throughout the application
+**Status:** ✅ Logo-exact brand colors applied — June 2026 update
 
-**⚠️ IMPORTANT:** This document contains legacy color examples. The actual implementation uses the new logo-based color scheme:
+## Brand Colors — Logo-Exact
 
-- **Primary:** `#C8102E` (Crimson Red - Access) - Access pages, general pages
-- **Secondary:** `#107C41` (Green - Excel, matches logo) - Excel pages
-- **NO BLUE COLOR** - Blue has been completely removed from the theme
-- **NO GRADIENTS** - All colors are solid only
+Derived from `public/logo.png` pixel values:
 
-See `.cursorrules` and `DESIGN_PROPOSAL.md` for current color specifications.
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `primary` | `#1B5E20` | **Excel forest green** — CTAs, nav active, headings, focus rings |
+| `primary-hover` | `#155016` | Hover / pressed states |
+| `secondary` | `#8B1A1A` | Access deep crimson — Access service page accents |
+| `secondary-hover` | `#6E1515` | Hover / pressed states |
+| `charcoal` | `#2D2D2D` | "Consultant" text color — body copy, headings |
+| `navy` | `#0F172A` | Footer background, deep contrast |
+
+> **Excel green is primary** — "Excel" is the first word in the brand name and logo.
+> **NO BLUE** — removed entirely. Subtle 6% white gradient sheen on filled buttons only.
 
 ---
 
 ## Brand Identity
 
-**Logo-Based Color Scheme (NO GRADIENTS - SOLID COLORS ONLY)**
-
-**Primary Color (Crimson Red - Access):**
-
-- Hex: `#C8102E`
-- RGB: `rgb(200, 16, 46)`
-- Usage: Access pages, general pages, navigation, footer, homepage sections
-- Hover: `#9a0c24` (Darker Red)
-- Pages: Homepage, `/access-consulting`, `/database-migration`, general content
-
-**Secondary Color (Green - Excel, matches logo):**
-
-- Hex: `#107C41`
-- RGB: `rgb(16, 124, 65)`
-- Usage: Excel-related pages, Excel service features, buttons, links, CTAs
-- Hover: `#0D6535` (Darker Green)
-- Pages: `/excel-automation`, `/vba-development`, `/financial-modeling`
-
-**Rationale:** Colors are based on the logo design:
-
-- Red represents Access (Access's traditional color) - Now the PRIMARY color
-- Green represents Excel (Excel's brand association) - SECONDARY color
-- **NO BLUE COLOR** - Blue has been completely removed from the theme
-- All colors are solid - NO gradients allowed
+Primary color (Excel forest green `#1B5E20`) for all CTAs, navigation, general pages.  
+Secondary color (Access deep crimson `#8B1A1A`) for Access-specific service page accents.  
+Charcoal `#2D2D2D` for all body text (replaces blue-navy `#0F172A` in text contexts).
 
 ---
 
 ## Color Palette
 
-### Primary Colors (NO BLUE - REMOVED | NO GRADIENTS - SOLID COLORS ONLY)
+### Brand Colors (Logo-Exact — June 2026)
 
 ```css
-/* Primary - Crimson Red (Access) */
---primary: #c8102e; /* Crimson Red - Access pages, general pages, navigation */
---primary-hover: #9a0c24; /* Darker red for hover states */
+/* Primary — Excel forest green */
+--color-primary: #1b5e20;
+--color-primary-hover: #155016;
 
-/* Secondary - Green (Excel, matches logo) */
---secondary: #107c41; /* Green - Excel-related pages */
---secondary-hover: #0d6535; /* Darker green for hover states */
+/* Secondary — Access deep crimson */
+--color-secondary: #8b1a1a;
+--color-secondary-hover: #6e1515;
+
+/* Charcoal — "Consultant" text */
+--color-charcoal: #2d2d2d;
 ```
 
 ### Color Usage Rules
 
-- **Excel pages** (`/excel-automation`, `/vba-development`, `/financial-modeling`): Use `secondary` (green) for all buttons, links, headings, CTAs, step numbers, pricing
-- **Access pages** (`/access-consulting`, `/database-migration`): Use `primary` (red) for all buttons, links, headings, CTAs, step numbers, pricing
-- **General pages** (homepage): Use `primary` (red) for all buttons, links, headings, CTAs
-- **NO BLUE COLOR** - Blue has been completely removed from the theme
-- **NO GRADIENTS** - All backgrounds and colors must be solid only
+- **All general / CTAs / nav**: `primary` (Excel forest green `#1B5E20`)
+- **Access service pages** (`/access-consulting`, `/database-migration`): `secondary` crimson accents
+- **Body text**: `charcoal` (#2D2D2D) — warmer than cold navy
+- **NO BLUE** — removed from the design system
+- Subtle 6% white gradient sheen is allowed on filled buttons only
 
 ### Neutral Colors (Tailwind Slate)
 
@@ -268,56 +257,55 @@ xl:  48px  /* Extra large gaps (section spacing) */
 
 ```css
 .btn-primary {
-  background: #a32228; /* excel color */
+  background: #8b1a1a;  /* Access deep crimson */
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%);
   color: white;
   padding: 12px 24px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(139,26,26,0.30);
+  transition: all 200ms cubic-bezier(0.4,0,0.2,1);
 }
-
 .btn-primary:hover {
-  background: #8a1c21; /* excel-hover */
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #6e1515;
+  box-shadow: 0 6px 20px rgba(139,26,26,0.40);
+  transform: translateY(-1px);
 }
 ```
 
-**Tailwind Classes:**
+**Tailwind (preferred):**
 
 ```html
-<button class="bg-excel hover:bg-excel-hover text-white px-6 py-3 rounded-md font-medium">
+<button class="btn-primary">Button Text</button>
+<!-- or -->
+<button class="bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-btn font-semibold shadow-btn-primary">
   Button Text
 </button>
 ```
 
-### Secondary Button
+### Secondary Button (outline)
 
 ```css
 .btn-secondary {
-  background: white;
-  color: #a32228;
-  border: 2px solid #a32228;
+  background: transparent;
+  color: #8b1a1a;
+  border: 2px solid #8b1a1a;
   padding: 12px 24px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
 }
-
 .btn-secondary:hover {
-  background: #a32228;
+  background: #8b1a1a;
   color: white;
+  box-shadow: 0 2px 8px rgba(139,26,26,0.30);
 }
 ```
 
-**Tailwind Classes:**
+### Excel Green Button
 
 ```html
-<button
-  class="bg-white text-excel border-2 border-excel hover:bg-excel hover:text-white px-6 py-3 rounded-md font-medium"
->
-  Button Text
-</button>
+<button class="btn-excel">Excel CTA</button>
+<!-- For Excel service pages only -->
 ```
 
 ### Phone CTA Button
@@ -595,5 +583,5 @@ transition: all 0.3s ease;
 
 ---
 
-**Last Updated:** January 24, 2026
-**Styling Method:** Tailwind CSS (Confirmed Active)
+**Last Updated:** June 11, 2026 — logo-exact brand color update
+**Styling Method:** Tailwind CSS (primary) + CSS custom properties

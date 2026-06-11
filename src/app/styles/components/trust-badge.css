@@ -1,0 +1,107 @@
+.trust-badge {
+  position: fixed;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  z-index: 40;
+  max-width: 24rem;
+  animation: slide-in 0.3s ease-out;
+}
+
+.trust-badge__card {
+  position: relative;
+  background-color: white;
+  border: 1px solid var(--color-slate-200);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-5);
+}
+
+.trust-badge__close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  color: var(--color-slate-400);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+  transition: color var(--transition-standard);
+}
+
+.trust-badge__close:hover {
+  color: var(--color-slate-600);
+}
+
+.trust-badge__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-btn);
+}
+
+.trust-badge__close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.trust-badge__body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.trust-badge__icon-wrap {
+  flex-shrink: 0;
+}
+
+.trust-badge__icon-circle {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(27, 94, 32, 0.1);
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-badge__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-excel);
+}
+
+.trust-badge__content {
+  flex: 1;
+}
+
+.trust-badge__title {
+  font-size: var(--font-body-sm);
+  font-weight: 600;
+  color: var(--color-slate-900);
+  margin-bottom: var(--space-1);
+}
+
+.trust-badge__text {
+  font-size: var(--font-body-xs);
+  color: var(--color-slate-600);
+  margin-bottom: var(--space-2);
+}
+
+.trust-badge__link {
+  font-size: var(--font-body-xs);
+  font-weight: 500;
+  color: var(--color-excel);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  text-decoration: none;
+  transition: color var(--transition-standard);
+}
+
+.trust-badge__link:hover {
+  color: var(--color-excel-hover);
+}
+
+.trust-badge__link-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

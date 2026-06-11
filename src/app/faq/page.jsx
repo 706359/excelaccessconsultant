@@ -1,73 +1,34 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
-import Button from '../../components/ui/Button/Button';
+import ContactCTAs from '../../components/ui/ContactCTAs/ContactCTAs';
+import FAQAccordion from '../../components/ui/FAQAccordion/FAQAccordion';
+import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
+import { FAQ_PAGE_ITEMS, FAQ_RELATED_LINKS, FAQ_SECTIONS } from '../../constants/faqPage';
+import { TRUST } from '../../constants/site';
+
+const ItemArrow = () => (
+  <svg
+    className='cs-item__arrow'
+    width='14'
+    height='14'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    strokeWidth='2.5'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    aria-hidden='true'
+  >
+    <path d='M9 5l7 7-7 7' />
+  </svg>
+);
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggleQuestion = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const faqs = [
-    {
-      question: 'What types of businesses do you work with?',
-      answer:
-        'All kinds—startups to big companies, any industry. I tailor what I build to your setup. If you run on Excel and Access, I can probably help.',
-    },
-    {
-      question: 'How long does a typical project take?',
-      answer:
-        "Depends on scope. Simple automations: a few weeks. Bigger database work: a few months. I'll give you a realistic timeline when we talk.",
-    },
-    {
-      question: 'Do you provide training for the solutions you build?',
-      answer:
-        "Yes. I write docs, walk you through how it works, and I'm available if something breaks. You shouldn't need me to babysit it forever.",
-    },
-    {
-      question: 'Can you work with our existing systems and data?',
-      answer:
-        "Yes. Most of my work is improving what you already have. I'll look at your current files and databases and build something that fits in.",
-    },
-    {
-      question: 'What kind of support do you offer after project completion?',
-      answer:
-        'Ongoing support when you need it—bug fixes, tweaks, questions. We can set up ad hoc or a regular maintenance arrangement. Your call.',
-    },
-    {
-      question: 'How do you ensure data security and privacy?',
-      answer:
-        "I follow standard best practices: access controls, no unnecessary copies, compliance in mind. Tell me your requirements and we'll design for them.",
-    },
-    {
-      question: 'What is your pricing model?',
-      answer:
-        'Depends on the job. I give you a quote after we scope it. Fixed price for builds, or hourly for advisory—whatever fits your situation.',
-    },
-    {
-      question: 'Do you offer remote services?',
-      answer:
-        "Yes. I work remotely with screen sharing, secure file transfer, whatever you use. I've been doing remote long before it was the norm.",
-    },
-    {
-      question: 'Can you help with urgent or time-sensitive projects?',
-      answer:
-        "Sometimes, yes. Planning is better when we can, but if you're in a pinch, reach out. We'll see what's possible.",
-    },
-    {
-      question: 'What makes your solutions different from off-the-shelf software?',
-      answer:
-        'I build for your process, not a generic one. It plugs into what you have, does exactly what you need, and we can change it as you grow. No bloat, no lock-in.',
-    },
-  ];
-
   return (
-    <div className='bg-base min-h-screen text-slate-900 font-sans'>
+    <div className='page'>
       <SEO
         title='FAQ | ExcelAccessConsultant.com'
         description='Frequently asked questions about Excel and Access consulting services. Get answers about pricing, timelines, support, and more.'
@@ -75,63 +36,83 @@ export default function FAQ() {
         url='https://excelaccessconsultant.com/faq'
         ogTitle='Frequently Asked Questions'
       />
-      <FAQSchema faqs={faqs} />
+      <FAQSchema faqs={FAQ_PAGE_ITEMS} />
 
-      <section className='py-8 md:py-12 bg-slate-50 border-b border-slate-200'>
-        <div className='max-w-7xl mx-auto px-6 text-center'>
-          <h1 className='text-display-lg md:text-display-xl lg:text-display-2xl font-bold mb-4 font-display text-slate-900'>
+      <section className='page-hero page-hero--centered'>
+        <div className='container'>
+          <span className='chip-primary lead-magnet-hero__eyebrow'>Questions &amp; Answers</span>
+          <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
             Frequently Asked Questions
           </h1>
-          <p className='text-lg text-slate-700 max-w-7xl mx-auto leading-relaxed'>
-            Find answers to common questions about our services and how we work.
+          <p className='page-hero__lead'>
+            Answers about pricing, project timelines, remote delivery, and what to expect when you
+            hand off a broken spreadsheet or database, from a consultant with {TRUST.years} of
+            experience and {TRUST.projects} completed projects.
           </p>
         </div>
       </section>
 
-      <section className='py-8 md:py-12 bg-white'>
-        <div className='max-w-7xl mx-auto px-6'>
-          <div className='space-y-4'>
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className={`bg-slate-50 rounded-lg border border-slate-200 overflow-hidden transition-all duration-200 ${
-                  openIndex === index ? 'shadow-md' : ''
-                }`}
-              >
-                <button
-                  className='w-full p-6 text-left flex items-center justify-between hover:bg-slate-100 transition-colors duration-200'
-                  onClick={() => toggleQuestion(index)}
-                  aria-expanded={openIndex === index}
-                >
-                  <h3 className='text-lg font-bold font-display text-slate-900 pr-4'>
-                    {faq.question}
-                  </h3>
-                  <span className='text-primary text-2xl font-bold flex-shrink-0'>
-                    {openIndex === index ? '−' : '+'}
-                  </span>
-                </button>
-                {openIndex === index && (
-                  <div className='px-6 pb-6'>
-                    <p className='text-slate-600 leading-relaxed'>{faq.answer}</p>
-                  </div>
-                )}
+      <ScrollReveal as='section' className='page-section page-section--alt page-section--border'>
+        <div className='container container--narrow'>
+          <div className='faq-sections'>
+            {FAQ_SECTIONS.map((section) => (
+              <div key={section.id} className='faq-section-block'>
+                <div className='section-header section-header--lg'>
+                  <h2 className='section-header__title'>{section.title}</h2>
+                  <p className='section-header__desc'>{section.description}</p>
+                </div>
+                <FAQAccordion items={section.items} className='faq-list--numbered' />
               </div>
             ))}
           </div>
+        </div>
+      </ScrollReveal>
 
-          <div className='mt-12 text-center bg-slate-50 rounded-lg border border-slate-200 p-8'>
-            <h2 className='text-heading-lg md:text-heading-xl font-bold mb-4 font-display text-slate-900'>
-              Still have questions?
-            </h2>
-            <p className='text-lg text-slate-700 mb-6 max-w-7xl mx-auto leading-relaxed'>
-              Something not covered? Reach out—I'll answer your questions directly.
+      <ScrollReveal
+        as='section'
+        className='page-section page-section--white page-section--border'
+        delay={80}
+      >
+        <div className='container container--narrow'>
+          <div className='faq-callout'>
+            <span className='chip-secondary'>Still have questions?</span>
+            <h2 className='faq-callout__title'>Talk to me directly</h2>
+            <p className='faq-callout__text'>
+              If your situation is not covered here, book a free consultation or send a message, I
+              respond within 24 hours.
             </p>
-            <Button variant='primary' size='large' as={Link} href='/contact'>
-              Contact Us
-            </Button>
+            <ContactCTAs center />
           </div>
         </div>
-      </section>
+      </ScrollReveal>
+
+      <ScrollReveal
+        as='section'
+        className='page-section page-section--alt page-section--border'
+        delay={120}
+      >
+        <div className='container'>
+          <div className='section-header section-header--lg'>
+            <h2 className='section-header__title'>Helpful Next Steps</h2>
+            <p className='section-header__desc'>
+              Contact, pricing, and free resources for Excel and Access teams.
+            </p>
+          </div>
+          <div className='cs-grid stagger-group'>
+            {FAQ_RELATED_LINKS.map((link) => (
+              <Link key={link.num} href={link.href} className={`cs-item cs-item--${link.accent}`}>
+                <span className='cs-item__num'>{link.num}</span>
+                <div className='cs-item__body'>
+                  <span className='cs-item__industry'>{link.industry}</span>
+                  <h3 className='cs-item__title'>{link.title}</h3>
+                  <p className='cs-item__outcome'>{link.outcome}</p>
+                </div>
+                <ItemArrow />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
     </div>
   );
 }

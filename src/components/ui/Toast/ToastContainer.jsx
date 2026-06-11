@@ -2,7 +2,7 @@ import Toast from './Toast';
 
 function ToastContainer({ toasts, removeToast }) {
   return (
-    <div className='fixed top-4 right-4 z-[9999] space-y-2'>
+    <div className='toast-container'>
       {toasts.map((toast) => (
         <Toast
           key={toast.id}

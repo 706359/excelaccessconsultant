@@ -13,6 +13,28 @@ const nextConfig = {
   // www -> non-www and http -> https redirects should be handled at DNS/hosting level (Vercel, Cloudflare)
   async redirects() {
     return [
+      { source: '/og-image.png', destination: '/eaclogo.png', permanent: true },
+      { source: '/favicon.png', destination: '/favicon-32x32.png', permanent: true },
+      { source: '/index.html', destination: '/', permanent: true },
+      { source: '/about.html', destination: '/about', permanent: true },
+      { source: '/contact.html', destination: '/contact', permanent: true },
+      { source: '/faq.html', destination: '/faq', permanent: true },
+      { source: '/thank-you.html', destination: '/thank-you', permanent: true },
+      { source: '/privacy-policy.html', destination: '/privacy-policy', permanent: true },
+      { source: '/free-resources.html', destination: '/free-resources', permanent: true },
+      { source: '/blog/index.html', destination: '/blog', permanent: true },
+      { source: '/case-studies/index.html', destination: '/case-studies', permanent: true },
+      { source: '/resources/faq.html', destination: '/resources/faq', permanent: true },
+      {
+        source: '/resources/free-checklist.html',
+        destination: '/resources/free-checklist',
+        permanent: true,
+      },
+      {
+        source: '/resources/calculator.html',
+        destination: '/resources/calculator',
+        permanent: true,
+      },
       { source: '/excel-consultant.php', destination: '/excel-automation', permanent: true },
       { source: '/excel-expert.php', destination: '/excel-automation', permanent: true },
       { source: '/excel-formulas.php', destination: '/excel-automation', permanent: true },

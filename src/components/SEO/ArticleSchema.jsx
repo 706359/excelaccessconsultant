@@ -1,3 +1,5 @@
+import { CONSULTANTS } from '../../constants/site';
+
 export default function ArticleSchema({ headline, description, datePublished, dateModified, url }) {
   const schema = {
     '@context': 'https://schema.org',
@@ -5,7 +7,7 @@ export default function ArticleSchema({ headline, description, datePublished, da
     headline,
     author: {
       '@type': 'Person',
-      name: 'Robert Terry',
+      name: CONSULTANTS.displayName,
       url: 'https://excelaccessconsultant.com/about',
     },
     publisher: {
@@ -13,7 +15,7 @@ export default function ArticleSchema({ headline, description, datePublished, da
       name: 'ExcelAccessConsultant',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://excelaccessconsultant.com/logo.png',
+        url: 'https://excelaccessconsultant.com/eaclogo.png',
       },
     },
     datePublished,
@@ -24,7 +26,7 @@ export default function ArticleSchema({ headline, description, datePublished, da
 
   return (
     <script
-      type="application/ld+json"
+      type='application/ld+json'
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );

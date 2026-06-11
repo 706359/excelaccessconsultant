@@ -1,0 +1,132 @@
+---
+description: SEO, CRO, content strategy, and trust rules for ExcelAccessConsultant.com
+alwaysApply: true
+---
+
+# SEO/CRO Strategy — ExcelAccessConsultant.com
+
+Specialist Microsoft Access and Excel VBA consulting for Robert Terry. Improve SEO, authority, trust, and lead generation without redesigning the site.
+
+Cross-reference: [content-voice.mdc](content-voice.mdc), [homepage-section-patterns.mdc](homepage-section-patterns.mdc), [ui-flat-design-system.mdc](ui-flat-design-system.mdc), [css-styling.mdc](css-styling.mdc).
+
+## Preservation rules (never break)
+
+- Do not redesign, rebrand, or change logo, color palette, or typography system.
+- Do not change overall layout structure or introduce SaaS/agency/startup patterns.
+- Do not add gradients, glass effects, blue accents, or unnecessary animations.
+- Do not create new card systems. Use existing `cs-result-card`, `cs-item`, `FAQAccordion`, `PageCTASection`.
+- Improve existing sections; do not duplicate trust, service, FAQ, testimonial, or problem sections.
+
+## Homepage architecture (fixed order)
+
+1. Hero → 2. Sound Familiar? → 3. Problems I Solve → 4. Why Teaser → 5. Client Results → 6. Services → 7. Industries → 8. ROI Calculator → 9. FAQ → 10. Final CTA
+
+Reference: `src/app/page.jsx`. Refine in place only.
+
+## Content philosophy
+
+Audience: business owners, operations managers, controllers, finance managers, IT managers, manufacturing managers.
+
+Write like an experienced independent consultant: credible, practical, specific, trustworthy. Every sentence should sound like Robert Terry speaking to a prospect.
+
+See [content-voice.mdc](content-voice.mdc) for banned/preferred words and punctuation.
+
+## Hero requirements
+
+`HeroVisual` in `src/components/HomeHero/HeroVisual.jsx`:
+
+- **Desktop:** realistic business database preview (orders, customers, reports, inventory, status indicators).
+- **Mobile/tablet:** simplified compact dashboard (not abstract pillars only).
+- Pure CSS + inline SVG; existing tokens, borders, spacing. No gradients, glass, or animations.
+
+Goal: visitors instantly recognize Database Development, Access Consulting, Reporting, Automation, Migration.
+
+## CRO rules
+
+Preferred CTA language (from `src/constants/site.js`):
+
+- Book Free Consultation
+- Request Fixed-Price Estimate
+- Discuss Your Database Project
+- Get Your Database Reviewed
+
+Improve CTA quality, not quantity. Do not add extra CTA blocks. Phone: `385-386-3860`.
+
+## Client results format
+
+Every result card uses explicit **Problem / Solution / Outcome** labels with measurable business value.
+
+Example:
+- Problem: Database crashes affecting 15 users.
+- Solution: Split Access architecture and query optimization.
+- Outcome: Stable performance and faster reporting.
+
+Constant: `src/constants/homeClientResults.js`.
+
+## Service page checklist
+
+Each service page must explain: business problem, solution, process, expected outcome.
+
+Sections: Problem → Solution → Benefits → How It Works → Pricing → FAQ → CTA.
+
+Content source: `src/constants/servicePageContent.js`. Keyword in H1, first paragraph, 2+ H2s. No keyword stuffing.
+
+## Case study standards
+
+Structure: Client → Problem → Solution → Results → Business Impact.
+
+Target industries: Manufacturing, Construction, Distribution, Financial Services, Operations, SQL Migration.
+
+Long-term goal: 20+ strong case studies. Registry: `src/app/case-studies/registry.js`.
+
+## SEO checklist
+
+Every page: unique title (≤60 chars), meta description (≤155 chars), canonical, OG/Twitter tags, proper H1, schema where applicable, 3–5 internal links, alt text on images.
+
+Audit: sitemap coverage, heading hierarchy, cannibalization, thin pages, internal linking gaps.
+
+Trust constants: use `TRUST.years` and `TRUST.projects` from `src/constants/site.js` (currently 20+ years, 500+ projects).
+
+## Local SEO guardrails
+
+Canonical local page: `/excel-consultant-utah`. No doorway pages for Salt Lake City, Provo, or Ogden alone.
+
+GBP, reviews, and citations are operational tasks documented in `docs/SEO_CRO_AUDIT.md`.
+
+## Content expansion priorities
+
+Roadmap: `docs/CONTENT_EXPANSION_ROADMAP.md`. High-priority Access topics:
+
+- Access Database Repair Cost
+- How To Split An Access Database
+- Why Access Databases Become Corrupted
+- Access Database Multi User Setup
+- Access Runtime vs Full Version
+- Access Front End Back End Architecture
+- Access SQL Server Migration Cost
+- Can Microsoft Access Handle 50 Users?
+- Microsoft Access Consultant Pricing
+- How To Modernize An Access Database
+- Access Database Performance Optimization
+- Access Database Best Practices
+- Access Database Maintenance Checklist
+- Access Database Security Best Practices
+- Access Migration Planning Guide
+
+Each topic: target keyword, search intent, internal links, conversion hook.
+
+## Recommendation format
+
+When auditing or proposing changes:
+
+```
+Current Issue: ...
+Why It Matters: ...
+Recommended Change: ...
+Expected Impact: SEO / Conversion / Trust / Authority
+Priority: High / Medium / Low
+```
+
+Only recommend changes that are demonstrably better. Do not rewrite merely to be different.
+
+Full audit: `docs/SEO_CRO_AUDIT.md`.

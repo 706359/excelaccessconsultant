@@ -1,39 +1,60 @@
-import { useState, useEffect } from 'react';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const TrustBadge = () => {
+  const pathname = usePathname();
   const [showBadge, setShowBadge] = useState(false);
-  const [hasSeenBadge, setHasSeenBadge] = useState(false);
+  const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has seen the trust badge before
+    const onCookieChange = (event) => {
+      setCookieBannerVisible(Boolean(event.detail?.visible));
+    };
+
+    window.addEventListener('cookieConsentChange', onCookieChange);
+
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      setCookieBannerVisible(true);
+    }
+
     const seen = sessionStorage.getItem('trustBadgeSeen');
-    if (!seen) {
-      // Show badge after user has been on page for 5 seconds
+    if (!seen && pathname !== '/contact') {
       const timer = setTimeout(() => {
         setShowBadge(true);
       }, 5000);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('cookieConsentChange', onCookieChange);
+      };
     }
-  }, []);
+
+    return () => {
+      window.removeEventListener('cookieConsentChange', onCookieChange);
+    };
+  }, [pathname]);
 
   const handleClose = () => {
     setShowBadge(false);
-    setHasSeenBadge(true);
     sessionStorage.setItem('trustBadgeSeen', 'true');
   };
 
-  if (!showBadge || hasSeenBadge) return null;
+  if (!showBadge || cookieBannerVisible || pathname === '/contact') return null;
 
   return (
-    <div className='fixed bottom-4 right-4 z-40 max-w-sm animate-slide-in'>
-      <div className='bg-white border border-slate-200 rounded-lg shadow-xl p-5'>
+    <div className='trust-badge'>
+      <div className='trust-badge__card'>
         <button
+          type='button'
           onClick={handleClose}
-          className='absolute top-2 right-2 text-slate-400 hover:text-slate-600 transition-colors'
+          className='trust-badge__close'
           aria-label='Close trust badge'
         >
           <svg
-            className='w-5 h-5'
+            className='trust-badge__close-icon'
             fill='none'
             stroke='currentColor'
             viewBox='0 0 24 24'
@@ -47,11 +68,11 @@ const TrustBadge = () => {
             />
           </svg>
         </button>
-        <div className='flex items-start gap-3'>
-          <div className='flex-shrink-0'>
-            <div className='w-12 h-12 bg-excel/10 rounded-full flex items-center justify-center'>
+        <div className='trust-badge__body'>
+          <div className='trust-badge__icon-wrap'>
+            <div className='trust-badge__icon-circle'>
               <svg
-                className='w-6 h-6 text-excel'
+                className='trust-badge__icon'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
@@ -66,20 +87,16 @@ const TrustBadge = () => {
               </svg>
             </div>
           </div>
-          <div className='flex-1'>
-            <h3 className='text-sm font-semibold text-slate-900 mb-1'>
-              Your Data is Secure
-            </h3>
-            <p className='text-xs text-slate-600 mb-2'>
-              I sign NDAs, work in your systems (not mine), and don't share your information. 20+ years handling sensitive business data.
+          <div className='trust-badge__content'>
+            <h3 className='trust-badge__title'>Your Data is Secure</h3>
+            <p className='trust-badge__text'>
+              I sign NDAs, work in your systems (not mine), and don&apos;t share your information.
+              20+ years handling sensitive business data.
             </p>
-            <a
-              href='#contact'
-              className='text-xs font-medium text-excel hover:text-excel-hover inline-flex items-center gap-1'
-            >
-              Get started
+            <Link href='/contact' className='trust-badge__link'>
+              Book Free Consultation
               <svg
-                className='w-3 h-3'
+                className='trust-badge__link-icon'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
@@ -92,7 +109,7 @@ const TrustBadge = () => {
                   d='M9 5l7 7-7 7'
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

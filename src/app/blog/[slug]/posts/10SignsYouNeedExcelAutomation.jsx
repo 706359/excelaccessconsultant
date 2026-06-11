@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import FAQSchema from '../../../../components/SEO/FAQSchema';
 import SEO from '../../../../components/SEO/SEO';
-import BlogPostSidebar from '../BlogPostSidebar';
+import BlogPostShell from '../components/BlogPostShell';
 
 function TenSignsYouNeedExcelAutomation() {
   const post = {
@@ -13,7 +13,7 @@ function TenSignsYouNeedExcelAutomation() {
     readTime: '8 min read',
     seoTitle: '10 Signs You Need Excel Automation | ExcelAccessConsultant',
     seoDescription:
-      'Is your team spending too much time on manual Excel work? Here are 10 clear signs that automation could save you hours every week. Expert advice from 20+ years of experience.',
+      'Is your team spending too much time on manual Excel work? Ten signs that point to automation, from a consultant with 20+ years in the field.',
     keywords:
       'excel automation, signs you need automation, excel automation benefits, when to automate excel, excel productivity',
     ogTitle: '10 Signs You Need Excel Automation',
@@ -39,28 +39,33 @@ function TenSignsYouNeedExcelAutomation() {
           'I build user-friendly interfaces with buttons and forms. Your team typically just clicks a button to run automation. I provide documentation and training, so no programming knowledge is required.',
       },
     ],
-    content: (
-      <div className='space-y-8'>
-        <p className='text-lg text-slate-700 font-medium'>
+  };
+
+  return (
+    <>
+      <SEO
+        title={post.seoTitle}
+        description={post.seoDescription}
+        keywords={post.keywords}
+        url={`https://excelaccessconsultant.com/blog/${post.slug}`}
+        ogTitle={post.ogTitle}
+      />
+
+      <FAQSchema faqs={post.faqs} />
+
+      <BlogPostShell post={post}>
+        <p>
           Is your team spending too much time on manual Excel work? Are you doing the same tasks
           over and over? If you recognize any of these 10 signs, Excel automation could save you
-          hours every week—and eliminate costly errors.
+          hours every week, and eliminate costly errors.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #1: You Spend Hours on Repetitive Tasks
-        </h2>
+        <h2>Sign #1: You Spend Hours on Repetitive Tasks</h2>
         <p>
-          If you&apos;re spending more than 5 hours per week doing the same Excel tasks
-          repeatedly—data entry, formatting, copying between files, running the same calculations—
-          <Link
-            href='/excel-automation'
-            className='text-primary font-semibold hover:text-primary-hover'
-          >
-            Excel VBA automation
-          </Link>{' '}
-          can eliminate that time entirely. What takes you hours can be done in minutes with the
-          right automation.
+          If you&apos;re spending more than 5 hours per week doing the same Excel tasks repeatedly,
+          data entry, formatting, copying between files, running the same calculations,
+          <Link href='/excel-automation'>Excel VBA automation</Link> can eliminate that time
+          entirely. What takes you hours can be done in minutes with the right automation.
         </p>
         <p>
           <strong>Example:</strong> A finance team was spending 6 hours every Friday compiling
@@ -68,12 +73,10 @@ function TenSignsYouNeedExcelAutomation() {
           hours saved per year.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #2: You Make Frequent Errors
-        </h2>
+        <h2>Sign #2: You Make Frequent Errors</h2>
         <p>
           Manual data entry and calculations are error-prone. If you find yourself fixing mistakes
-          regularly—wrong formulas, copied data in wrong cells, missing data—automation eliminates
+          regularly, wrong formulas, copied data in wrong cells, missing data. Automation eliminates
           these errors. Automated systems validate data and perform calculations correctly every
           time.
         </p>
@@ -83,19 +86,12 @@ function TenSignsYouNeedExcelAutomation() {
           often exceeds the cost of automation.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #3: Your Excel Files Are Getting Too Large or Slow
-        </h2>
+        <h2>Sign #3: Your Excel Files Are Getting Too Large or Slow</h2>
         <p>
           If your Excel files take forever to open, calculate, or save, automation can help. I can
           optimize file structure, move data to{' '}
-          <Link
-            href='/access-consulting'
-            className='text-primary font-semibold hover:text-primary-hover'
-          >
-            Access databases
-          </Link>
-          , and create efficient workflows that don&apos;t require massive Excel files.
+          <Link href='/access-consulting'>Access databases</Link>, and create efficient workflows
+          that don&apos;t require massive Excel files.
         </p>
         <p>
           <strong>Example:</strong> A company had a 50MB Excel file that took 5 minutes to open.
@@ -103,9 +99,7 @@ function TenSignsYouNeedExcelAutomation() {
           instantly.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #4: You&apos;re Copying Data Between Multiple Files
-        </h2>
+        <h2>Sign #4: You&apos;re Copying Data Between Multiple Files</h2>
         <p>
           If you regularly copy data from one Excel file to another, or consolidate data from
           multiple sources, automation can do this automatically. No more manual copying, no more
@@ -117,12 +111,10 @@ function TenSignsYouNeedExcelAutomation() {
           visibility across all locations.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #5: You Dread Certain Weekly or Monthly Tasks
-        </h2>
+        <h2>Sign #5: You Dread Certain Weekly or Monthly Tasks</h2>
         <p>
-          If there&apos;s a task you absolutely hate doing—monthly reports, quarterly
-          consolidations, annual budgets—chances are it can be automated. Automation turns dreaded
+          If there&apos;s a task you absolutely hate doing, monthly reports, quarterly
+          consolidations, annual budgets, chances are it can be automated. Automation turns dreaded
           tasks into one-click solutions.
         </p>
         <p>
@@ -131,9 +123,7 @@ function TenSignsYouNeedExcelAutomation() {
           of dreading it.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #6: You Can&apos;t Keep Up with Growing Data Volume
-        </h2>
+        <h2>Sign #6: You Can&apos;t Keep Up with Growing Data Volume</h2>
         <p>
           As your business grows, manual Excel processes become unsustainable. If you&apos;re
           struggling to keep up with increasing data volume, automation scales with your business.
@@ -145,22 +135,18 @@ function TenSignsYouNeedExcelAutomation() {
           used to take for 50.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #7: Multiple People Do the Same Task Differently
-        </h2>
+        <h2>Sign #7: Multiple People Do the Same Task Differently</h2>
         <p>
-          If different team members perform the same Excel task differently—leading to inconsistent
-          results—automation standardizes the process. Everyone gets the same accurate results every
-          time.
+          If different team members perform the same Excel task differently, leading to inconsistent
+          results. Automation standardizes the process. Everyone gets the same accurate results
+          every time.
         </p>
         <p>
           <strong>Example:</strong> Three people were building the same report three different ways.
           After automation, there&apos;s one standardized process. Consistent results, no confusion.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #8: You&apos;re Working Overtime to Complete Manual Tasks
-        </h2>
+        <h2>Sign #8: You&apos;re Working Overtime to Complete Manual Tasks</h2>
         <p>
           If manual Excel work is causing overtime or preventing you from focusing on strategic
           work, automation frees up time. Turn hours of manual work into minutes of automated
@@ -172,9 +158,7 @@ function TenSignsYouNeedExcelAutomation() {
           analysis instead of data entry.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #9: You Can&apos;t Answer &quot;What If&quot; Questions Quickly
-        </h2>
+        <h2>Sign #9: You Can&apos;t Answer &quot;What If&quot; Questions Quickly</h2>
         <p>
           If running scenarios or answering &quot;what if&quot; questions requires hours of manual
           recalculation, automation can make this instant. Build models that update automatically
@@ -186,9 +170,7 @@ function TenSignsYouNeedExcelAutomation() {
           during meetings.
         </p>
 
-        <h2 className='text-3xl font-bold mt-8 mb-4 font-display text-slate-900'>
-          Sign #10: You Know There&apos;s a Better Way, But Don&apos;t Know How
-        </h2>
+        <h2>Sign #10: You Know There&apos;s a Better Way, But Don&apos;t Know How</h2>
         <p>
           If you know automation exists but don&apos;t know where to start, a free consultation can
           help. I assess your processes and show you exactly what can be automated and how much time
@@ -200,107 +182,21 @@ function TenSignsYouNeedExcelAutomation() {
           for themselves in 3-6 months.
         </p>
 
-        <div className='bg-excel/10 p-6 rounded-lg border border-excel/20 mt-8'>
-          <h3 className='text-heading-lg font-bold mb-3 font-display text-slate-900'>
-            The Bottom Line
-          </h3>
-          <p className='text-slate-700 mb-4'>
+        <div className='blog-callout'>
+          <h3>The Bottom Line</h3>
+          <p>
             If you recognized 3 or more of these signs, Excel automation is likely worth exploring.
             Most businesses save 10-20 hours per week after automation. At $65/hour, that&apos;s
             $33,800-$67,600 per year in time savings.
           </p>
-          <p className='text-slate-700'>
+          <p>
             Automation projects typically cost $1,500-$8,000 and pay for themselves within 3-6
-            months. The question isn&apos;t whether you can afford automation—it&apos;s whether you
+            months. The question isn&apos;t whether you can afford automation, it&apos;s whether you
             can afford not to automate.
           </p>
         </div>
-      </div>
-    ),
-  };
-
-  return (
-    <div className='bg-base min-h-screen text-slate-800 font-sans'>
-      <SEO
-        title={post.seoTitle}
-        description={post.seoDescription}
-        keywords={post.keywords}
-        url={`https://excelaccessconsultant.com/blog/${post.slug}`}
-        ogTitle={post.ogTitle}
-      />
-
-      <FAQSchema faqs={post.faqs} />
-
-      {/* Article Header */}
-      <article className='py-8 md:py-12 bg-white border-b border-slate-200'>
-        <div className='max-w-7xl mx-auto px-6'>
-          {/* Header Section - Full Width */}
-          <div className='max-w-7xl mx-auto px-6 mb-8'>
-            <div className='mb-4'>
-              <span className='inline-block px-3 py-1 bg-excel/10 text-excel text-sm font-semibold rounded'>
-                {post.category}
-              </span>
-            </div>
-            <h1 className='text-display-lg md:text-display-xl lg:text-display-2xl font-extrabold mb-6 font-display text-slate-900'>
-              {post.title}
-            </h1>
-            <div className='flex items-center gap-4 text-slate-600 text-sm'>
-              <Link href='/about' className='hover:text-primary transition-colors'>
-                By Robert Terry
-              </Link>
-              <span>•</span>
-              <span>
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-            </div>
-          </div>
-
-          {/* Two Column Layout: Content + Sidebar */}
-          <div className='grid lg:grid-cols-[1fr_320px] gap-6 lg:gap-8'>
-            {/* Main Article Content */}
-            <div className='max-w-none'>
-              <div className='prose prose-lg max-w-none text-slate-700 leading-relaxed'>
-                {post.content}
-              </div>
-
-              {/* CTA Section */}
-              <div className='mt-8 bg-slate-100 p-8 rounded-lg border border-slate-200 text-center'>
-                <h3 className='text-heading-md md:text-heading-lg font-bold mb-4 font-display text-slate-900'>
-                  Ready to Automate Your Excel Work?
-                </h3>
-                <p className='text-slate-700 mb-6'>
-                  If you recognized any of these signs, automation could save you hours every week.
-                  Get a free consultation to see how.
-                </p>
-                <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                  <Link
-                    href='/contact'
-                    className='bg-excel hover:bg-excel-hover text-white hover:text-white px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
-                  >
-                    Schedule Free Consultation
-                  </Link>
-                  <a
-                    href='tel:8016163702'
-                    className='bg-white hover:bg-slate-50 text-excel border-2 border-excel px-8 py-4 text-base font-medium transition-colors rounded-md text-center'
-                  >
-                    Call 801-616-3702
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Sidebar - Related Articles, Related Services, Need Help?, View All */}
-            <BlogPostSidebar currentSlug={post.slug} />
-          </div>
-        </div>
-      </article>
-    </div>
+      </BlogPostShell>
+    </>
   );
 }
 

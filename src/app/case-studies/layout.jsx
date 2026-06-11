@@ -1,16 +1,18 @@
-const BASE = 'https://excelaccessconsultant.com';
-const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
+
+const BASE = SITE_URL;
+const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
   title: 'Case Studies - Excel & Access Automation Success Stories',
   description:
-    'Excel & Access automation case studies. See how we cut manual work from hours to minutes. 200+ projects completed.',
+    'Excel & Access automation case studies. See how we cut manual work from hours to minutes. 500+ projects completed.',
   openGraph: {
     type: 'website',
     url: `${BASE}/case-studies`,
     title: 'Case Studies - Excel & Access Automation Success Stories',
     description:
-      'Excel & Access automation case studies. See how we cut manual work from hours to minutes. 200+ projects completed.',
+      'Excel & Access automation case studies. See how we cut manual work from hours to minutes. 500+ projects completed.',
     images: [OG_IMAGE],
     siteName: 'ExcelAccessConsultant',
     locale: 'en_US',
@@ -18,8 +20,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Case Studies - Excel & Access Automation Success Stories',
-    description: 'Excel & Access automation case studies. Hours to minutes. 200+ projects completed.',
-    images: [`${BASE}/logo.png`],
+    description: 'Excel & Access automation case studies. Hours to minutes. 500+ projects completed.',
+    images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/case-studies` },
 };

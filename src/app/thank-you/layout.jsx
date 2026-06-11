@@ -1,5 +1,7 @@
-const BASE = 'https://excelaccessconsultant.com';
-const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
+
+const BASE = SITE_URL;
+const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
   title: 'Thank You - ExcelAccessConsultant',
@@ -20,7 +22,7 @@ export const metadata = {
     title: 'Thank You - ExcelAccessConsultant',
     description:
       "Thanks for reaching out. We received your message and will reply within one business day. Check your email for confirmation.",
-    images: [`${BASE}/logo.png`],
+    images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/thank-you` },
 };

@@ -1,0 +1,29 @@
+.scroll-reveal {
+  transition:
+    opacity 560ms var(--ease-out-expo),
+    transform 560ms var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal--hidden {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition: none;
+    will-change: auto;
+  }
+
+  .scroll-reveal--hidden {
+    opacity: 1;
+    transform: none;
+  }
+}

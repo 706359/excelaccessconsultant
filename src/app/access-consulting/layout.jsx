@@ -1,7 +1,9 @@
 import ServiceSchema from '../../components/SEO/ServiceSchema';
 
-const BASE = 'https://excelaccessconsultant.com';
-const OG_IMAGE = { url: `${BASE}/logo.png`, width: 512, height: 512, alt: 'ExcelAccessConsultant' };
+import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
+
+const BASE = SITE_URL;
+const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
   title: 'Access Database Consultant | MS Access Expert',
@@ -22,7 +24,7 @@ export const metadata = {
     title: 'Access Database Consultant | MS Access Expert',
     description:
       'MS Access database consultant. Fix crashes, multi-user conflicts, slow queries. Design and rebuild Access databases that run reliably. 20+ years experience. Free consultation.',
-    images: [`${BASE}/logo.png`],
+    images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/access-consulting` },
 };
@@ -31,9 +33,9 @@ export default function AccessConsultingLayout({ children }) {
   return (
     <>
       <ServiceSchema
-        serviceType="Access Database Development"
-        description="MS Access database consultant. Fix crashes, multi-user conflicts, slow queries. Design and rebuild Access databases that run reliably. 20+ years experience. Free consultation."
-        url="https://excelaccessconsultant.com/access-consulting"
+        serviceType='Access Database Development'
+        description='MS Access database consultant. Fix crashes, multi-user conflicts, slow queries. Design and rebuild Access databases that run reliably. 20+ years experience. Free consultation.'
+        url='https://excelaccessconsultant.com/access-consulting'
       />
       {children}
     </>

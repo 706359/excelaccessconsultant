@@ -1,10 +1,38 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import DataSecurityDisclaimer from '../../components/SEO/DataSecurityDisclaimer/DataSecurityDisclaimer';
 import SEO from '../../components/SEO/SEO';
 import Button from '../../components/ui/Button/Button';
+import CheckList from '../../components/ui/CheckList/CheckList';
+import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
 import ToastContainer from '../../components/ui/Toast/ToastContainer';
+import {
+  CONTACT_PROMISES,
+  CONTACT_RELATED_LINKS,
+  CONTACT_SERVICES,
+} from '../../constants/contactPage';
+import { CTA, TRUST } from '../../constants/site';
+import { trackFormSubmit } from '../../utils/analytics';
+
+const ItemArrow = () => (
+  <svg
+    className='cs-item__arrow'
+    width='14'
+    height='14'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    strokeWidth='2.5'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    aria-hidden='true'
+  >
+    <path d='M9 5l7 7-7 7' />
+  </svg>
+);
 
 export default function Contact() {
   const router = useRouter();
@@ -14,6 +42,9 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
+    company: '',
+    hoursPerWeek: '',
+    bestTimeToCall: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,6 +105,14 @@ export default function Contact() {
 
   useEffect(() => {
     generateCaptcha();
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('intent') === 'estimate') {
+      setFormStep(2);
+      setFormData((prev) => ({
+        ...prev,
+        message: prev.message || 'I would like a fixed-price estimate for my project.',
+      }));
+    }
   }, []);
 
   useEffect(() => {
@@ -162,6 +201,9 @@ export default function Contact() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone || '',
+          company: formData.company || '',
+          hoursPerWeek: formData.hoursPerWeek || '',
+          bestTimeToCall: formData.bestTimeToCall || '',
           service: selectedService || '',
           message: formData.message,
         }),
@@ -173,7 +215,7 @@ export default function Contact() {
       } catch (_) {
         setIsSubmitting(false);
         showToast(
-          'The contact service is temporarily unavailable. Please email rob@excelaccessconsultant.com or call 801-616-3702.',
+          `The contact service is temporarily unavailable. Please email rob@excelaccessconsultant.com or call ${CTA.phone}.`,
           'error',
           8000,
         );
@@ -181,8 +223,17 @@ export default function Contact() {
       }
 
       if (response.ok && data.success) {
+        trackFormSubmit(selectedService || 'general');
         setIsSubmitting(false);
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          hoursPerWeek: '',
+          bestTimeToCall: '',
+          message: '',
+        });
         setSelectedService('');
         setFormStep(1);
         router.push('/thank-you');
@@ -195,7 +246,7 @@ export default function Contact() {
     } catch (error) {
       setIsSubmitting(false);
       showToast(
-        'Network error. Please check your connection and try again, or email rob@excelaccessconsultant.com / call 801-616-3702.',
+        `Network error. Please check your connection and try again, or email rob@excelaccessconsultant.com / call ${CTA.phone}.`,
         'error',
         8000,
       );
@@ -210,127 +261,136 @@ export default function Contact() {
     });
   };
 
+  const captchaTimerClass =
+    captchaTimeLeft <= 30
+      ? 'captcha-timer captcha-timer--danger'
+      : captchaTimeLeft <= 60
+        ? 'captcha-timer captcha-timer--warning'
+        : 'captcha-timer captcha-timer--normal';
+
   return (
     <>
       <SEO
         title='Contact | ExcelAccessConsultant.com'
-        description='Get in touch for a free consultation. Excel VBA automation and Access database consulting. Call 801-616-3702 or email rob@excelaccessconsultant.com'
+        description={`Get in touch for a free consultation. Excel VBA automation and Access database consulting. Call ${CTA.phone} or email rob@excelaccessconsultant.com`}
         keywords='excel consultant contact, access database help, vba automation contact, excel automation quote'
         url='https://excelaccessconsultant.com/contact'
         ogTitle='Contact - ExcelAccessConsultant.com'
       />
 
-      <div className='bg-base min-h-screen text-slate-800 font-sans'>
-        <section id='contact' className='py-8 md:py-12 bg-white'>
-          <div className='max-w-7xl mx-auto px-6'>
-            <div className='text-center mb-8 md:mb-12'>
-              <h1 className='text-heading-xl md:text-display-md font-bold text-slate-900 mb-3'>
-                Get in Touch
-              </h1>
-              <p className='text-body-lg text-slate-600 max-w-2xl mx-auto'>
-                Tell me about your project. I&apos;ll get back to you within 24 hours.
+      <div className='page'>
+        <section className='page-hero page-hero--centered'>
+          <div className='container'>
+            <span className='chip-primary lead-magnet-hero__eyebrow'>
+              Free 30-Minute Consultation
+            </span>
+            <h1 className='page-hero__title text-display-sm md:text-display-md lg:text-display-lg'>
+              Get in Touch
+            </h1>
+            <p className='page-hero__lead'>
+              Tell me about your Excel or Access project, a crashing database, a report that eats
+              half a day, or a migration you have been putting off. I respond within 24 hours, with{' '}
+              {TRUST.years} of experience and {TRUST.projects} completed projects behind every
+              recommendation.
+            </p>
+            <div className='contact-hero__channels'>
+              <a href={CTA.phoneHref} className='contact-hero__channel'>
+                <span className='contact-hero__channel-label'>Phone</span>
+                <span className='contact-hero__channel-value'>{CTA.phone}</span>
+              </a>
+              <a href='mailto:rob@excelaccessconsultant.com' className='contact-hero__channel'>
+                <span className='contact-hero__channel-label'>Email</span>
+                <span className='contact-hero__channel-value'>rob@excelaccessconsultant.com</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <ScrollReveal
+          as='section'
+          id='contact'
+          className='page-section page-section--alt page-section--border'
+        >
+          <div className='container'>
+            <div className='section-header section-header--lg'>
+              <h2 className='section-header__title'>Start Your Project Inquiry</h2>
+              <p className='section-header__desc'>
+                Two quick steps, pick a service, then share the details. Fixed-price quotes after
+                consultation.
               </p>
             </div>
-            <div className='grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch'>
-              <div className='flex flex-col'>
-                <div className='bg-white border border-slate-200 shadow-card p-md rounded-card space-y-6 flex-1 flex flex-col min-h-0'>
-                  <div>
-                    <h3 className='text-heading-sm md:text-heading-md font-bold mb-4 font-display text-slate-900'>
-                      Free consultation
-                    </h3>
-                    <p className='text-slate-600'>
-                      Let&apos;s talk about your problem. No charge for the first conversation.
-                    </p>
+
+            <div className='contact-grid'>
+              <div className='contact-col'>
+                <div className='contact-info-card'>
+                  <span className='chip-primary'>No-Obligation Call</span>
+                  <h2 className='contact-info-card__title'>Free consultation</h2>
+                  <p className='contact-info-card__lead'>
+                    Let&apos;s talk about your problem. No charge for the first conversation.
+                  </p>
+
+                  <div className='contact-info-card__pricing'>
+                    <div className='text-price'>$90/hour</div>
+                    <div className='text-muted-sm'>For consulting and diagnostic work</div>
                   </div>
 
-                  <div className='pt-4 border-t border-slate-200'>
-                    <div className='text-primary text-3xl font-bold mb-2'>$90/hour</div>
-                    <div className='text-body-sm text-slate-600 mb-4'>
-                      For consulting and diagnostic work
+                  <CheckList items={CONTACT_PROMISES} accent='primary' />
+
+                  <p className='contact-info-card__note text-muted-sm'>
+                    I tell you what it costs before I start. No surprises.
+                  </p>
+
+                  <div className='contact-info-card__channels'>
+                    <div>
+                      <p className='contact-info-card__channel-label'>Phone</p>
+                      <a href={CTA.phoneHref} className='text-link text-link--underline'>
+                        {CTA.phone}
+                      </a>
                     </div>
-                  </div>
-
-                  <div className='pt-4 border-t border-slate-200 space-y-3 text-slate-600'>
-                    <p>• Most projects are fixed-price once we agree on scope</p>
-                    <p>• No monthly fees or licenses</p>
-                    <p>• You own everything I build</p>
-                  </div>
-
-                  <div className='pt-4 border-t border-slate-200'>
-                    <p className='text-slate-600'>
-                      I tell you what it costs before I start. No surprises.
-                    </p>
-                  </div>
-
-                  <div className='pt-6 border-t border-slate-200'>
-                    <div className='space-y-3'>
-                      <div>
-                        <p className='text-sm font-medium text-slate-700 mb-1'>Phone</p>
-                        <a
-                          href='tel:8016163702'
-                          className='text-primary font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded'
-                        >
-                          801-616-3702
-                        </a>
-                      </div>
-                      <div>
-                        <p className='text-body-sm font-medium text-slate-700 mb-1'>Email</p>
-                        <a
-                          href='mailto:rob@excelaccessconsultant.com'
-                          className='text-primary font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded'
-                        >
-                          rob@excelaccessconsultant.com
-                        </a>
-                      </div>
+                    <div>
+                      <p className='contact-info-card__channel-label'>Email</p>
+                      <a
+                        href='mailto:rob@excelaccessconsultant.com'
+                        className='text-link text-link--underline'
+                      >
+                        rob@excelaccessconsultant.com
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className='flex flex-col'>
-                <div className='card flex-1 flex flex-col min-h-0'>
-                  <div className='mb-6 flex items-center gap-2'>
+              <div className='contact-col'>
+                <div className='contact-form-card'>
+                  <div className='form-progress'>
                     <div
-                      className={`flex-1 h-1.5 rounded-full transition-all duration-standard ${
-                        formStep >= 1 ? 'bg-primary' : 'bg-slate-200'
-                      }`}
-                    ></div>
+                      className={`form-progress__bar ${formStep >= 1 ? 'form-progress__bar--active' : ''}`}
+                    />
                     <div
-                      className={`flex-1 h-1.5 rounded-full transition-all duration-standard ${
-                        formStep >= 2 ? 'bg-primary' : 'bg-slate-200'
-                      }`}
-                    ></div>
+                      className={`form-progress__bar ${formStep >= 2 ? 'form-progress__bar--active' : ''}`}
+                    />
                   </div>
-                  <div className='mb-6 text-body-sm text-slate-600 font-medium'>
-                    Step {formStep} of 2
-                  </div>
+                  <div className='form-step-label'>Step {formStep} of 2</div>
 
                   {formStep === 1 ? (
-                    <div className='space-y-6'>
+                    <div className='stack stack--lg'>
                       <div>
-                        <h3 className='text-heading-sm md:text-heading-md font-bold mb-4 font-display text-slate-900'>
-                          What do you need help with?
-                        </h3>
-                        <p className='text-slate-600 mb-6'>
+                        <h3>What do you need help with?</h3>
+                        <p className='text-muted'>
                           Select the service that best matches your needs. You can always change
                           this later.
                         </p>
-                        <div className='space-y-3'>
-                          {[
-                            { value: 'excel-automation', label: 'Excel Automation' },
-                            { value: 'access-database', label: 'Access Database Help' },
-                            { value: 'financial-modeling', label: 'Financial Modeling' },
-                            { value: 'database-migration', label: 'Database Migration' },
-                            { value: 'vba-development', label: 'VBA Development' },
-                            { value: 'general', label: 'Not Sure / General Inquiry' },
-                          ].map((service) => (
+                        <div className='service-radio-list'>
+                          {CONTACT_SERVICES.map((service) => (
                             <label
                               key={service.value}
-                              className={`flex items-center p-4 border-2 rounded-card cursor-pointer ${
-                                selectedService === service.value
-                                  ? 'border-primary bg-primary/5 shadow-md'
-                                  : 'border-slate-200'
-                              }`}
+                              className={[
+                                'service-radio',
+                                `service-radio--${service.accent}`,
+                                selectedService === service.value ? 'service-radio--selected' : '',
+                              ]
+                                .filter(Boolean)
+                                .join(' ')}
                             >
                               <input
                                 type='radio'
@@ -338,9 +398,8 @@ export default function Contact() {
                                 value={service.value}
                                 checked={selectedService === service.value}
                                 onChange={(e) => setSelectedService(e.target.value)}
-                                className='mr-3 w-4 h-4 flex-shrink-0 text-primary border-slate-300 focus:ring-0 focus:ring-offset-0 focus:outline-none'
                               />
-                              <span className='text-slate-900 font-medium'>{service.label}</span>
+                              <span className='service-radio__label'>{service.label}</span>
                             </label>
                           ))}
                         </div>
@@ -356,19 +415,16 @@ export default function Contact() {
                             showToast('Please select a service to continue.', 'error', 5000);
                           }
                         }}
-                        className='w-full'
+                        className='btn--full'
                       >
                         Continue →
                       </Button>
                     </div>
                   ) : (
-                    <form className='space-y-6' onSubmit={handleFormSubmit} noValidate>
-                      <div>
-                        <label
-                          htmlFor='name'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Full Name <span className='text-red-600'>*</span>
+                    <form className='stack stack--lg' onSubmit={handleFormSubmit} noValidate>
+                      <div className='form-group'>
+                        <label htmlFor='name' className='form-label'>
+                          Full Name <span className='text-required'>*</span>
                         </label>
                         <input
                           id='name'
@@ -381,23 +437,20 @@ export default function Contact() {
                               setFieldErrors({ ...fieldErrors, name: '' });
                             }
                           }}
-                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary ${
+                          className={`input-field ${
                             fieldErrors.name && fieldErrors.name.trim() !== ''
-                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                              : 'border-slate-300 focus:border-primary'
+                              ? 'input-field--error'
+                              : ''
                           }`}
                           placeholder='Your full name'
                         />
                         {fieldErrors.name && fieldErrors.name.trim() !== '' && (
-                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.name}</p>
+                          <p className='form-error'>{fieldErrors.name}</p>
                         )}
                       </div>
-                      <div>
-                        <label
-                          htmlFor='email'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
-                          Email Address <span className='text-red-600'>*</span>
+                      <div className='form-group'>
+                        <label htmlFor='email' className='form-label'>
+                          Email Address <span className='text-required'>*</span>
                         </label>
                         <input
                           id='email'
@@ -410,22 +463,19 @@ export default function Contact() {
                               setFieldErrors({ ...fieldErrors, email: '' });
                             }
                           }}
-                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary ${
+                          className={`input-field ${
                             fieldErrors.email && fieldErrors.email.trim() !== ''
-                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                              : 'border-slate-300 focus:border-primary'
+                              ? 'input-field--error'
+                              : ''
                           }`}
                           placeholder='your.email@company.com'
                         />
                         {fieldErrors.email && fieldErrors.email.trim() !== '' && (
-                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.email}</p>
+                          <p className='form-error'>{fieldErrors.email}</p>
                         )}
                       </div>
-                      <div>
-                        <label
-                          htmlFor='phone'
-                          className='block text-sm font-medium text-slate-700 mb-2'
-                        >
+                      <div className='form-group'>
+                        <label htmlFor='phone' className='form-label'>
                           Phone Number
                         </label>
                         <input
@@ -434,16 +484,61 @@ export default function Contact() {
                           type='tel'
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className='w-full px-4 py-3 bg-white border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary'
+                          className='input-field'
                           placeholder='Your phone number'
                         />
                       </div>
-                      <div>
-                        <label
-                          htmlFor='message'
-                          className='block text-sm font-medium text-slate-700 mb-2'
+                      <div className='form-group'>
+                        <label htmlFor='company' className='form-label'>
+                          Company Name
+                        </label>
+                        <input
+                          id='company'
+                          name='company'
+                          type='text'
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          className='input-field'
+                          placeholder='Your company'
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='hoursPerWeek' className='form-label'>
+                          Hours per week on this process
+                        </label>
+                        <input
+                          id='hoursPerWeek'
+                          name='hoursPerWeek'
+                          type='number'
+                          min='0'
+                          step='0.5'
+                          value={formData.hoursPerWeek}
+                          onChange={handleInputChange}
+                          className='input-field'
+                          placeholder='e.g. 6'
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='bestTimeToCall' className='form-label'>
+                          Best time to call
+                        </label>
+                        <select
+                          id='bestTimeToCall'
+                          name='bestTimeToCall'
+                          value={formData.bestTimeToCall}
+                          onChange={handleInputChange}
+                          className='input-field'
                         >
-                          What process takes too long? <span className='text-red-600'>*</span>
+                          <option value=''>Select a time window</option>
+                          <option value='morning'>Morning (8am–12pm MT)</option>
+                          <option value='afternoon'>Afternoon (12pm–5pm MT)</option>
+                          <option value='evening'>Evening (5pm–7pm MT)</option>
+                          <option value='anytime'>Anytime</option>
+                        </select>
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='message' className='form-label'>
+                          What process takes too long? <span className='text-required'>*</span>
                         </label>
                         <textarea
                           id='message'
@@ -456,44 +551,31 @@ export default function Contact() {
                               setFieldErrors({ ...fieldErrors, message: '' });
                             }
                           }}
-                          className={`w-full px-4 py-3 bg-white border text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary resize-y ${
+                          className={`input-field ${
                             fieldErrors.message && fieldErrors.message.trim() !== ''
-                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                              : 'border-slate-300 focus:border-primary'
+                              ? 'input-field--error'
+                              : ''
                           }`}
                           placeholder='Describe the process or task that takes too long...'
-                        ></textarea>
+                        />
                         {fieldErrors.message && fieldErrors.message.trim() !== '' && (
-                          <p className='text-red-600 text-sm mt-1'>{fieldErrors.message}</p>
+                          <p className='form-error'>{fieldErrors.message}</p>
                         )}
                       </div>
-                      <div>
-                        <div className='flex items-center justify-between mb-2'>
-                          <label
-                            htmlFor='captcha'
-                            className='block text-sm font-medium text-slate-700'
-                          >
-                            Security Check <span className='text-red-600'>*</span>
+                      <div className='form-group'>
+                        <div className='form-label-row'>
+                          <label htmlFor='captcha' className='form-label'>
+                            Security Check <span className='text-required'>*</span>
                           </label>
-                          <span
-                            className={`text-xs font-medium ${
-                              captchaTimeLeft <= 30
-                                ? 'text-red-600'
-                                : captchaTimeLeft <= 60
-                                  ? 'text-yellow-600'
-                                  : 'text-slate-500'
-                            }`}
-                          >
+                          <span className={captchaTimerClass}>
                             {Math.floor(captchaTimeLeft / 60)}:
                             {(captchaTimeLeft % 60).toString().padStart(2, '0')}
                           </span>
                         </div>
-                        <div className='flex items-center gap-3'>
-                          <div className='flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-50 border border-slate-300 rounded font-mono'>
-                            <span className='text-slate-900 font-bold text-xl'>
-                              {captchaQuestion}
-                            </span>
-                            <span className='text-slate-600 text-lg'>=</span>
+                        <div className='captcha-row'>
+                          <div className='captcha-display'>
+                            <span className='captcha-display__question'>{captchaQuestion}</span>
+                            <span className='captcha-display__equals'>=</span>
                           </div>
                           <input
                             id='captcha'
@@ -505,10 +587,8 @@ export default function Contact() {
                               setCaptchaInput(e.target.value);
                               setCaptchaError(false);
                             }}
-                            className={`w-24 px-4 py-3 bg-white border text-slate-900 text-center font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary ${
-                              captchaError
-                                ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                                : 'border-slate-300'
+                            className={`input-field input-field--captcha ${
+                              captchaError ? 'input-field--error' : ''
                             }`}
                             placeholder='?'
                             autoComplete='off'
@@ -516,12 +596,12 @@ export default function Contact() {
                           <button
                             type='button'
                             onClick={generateCaptcha}
-                            className='px-3 py-3 text-slate-600 border border-slate-300 rounded'
+                            className='captcha-refresh'
                             aria-label='Refresh captcha'
                             title='Get a new question'
                           >
                             <svg
-                              className='w-5 h-5'
+                              className='icon-arrow'
                               fill='none'
                               stroke='currentColor'
                               viewBox='0 0 24 24'
@@ -537,10 +617,10 @@ export default function Contact() {
                           </button>
                         </div>
                         {captchaError && (
-                          <div className='mt-3 p-4 bg-primary rounded-lg shadow-md flex items-center justify-between'>
-                            <div className='flex items-center gap-3'>
+                          <div className='captcha-error-banner'>
+                            <div className='captcha-error-banner__content'>
                               <svg
-                                className='w-5 h-5 text-white flex-shrink-0'
+                                className='captcha-error-banner__icon'
                                 fill='currentColor'
                                 viewBox='0 0 20 20'
                                 aria-hidden='true'
@@ -551,18 +631,18 @@ export default function Contact() {
                                   clipRule='evenodd'
                                 />
                               </svg>
-                              <p className='text-sm font-semibold text-white'>
+                              <p className='captcha-error-banner__text'>
                                 Incorrect answer. Please try again.
                               </p>
                             </div>
                             <button
                               type='button'
                               onClick={() => setCaptchaError(false)}
-                              className='text-white hover:text-slate-200 transition-colors ml-4'
+                              className='captcha-error-banner__dismiss'
                               aria-label='Dismiss error'
                             >
                               <svg
-                                className='w-5 h-5'
+                                className='icon-arrow'
                                 fill='currentColor'
                                 viewBox='0 0 20 20'
                                 aria-hidden='true'
@@ -576,16 +656,12 @@ export default function Contact() {
                             </button>
                           </div>
                         )}
-                        <p className='text-xs text-slate-500 mt-2'>
+                        <p className='captcha-hint'>
                           Solve the math problem to verify you&apos;re human
                         </p>
                       </div>
-                      <div className='flex gap-3'>
-                        <button
-                          type='button'
-                          onClick={() => setFormStep(1)}
-                          className='flex-1 bg-white text-slate-700 border-2 border-slate-300 px-6 py-4 text-base font-medium rounded-md'
-                        >
+                      <div className='form-actions'>
+                        <button type='button' onClick={() => setFormStep(1)} className='btn-back'>
                           ← Back
                         </button>
                         <Button
@@ -593,36 +669,36 @@ export default function Contact() {
                           variant='primary'
                           size='large'
                           disabled={isSubmitting}
-                          className='flex-1 flex items-center justify-center gap-2'
-                          aria-label='Submit contact form'
+                          className='btn--flex'
+                          aria-label='Send project details for consultation'
                         >
                           {isSubmitting ? (
                             <>
                               <svg
-                                className='animate-spin h-5 w-5 text-white'
+                                className='icon-spin'
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 aria-hidden='true'
                               >
                                 <circle
-                                  className='opacity-25'
+                                  className='icon-spin__track'
                                   cx='12'
                                   cy='12'
                                   r='10'
                                   stroke='currentColor'
                                   strokeWidth='4'
-                                ></circle>
+                                />
                                 <path
-                                  className='opacity-75'
+                                  className='icon-spin__path'
                                   fill='currentColor'
                                   d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                                ></path>
+                                />
                               </svg>
                               <span>Sending...</span>
                             </>
                           ) : (
-                            <span>Send Message</span>
+                            <span>Send Project Details</span>
                           )}
                         </Button>
                       </div>
@@ -632,8 +708,37 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </section>
+        </ScrollReveal>
 
+        <ScrollReveal
+          as='section'
+          className='page-section page-section--white page-section--border'
+          delay={80}
+        >
+          <div className='container'>
+            <div className='section-header section-header--lg'>
+              <h2 className='section-header__title'>While You Wait</h2>
+              <p className='section-header__desc'>
+                Free tools and answers to common questions about Excel and Access projects.
+              </p>
+            </div>
+            <div className='cs-grid stagger-group'>
+              {CONTACT_RELATED_LINKS.map((link) => (
+                <Link key={link.num} href={link.href} className={`cs-item cs-item--${link.accent}`}>
+                  <span className='cs-item__num'>{link.num}</span>
+                  <div className='cs-item__body'>
+                    <span className='cs-item__industry'>{link.industry}</span>
+                    <h3 className='cs-item__title'>{link.title}</h3>
+                    <p className='cs-item__outcome'>{link.outcome}</p>
+                  </div>
+                  <ItemArrow />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <DataSecurityDisclaimer />
         <ToastContainer toasts={toasts} removeToast={removeToast} />
       </div>
     </>

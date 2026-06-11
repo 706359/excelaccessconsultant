@@ -1,0 +1,65 @@
+---
+description: Flat UI system — no gradients, unified cards, flat buttons
+alwaysApply: true
+---
+
+# Flat UI Design System (June 2026)
+
+## No gradients — ever
+
+Do not add `linear-gradient`, `radial-gradient`, gradient text (`background-clip: text`), or ambient glow `::before`/`::after` orbs.
+
+Use solid tokens instead:
+
+- Chips: `background: var(--color-primary-50)` or `var(--color-secondary-50)`
+- Accent bars: `background: var(--color-primary)` or `var(--color-secondary)`
+- Surfaces: `white`, `var(--color-slate-50)`, `var(--color-surface)`
+
+## Flat buttons
+
+Source of truth: `src/app/styles/components/Button.css`
+
+```css
+/* ✅ GOOD — flat */
+.btn--primary {
+  background-color: var(--color-primary);
+  box-shadow: none;
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-btn-primary);
+}
+.btn--primary:active {
+  opacity: 0.92;
+  transform: scale(0.98);
+}
+
+/* ❌ BAD — 3D depth */
+box-shadow: 0 3px 0 var(--btn-primary-depth);
+transform: translateY(4px);
+```
+
+Apply the same flat pattern to cookie-consent, header nav active states, blog sidebar CTAs, and form back buttons.
+
+## Card system
+
+Defined in `src/app/styles/components/homepage.css`:
+
+| Class | Use |
+|-------|-----|
+| `cs-result-card` | Featured 3-up cards (problems, client results, specialization block) |
+| `cs-item` | Compact grid rows (services, case studies, industries) |
+| `chip-primary` / `chip-secondary` | Category labels on result cards |
+| `faq-item` + `FAQAccordion` | All FAQ sections |
+
+Cards: white background, `1.5px solid` border, `border-radius: 14–20px`, `var(--elevation-1)` default, `var(--elevation-2|3)` on hover.
+
+## Page CTAs
+
+Use `PageCTASection` from `src/components/ui/PageCTASection/PageCTASection.jsx`:
+
+- Homepage / solid green band: `solidPrimary` prop → `.page-cta--solid-primary`
+- Inner pages: default light variant → `.page-cta--light`
+- Dark navy variant: `dark` prop only when explicitly needed
+
+No `home-cta-premium`, glass inner cards, or blur layers.
