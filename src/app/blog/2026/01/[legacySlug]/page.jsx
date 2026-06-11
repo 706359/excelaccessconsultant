@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import BlogReadTracker from '../../../../../components/Analytics/BlogReadTracker';
 import ArticleSchema from '../../../../../components/SEO/ArticleSchema';
 import AuthorBio from '../../../[slug]/components/AuthorBio';
-import BlogPostCTA from '../../../[slug]/components/BlogPostCTA';
 import {
   LEGACY_DATED_BLOG_SLUGS,
   POST_META,
@@ -61,7 +60,6 @@ export default async function LegacyDatedBlogPage({ params }) {
       />
       <BlogReadTracker slug={canonical} />
       <PostComponent />
-      <BlogPostCTA />
       <AuthorBio />
     </>
   );

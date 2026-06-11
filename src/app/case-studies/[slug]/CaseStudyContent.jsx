@@ -7,37 +7,43 @@ export default function CaseStudyContent({ study, otherStudies }) {
   return (
     <CaseStudyShell study={study} otherStudies={otherStudies}>
       <h2>The Problem</h2>
-      {study.problem.map((p, i) => (
-        <p key={i}>{p}</p>
+      {study.problem.map((paragraph) => (
+        <p key={paragraph.slice(0, 48)}>{paragraph}</p>
       ))}
 
       <h2>The Solution</h2>
-      {study.solution.map((p, i) => (
-        <p key={i}>{p}</p>
+      {study.solution.map((paragraph) => (
+        <p key={paragraph.slice(0, 48)}>{paragraph}</p>
       ))}
 
       <h2>The Outcome</h2>
       <p>{study.outcome}</p>
 
-      <div className='blog-metrics'>
-        <div className='blog-metrics__grid'>
-          {study.metrics.map((m) => (
-            <div key={m.label} className='blog-metrics__item'>
-              <div className='blog-metrics__value'>{m.value}</div>
-              <div className='blog-metrics__label'>{m.label}</div>
-            </div>
-          ))}
-        </div>
+      <div className='grid-2 grid-2--gap-lg'>
+        {study.metrics.map((metric) => (
+          <div key={metric.label} className='card card--metric-glass'>
+            <div className='card__metric'>{metric.value}</div>
+            <div className='card__label'>{metric.label}</div>
+          </div>
+        ))}
       </div>
 
-      <blockquote className='blog-blockquote'>
-        <p>&ldquo;{study.testimonial.quote}&rdquo;</p>
-        <footer>&mdash; {study.testimonial.attribution}</footer>
-      </blockquote>
+      <figure className='testimonial-card'>
+        <blockquote className='testimonial-quote'>
+          &ldquo;{study.testimonial.quote}&rdquo;
+        </blockquote>
+        <figcaption className='testimonial-author'>
+          <span className='testimonial-author__name'>{study.testimonial.attribution}</span>
+        </figcaption>
+      </figure>
 
-      <p>
-        <Link href={study.relatedService}>See {study.relatedServiceLabel} →</Link>
-      </p>
+      <div className='related-tile'>
+        <h3>{study.relatedServiceLabel}</h3>
+        <p className='text-muted-sm'>See how this service applies to projects like this one.</p>
+        <Link href={study.relatedService} className='text-link'>
+          View service →
+        </Link>
+      </div>
     </CaseStudyShell>
   );
 }

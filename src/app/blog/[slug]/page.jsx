@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import BlogReadTracker from '../../../components/Analytics/BlogReadTracker';
 import ArticleSchema from '../../../components/SEO/ArticleSchema';
 import AuthorBio from './components/AuthorBio';
-import BlogPostCTA from './components/BlogPostCTA';
 import {
   ALL_SLUGS,
   getCanonicalBlogSlug,
@@ -58,7 +57,6 @@ export default async function BlogPostPage({ params }) {
       />
       <BlogReadTracker slug={canonical} />
       <PostComponent />
-      <BlogPostCTA />
       <AuthorBio />
     </>
   );
