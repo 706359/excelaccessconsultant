@@ -90,8 +90,8 @@ const TrustBadge = () => {
           <div className='trust-badge__content'>
             <h3 className='trust-badge__title'>Your Data is Secure</h3>
             <p className='trust-badge__text'>
-              I sign NDAs, work in your systems (not mine), and don&apos;t share your information.
-              20+ years handling sensitive business data.
+              Your business data stays private and confidential. Information you share is never sold
+              or distributed. 20+ years protecting sensitive client data.
             </p>
             <Link href='/contact' className='trust-badge__link'>
               Book Free Consultation
