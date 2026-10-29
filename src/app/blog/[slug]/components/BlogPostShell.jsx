@@ -2,20 +2,37 @@
 
 import Link from 'next/link';
 import PageCTASection from '../../../../components/ui/PageCTASection/PageCTASection';
+import { BLOG_CATEGORIES } from '../../../../constants/blogCategories';
 import { CONSULTANTS } from '../../../../constants/site';
 import { getBlogAccent } from '../../../../utils/contentAccents';
+import { getBlogListingPosts } from '../listing';
 import BlogPostSidebar from '../BlogPostSidebar';
 
+const LISTING_BY_SLUG = Object.fromEntries(getBlogListingPosts().map((p) => [p.slug, p]));
+
 export default function BlogPostShell({ post, children }) {
-  const accent = getBlogAccent(post.category);
+  const listing = LISTING_BY_SLUG[post.slug];
+  const categorySlug = listing?.categorySlug || post.categorySlug;
+  const categoryLabel =
+    (categorySlug && BLOG_CATEGORIES[categorySlug]?.title) || listing?.category || post.category;
+  const accent = getBlogAccent(categoryLabel);
 
   return (
     <div className='page'>
       <section className='page-hero'>
         <div className='container'>
-          <span className={accent === 'primary' ? 'chip-primary' : 'chip-secondary'}>
-            {post.category}
-          </span>
+          {categorySlug ? (
+            <Link
+              href={`/blog/categories/${categorySlug}`}
+              className={accent === 'primary' ? 'chip-primary' : 'chip-secondary'}
+            >
+              {categoryLabel}
+            </Link>
+          ) : (
+            <span className={accent === 'primary' ? 'chip-primary' : 'chip-secondary'}>
+              {categoryLabel}
+            </span>
+          )}
           <h1 className='page-hero__title page-hero__title--compact'>{post.title}</h1>
           <div className='content-meta'>
             <Link href='/about'>By {CONSULTANTS.displayName}</Link>

@@ -8,7 +8,7 @@ function AccessSqlServerMigrationCost() {
   const post = {
     slug: 'access-sql-server-migration-cost',
     title: 'Access SQL Server Migration Cost: 2026 Pricing Guide',
-    category: 'Access Database',
+    category: 'Database Migration',
     date: '2026-06-01',
     readTime: '8 min read',
     seoTitle: 'Access SQL Server Migration Cost | 2026 Pricing',

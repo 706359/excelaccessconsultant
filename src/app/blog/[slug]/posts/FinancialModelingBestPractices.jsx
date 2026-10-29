@@ -8,7 +8,7 @@ function FinancialModelingBestPractices() {
   const post = {
     slug: 'financial-modeling-best-practices',
     title: 'Financial Modeling Best Practices: Build Accurate, Reliable Models',
-    category: 'Financial Modeling',
+    category: 'Excel Automation',
     date: '2024-09-12',
     readTime: '12 min read',
     seoTitle: 'Financial Modeling Best Practices | Excel Financial Models',

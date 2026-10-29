@@ -18,7 +18,7 @@ function HowToSpeedUpSlowExcelSpreadsheets() {
   const post = {
     slug: 'how-to-speed-up-slow-excel-spreadsheets',
     title: 'How to Speed Up Slow Excel Spreadsheets',
-    category: 'Excel Tips',
+    category: 'Excel Automation',
     date: '2024-05-22',
     readTime: '9 min read',
     seoTitle: 'How to Speed Up Slow Excel Spreadsheets | Performance Tips',

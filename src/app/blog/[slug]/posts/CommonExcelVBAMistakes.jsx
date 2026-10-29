@@ -8,7 +8,7 @@ function CommonExcelVBAMistakes() {
   const post = {
     slug: 'common-excel-vba-mistakes-and-how-to-fix-them',
     title: 'Common Excel VBA Mistakes (And How to Fix Them)',
-    category: 'VBA Development',
+    category: 'Excel Automation',
     date: '2024-08-05',
     readTime: '10 min read',
     seoTitle: 'Common Excel VBA Mistakes & How to Fix Them | VBA Tips',

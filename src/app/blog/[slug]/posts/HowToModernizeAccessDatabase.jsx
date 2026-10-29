@@ -8,7 +8,7 @@ function HowToModernizeAccessDatabase() {
   const post = {
     slug: 'how-to-modernize-access-database',
     title: 'How To Modernize An Access Database Without Starting Over',
-    category: 'Access Database',
+    category: 'Database Migration',
     date: '2026-06-01',
     readTime: '8 min read',
     seoTitle: 'How To Modernize An Access Database | Practical Guide',
