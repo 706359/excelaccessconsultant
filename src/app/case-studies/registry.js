@@ -207,7 +207,10 @@ export const CASE_STUDIES = {
       attribution: 'IT Director, Distribution Company',
     },
     relatedService: '/database-migration',
-    relatedServiceLabel: 'Access Database Migration',
+    relatedServiceLabel: 'Database Migration',
+    bodyLinks: [
+      { phrase: '50 users', href: '/blog/can-access-handle-50-users' },
+    ],
   },
 
   'distribution-warehouse-pick-list': {
@@ -305,7 +308,7 @@ export const CASE_STUDIES = {
       attribution: 'IT Manager, Multi-Location Clinic Network',
     },
     relatedService: '/database-migration',
-    relatedServiceLabel: 'Access Database Migration',
+    relatedServiceLabel: 'Database Migration',
   },
 };
 

@@ -107,7 +107,10 @@ function AccessVsSQLServer() {
           <h3>Migrate When You Experience:</h3>
           <ul>
             <li>
-              <strong>20+ concurrent users</strong> - Access struggles with many simultaneous users
+              <strong>
+                <Link href='/blog/can-access-handle-50-users'>20+ concurrent users</Link>
+              </strong>{' '}
+              - Access struggles with many simultaneous users
             </li>
             <li>
               <strong>Frequent crashes or locking errors</strong> - Indicates Access limits being

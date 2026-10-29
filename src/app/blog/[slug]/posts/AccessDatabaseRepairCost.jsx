@@ -43,7 +43,12 @@ function AccessDatabaseRepairCost() {
         <p><Link href='/access-database-repair'>Access database repair service</Link> · <Link href='/blog/access-database-repair-guide'>repair vs rebuild guide</Link></p>
 
         <h2>What Affects Your Quote</h2>
-        <p>File size, corruption depth, number of users waiting, and whether VBA must be rewritten. I assess a copy first so production stays untouched.</p>
+        <p>
+          File size,{' '}
+          <Link href='/blog/why-access-databases-become-corrupted'>corruption depth</Link>, number of
+          users waiting, and whether VBA must be rewritten. I assess a copy first so production stays
+          untouched.
+        </p>
         <p><Link href='/contact'>request a fixed-price estimate</Link></p>
         <h2>Next Step</h2>
         <p>

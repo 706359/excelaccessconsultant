@@ -75,10 +75,11 @@ function WhenToMigrateFromAccess() {
                           1. User Count Exceeds 20–30 Concurrent Users
                         </h3>
                         <p>
-                          Access handles roughly 15–20 concurrent users well with proper architecture. At
-                          30+, performance degrades and stability suffers regardless of optimization. If
-                          your team is growing and everyone needs simultaneous access, you&apos;ve outgrown
-                          Access as a back-end.
+                          Access handles roughly{' '}
+                          <Link href='/blog/can-access-handle-50-users'>15–20 concurrent users</Link>{' '}
+                          well with proper architecture. At 30+, performance degrades and stability
+                          suffers regardless of optimization. If your team is growing and everyone needs
+                          simultaneous access, you&apos;ve outgrown Access as a back-end.
                         </p>
                         <p>
                           <strong>Migration target:</strong> SQL Server (keep Access as front-end) or a

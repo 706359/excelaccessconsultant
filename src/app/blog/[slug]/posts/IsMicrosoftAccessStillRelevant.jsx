@@ -207,8 +207,9 @@ function IsMicrosoftAccessStillRelevant() {
           </li>
         </ol>
         <p>
-          As an <Link href='/access-consulting'>Access consulting</Link> specialist, I modernize
-          more databases than I migrate. Optimization costs $3,000–$8,000 and often delivers years
+          As an <Link href='/access-consulting'>Access consulting</Link> specialist, I{' '}
+          <Link href='/blog/how-to-modernize-access-database'>modernize more databases</Link> than I
+          migrate. Optimization costs $3,000–$8,000 and often delivers years
           of additional life. Migration makes sense when you&apos;ve genuinely outgrown Access, not
           because a blog post said it&apos;s dead.
         </p>
