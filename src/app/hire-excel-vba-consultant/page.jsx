@@ -421,6 +421,17 @@ export default function HireExcelVBAConsultant() {
       <section className='page-section page-section--compact page-section--alt'>
         <div className='container container--narrow'>
           <h2>Frequently Asked Questions</h2>
+          <p className='text-muted'>
+            More detail on{' '}
+            <Link href='/faq' className='text-link'>
+              how projects work
+            </Link>
+            , or talk with{' '}
+            <Link href='/excel-consultant-utah' className='text-link'>
+              local Utah VBA help
+            </Link>{' '}
+            if you prefer an in-person kickoff.
+          </p>
           <FAQAccordion items={faqs} />
         </div>
       </section>

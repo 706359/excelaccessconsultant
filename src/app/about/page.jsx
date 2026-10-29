@@ -195,7 +195,11 @@ export default function About() {
           <div className='section-header section-header--lg'>
             <h2 className='section-header__title'>Explore Further</h2>
             <p className='section-header__desc'>
-              Services, case studies, and Utah-based consulting.
+              Services, case studies, and{' '}
+              <Link href='/excel-consultant-utah' className='text-link text-link--underline'>
+                Utah-based consulting
+              </Link>
+              .
             </p>
           </div>
 

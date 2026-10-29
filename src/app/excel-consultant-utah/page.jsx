@@ -167,7 +167,11 @@ export default function ExcelConsultantUtah() {
             <h2 className='section-header__title'>How It Works</h2>
             <p className='section-header__desc'>
               A straightforward process, no hourly billing surprises, no disappearing after
-              delivery.
+              delivery. See{' '}
+              <Link href='/faq' className='text-link text-link--underline'>
+                answers to common questions
+              </Link>{' '}
+              for timelines and pricing basics.
             </p>
           </div>
 

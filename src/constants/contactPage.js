@@ -38,4 +38,12 @@ export const CONTACT_RELATED_LINKS = [
     href: '/faq',
     accent: 'primary',
   },
+  {
+    num: '04',
+    industry: 'Local',
+    title: 'Excel consultant in Utah',
+    outcome: 'Springville-based help for Wasatch Front teams.',
+    href: '/excel-consultant-utah',
+    accent: 'secondary',
+  },
 ];
