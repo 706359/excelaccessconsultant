@@ -1,33 +1,41 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import BlogPostGrid from '../../components/blog/BlogPostGrid';
 import SEO from '../../components/SEO/SEO';
 import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import FilterChipBar from '../../components/ui/FilterChipBar/FilterChipBar';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
-import { filterBlogPosts, getBlogCategoryFilters } from '../../constants/blogFilters';
-import { BLOG_POSTS } from '../../constants/blogPosts';
+import { getBlogCategoryFilters } from '../../constants/blogFilters';
 
-const FILTER_OPTIONS = getBlogCategoryFilters();
-
-function resolveInitialFilter(categoryParam) {
+function resolveInitialFilter(categoryParam, filterOptions) {
   if (!categoryParam) return 'all';
-  const match = FILTER_OPTIONS.find(
+  const match = filterOptions.find(
     (option) => option.id.toLowerCase() === categoryParam.toLowerCase(),
   );
   return match ? match.id : 'all';
 }
 
-export default function BlogPageClient() {
+export default function BlogPageClient({ initialPosts = [] }) {
   const searchParams = useSearchParams();
+  const filterOptions = useMemo(() => getBlogCategoryFilters(), []);
   const [activeFilter, setActiveFilter] = useState(() =>
-    resolveInitialFilter(searchParams.get('category')),
+    resolveInitialFilter(searchParams.get('category'), filterOptions),
   );
 
-  const filteredPosts = useMemo(() => filterBlogPosts(activeFilter), [activeFilter]);
+  useEffect(() => {
+    document.documentElement.classList.add('blog-hub-enhanced');
+    return () => document.documentElement.classList.remove('blog-hub-enhanced');
+  }, []);
+
+  const filteredPosts = useMemo(() => {
+    if (!activeFilter || activeFilter === 'all') return initialPosts;
+    return initialPosts.filter(
+      (post) => post.categorySlug === activeFilter || post.category === activeFilter,
+    );
+  }, [activeFilter, initialPosts]);
 
   const handleFilterChange = (filterId) => {
     setActiveFilter(filterId);
@@ -36,7 +44,7 @@ export default function BlogPageClient() {
   };
 
   return (
-    <div className='page'>
+    <>
       <SEO
         title='Blog - Excel & Access Automation Tips & Guides'
         description='Excel VBA and Access database tips, tutorials, and guides. Practical tips from 20+ years of client work.'
@@ -63,20 +71,20 @@ export default function BlogPageClient() {
           <div className='section-header section-header--lg'>
             <h2 className='section-header__title'>Latest Posts</h2>
             <p className='section-header__desc'>
-              Filter by topic to find guides on Excel automation, Access databases, VBA, and
-              financial modeling.
+              Filter by topic to find guides on Excel automation, Access databases, and database
+              migration.
             </p>
           </div>
 
           <FilterChipBar
             label='Filter by topic'
-            options={FILTER_OPTIONS}
+            options={filterOptions}
             value={activeFilter}
             onChange={handleFilterChange}
           />
 
           <p className='filter-bar__results'>
-            Showing {filteredPosts.length} of {BLOG_POSTS.length} posts
+            Showing {filteredPosts.length} of {initialPosts.length} posts
             {activeFilter !== 'all' ? ` in ${activeFilter}` : ''}
           </p>
 
@@ -88,6 +96,6 @@ export default function BlogPageClient() {
         heading='Need Help with Your Excel or Access Project?'
         subtext='Book a free consultation or request a fixed-price estimate. No pressure. Just an honest assessment of what will work for your data.'
       />
-    </div>
+    </>
   );
 }

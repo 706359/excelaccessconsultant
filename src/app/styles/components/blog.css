@@ -790,3 +790,36 @@ a.blog-card:focus-visible {
   font-size: var(--font-body-sm);
   color: var(--color-slate-600);
 }
+
+/* Hide crawler SSR list once the interactive hub hydrates (list remains in HTML without JS). */
+html.blog-hub-enhanced .blog-ssr-hub {
+  display: none;
+}
+
+.blog-ssr-hub {
+  padding: 1.5rem 0;
+}
+
+.blog-ssr-hub__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-ssr-hub__posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.blog-ssr-hub__posts a {
+  font-weight: 600;
+}
+
+.blog-ssr-hub__posts p {
+  margin: 0.35rem 0 0;
+  color: var(--color-text-muted, #5b6472);
+}
