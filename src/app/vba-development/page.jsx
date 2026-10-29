@@ -15,6 +15,7 @@ import {
 } from '../../components/ui/ServicePageSections/ServicePageSections';
 import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
+import { PILLAR_RELATED } from '../../constants/pillarRelatedBlocks';
 import { TRUST } from '../../constants/site';
 
 const problems = [
@@ -163,24 +164,6 @@ const timelineBox = {
   deliver: 'Working VBA code, documentation, training, 100% code ownership',
 };
 
-const relatedLinks = [
-  {
-    href: '/excel-automation',
-    title: 'Excel Automation',
-    description: 'End-to-end Excel process automation with VBA.',
-  },
-  {
-    href: '/case-studies/retail-pricing-system',
-    title: 'Case Study: Pricing System',
-    description: 'Automated complex pricing calculations with VBA and Access.',
-  },
-  {
-    href: '/access-consulting',
-    title: 'Access Database Consulting',
-    description: 'Fix crashes, rebuild databases, and scale for multi-user access.',
-  },
-];
-
 const serviceFaqs = [
   {
     question: 'What can VBA do in Excel?',
@@ -313,7 +296,10 @@ export default function VBADevelopmentPage() {
 
       <ServiceFAQSection title='Common Questions' faqs={serviceFaqs} />
 
-      <ServiceRelatedSection title='Related Services & Resources' links={relatedLinks} />
+      <ServiceRelatedSection
+        title='Related Services & Resources'
+        groups={PILLAR_RELATED['vba-development']}
+      />
 
       <ServiceFinalCTASection
         heading='Ready to Automate with VBA?'

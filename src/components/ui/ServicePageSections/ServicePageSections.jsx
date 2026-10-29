@@ -174,21 +174,40 @@ export function ServiceTimelineBox({ timelines, provide, deliver }) {
 export function ServiceRelatedSection({
   title = 'Related Services & Resources',
   links,
+  groups,
 }) {
-  if (!links?.length) return null;
+  const sections =
+    groups?.length > 0
+      ? groups
+      : links?.length
+        ? [{ heading: null, links }]
+        : [];
+
+  if (!sections.length) return null;
 
   return (
     <section className='page-section page-section--compact page-section--white page-section--border-t'>
       <div className='container'>
         <h2 className='service-section__title page-section--centered'>{title}</h2>
-        <div className='grid-3'>
-          {links.map(({ href, title, description }) => (
-            <Link key={href} href={href} className='related-tile'>
-              <h3>{title}</h3>
-              <p className='text-muted-sm'>{description}</p>
-            </Link>
-          ))}
-        </div>
+        {sections.map((section) => (
+          <div key={section.heading || 'related'} className='service-related-group'>
+            {section.heading ? (
+              <h3 className='service-related-group__heading'>{section.heading}</h3>
+            ) : null}
+            <div className='grid-3'>
+              {section.links.map(({ href, title: linkTitle, description }) => (
+                <article key={href} className='related-tile stretched-card'>
+                  <h3>
+                    <Link href={href} className='stretched-link'>
+                      {linkTitle}
+                    </Link>
+                  </h3>
+                  {description ? <p className='text-muted-sm'>{description}</p> : null}
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

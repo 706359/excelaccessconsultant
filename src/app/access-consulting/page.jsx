@@ -17,6 +17,7 @@ import {
 } from '../../components/ui/ServicePageSections/ServicePageSections';
 import ServiceHowItWorks from '../../components/ui/ServiceHowItWorks/ServiceHowItWorks';
 import ServicePricingSection from '../../components/ui/ServicePricingSection/ServicePricingSection';
+import { PILLAR_RELATED } from '../../constants/pillarRelatedBlocks';
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
 import { TRUST } from '../../constants/site';
@@ -416,7 +417,7 @@ export default function AccessConsulting() {
 
       <ServiceFAQSection faqs={serviceFaqs} />
 
-      <ServiceRelatedSection links={content.relatedLinks} />
+      <ServiceRelatedSection groups={PILLAR_RELATED['access-consulting']} />
 
       <ServiceFinalCTASection heading={content.finalCta.heading} body={content.finalCta.body} />
     </div>
