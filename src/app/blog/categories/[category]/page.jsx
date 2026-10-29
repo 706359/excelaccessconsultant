@@ -48,7 +48,8 @@ export default async function BlogCategoryPage({ params }) {
   const config = BLOG_CATEGORIES[resolved];
   if (!config) notFound();
 
-  const posts = BLOG_POSTS.filter((post) => config.matchCategories.includes(post.category));
+  const slugSet = new Set(config.postSlugs || []);
+  const posts = BLOG_POSTS.filter((post) => slugSet.has(post.slug));
 
   return <BlogCategoryContent config={config} posts={posts} resolved={resolved} />;
 }

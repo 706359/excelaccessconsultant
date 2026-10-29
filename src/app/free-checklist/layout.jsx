@@ -8,7 +8,7 @@ export const metadata = {
     'Download free Excel automation checklists, Access database health guides, and VBA best practices. Instant access, no spam.',
   openGraph: {
     type: 'website',
-    url: `${BASE}/free-checklist`,
+    url: `${BASE}/free-resources`,
     title: 'Free Excel & Access Resources',
     description:
       'Free guides for Access database health, Excel automation readiness, and VBA best practices.',
@@ -16,7 +16,7 @@ export const metadata = {
     siteName: 'ExcelAccessConsultant',
     locale: 'en_US',
   },
-  alternates: { canonical: `${BASE}/free-checklist` },
+  alternates: { canonical: `${BASE}/free-resources` },
 };
 
 export default function FreeChecklistLayout({ children }) {

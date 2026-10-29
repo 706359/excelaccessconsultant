@@ -13,6 +13,39 @@ const nextConfig = {
   // www -> non-www and http -> https redirects should be handled at DNS/hosting level (Vercel, Cloudflare)
   async redirects() {
     return [
+      // Approved internal-link canonical redirects (one hop — no chains)
+      { source: '/free-checklist', destination: '/free-resources', permanent: true },
+      { source: '/free-checklist.html', destination: '/free-resources', permanent: true },
+      { source: '/resources/free-checklist', destination: '/free-resources', permanent: true },
+      {
+        source: '/resources/free-checklist.html',
+        destination: '/free-resources',
+        permanent: true,
+      },
+      { source: '/resources', destination: '/free-resources', permanent: true },
+      { source: '/resources/faq', destination: '/faq', permanent: true },
+      { source: '/resources/faq.html', destination: '/faq', permanent: true },
+      {
+        source: '/blog/categories/excel-tips',
+        destination: '/blog/categories/excel-automation',
+        permanent: true,
+      },
+      {
+        source: '/blog/categories/excel-tips.html',
+        destination: '/blog/categories/excel-automation',
+        permanent: true,
+      },
+      {
+        source: '/blog/categories/automation-guides',
+        destination: '/blog/categories/excel-automation',
+        permanent: true,
+      },
+      {
+        source: '/blog/categories/automation-guides.html',
+        destination: '/blog/categories/excel-automation',
+        permanent: true,
+      },
+
       { source: '/og-image.png', destination: '/eaclogo.png', permanent: true },
       { source: '/favicon.png', destination: '/favicon-32x32.png', permanent: true },
       { source: '/index.html', destination: '/', permanent: true },
@@ -24,12 +57,6 @@ const nextConfig = {
       { source: '/free-resources.html', destination: '/free-resources', permanent: true },
       { source: '/blog/index.html', destination: '/blog', permanent: true },
       { source: '/case-studies/index.html', destination: '/case-studies', permanent: true },
-      { source: '/resources/faq.html', destination: '/resources/faq', permanent: true },
-      {
-        source: '/resources/free-checklist.html',
-        destination: '/resources/free-checklist',
-        permanent: true,
-      },
       {
         source: '/resources/calculator.html',
         destination: '/resources/calculator',

@@ -5,9 +5,9 @@ export const metadata = {
   ...freeChecklistMetadata,
   openGraph: {
     ...freeChecklistMetadata.openGraph,
-    url: `${SITE_URL}/resources/free-checklist`,
+    url: `${SITE_URL}/free-resources`,
   },
-  alternates: { canonical: `${SITE_URL}/resources/free-checklist` },
+  alternates: { canonical: `${SITE_URL}/free-resources` },
 };
 
 export default function ResourcesFreeChecklistLayout({ children }) {

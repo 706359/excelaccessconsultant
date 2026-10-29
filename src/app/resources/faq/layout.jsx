@@ -3,7 +3,11 @@ import { metadata as faqMetadata } from '../../faq/layout';
 
 export const metadata = {
   ...faqMetadata,
-  alternates: { canonical: `${SITE_URL}/resources/faq` },
+  openGraph: {
+    ...faqMetadata.openGraph,
+    url: `${SITE_URL}/faq`,
+  },
+  alternates: { canonical: `${SITE_URL}/faq` },
 };
 
 export default function ResourcesFaqLayout({ children }) {
