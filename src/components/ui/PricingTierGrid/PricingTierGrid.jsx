@@ -35,7 +35,12 @@ export default function PricingTierGrid({ tiers, variant = 'excel', contactHref 
             {tier.highlighted && tier.features?.length > 0 && (
               <p className='cs-result-card__meta'>{tier.features.join(' · ')}</p>
             )}
-            <ResultCardCTA as={Link} href={href} label='Get quote' className='stretched-link' />
+            <ResultCardCTA
+              as={Link}
+              href={href}
+              label={`${tier.name} quote`}
+              className='stretched-link'
+            />
           </article>
         );
       })}

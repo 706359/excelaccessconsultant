@@ -22,7 +22,7 @@ export default function BlogCategoryContent({ config, posts, resolved }) {
       <section className='page-hero page-hero--centered'>
         <div className='container'>
           <Link href='/blog' className='text-link text-link--underline'>
-            ← All Blog Posts
+            All articles
           </Link>
           <span className='chip-primary lead-magnet-hero__eyebrow'>{config.title}</span>
           <h1 className='page-hero__title page-hero__title--compact'>{config.title}</h1>

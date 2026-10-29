@@ -12,15 +12,15 @@ export default function HeroProofOutcomes() {
           href={outcome.href}
           className='Hero-proof-bar Hero-proof-bar--item'
           role='listitem'
-          aria-label={`${outcome.label}: reduced from ${outcome.before} to ${outcome.after}`}
+          aria-label={outcome.label}
         >
-          <span className='Hero-proof-bar__label'>{outcome.label}</span>
-          <span className='Hero-proof-bar__transform'>
+          <span className='Hero-proof-bar__label' aria-hidden='true'>{outcome.label}</span>
+          <span className='Hero-proof-bar__transform' aria-hidden='true'>
             <span className='Hero-proof-bar__before'>{outcome.before}</span>
             <IconArrowRight className='Hero-proof-bar__icon' size={ICON_SIZE.sm} aria-hidden />
             <span className='Hero-proof-bar__after'>{outcome.after}</span>
           </span>
-          <span className='Hero-proof-bar__link'>
+          <span className='Hero-proof-bar__link' aria-hidden='true'>
             Case study
             <IconArrowRight size={ICON_SIZE.sm} aria-hidden />
           </span>

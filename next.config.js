@@ -13,37 +13,37 @@ const nextConfig = {
   // www -> non-www and http -> https redirects should be handled at DNS/hosting level (Vercel, Cloudflare)
   async redirects() {
     return [
-      // Approved internal-link canonical redirects (one hop — no chains)
-      { source: '/free-checklist', destination: '/free-resources', permanent: true },
-      { source: '/free-checklist.html', destination: '/free-resources', permanent: true },
-      { source: '/resources/free-checklist', destination: '/free-resources', permanent: true },
+      // Approved internal-link canonical redirects (301, one hop — no chains)
+      { source: '/free-checklist', destination: '/free-resources', statusCode: 301 },
+      { source: '/free-checklist.html', destination: '/free-resources', statusCode: 301 },
+      { source: '/resources/free-checklist', destination: '/free-resources', statusCode: 301 },
       {
         source: '/resources/free-checklist.html',
         destination: '/free-resources',
-        permanent: true,
+        statusCode: 301,
       },
-      { source: '/resources', destination: '/free-resources', permanent: true },
-      { source: '/resources/faq', destination: '/faq', permanent: true },
-      { source: '/resources/faq.html', destination: '/faq', permanent: true },
+      { source: '/resources', destination: '/free-resources', statusCode: 301 },
+      { source: '/resources/faq', destination: '/faq', statusCode: 301 },
+      { source: '/resources/faq.html', destination: '/faq', statusCode: 301 },
       {
         source: '/blog/categories/excel-tips',
         destination: '/blog/categories/excel-automation',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/blog/categories/excel-tips.html',
         destination: '/blog/categories/excel-automation',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/blog/categories/automation-guides',
         destination: '/blog/categories/excel-automation',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/blog/categories/automation-guides.html',
         destination: '/blog/categories/excel-automation',
-        permanent: true,
+        statusCode: 301,
       },
 
       { source: '/og-image.png', destination: '/eaclogo.png', permanent: true },

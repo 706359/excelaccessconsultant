@@ -31,7 +31,7 @@ export default function CaseStudySidebar({ study, otherStudies, accent = 'primar
     <ArticleSidebar
       accent={accent}
       sections={sections}
-      backLink={{ href: '/case-studies', label: '← View All Case Studies' }}
+      backLink={{ href: '/case-studies', label: 'Case studies index' }}
     />
   );
 }

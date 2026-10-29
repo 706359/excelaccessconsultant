@@ -7,6 +7,7 @@ import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTA
 import FilterChipBar from '../../components/ui/FilterChipBar/FilterChipBar';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import ResultCardCTA from '../../components/ui/ResultCardCTA/ResultCardCTA';
+import { CASE_SHORT_TITLES } from '../../constants/relatedContent';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
 import { getCaseStudyCardDisplay } from '../../utils/contentAccents';
 import { ALL_CASE_STUDY_SLUGS, CASE_STUDIES } from './registry';
@@ -134,9 +135,12 @@ export default function CaseStudiesPage() {
                     </div>
                     <h2 className='cs-result-card__metric cs-result-card__metric--title'>
                       <Link href={`/case-studies/${study.slug}`} className='stretched-link'>
-                        {study.title}
+                        {CASE_SHORT_TITLES[study.slug] || study.title}
                       </Link>
                     </h2>
+                    {CASE_SHORT_TITLES[study.slug] ? (
+                      <p className='cs-result-card__label'>{study.title}</p>
+                    ) : null}
                     {highlightValue && (
                       <>
                         <div className='cs-result-card__metric'>{highlightValue}</div>

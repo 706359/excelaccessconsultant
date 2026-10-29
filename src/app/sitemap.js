@@ -1,5 +1,5 @@
 import { ALL_BLOG_CATEGORY_SLUGS } from '../constants/blogCategories';
-import { ALL_SLUGS, LEGACY_DATED_BLOG_SLUGS } from './blog/[slug]/registry';
+import { CANONICAL_BLOG_SLUGS } from './blog/[slug]/listing';
 import { CANONICAL_CASE_STUDY_SLUGS } from './case-studies/registry';
 
 const BASE = 'https://excelaccessconsultant.com';
@@ -22,7 +22,6 @@ const staticRoutes = [
   { path: 'resources/calculator', priority: 0.7, changeFrequency: 'monthly' },
   { path: 'excel-consultant-utah', priority: 0.8, changeFrequency: 'monthly' },
   { path: 'hire-excel-vba-consultant', priority: 0.8, changeFrequency: 'monthly' },
-  { path: 'thank-you', priority: 0.5, changeFrequency: 'yearly' },
   { path: 'privacy-policy', priority: 0.5, changeFrequency: 'yearly' },
 ];
 
@@ -42,7 +41,7 @@ export default function sitemap() {
     priority: 0.6,
   }));
 
-  const blogEntries = ALL_SLUGS.map((slug) => ({
+  const blogEntries = CANONICAL_BLOG_SLUGS.map((slug) => ({
     url: `${BASE}/blog/${slug}`,
     lastModified: now,
     changeFrequency: 'monthly',
@@ -56,18 +55,10 @@ export default function sitemap() {
     priority: 0.65,
   }));
 
-  const legacyBlogEntries = Object.keys(LEGACY_DATED_BLOG_SLUGS).map((legacySlug) => ({
-    url: `${BASE}/blog/2026/01/${legacySlug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }));
-
   return [
     ...entries,
     ...caseStudyEntries,
     ...blogEntries,
     ...categoryEntries,
-    ...legacyBlogEntries,
   ];
 }

@@ -104,10 +104,14 @@ export function ServiceSidebar({
         <p className='service-sidebar__tagline'>{tagline}</p>
         <div className='service-sidebar__examples'>
           {examples.map(({ href, title: exampleTitle, description }) => (
-            <Link key={href} href={href} className='service-sidebar__link'>
-              <h3 className='service-sidebar__link-title'>{exampleTitle}</h3>
-              <p className='service-sidebar__link-desc'>{description}</p>
-            </Link>
+            <div key={href} className='service-sidebar__link stretched-card'>
+              <h3 className='service-sidebar__link-title'>
+                <Link href={href} className='stretched-link'>
+                  {exampleTitle}
+                </Link>
+              </h3>
+              {description ? <p className='service-sidebar__link-desc'>{description}</p> : null}
+            </div>
           ))}
         </div>
       </div>

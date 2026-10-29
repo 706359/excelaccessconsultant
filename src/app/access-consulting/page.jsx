@@ -229,7 +229,7 @@ export default function AccessConsulting() {
           relationships and rules right so the numbers you report on can be trusted. Most Access
           database consultancy work starts with a system that already exists and has started to
           fail. If yours keeps crashing or throwing corruption errors, the first step is usually an{' '}
-          <Link href='/access-database-repair'>Access database repair</Link>. If it only struggles
+          <Link href='/access-database-repair'>emergency Access repair</Link>. If it only struggles
           when several people are in it at once, the cause is almost always how the file is set up,
           not your computers.
         </p>

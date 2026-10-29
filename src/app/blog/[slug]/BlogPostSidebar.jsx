@@ -35,7 +35,7 @@ export default function BlogPostSidebar({ currentSlug, accent = 'primary' }) {
     <ArticleSidebar
       accent={accent}
       sections={sections}
-      backLink={{ href: '/blog', label: '← View All Blog Posts' }}
+      backLink={{ href: '/blog', label: 'Blog hub' }}
     />
   );
 }

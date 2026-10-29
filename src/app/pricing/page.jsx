@@ -108,7 +108,7 @@ export default function PricingPage() {
               <PricingTierGrid
                 tiers={service.tiers}
                 variant={service.variant}
-                contactHref={`${CTA.primaryHref}?service=${service.slug}`}
+                contactHref={CTA.primaryHref}
               />
             </article>
           ))}

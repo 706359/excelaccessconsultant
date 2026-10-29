@@ -10,9 +10,17 @@ import BlogPostSidebar from '../BlogPostSidebar';
 
 const LISTING_BY_SLUG = Object.fromEntries(getBlogListingPosts().map((p) => [p.slug, p]));
 
+const CATEGORY_SLUG_BY_POST = {};
+for (const [categorySlug, config] of Object.entries(BLOG_CATEGORIES)) {
+  for (const slug of config.postSlugs || []) {
+    CATEGORY_SLUG_BY_POST[slug] = categorySlug;
+  }
+}
+
 export default function BlogPostShell({ post, children }) {
   const listing = LISTING_BY_SLUG[post.slug];
-  const categorySlug = listing?.categorySlug || post.categorySlug;
+  const categorySlug =
+    post.categorySlug || listing?.categorySlug || CATEGORY_SLUG_BY_POST[post.slug] || null;
   const categoryLabel =
     (categorySlug && BLOG_CATEGORIES[categorySlug]?.title) || listing?.category || post.category;
   const accent = getBlogAccent(categoryLabel);

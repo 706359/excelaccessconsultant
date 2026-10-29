@@ -1,7 +1,8 @@
 'use client';
 
-import StretchedCsItem from '../ui/StretchedCsItem/StretchedCsItem';
+import { POST_SHORT_TITLES } from '../../constants/relatedContent';
 import { getBlogAccent } from '../../utils/contentAccents';
+import StretchedCsItem from '../ui/StretchedCsItem/StretchedCsItem';
 
 export default function BlogPostGrid({ posts, emptyMessage = 'No posts match this filter.' }) {
   if (!posts.length) {
@@ -12,6 +13,7 @@ export default function BlogPostGrid({ posts, emptyMessage = 'No posts match thi
     <div className='cs-grid'>
       {posts.map((post) => {
         const accent = getBlogAccent(post.category);
+        const shortTitle = POST_SHORT_TITLES[post.slug] || post.title;
 
         return (
           <StretchedCsItem
@@ -20,7 +22,7 @@ export default function BlogPostGrid({ posts, emptyMessage = 'No posts match thi
             accent={accent}
             num={String(post.id ?? '').padStart(2, '0') || undefined}
             industry={post.category}
-            title={post.title}
+            title={shortTitle}
             outcome={post.excerpt}
           >
             <p className='text-muted-sm'>

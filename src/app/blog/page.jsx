@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { ALL_BLOG_CATEGORY_SLUGS, BLOG_CATEGORIES } from '../../constants/blogCategories';
+import { POST_SHORT_TITLES } from '../../constants/relatedContent';
 import { getBlogListingPosts } from './[slug]/listing';
 import BlogPageClient from './BlogPageClient';
 
@@ -27,7 +28,10 @@ export default function BlogPage() {
           <ul className='blog-ssr-hub__posts'>
             {posts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                <Link href={`/blog/${post.slug}`}>
+                  {POST_SHORT_TITLES[post.slug] || post.title}
+                </Link>
+                {POST_SHORT_TITLES[post.slug] ? <p className='text-muted-sm'>{post.title}</p> : null}
                 <p>{post.excerpt}</p>
               </li>
             ))}

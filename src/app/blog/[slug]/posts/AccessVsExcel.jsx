@@ -223,7 +223,7 @@ function AccessVsExcel() {
           If you are unsure where your process fits, that is normal. Most engagements start with a
           short assessment: what you have today, where it breaks, and whether repair, rebuild, or
           automation is the most cost-effective path.{' '}
-          <Link href='/access-database-repair'>Access database repair</Link> and new development
+          <Link href='/access-database-repair'>Access crash recovery</Link> and new development
           both start from the same question, what problem are we actually solving?
         </p>
       </BlogPostShell>

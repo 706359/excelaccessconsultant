@@ -61,7 +61,7 @@ function HowToSplitAccessDatabase() {
 
         <h2>Using the Database Splitter Wizard</h2>
         <p>In Access: Database Tools → Access Database → Split Database. Point to your back-end folder. Access moves tables and leaves linked table icons in the front-end. Test relinking from a second PC before rolling out to the team.</p>
-        <p><Link href='/access-database-repair'>Access database repair</Link></p>
+        <p><Link href='/access-database-repair'>repair corrupted Access files</Link></p>
 
         <h2>After the Split: Settings That Matter</h2>
         <p>Set the front-end to open a startup form, disable bypass key in production if needed, and use record-level locking (Edited Record, not All Records). Compact and repair the back-end on a schedule, not during business hours.</p>
