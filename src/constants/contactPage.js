@@ -19,7 +19,7 @@ export const CONTACT_RELATED_LINKS = [
     industry: 'Free',
     title: 'Free Resources',
     outcome: 'Download checklists and guides for Excel and Access.',
-    href: '/free-checklist',
+    href: '/free-resources',
     accent: 'primary',
   },
   {

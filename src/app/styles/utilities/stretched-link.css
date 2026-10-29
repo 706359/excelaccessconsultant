@@ -1,0 +1,28 @@
+/* Whole card clickable; only the .stretched-link text counts as the anchor. */
+.stretched-card {
+  position: relative;
+}
+
+.stretched-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.stretched-link:hover,
+.stretched-link:focus-visible {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.stretched-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.stretched-card a:not(.stretched-link),
+.stretched-card button {
+  position: relative;
+  z-index: 2;
+}

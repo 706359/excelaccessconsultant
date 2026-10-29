@@ -8,6 +8,7 @@ import SEO from '../../components/SEO/SEO';
 import Button from '../../components/ui/Button/Button';
 import CheckList from '../../components/ui/CheckList/CheckList';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
+import StretchedCsItem from '../../components/ui/StretchedCsItem/StretchedCsItem';
 import ToastContainer from '../../components/ui/Toast/ToastContainer';
 import {
   CONTACT_PROMISES,
@@ -16,23 +17,6 @@ import {
 } from '../../constants/contactPage';
 import { CTA, TRUST } from '../../constants/site';
 import { trackFormSubmit } from '../../utils/analytics';
-
-const ItemArrow = () => (
-  <svg
-    className='cs-item__arrow'
-    width='14'
-    height='14'
-    viewBox='0 0 24 24'
-    fill='none'
-    stroke='currentColor'
-    strokeWidth='2.5'
-    strokeLinecap='round'
-    strokeLinejoin='round'
-    aria-hidden='true'
-  >
-    <path d='M9 5l7 7-7 7' />
-  </svg>
-);
 
 export default function Contact() {
   const router = useRouter();
@@ -722,15 +706,15 @@ export default function Contact() {
             </div>
             <div className='cs-grid stagger-group'>
               {CONTACT_RELATED_LINKS.map((link) => (
-                <Link key={link.num} href={link.href} className={`cs-item cs-item--${link.accent}`}>
-                  <span className='cs-item__num'>{link.num}</span>
-                  <div className='cs-item__body'>
-                    <span className='cs-item__industry'>{link.industry}</span>
-                    <h3 className='cs-item__title'>{link.title}</h3>
-                    <p className='cs-item__outcome'>{link.outcome}</p>
-                  </div>
-                  <ItemArrow />
-                </Link>
+                <StretchedCsItem
+                  key={link.num}
+                  href={link.href}
+                  accent={link.accent}
+                  num={link.num}
+                  industry={link.industry}
+                  title={link.title}
+                  outcome={link.outcome}
+                />
               ))}
             </div>
           </div>

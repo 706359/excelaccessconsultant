@@ -82,6 +82,16 @@ export default function Breadcrumb() {
       currentPath += `/${segment}`;
       const isLast = index === pathSegments.length - 1;
 
+      // /resources/* parent crumb → /free-resources (avoids /resources 404)
+      if (segment === 'resources' && pathSegments.length > 1 && index === 0) {
+        items.push({
+          path: '/free-resources',
+          label: 'Free Resources',
+          isActive: false,
+        });
+        return;
+      }
+
       if (routeLabels[currentPath]) {
         items.push({
           path: currentPath,

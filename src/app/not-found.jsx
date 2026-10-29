@@ -35,7 +35,7 @@ const POPULAR_PAGES = [
     accent: 'secondary',
   },
   {
-    href: '/free-checklist',
+    href: '/free-resources',
     title: 'Free Resources',
     desc: 'Access health check and automation checklists',
     accent: 'primary',

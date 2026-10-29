@@ -6,25 +6,9 @@ import SEO from '../../components/SEO/SEO';
 import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import FAQAccordion from '../../components/ui/FAQAccordion/FAQAccordion';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
+import StretchedCsItem from '../../components/ui/StretchedCsItem/StretchedCsItem';
 import { FAQ_PAGE_ITEMS, FAQ_RELATED_LINKS, FAQ_SECTIONS } from '../../constants/faqPage';
 import { TRUST } from '../../constants/site';
-
-const ItemArrow = () => (
-  <svg
-    className='cs-item__arrow'
-    width='14'
-    height='14'
-    viewBox='0 0 24 24'
-    fill='none'
-    stroke='currentColor'
-    strokeWidth='2.5'
-    strokeLinecap='round'
-    strokeLinejoin='round'
-    aria-hidden='true'
-  >
-    <path d='M9 5l7 7-7 7' />
-  </svg>
-);
 
 export default function FAQ() {
   return (
@@ -98,15 +82,15 @@ export default function FAQ() {
           </div>
           <div className='cs-grid stagger-group'>
             {FAQ_RELATED_LINKS.map((link) => (
-              <Link key={link.num} href={link.href} className={`cs-item cs-item--${link.accent}`}>
-                <span className='cs-item__num'>{link.num}</span>
-                <div className='cs-item__body'>
-                  <span className='cs-item__industry'>{link.industry}</span>
-                  <h3 className='cs-item__title'>{link.title}</h3>
-                  <p className='cs-item__outcome'>{link.outcome}</p>
-                </div>
-                <ItemArrow />
-              </Link>
+              <StretchedCsItem
+                key={link.num}
+                href={link.href}
+                accent={link.accent}
+                num={link.num}
+                industry={link.industry}
+                title={link.title}
+                outcome={link.outcome}
+              />
             ))}
           </div>
         </div>

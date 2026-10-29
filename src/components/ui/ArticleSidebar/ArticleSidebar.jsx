@@ -17,10 +17,14 @@ export default function ArticleSidebar({ accent = 'primary', sections = [], back
           </div>
           <div className='service-sidebar__examples'>
             {section.links.map(({ href, title, description }) => (
-              <Link key={href} href={href} className='service-sidebar__link'>
-                <h3 className='service-sidebar__link-title'>{title}</h3>
-                {description && <p className='service-sidebar__link-desc'>{description}</p>}
-              </Link>
+              <div key={href} className='service-sidebar__link stretched-card'>
+                <h3 className='service-sidebar__link-title'>
+                  <Link href={href} className='stretched-link'>
+                    {title}
+                  </Link>
+                </h3>
+                {description ? <p className='service-sidebar__link-desc'>{description}</p> : null}
+              </div>
             ))}
           </div>
         </div>

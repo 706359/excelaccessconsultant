@@ -336,40 +336,49 @@ export default function HireExcelVBAConsultant() {
         <div className='container'>
           <h2>Real Results from Real Projects</h2>
           <div className='grid-3'>
-            <div className='card'>
+            <div className='card stretched-card'>
               <div className='card__metric'>8 hrs → 15 min</div>
-              <h3>Manufacturing Report Automation</h3>
+              <h3>
+                <Link
+                  href='/case-studies/construction-automated-reporting'
+                  className='stretched-link'
+                >
+                  Manufacturing Report Automation
+                </Link>
+              </h3>
               <p className='text-muted'>
                 A manufacturing company spent 8 hours weekly compiling production reports from
                 multiple departments. Automated the entire process into a 15-minute one-click
                 solution. Saved $15,000/year.
               </p>
-              <Link href='/case-studies' className='text-link text-link--underline'>
-                Read full case study →
-              </Link>
             </div>
-            <div className='card'>
+            <div className='card stretched-card'>
               <div className='card__metric'>3 days → 10 min</div>
-              <h3>Financial Close Process</h3>
+              <h3>
+                <Link
+                  href='/case-studies/financial-services-data-integration'
+                  className='stretched-link'
+                >
+                  Financial Close Process
+                </Link>
+              </h3>
               <p className='text-muted'>
                 A finance team&apos;s monthly close took 3 days of manual data gathering and
                 reconciliation. Built an automated system that completes the process in 10 minutes.
                 Saved $25,000/year.
               </p>
-              <Link href='/case-studies' className='text-link text-link--underline'>
-                Read full case study →
-              </Link>
             </div>
-            <div className='card'>
+            <div className='card stretched-card'>
               <div className='card__metric'>6 hrs/wk → 5 min</div>
-              <h3>Operations Dashboard</h3>
+              <h3>
+                <Link href='/case-studies/distribution-slow-spreadsheet' className='stretched-link'>
+                  Operations Dashboard
+                </Link>
+              </h3>
               <p className='text-muted'>
                 An operations manager spent 6 hours weekly updating dashboards from multiple data
                 sources. Automated data pulling, calculations, and formatting. Saved $18,000/year.
               </p>
-              <Link href='/case-studies' className='text-link text-link--underline'>
-                Read full case study →
-              </Link>
             </div>
           </div>
         </div>

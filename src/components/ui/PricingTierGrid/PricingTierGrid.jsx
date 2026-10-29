@@ -12,10 +12,9 @@ export default function PricingTierGrid({ tiers, variant = 'excel', contactHref 
         const href = tier.href || contactHref;
 
         return (
-          <Link
+          <article
             key={tier.name}
-            href={href}
-            className={`cs-result-card cs-result-card--${accent} ${tier.highlighted ? 'cs-result-card--featured' : ''}`}
+            className={`cs-result-card cs-result-card--${accent} stretched-card ${tier.highlighted ? 'cs-result-card--featured' : ''}`}
           >
             <div className='cs-result-card__top'>
               <span className={chipClass}>{tier.highlighted ? 'Most Common' : tier.name}</span>
@@ -36,8 +35,8 @@ export default function PricingTierGrid({ tiers, variant = 'excel', contactHref 
             {tier.highlighted && tier.features?.length > 0 && (
               <p className='cs-result-card__meta'>{tier.features.join(' · ')}</p>
             )}
-            <ResultCardCTA label='Get quote →' />
-          </Link>
+            <ResultCardCTA as={Link} href={href} label='Get quote' className='stretched-link' />
+          </article>
         );
       })}
     </div>

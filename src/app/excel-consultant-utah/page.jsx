@@ -234,15 +234,19 @@ export default function ExcelConsultantUtah() {
 
           <div className='cs-grid stagger-group'>
             {UTAH_RELATED_LINKS.map((link) => (
-              <Link key={link.num} href={link.href} className={`cs-item cs-item--${link.accent}`}>
+              <article key={link.num} className={`cs-item cs-item--${link.accent} stretched-card`}>
                 <span className='cs-item__num'>{link.num}</span>
                 <div className='cs-item__body'>
                   <span className='cs-item__industry'>{link.industry}</span>
-                  <h3 className='cs-item__title'>{link.title}</h3>
+                  <h3 className='cs-item__title'>
+                    <Link href={link.href} className='stretched-link'>
+                      {link.title}
+                    </Link>
+                  </h3>
                   <p className='cs-item__outcome'>{link.outcome}</p>
                 </div>
                 <ItemArrow />
-              </Link>
+              </article>
             ))}
           </div>
         </div>

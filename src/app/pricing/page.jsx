@@ -7,7 +7,6 @@ import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTA
 import FAQAccordion from '../../components/ui/FAQAccordion/FAQAccordion';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import PricingTierGrid from '../../components/ui/PricingTierGrid/PricingTierGrid';
-import ResultCardCTA from '../../components/ui/ResultCardCTA/ResultCardCTA';
 import {
   GENERAL_PROJECT_TIERS,
   PRICING_FAQS,
@@ -102,7 +101,9 @@ export default function PricingPage() {
                   <h3 className='pricing-page__service-title'>{service.title}</h3>
                   <p className='pricing-page__service-intro'>{service.intro}</p>
                 </div>
-                <ResultCardCTA as={Link} href={service.href} label='View service →' />
+                <Link href={service.href} className='text-link text-link--underline'>
+                  {service.title}
+                </Link>
               </div>
               <PricingTierGrid
                 tiers={service.tiers}

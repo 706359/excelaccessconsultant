@@ -22,7 +22,7 @@ export default function CaseStudySidebar({ study, otherStudies, accent = 'primar
       {
         href: study.relatedService,
         title: study.relatedServiceLabel,
-        description: 'Explore the service behind this project',
+        description: null,
       },
     ],
   });

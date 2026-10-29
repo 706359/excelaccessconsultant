@@ -37,12 +37,13 @@ export default function CaseStudyContent({ study, otherStudies }) {
         </figcaption>
       </figure>
 
-      <div className='related-tile'>
-        <h3>{study.relatedServiceLabel}</h3>
+      <div className='related-tile stretched-card'>
+        <h3>
+          <Link href={study.relatedService} className='stretched-link'>
+            {study.relatedServiceLabel}
+          </Link>
+        </h3>
         <p className='text-muted-sm'>See how this service applies to projects like this one.</p>
-        <Link href={study.relatedService} className='text-link'>
-          View service →
-        </Link>
       </div>
     </CaseStudyShell>
   );

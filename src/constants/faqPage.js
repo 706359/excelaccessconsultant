@@ -97,7 +97,7 @@ export const FAQ_RELATED_LINKS = [
     industry: 'Free',
     title: 'Free Resources',
     outcome: 'Checklists and guides for Excel and Access teams.',
-    href: '/free-checklist',
+    href: '/free-resources',
     accent: 'primary',
   },
 ];

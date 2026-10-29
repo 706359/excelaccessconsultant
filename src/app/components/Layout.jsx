@@ -480,7 +480,11 @@ export default function Layout({ children }) {
         <div className='site-footer__inner'>
           <div className='site-footer__grid'>
             <div>
-              <Link href='/' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <Link
+                href='/'
+                aria-label='ExcelAccessConsultant – Home'
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
                 <BrandLogo className='site-footer__logo' loading='lazy' invert />
               </Link>
               <p className='site-footer__brand-text'>
@@ -534,7 +538,7 @@ export default function Layout({ children }) {
                   <Link href='/hire-excel-vba-consultant'>Hire Excel VBA Consultant</Link>
                 </li>
                 <li>
-                  <Link href='/free-checklist'>Free Resources</Link>
+                  <Link href='/free-resources'>Free Resources</Link>
                 </li>
               </ul>
             </div>

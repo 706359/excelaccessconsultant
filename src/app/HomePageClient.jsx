@@ -193,10 +193,9 @@ export default function HomePageClient() {
 
             <div className='grid-3 stagger-group'>
               {PROBLEMS.map((problem) => (
-                <Link
+                <article
                   key={problem.num}
-                  href={problem.href}
-                  className={`cs-result-card cs-result-card--${problem.accent}`}
+                  className={`cs-result-card cs-result-card--${problem.accent} stretched-card`}
                 >
                   <div className='cs-result-card__top'>
                     <span
@@ -206,9 +205,11 @@ export default function HomePageClient() {
                     </span>
                     <span className='cs-result-card__num'>{problem.num}</span>
                   </div>
-                  <div className='cs-result-card__metric cs-result-card__metric--title'>
-                    {problem.title}
-                  </div>
+                  <h3 className='cs-result-card__metric cs-result-card__metric--title'>
+                    <Link href={problem.href} className='stretched-link'>
+                      {problem.title}
+                    </Link>
+                  </h3>
                   <div className='cs-result-card__transform'>
                     <span className='cs-result-card__before'>{problem.before}</span>
                     <span className='cs-result-card__sep'>→</span>
@@ -216,7 +217,7 @@ export default function HomePageClient() {
                   </div>
                   <p className='cs-result-card__desc'>{problem.desc}</p>
                   <ResultCardCTA label={problem.cta} />
-                </Link>
+                </article>
               ))}
             </div>
           </div>
@@ -236,10 +237,9 @@ export default function HomePageClient() {
             </div>
             <div className='grid-3 stagger-group'>
               {HOME_CLIENT_RESULTS.map((cs) => (
-                <Link
+                <article
                   key={cs.href}
-                  href={cs.href}
-                  className={`cs-result-card cs-result-card--${cs.accent}`}
+                  className={`cs-result-card cs-result-card--${cs.accent} stretched-card`}
                 >
                   <div className='cs-result-card__top'>
                     <span className={cs.accent === 'primary' ? 'chip-primary' : 'chip-secondary'}>
@@ -248,7 +248,11 @@ export default function HomePageClient() {
                     <span className='cs-result-card__num'>{cs.num}</span>
                   </div>
                   <div className='cs-result-card__metric'>{cs.metric}</div>
-                  <div className='cs-result-card__label'>{cs.label}</div>
+                  <h3 className='cs-result-card__label'>
+                    <Link href={cs.href} className='stretched-link'>
+                      {cs.label}
+                    </Link>
+                  </h3>
                   <div className='cs-result-card__transform'>
                     <span className='cs-result-card__before'>{cs.before}</span>
                     <span className='cs-result-card__sep'>→</span>
@@ -268,8 +272,8 @@ export default function HomePageClient() {
                       <dd>{cs.outcome}</dd>
                     </div>
                   </dl>
-                  <ResultCardCTA label='Read case study →' />
-                </Link>
+                  <ResultCardCTA label='Read case study' />
+                </article>
               ))}
             </div>
             <p className='text-center-link'>
@@ -362,15 +366,18 @@ export default function HomePageClient() {
 
             <div className='cs-grid stagger-group'>
               {SERVICES.map((service) => (
-                <Link
+                <article
                   key={service.num}
-                  href={service.link}
-                  className={`cs-item cs-item--${service.accent}`}
+                  className={`cs-item cs-item--${service.accent} stretched-card`}
                 >
                   <span className='cs-item__num'>{service.num}</span>
                   <div className='cs-item__body'>
                     <span className='cs-item__industry'>{service.industry}</span>
-                    <h3 className='cs-item__title'>{service.title}</h3>
+                    <h3 className='cs-item__title'>
+                      <Link href={service.link} className='stretched-link'>
+                        {service.title}
+                      </Link>
+                    </h3>
                     <p className='cs-item__outcome'>{service.desc}</p>
                   </div>
                   <svg
@@ -387,7 +394,7 @@ export default function HomePageClient() {
                   >
                     <path d='M9 5l7 7-7 7' />
                   </svg>
-                </Link>
+                </article>
               ))}
             </div>
 
@@ -446,15 +453,15 @@ export default function HomePageClient() {
                     accent: 'primary',
                   },
                 ].map((cs) => (
-                  <Link
-                    key={cs.slug}
-                    href={`/case-studies/${cs.slug}`}
-                    className={`cs-item cs-item--${cs.accent}`}
-                  >
+                  <article key={cs.slug} className={`cs-item cs-item--${cs.accent} stretched-card`}>
                     <span className='cs-item__num'>{cs.num}</span>
                     <div className='cs-item__body'>
                       <span className='cs-item__industry'>{cs.industry}</span>
-                      <h4 className='cs-item__title'>{cs.title}</h4>
+                      <h4 className='cs-item__title'>
+                        <Link href={`/case-studies/${cs.slug}`} className='stretched-link'>
+                          {cs.title}
+                        </Link>
+                      </h4>
                       <p className='cs-item__outcome'>{cs.outcome}</p>
                     </div>
                     <svg
@@ -471,7 +478,7 @@ export default function HomePageClient() {
                     >
                       <path d='M9 5l7 7-7 7' />
                     </svg>
-                  </Link>
+                  </article>
                 ))}
               </div>
             </div>

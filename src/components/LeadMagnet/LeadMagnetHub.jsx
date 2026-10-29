@@ -137,76 +137,46 @@ export default function LeadMagnetHub({
             </p>
           </div>
           <div className='cs-grid'>
-            <Link href='/resources/calculator' className='cs-item cs-item--primary'>
+            <article className='cs-item cs-item--primary stretched-card'>
               <span className='cs-item__num'>01</span>
               <div className='cs-item__body'>
                 <span className='cs-item__industry'>Calculator</span>
-                <h3 className='cs-item__title'>Manual Work ROI Calculator</h3>
+                <h3 className='cs-item__title'>
+                  <Link href='/resources/calculator' className='stretched-link'>
+                    Manual Work ROI Calculator
+                  </Link>
+                </h3>
                 <p className='cs-item__outcome'>
                   Estimate annual cost of repetitive Excel and Access work.
                 </p>
               </div>
-              <svg
-                className='cs-item__arrow'
-                width='14'
-                height='14'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='2.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                aria-hidden='true'
-              >
-                <path d='M9 5l7 7-7 7' />
-              </svg>
-            </Link>
-            <Link href='/blog' className='cs-item cs-item--secondary'>
+            </article>
+            <article className='cs-item cs-item--secondary stretched-card'>
               <span className='cs-item__num'>02</span>
               <div className='cs-item__body'>
                 <span className='cs-item__industry'>Blog</span>
-                <h3 className='cs-item__title'>Excel &amp; Access Articles</h3>
+                <h3 className='cs-item__title'>
+                  <Link href='/blog' className='stretched-link'>
+                    Excel &amp; Access Articles
+                  </Link>
+                </h3>
                 <p className='cs-item__outcome'>
                   Practical guides on automation, repair, and migration.
                 </p>
               </div>
-              <svg
-                className='cs-item__arrow'
-                width='14'
-                height='14'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='2.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                aria-hidden='true'
-              >
-                <path d='M9 5l7 7-7 7' />
-              </svg>
-            </Link>
-            <Link href='/case-studies' className='cs-item cs-item--primary'>
+            </article>
+            <article className='cs-item cs-item--primary stretched-card'>
               <span className='cs-item__num'>03</span>
               <div className='cs-item__body'>
                 <span className='cs-item__industry'>Results</span>
-                <h3 className='cs-item__title'>Client Case Studies</h3>
+                <h3 className='cs-item__title'>
+                  <Link href='/case-studies' className='stretched-link'>
+                    Client Case Studies
+                  </Link>
+                </h3>
                 <p className='cs-item__outcome'>Before-and-after outcomes from recent projects.</p>
               </div>
-              <svg
-                className='cs-item__arrow'
-                width='14'
-                height='14'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='2.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                aria-hidden='true'
-              >
-                <path d='M9 5l7 7-7 7' />
-              </svg>
-            </Link>
+            </article>
           </div>
         </div>
       </ScrollReveal>

@@ -120,10 +120,9 @@ export default function CaseStudiesPage() {
                   getCaseStudyCardDisplay(study);
 
                 return (
-                  <Link
+                  <article
                     key={study.slug}
-                    href={`/case-studies/${study.slug}`}
-                    className={`cs-result-card cs-result-card--${accent}`}
+                    className={`cs-result-card cs-result-card--${accent} stretched-card`}
                   >
                     <div className='cs-result-card__top'>
                       <span className={accent === 'primary' ? 'chip-primary' : 'chip-secondary'}>
@@ -134,7 +133,9 @@ export default function CaseStudiesPage() {
                       </span>
                     </div>
                     <h2 className='cs-result-card__metric cs-result-card__metric--title'>
-                      {study.title}
+                      <Link href={`/case-studies/${study.slug}`} className='stretched-link'>
+                        {study.title}
+                      </Link>
                     </h2>
                     {highlightValue && (
                       <>
@@ -150,8 +151,8 @@ export default function CaseStudiesPage() {
                       </div>
                     )}
                     <p className='cs-result-card__desc'>{excerpt}</p>
-                    <ResultCardCTA label='Read case study →' />
-                  </Link>
+                    <ResultCardCTA label='Read case study' />
+                  </article>
                 );
               })}
             </div>
