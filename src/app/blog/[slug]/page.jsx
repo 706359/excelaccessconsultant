@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import BlogReadTracker from '../../../components/Analytics/BlogReadTracker';
+import RelatedPosts from '../../../components/blog/RelatedPosts';
 import ArticleSchema from '../../../components/SEO/ArticleSchema';
 import AuthorBio from './components/AuthorBio';
 import {
@@ -57,6 +58,9 @@ export default async function BlogPostPage({ params }) {
       />
       <BlogReadTracker slug={canonical} />
       <PostComponent />
+      <div className='container' style={{ paddingBottom: '2rem' }}>
+        <RelatedPosts slug={canonical} />
+      </div>
       <AuthorBio />
     </>
   );

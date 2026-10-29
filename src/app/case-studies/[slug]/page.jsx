@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import CaseStudyTracker from '../../../components/Analytics/CaseStudyTracker';
-import { ALL_CASE_STUDY_SLUGS, CASE_STUDIES, resolveCaseStudySlug } from '../registry';
-import CaseStudyContent from './CaseStudyContent';
-
+import RelatedCaseStudies from '../../../components/case-studies/RelatedCaseStudies';
+import { CASE_SHORT_TITLES, RELATED_CASES } from '../../../constants/relatedContent';
 import { BRAND_LOGO_OG, SITE_URL } from '../../../config/brand';
 import { CONSULTANTS } from '../../../constants/site';
+import { ALL_CASE_STUDY_SLUGS, CASE_STUDIES, resolveCaseStudySlug } from '../registry';
+import CaseStudyContent from './CaseStudyContent';
 
 const BASE = SITE_URL;
 const OG_IMAGE = BRAND_LOGO_OG;
@@ -80,19 +81,23 @@ export default async function CaseStudyPage({ params }) {
   if (!study) notFound();
 
   const canonicalKey = study.canonicalSlug || study.slug;
-  const otherStudies = ALL_CASE_STUDY_SLUGS.filter((s) => {
-    const item = CASE_STUDIES[s];
-    const itemCanonical = item.canonicalSlug || item.slug;
-    return itemCanonical !== canonicalKey && !item.canonicalSlug;
-  })
-    .slice(0, 2)
-    .map((s) => CASE_STUDIES[s]);
+  const relatedSlugs = RELATED_CASES[canonicalKey] || [];
+  const otherStudies = relatedSlugs
+    .map((s) => CASE_STUDIES[s])
+    .filter(Boolean)
+    .map((item) => ({
+      ...item,
+      title: CASE_SHORT_TITLES[item.slug] || item.title,
+    }));
 
   return (
     <>
       <CaseStudyTracker slug={study.canonicalSlug || study.slug} />
       <ArticleSchema study={study} />
       <CaseStudyContent study={study} otherStudies={otherStudies} />
+      <div className='container' style={{ paddingBottom: '2rem' }}>
+        <RelatedCaseStudies slug={canonicalKey} />
+      </div>
     </>
   );
 }
