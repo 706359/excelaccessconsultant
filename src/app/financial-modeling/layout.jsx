@@ -6,13 +6,13 @@ const BASE = SITE_URL;
 const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
-  title: 'Financial Modeling Consultant | Excel Financial Models',
+  title: 'Excel Financial Modeling Experts | Financial Modeling Consultant',
   description:
-    'Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.',
+    'Find Financial Modeling Consultants to Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.',
   openGraph: {
     type: 'website',
     url: `${BASE}/financial-modeling`,
-    title: 'Financial Modeling Consultant | Excel Financial Models',
+    title: 'Financial Modeling Consultant Services',
     description:
       'Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.',
     images: [OG_IMAGE],
@@ -21,7 +21,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Financial Modeling Consultant | Excel Financial Models',
+    title: 'Financial Modeling Consultant Services',
     description:
       'Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.',
     images: [BRAND_LOGO_OG.url],

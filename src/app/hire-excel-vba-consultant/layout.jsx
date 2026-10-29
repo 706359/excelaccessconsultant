@@ -4,7 +4,7 @@ const BASE = SITE_URL;
 const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
-  title: 'Hire an Excel VBA Consultant | Fixed Price, Fast Turnaround',
+  title: 'Hire Excel VBA Consultant | Excel VBA Consulting Services',
   description:
     'Hire an experienced Excel VBA consultant. 20+ years, 500+ projects. Fixed price, clear scope, no surprises. Free 30-minute consultation.',
   openGraph: {

@@ -1,8 +1,5 @@
-'use client';
-
-import { useEffect } from 'react';
+import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
-import SEO from '../../components/SEO/SEO';
 import {
   BenefitsSection,
   MidPageCTA,
@@ -21,7 +18,6 @@ import ServicePricingSection from '../../components/ui/ServicePricingSection/Ser
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
 import { TRUST } from '../../constants/site';
-import { trackServicePageView } from '../../utils/analytics';
 
 const content = SERVICE_CONTENT['financial-modeling'];
 
@@ -95,18 +91,9 @@ const servicePricingTiers = [
 ];
 
 export default function FinancialModeling() {
-  useEffect(() => {
-    trackServicePageView('financial-modeling');
-  }, []);
-
   return (
     <div className='page'>
-      <SEO
-        title='Financial Modeling Consultant | Excel Financial Models'
-        description='Excel financial modeling consultant. Build and audit forecasting, budgeting, and analysis models. Structured, documented, stakeholder-ready. Free consultation.'
-        url='https://excelaccessconsultant.com/financial-modeling'
-        ogTitle='Financial Modeling Consultant Services'
-      />
+      <ServicePageTracker service='financial-modeling' />
 
       <FAQSchema faqs={serviceFaqs} />
 

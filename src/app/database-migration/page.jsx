@@ -1,8 +1,5 @@
-'use client';
-
-import { useEffect } from 'react';
+import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
-import SEO from '../../components/SEO/SEO';
 import {
   BenefitsSection,
   MidPageCTA,
@@ -21,7 +18,6 @@ import ServicePricingSection from '../../components/ui/ServicePricingSection/Ser
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
 import { TRUST } from '../../constants/site';
-import { trackServicePageView } from '../../utils/analytics';
 
 const content = SERVICE_CONTENT['database-migration'];
 
@@ -95,18 +91,9 @@ const servicePricingTiers = [
 ];
 
 export default function DatabaseMigrationPage() {
-  useEffect(() => {
-    trackServicePageView('database-migration');
-  }, []);
-
   return (
     <div className='page'>
-      <SEO
-        title='Access Database Migration | Migrate Access to SQL'
-        description='Access to SQL Server migration consultant. Plan and execute database migrations without data loss. Better performance and scalability. Free consultation.'
-        url='https://excelaccessconsultant.com/database-migration'
-        ogTitle='Access Database Migration Services'
-      />
+      <ServicePageTracker service='database-migration' />
 
       <FAQSchema faqs={serviceFaqs} />
 
@@ -114,7 +101,7 @@ export default function DatabaseMigrationPage() {
         <div className='container'>
           <h1 className='page-hero__title'>Access Database Migration & Modernization Services</h1>
           <p className='page-hero__lead'>
-            Migrate your Access database to SQL Server for better performance, scalability, and
+          migrate access database to cloud for better performance, scalability, and
             cloud access. Preserve all data and functionality. {TRUST.years} of migration
             experience. {TRUST.projects} migration projects. Fixed pricing. Free consultation.
           </p>
@@ -139,46 +126,54 @@ export default function DatabaseMigrationPage() {
       >
         <div className='grid-2'>
           {[
-                  {
-                    title: 'Access to SQL Server',
-                    desc: 'Migrate Access databases to SQL Server. Preserve all tables, relationships, data types, and constraints. Optimize for SQL Server performance.',
-                  },
-                  {
-                    title: 'Access to Cloud (Azure SQL)',
-                    desc: 'Migrate Access databases to Azure SQL Database for cloud access. Enable remote access, automatic backups, and scalable infrastructure.',
-                  },
-                  {
-                    title: 'Data Migration',
-                    desc: 'Migrate all data with zero loss. Preserve data integrity, handle data type conversions, and maintain referential integrity throughout migration.',
-                  },
-                  {
-                    title: 'Table Structure Migration',
-                    desc: 'Convert Access table structures to SQL Server. Optimize indexes, add proper constraints, and improve performance with SQL Server features.',
-                  },
-                  {
-                    title: 'Query Migration',
-                    desc: 'Convert Access queries to SQL Server stored procedures, views, and functions. Optimize for better performance and maintainability.',
-                  },
-                  {
-                    title: 'Form & Report Migration',
-                    desc: 'Recreate Access forms in web interfaces or keep Access front-end connected to SQL Server. Migrate reports to SQL Server Reporting Services.',
-                  },
-                  {
-                    title: 'VBA Code Migration',
-                    desc: 'Convert Access VBA code to SQL Server stored procedures, triggers, or application code. Preserve business logic and functionality.',
-                  },
-                  {
-                    title: 'Security Migration',
-                    desc: 'Set up SQL Server security, user permissions, and access controls. Migrate Access user accounts and permissions to SQL Server.',
-                  },
-                  {
-                    title: 'Performance Optimization',
-                    desc: 'Optimize migrated database for SQL Server. Add proper indexes, optimize queries, and use SQL Server performance features.',
-                  },
-                  {
-                    title: 'Hybrid Solutions',
-                    desc: 'Keep Access front-end, migrate data to SQL Server. Best of both worlds: familiar Access interface with SQL Server backend performance.',
-                  },
+                {
+                  title: 'Migrate Access Database to the Cloud',
+                  desc: 'Move your Access database to the cloud so remote teams work from the same data. Access database migration to cloud means a cloud SQL backend, automatic backups, and an optional Access front end so your users keep the screens they know.',
+                },
+                {
+                  title: 'Migrate Access Database to Azure',
+                  desc: 'Upgrade your Microsoft Access database to Azure SQL. You get remote access, automatic backups, and room to grow without buying or running a server.',
+                },
+                {
+                  title: 'Migrate Access to SQL Server',
+                  desc: 'Migrate data from Access to SQL Server with your tables, relationships, data types, and constraints kept intact. Indexes and structure are tuned for SQL Server.',
+                },
+                {
+                  title: 'Access Database Modernization',
+                  desc: 'Is your Access file slow, crashing, or stuck on one person\'s PC? We split it, move the data to SQL Server or the cloud, and clean up the forms and VBA.',
+                },
+                {
+                  title: 'MS Access Application Migration Services',
+                  desc: 'US-based help for the whole application: data, queries, forms, reports, and VBA. We scope it, quote it, and move it in stages so your team keeps working.',
+                },
+                {
+                  title: 'Access Data Migration',
+                  desc: 'We move every table and check the results against your original data. Data type conversions and referential integrity are handled during the move.',
+                },
+                {
+                  title: 'Table Structure Migration',
+                  desc: 'Convert Access tables to SQL Server with proper keys, indexes, and constraints so the database runs faster than it did in Access.',
+                },
+                {
+                  title: 'Query Migration',
+                  desc: 'Convert Access queries to SQL Server views, stored procedures, and functions. Slow queries get rewritten, not just copied.',
+                },
+                {
+                  title: 'Form & Report Migration',
+                  desc: 'Keep your Access forms connected to SQL Server, or rebuild them as web forms. Reports can move to SQL Server Reporting Services.',
+                },
+                {
+                  title: 'VBA Code Migration',
+                  desc: 'Move VBA logic into stored procedures, triggers, or application code. Your business rules keep working after the move.',
+                },
+                {
+                  title: 'Security & Permissions',
+                  desc: 'Set up SQL Server logins, roles, and permissions, and carry over who can see and change what in your current Access database.',
+                },
+                {
+                  title: 'Hybrid: Access Front End, SQL Server Back End',
+                  desc: 'Keep the Access screens your team already knows and move the data to SQL Server. Faster, safer for multiple users, and the cheapest first step for most small businesses.',
+                },
                 ].map((item) => (
                   <div key={item.title} className='card card--interactive'>
                     <h3>{item.title}</h3>

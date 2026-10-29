@@ -1,8 +1,5 @@
-'use client';
-
-import { useEffect } from 'react';
+import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
-import SEO from '../../components/SEO/SEO';
 import {
   BenefitsSection,
   MidPageCTA,
@@ -21,7 +18,6 @@ import ServicePricingSection from '../../components/ui/ServicePricingSection/Ser
 import { SERVICE_CONTENT, getServiceSidebarTagline } from '../../constants/servicePageContent';
 import { SERVICE_PROCESS_STEPS } from '../../constants/serviceProcessSteps';
 import { TRUST } from '../../constants/site';
-import { trackServicePageView } from '../../utils/analytics';
 
 const SERVICE_KEY = 'excel-automation';
 const content = SERVICE_CONTENT[SERVICE_KEY];
@@ -92,7 +88,7 @@ const CAPABILITY_ITEMS = [
     desc: 'Automatically import data from external sources (databases, APIs, CSV files) and export results to various formats (PDF, Excel, CSV, Access).',
   },
   {
-    title: 'Workflow Automation',
+    title: 'Excel Workflow Automation Services',
     desc: 'Automate entire workflows: data entry → validation → calculation → reporting → distribution. One button runs the entire process.',
   },
   {
@@ -106,24 +102,15 @@ const CAPABILITY_ITEMS = [
 ];
 
 export default function ExcelAutomation() {
-  useEffect(() => {
-    trackServicePageView(SERVICE_KEY);
-  }, []);
-
   return (
     <div className='page'>
-      <SEO
-        title='Excel VBA Automation Services | ExcelAccessConsultant'
-        description='Excel VBA automation consultant. I build custom VBA solutions that eliminate repetitive Excel work, consolidation, reporting, and workflows. Fixed price. Free consultation.'
-        url='https://excelaccessconsultant.com/excel-automation'
-        ogTitle='Excel VBA Automation Services'
-      />
+      <ServicePageTracker service={SERVICE_KEY} />
 
       <FAQSchema faqs={serviceFaqs} />
 
       <section className='page-hero'>
         <div className='container'>
-          <h1 className='page-hero__title'>Excel VBA Automation Services</h1>
+          <h1 className='page-hero__title'>Excel Automation Services</h1>
           <p className='page-hero__lead'>
             Stop wasting hours on manual Excel work. I build custom VBA automation that turns your
             repetitive tasks into one-click solutions. {TRUST.years} of experience. {TRUST.projects}{' '}

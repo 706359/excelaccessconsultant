@@ -6,13 +6,13 @@ const BASE = SITE_URL;
 const OG_IMAGE = BRAND_LOGO_OG;
 
 export const metadata = {
-  title: 'Excel VBA Automation Services | ExcelAccessConsultant',
+  title: 'Excel Workflow Automation Services | Excel Automation Services',
   description:
     'Excel VBA automation consultant. I build custom VBA solutions that eliminate repetitive Excel work, consolidation, reporting, and workflows. Fixed price. Free consultation.',
   openGraph: {
     type: 'website',
     url: `${BASE}/excel-automation`,
-    title: 'Excel VBA Automation Services | ExcelAccessConsultant',
+    title: 'Excel VBA Automation Services | Excel Automation Services',
     description:
       'Excel VBA automation consultant. I build custom VBA solutions that eliminate repetitive Excel work, consolidation, reporting, and workflows. Fixed price. Free consultation.',
     images: [OG_IMAGE],
@@ -21,7 +21,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Excel VBA Automation Services | ExcelAccessConsultant',
+    title: 'Excel VBA Automation Services | Excel Automation Services',
     description:
       'Excel VBA automation consultant. I build custom VBA solutions that eliminate repetitive Excel work, consolidation, reporting, and workflows. Fixed price. Free consultation.',
     images: [BRAND_LOGO_OG.url],

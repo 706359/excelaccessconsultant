@@ -85,7 +85,12 @@ export function MidPageCTA({ heading, subtext }) {
   );
 }
 
-export function ServiceSidebar({ tagline, examples, accent = 'primary' }) {
+export function ServiceSidebar({
+  title = 'Real Examples',
+  tagline,
+  examples,
+  accent = 'primary',
+}) {
   return (
     <div className='service-sidebar'>
       <div className='service-sidebar__card'>
@@ -94,7 +99,7 @@ export function ServiceSidebar({ tagline, examples, accent = 'primary' }) {
             className={`service-sidebar__accent${accent === 'secondary' ? ' service-sidebar__accent--secondary' : ''}`}
             aria-hidden='true'
           />
-          <h2 className='service-sidebar__title'>Real Examples</h2>
+          <h2 className='service-sidebar__title'>{title}</h2>
         </div>
         <p className='service-sidebar__tagline'>{tagline}</p>
         <div className='service-sidebar__examples'>
@@ -166,15 +171,16 @@ export function ServiceTimelineBox({ timelines, provide, deliver }) {
   );
 }
 
-export function ServiceRelatedSection({ links }) {
+export function ServiceRelatedSection({
+  title = 'Related Services & Resources',
+  links,
+}) {
   if (!links?.length) return null;
 
   return (
     <section className='page-section page-section--compact page-section--white page-section--border-t'>
       <div className='container'>
-        <h2 className='service-section__title page-section--centered'>
-          Related Services & Resources
-        </h2>
+        <h2 className='service-section__title page-section--centered'>{title}</h2>
         <div className='grid-3'>
           {links.map(({ href, title, description }) => (
             <Link key={href} href={href} className='related-tile'>

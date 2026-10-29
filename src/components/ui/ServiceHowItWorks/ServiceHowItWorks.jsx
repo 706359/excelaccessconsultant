@@ -1,4 +1,9 @@
-export default function ServiceHowItWorks({ steps, accent = 'primary', children }) {
+export default function ServiceHowItWorks({
+  title = 'How It Works',
+  steps,
+  accent = 'primary',
+  children,
+}) {
   if (!steps?.length) return null;
 
   const numClass =
@@ -7,7 +12,7 @@ export default function ServiceHowItWorks({ steps, accent = 'primary', children 
   return (
     <section className='page-section page-section--compact page-section--white'>
       <div className='container'>
-        <h2>How It Works</h2>
+        <h2>{title}</h2>
         <div className='step-list'>
           {steps.map((step, index) => (
             <div key={step.title} className='step-item'>

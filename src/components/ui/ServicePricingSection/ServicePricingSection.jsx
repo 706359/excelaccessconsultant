@@ -42,6 +42,8 @@ const DEFAULT_TIERS = [
 ];
 
 export default function ServicePricingSection({
+  title = 'Pricing',
+  description = 'Fixed pricing. No hourly billing. No surprises. You know the cost before we start.',
   tiers = DEFAULT_TIERS,
   variant = 'excel',
   footerNote = 'Documentation, training, 100% code ownership, no recurring fees',
@@ -55,10 +57,8 @@ export default function ServicePricingSection({
   return (
     <section className='service-section service-section--alt'>
       <div className='service-section__inner'>
-        <h2 className='service-section__title'>Pricing</h2>
-        <p className='service-section__intro'>
-          Fixed pricing. No hourly billing. No surprises. You know the cost before we start.
-        </p>
+        <h2 className='service-section__title'>{title}</h2>
+        <p className='service-section__intro'>{description}</p>
         <div className='pricing-grid'>
           {tiers.map((tier) => (
             <div

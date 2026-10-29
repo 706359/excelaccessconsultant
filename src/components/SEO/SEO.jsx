@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { BRAND_LOGO } from '../../config/brand';
 
@@ -11,10 +13,8 @@ const SEO = ({
   type = 'website',
 }) => {
   useEffect(() => {
-    // Update document title
     document.title = title;
 
-    // Update or create meta tags
     const updateMetaTag = (name, content, isProperty = false) => {
       const attribute = isProperty ? 'property' : 'name';
       let meta = document.querySelector(`meta[${attribute}="${name}"]`);
@@ -28,28 +28,23 @@ const SEO = ({
       meta.setAttribute('content', content);
     };
 
-    // Update primary meta tags
     updateMetaTag('title', title);
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
 
-    // Update Open Graph tags
     updateMetaTag('og:title', ogTitle, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', `${url}${image}`, true);
     updateMetaTag('og:url', url, true);
     updateMetaTag('og:type', type, true);
 
-    // Update Twitter tags (Twitter uses name= not property=)
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', ogTitle);
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', `${url}${image}`);
 
-    // Update og:site_name
     updateMetaTag('og:site_name', 'ExcelAccessConsultant', true);
 
-    // Update canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');

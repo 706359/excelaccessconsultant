@@ -5,25 +5,26 @@ import { BRAND_LOGO_OG, SITE_URL } from '../../config/brand';
 const BASE = SITE_URL;
 const OG_IMAGE = BRAND_LOGO_OG;
 
+const TITLE = 'Hire a VBA Developer | Excel VBA Programmer & Consultant';
+const DESCRIPTION =
+  'Hire an Excel VBA developer or consultant for custom macros, automation, and broken-code fixes. Fixed price, full source code ownership.';
+
 export const metadata = {
-  title: 'Excel VBA Developer | Hire VBA Programmer',
-  description:
-    'Custom VBA development for Excel and Access. Build macros, automation scripts, and applications. Fix broken code or build from scratch. Fixed scope, fixed price.',
+  title: TITLE,
+  description: DESCRIPTION,
   openGraph: {
     type: 'website',
     url: `${BASE}/vba-development`,
-    title: 'Excel VBA Developer | Hire VBA Programmer',
-    description:
-      'Custom VBA development for Excel and Access. Build macros, automation scripts, and applications. Fix broken code or build from scratch. Fixed scope, fixed price.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: [OG_IMAGE],
     siteName: 'ExcelAccessConsultant',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Excel VBA Developer | Hire VBA Programmer',
-    description:
-      'Custom VBA development for Excel and Access. Build macros, automation scripts, and applications. Fix broken code or build from scratch. Fixed scope, fixed price.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: [BRAND_LOGO_OG.url],
   },
   alternates: { canonical: `${BASE}/vba-development` },
@@ -34,7 +35,7 @@ export default function VBADevelopmentLayout({ children }) {
     <>
       <ServiceSchema
         serviceType='VBA Development'
-        description='Custom VBA development for Excel and Access. Build macros, automation scripts, and applications. Fix broken code or build from scratch. Fixed scope, fixed price.'
+        description={DESCRIPTION}
         url='https://excelaccessconsultant.com/vba-development'
       />
       {children}

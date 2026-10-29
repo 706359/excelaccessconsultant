@@ -1,39 +1,34 @@
-'use client';
-
 import Link from 'next/link';
-import { useState } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
-import SEO from '../../components/SEO/SEO';
 import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
+import FAQAccordion from '../../components/ui/FAQAccordion/FAQAccordion';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import { CONSULTANTS, CTA } from '../../constants/site';
 
+const faqs = [
+  {
+    question: 'How much does it cost to hire an Excel VBA consultant?',
+    answer:
+      'It depends on project complexity. Simple automations (single process, one file) typically run $1,500–$3,000. Advanced projects with multiple integrations run $3,000–$8,000. Enterprise solutions start at $8,000+. Advisory work is $90/hour. Every build project gets a fixed-price quote after consultation, no hourly surprises.',
+  },
+  {
+    question: 'How long does a typical VBA project take?',
+    answer:
+      'Simple automations take 1–2 weeks. Advanced projects with multiple processes take 3–6 weeks. Enterprise solutions can take 2–3 months. I provide a clear timeline in the proposal, and I stick to it.',
+  },
+  {
+    question: 'Do I own the code you write?',
+    answer:
+      'Yes, 100%. All code, documentation, and deliverables are yours. No licensing fees, no ongoing payments to keep using what I built. You own everything outright from day one of delivery.',
+  },
+  {
+    question: 'What if I need changes after the project is delivered?',
+    answer:
+      'I include a 30-day support window after delivery for bug fixes and minor adjustments at no extra cost. After that, I offer ongoing support at my advisory rate ($90/hour) or we scope a new fixed-price project for larger changes.',
+  },
+];
+
 export default function HireExcelVBAConsultant() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const faqs = [
-    {
-      question: 'How much does it cost to hire an Excel VBA consultant?',
-      answer:
-        'It depends on project complexity. Simple automations (single process, one file) typically run $1,500–$3,000. Advanced projects with multiple integrations run $3,000–$8,000. Enterprise solutions start at $8,000+. Advisory work is $90/hour. Every build project gets a fixed-price quote after consultation, no hourly surprises.',
-    },
-    {
-      question: 'How long does a typical VBA project take?',
-      answer:
-        'Simple automations take 1–2 weeks. Advanced projects with multiple processes take 3–6 weeks. Enterprise solutions can take 2–3 months. I provide a clear timeline in the proposal, and I stick to it.',
-    },
-    {
-      question: 'Do I own the code you write?',
-      answer:
-        'Yes, 100%. All code, documentation, and deliverables are yours. No licensing fees, no ongoing payments to keep using what I built. You own everything outright from day one of delivery.',
-    },
-    {
-      question: 'What if I need changes after the project is delivered?',
-      answer:
-        'I include a 30-day support window after delivery for bug fixes and minor adjustments at no extra cost. After that, I offer ongoing support at my advisory rate ($90/hour) or we scope a new fixed-price project for larger changes.',
-    },
-  ];
-
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -72,13 +67,6 @@ export default function HireExcelVBAConsultant() {
 
   return (
     <div className='page'>
-      <SEO
-        title='Hire an Excel VBA Consultant | Fixed Price, Fast Turnaround'
-        description='Hire an experienced Excel VBA consultant. 20+ years, 500+ projects. Fixed price, clear scope, no surprises. Free 30-minute consultation.'
-        url='https://excelaccessconsultant.com/hire-excel-vba-consultant'
-        ogTitle='Hire an Excel VBA Consultant | Fixed Price, Fast Turnaround'
-      />
-
       <FAQSchema faqs={faqs} />
 
       <script
@@ -421,28 +409,10 @@ export default function HireExcelVBAConsultant() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className='page-section page-section--compact page-section--alt'>
         <div className='container container--narrow'>
           <h2>Frequently Asked Questions</h2>
-          <div className='stack stack--md'>
-            {faqs.map((faq, index) => (
-              <div key={index} className='card'>
-                <button
-                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
-                  className='faq-toggle'
-                >
-                  <span>{faq.question}</span>
-                  <span className='faq-toggle__icon'>{openFaqIndex === index ? '−' : '+'}</span>
-                </button>
-                {openFaqIndex === index && (
-                  <div className='faq-answer'>
-                    <p className='text-muted'>{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 

@@ -1,7 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import SEO from '../../components/SEO/SEO';
 import ContactCTAs, { CTA_BUTTON_VARIANTS } from '../../components/ui/ContactCTAs/ContactCTAs';
 import PageCTASection from '../../components/ui/PageCTASection/PageCTASection';
 import ScrollReveal from '../../components/ui/ScrollReveal/ScrollReveal';
@@ -78,13 +75,6 @@ export default function ExcelConsultantUtah() {
 
   return (
     <div className='page'>
-      <SEO
-        title={`Excel VBA Consultant in Utah | ${CONSULTANTS.displayName}`}
-        description='Excel VBA consultant based in Springville, Utah. Serving Salt Lake City, Provo, Ogden, and all of Utah. 20+ years automating business processes. Free consultation.'
-        url='https://excelaccessconsultant.com/excel-consultant-utah'
-        ogTitle={`Excel VBA Consultant in Utah | ${CONSULTANTS.displayName}`}
-      />
-
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
