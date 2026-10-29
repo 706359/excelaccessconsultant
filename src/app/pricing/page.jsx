@@ -151,10 +151,30 @@ export default function PricingPage() {
             Still comparing options? Read{' '}
             <Link href='/blog/excel-automation-cost-what-to-expect' className='text-link'>
               Excel automation cost expectations
-            </Link>{' '}
-            or browse{' '}
+            </Link>
+            , browse{' '}
             <Link href='/case-studies' className='text-link'>
               client results
+            </Link>
+            , review{' '}
+            <Link href='/faq' className='text-link'>
+              pricing and timeline questions
+            </Link>
+            , estimate savings with the{' '}
+            <Link href='/resources/calculator' className='text-link'>
+              ROI calculator
+            </Link>
+            , grab an{' '}
+            <Link href='/free-resources' className='text-link'>
+              automation readiness checklist
+            </Link>
+            , or start a{' '}
+            <Link href='/hire-excel-vba-consultant' className='text-link'>
+              VBA consultant engagement
+            </Link>
+            . Local teams can also explore{' '}
+            <Link href='/excel-consultant-utah' className='text-link'>
+              Utah Excel consulting
             </Link>
             .
           </p>

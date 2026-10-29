@@ -50,7 +50,8 @@ function AccessDatabaseBestPractices() {
         <p><Link href='/blog/access-database-maintenance-checklist'>maintenance checklist</Link> · <Link href='/blog/access-front-end-back-end-architecture'>FE/BE architecture</Link></p>
         <h2>Next Step</h2>
         <p>
-          <Link href='/contact'>Book a free consultation</Link> or{' '}
+          Download a <Link href='/free-resources'>free Access health check</Link>,{' '}
+          <Link href='/contact'>book a free consultation</Link>, or{' '}
           <Link href='/contact?intent=estimate'>request a fixed-price estimate</Link> for your
           Access database.
         </p>

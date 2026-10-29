@@ -54,7 +54,7 @@ function AccessDatabaseMaintenanceChecklist() {
           <li>Test restore from backup</li>
           <li>Review orphaned lock files (.laccdb)</li>
         </ul>
-        <p><Link href='/free-checklist'>free Excel and Access checklists</Link> · <Link href='/blog/access-database-best-practices'>best practices hub</Link></p>
+        <p><Link href='/free-resources'>Excel and Access checklists</Link> · <Link href='/blog/access-database-best-practices'>best practices hub</Link></p>
         <h2>Next Step</h2>
         <p>
           <Link href='/contact'>Book a free consultation</Link> or{' '}
