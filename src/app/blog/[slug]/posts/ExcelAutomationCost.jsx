@@ -135,7 +135,10 @@ function ExcelAutomationCost() {
         </ul>
 
         <h2>Is Excel Automation Worth the Cost?</h2>
-        <p>Most businesses see ROI within 3-6 months. Here&apos;s the math:</p>
+        <p>
+          Most businesses see <Link href='/resources/calculator'>ROI</Link> within 3-6 months.
+          Here&apos;s the math:
+        </p>
         <div className='blog-callout'>
           <p>
             <strong>Example Calculation:</strong>

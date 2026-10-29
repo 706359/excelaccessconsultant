@@ -149,8 +149,8 @@ function TenSignsYouNeedExcelAutomation() {
         <h2>Sign #8: You&apos;re Working Overtime to Complete Manual Tasks</h2>
         <p>
           If manual Excel work is causing overtime or preventing you from focusing on strategic
-          work, automation frees up time. Turn hours of manual work into minutes of automated
-          processing.
+          work, automation frees up time. Turn hours of{' '}
+          <Link href='/resources/calculator'>manual work</Link> into minutes of automated processing.
         </p>
         <p>
           <strong>Example:</strong> A team was working 10 hours of overtime monthly on manual

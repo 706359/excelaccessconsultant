@@ -198,7 +198,10 @@ function HowToSpeedUpSlowExcelSpreadsheets() {
                             <li>File size: 50MB → 8MB (84% reduction)</li>
                             <li>Open time: 5 minutes → 10 seconds (30x faster)</li>
                             <li>Calculation time: 3 minutes → 5 seconds (36x faster)</li>
-                            <li>Cost: $3,500. Annual time savings: $15,000+</li>
+                            <li>
+                              Cost: $3,500. Annual{' '}
+                              <Link href='/resources/calculator'>time savings</Link>: $15,000+
+                            </li>
                           </ul>
                         </div>
       </BlogPostShell>
