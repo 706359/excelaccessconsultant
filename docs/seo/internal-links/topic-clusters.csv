@@ -1,0 +1,52 @@
+cluster,pillar_URL,cluster_page_URL,is_pillar,notes
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/excel-automation,yes,
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/hire-excel-vba-consultant,no,conversion bridge also in vba-development
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/blog/10-signs-you-need-excel-automation,no,
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/blog/excel-automation-cost-what-to-expect,no,
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/blog/excel-reporting-automation-complete-guide,no,
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/blog/how-to-speed-up-slow-excel-spreadsheets,no,
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/blog/categories/excel-tips,no,category hub
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/blog/categories/automation-guides,no,category hub
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/case-studies/construction-automated-reporting,no,
+excel-automation,https://excelaccessconsultant.com/excel-automation,https://excelaccessconsultant.com/case-studies/distribution-slow-spreadsheet,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/access-consulting,yes,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/access-database-repair,no,problem-specific service under Access pillar
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/why-your-access-database-keeps-crashing,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-database-repair-guide,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-database-repair-cost,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/why-access-databases-become-corrupted,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-database-multi-user-setup,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/can-access-handle-50-users,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/how-to-split-access-database,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-front-end-back-end-architecture,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-database-performance-optimization,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-database-best-practices,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-database-maintenance-checklist,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/is-microsoft-access-still-relevant-2026,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-vs-excel-when-to-use-each,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/access-vs-power-apps-when-to-stay-on-access,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/blog/categories/access-database,no,category hub
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/case-studies/manufacturing-inventory-tracking,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/case-studies/retail-pricing-system,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/case-studies/distribution-warehouse-pick-list,no,
+access-consulting,https://excelaccessconsultant.com/access-consulting,https://excelaccessconsultant.com/case-studies/construction-job-costing-tracker,no,"WHY: Access database for jobs/cost codes/WIP; relatedService=/access-consulting; Excel was only the old process"
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/database-migration,yes,
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/blog/access-vs-sql-server-when-to-migrate,no,
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/blog/when-to-migrate-from-access,no,
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/blog/access-sql-server-migration-cost,no,
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/blog/how-to-modernize-access-database,no,
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/case-studies/access-sql-migration-enterprise,no,
+database-migration,https://excelaccessconsultant.com/database-migration,https://excelaccessconsultant.com/case-studies/healthcare-records-access-sql-migration,no,added; relatedService=/database-migration
+vba-development,https://excelaccessconsultant.com/vba-development,https://excelaccessconsultant.com/vba-development,yes,
+vba-development,https://excelaccessconsultant.com/vba-development,https://excelaccessconsultant.com/hire-excel-vba-consultant,no,conversion bridge
+vba-development,https://excelaccessconsultant.com/vba-development,https://excelaccessconsultant.com/blog/common-excel-vba-mistakes-and-how-to-fix-them,no,
+vba-development,https://excelaccessconsultant.com/vba-development,https://excelaccessconsultant.com/case-studies/retail-pricing-system,no,shared with access-consulting (VBA+Access pricing system)
+financial-modeling,https://excelaccessconsultant.com/financial-modeling,https://excelaccessconsultant.com/financial-modeling,yes,
+financial-modeling,https://excelaccessconsultant.com/financial-modeling,https://excelaccessconsultant.com/blog/financial-modeling-best-practices,no,
+financial-modeling,https://excelaccessconsultant.com/financial-modeling,https://excelaccessconsultant.com/case-studies/financial-services-data-integration,no,
+local-utah,https://excelaccessconsultant.com/excel-consultant-utah,https://excelaccessconsultant.com/excel-consultant-utah,yes,
+FLAG,,,"COMPETES: /vba-development (code/macro pillar) vs /excel-automation (process pillar); /hire-excel-vba-consultant is bridge — do not treat as third pillar"
+FLAG,,,"COMPETES mildly: /access-database-repair (problem page) vs /access-consulting (broad pillar)"
+FLAG,,,"COMPETES: /free-checklist vs /free-resources vs /resources/free-checklist — pending 301 of /resources/free-checklist to /free-checklist; prefer /free-resources as hub"
+FLAG,,,"PENDING APPROVAL REDIRECT: /resources/faq -> /faq"
+FLAG,,,"PENDING APPROVAL REDIRECT: /resources/free-checklist -> /free-checklist"

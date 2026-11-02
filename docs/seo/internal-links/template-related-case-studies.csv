@@ -1,0 +1,10 @@
+case_slug,relatedService,related_1,related_2,related_3,inbound_from_related_blocks,note
+construction-automated-reporting,/excel-automation,distribution-slow-spreadsheet,financial-services-data-integration,construction-job-costing-tracker,3,Replace otherStudies.slice hard-order; anchors = shortTitle
+distribution-slow-spreadsheet,/excel-automation,construction-automated-reporting,financial-services-data-integration,retail-pricing-system,3,Replace otherStudies.slice hard-order; anchors = shortTitle
+financial-services-data-integration,/excel-automation,construction-automated-reporting,distribution-slow-spreadsheet,access-sql-migration-enterprise,4,Replace otherStudies.slice hard-order; anchors = shortTitle
+manufacturing-inventory-tracking,/access-consulting,retail-pricing-system,distribution-warehouse-pick-list,construction-job-costing-tracker,5,Replace otherStudies.slice hard-order; anchors = shortTitle
+retail-pricing-system,/access-consulting,manufacturing-inventory-tracking,distribution-warehouse-pick-list,distribution-slow-spreadsheet,3,Replace otherStudies.slice hard-order; anchors = shortTitle
+distribution-warehouse-pick-list,/access-consulting,manufacturing-inventory-tracking,retail-pricing-system,construction-job-costing-tracker,3,Replace otherStudies.slice hard-order; anchors = shortTitle
+construction-job-costing-tracker,/access-consulting,manufacturing-inventory-tracking,distribution-warehouse-pick-list,construction-automated-reporting,3,Replace otherStudies.slice hard-order; anchors = shortTitle
+access-sql-migration-enterprise,/database-migration,healthcare-records-access-sql-migration,financial-services-data-integration,manufacturing-inventory-tracking,2,Replace otherStudies.slice hard-order; anchors = shortTitle
+healthcare-records-access-sql-migration,/database-migration,access-sql-migration-enterprise,manufacturing-inventory-tracking,financial-services-data-integration,1,Replace otherStudies.slice hard-order; anchors = shortTitle

@@ -182,6 +182,7 @@ export const RELATED_CASES = {
     'retail-pricing-system',
     'distribution-warehouse-pick-list',
     'construction-job-costing-tracker',
+    'healthcare-records-access-sql-migration',
   ],
   'retail-pricing-system': [
     'manufacturing-inventory-tracking',
@@ -208,4 +209,12 @@ export const RELATED_CASES = {
     'manufacturing-inventory-tracking',
     'financial-services-data-integration',
   ],
+};
+
+/** Optional single related case study rendered in a post's related block (shortTitle anchor). */
+export const POST_RELATED_CASE = {
+  'when-to-migrate-from-access': 'healthcare-records-access-sql-migration',
+  'access-vs-sql-server-when-to-migrate': 'healthcare-records-access-sql-migration',
+  'can-access-handle-50-users': 'healthcare-records-access-sql-migration',
+  'access-sql-server-migration-cost': 'access-sql-migration-enterprise',
 };

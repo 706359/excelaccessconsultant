@@ -1,0 +1,7 @@
+current_anchor,page,proposed_fix
+View service →,/case-studies/[slug] (CaseStudyContent),Link the relatedServiceLabel title only; drop arrow CTA or use service name as anchor
+View service →,/pricing (ResultCardCTA on each service card),Make card title the only link; remove separate View service CTA or set label to service name
+Explore the service behind this project,/case-studies/[slug] (CaseStudySidebar Related Service description),Anchor = relatedServiceLabel (e.g. Access Database Consulting); description unlinked
+Read full case study →,/hire-excel-vba-consultant (3 cards all → /case-studies),Map cards: (1) production reports → /case-studies/construction-automated-reporting (2) finance close → /case-studies/financial-services-data-integration (3) ops dashboard → /case-studies/distribution-slow-spreadsheet; anchor = case study title short form
+[concatenated card text: num + title + excerpt + readTime],/blog BlogPostGrid (entire card wrapped in <Link>),Link title element only; excerpt/meta plain text
+[concatenated card / cs-item blob],/case-studies index and similar cs-grid cards if whole-card links,Link title only

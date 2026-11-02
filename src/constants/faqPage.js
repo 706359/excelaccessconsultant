@@ -95,7 +95,7 @@ export const FAQ_RELATED_LINKS = [
   {
     num: '03',
     industry: 'Free',
-    title: 'Free Resources',
+    title: 'Excel and Access downloads',
     outcome: 'Checklists and guides for Excel and Access teams.',
     href: '/free-resources',
     accent: 'primary',

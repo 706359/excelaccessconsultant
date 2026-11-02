@@ -1,0 +1,11 @@
+{
+  "url": "/free-resources",
+  "offers": [
+    "Access Database Health Check (15-point stability assessment) → /downloads/access-database-health-check.html",
+    "Excel Automation Readiness Checklist (15-point process audit) → /downloads/excel-automation-readiness-checklist.html",
+    "VBA Best Practices Guide → /downloads/vba-best-practices-guide.html"
+  ],
+  "checklist_delivered": true,
+  "checklist_name": "Excel Automation Readiness Checklist",
+  "anchors_with_checklist_ok": true
+}

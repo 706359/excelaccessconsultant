@@ -1,0 +1,34 @@
+type,slug,shortTitle,word_count
+post,10-signs-you-need-excel-automation,Excel automation signs,3
+post,excel-automation-cost-what-to-expect,Excel automation pricing,3
+post,excel-reporting-automation-complete-guide,Excel reporting automation,3
+post,how-to-speed-up-slow-excel-spreadsheets,speed up Excel,3
+post,common-excel-vba-mistakes-and-how-to-fix-them,common VBA mistakes,3
+post,financial-modeling-best-practices,financial modeling practices,3
+post,why-your-access-database-keeps-crashing,Access crash causes,3
+post,why-access-databases-become-corrupted,why Access corrupts,3
+post,access-database-repair-guide,Access repair guide,3
+post,access-database-repair-cost,Access repair pricing,3
+post,how-to-split-access-database,split an Access database,4
+post,access-database-multi-user-setup,multi-user Access setup,3
+post,access-front-end-back-end-architecture,Access front-end design,3
+post,can-access-handle-50-users,Access with 50 users,4
+post,access-database-performance-optimization,Access performance tuning,3
+post,how-to-modernize-access-database,modernize an Access database,4
+post,access-database-best-practices,Access best practices,3
+post,access-database-maintenance-checklist,Access maintenance checklist,3
+post,is-microsoft-access-still-relevant-2026,Access relevance in 2026,4
+post,access-vs-excel-when-to-use-each,Access vs Excel,3
+post,access-vs-power-apps-when-to-stay-on-access,Access vs Power Apps,4
+post,access-vs-sql-server-when-to-migrate,Access vs SQL Server,4
+post,when-to-migrate-from-access,when to migrate Access,4
+post,access-sql-server-migration-cost,SQL migration pricing,3
+case,manufacturing-inventory-tracking,zero-crash inventory system,3
+case,construction-automated-reporting,30-second weekly reports,3
+case,financial-services-data-integration,Excel SQL data integration,4
+case,distribution-slow-spreadsheet,10-second spreadsheet opens,3
+case,retail-pricing-system,automated retail pricing,3
+case,access-sql-migration-enterprise,50-user SQL migration,3
+case,distribution-warehouse-pick-list,faster warehouse pick lists,4
+case,construction-job-costing-tracker,same-day job costing,3
+case,healthcare-records-access-sql-migration,healthcare SQL migration,3

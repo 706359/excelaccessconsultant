@@ -161,8 +161,9 @@ function ExcelAutomationCost() {
 
         <h2>Fixed Price vs. Hourly Billing</h2>
         <p>
-          I use fixed pricing, not hourly billing. You know the exact cost before we start. No
-          surprises, no budget overruns. Here&apos;s why fixed pricing works better:
+          I use <Link href='/pricing'>fixed pricing</Link>, not hourly billing. You know the exact
+          cost before we start. No surprises, no budget overruns. Here&apos;s why fixed pricing
+          works better:
         </p>
         <ul>
           <li>You know the total cost upfront</li>

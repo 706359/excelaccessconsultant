@@ -1,9 +1,66 @@
 {
   "base": "http://127.0.0.1:5063",
-  "crawledAt": "2026-10-29T19:54:22.477Z",
+  "crawledAt": "2026-11-02T11:32:24.793Z",
   "pagesVisited": 54,
   "failureCount": 0,
   "failures": [],
+  "under3": [],
+  "depth": {
+    "/": 0,
+    "/about": 1,
+    "/access-consulting": 1,
+    "/access-database-repair": 1,
+    "/blog": 1,
+    "/blog/10-signs-you-need-excel-automation": 2,
+    "/blog/access-database-best-practices": 2,
+    "/blog/access-database-maintenance-checklist": 2,
+    "/blog/access-database-multi-user-setup": 2,
+    "/blog/access-database-performance-optimization": 2,
+    "/blog/access-database-repair-cost": 2,
+    "/blog/access-database-repair-guide": 2,
+    "/blog/access-front-end-back-end-architecture": 2,
+    "/blog/access-sql-server-migration-cost": 2,
+    "/blog/access-vs-excel-when-to-use-each": 2,
+    "/blog/access-vs-power-apps-when-to-stay-on-access": 2,
+    "/blog/access-vs-sql-server-when-to-migrate": 2,
+    "/blog/can-access-handle-50-users": 2,
+    "/blog/categories/access-database": 2,
+    "/blog/categories/database-migration": 2,
+    "/blog/categories/excel-automation": 2,
+    "/blog/common-excel-vba-mistakes-and-how-to-fix-them": 2,
+    "/blog/excel-automation-cost-what-to-expect": 2,
+    "/blog/excel-reporting-automation-complete-guide": 2,
+    "/blog/financial-modeling-best-practices": 2,
+    "/blog/how-to-modernize-access-database": 2,
+    "/blog/how-to-speed-up-slow-excel-spreadsheets": 2,
+    "/blog/how-to-split-access-database": 2,
+    "/blog/is-microsoft-access-still-relevant-2026": 2,
+    "/blog/when-to-migrate-from-access": 2,
+    "/blog/why-access-databases-become-corrupted": 2,
+    "/blog/why-your-access-database-keeps-crashing": 2,
+    "/case-studies": 1,
+    "/case-studies/access-sql-migration-enterprise": 2,
+    "/case-studies/construction-automated-reporting": 1,
+    "/case-studies/construction-job-costing-tracker": 2,
+    "/case-studies/distribution-slow-spreadsheet": 1,
+    "/case-studies/distribution-warehouse-pick-list": 2,
+    "/case-studies/financial-services-data-integration": 1,
+    "/case-studies/healthcare-records-access-sql-migration": 2,
+    "/case-studies/manufacturing-inventory-tracking": 1,
+    "/case-studies/retail-pricing-system": 1,
+    "/contact": 1,
+    "/database-migration": 1,
+    "/excel-automation": 1,
+    "/excel-consultant-utah": 1,
+    "/faq": 1,
+    "/financial-modeling": 1,
+    "/free-resources": 1,
+    "/hire-excel-vba-consultant": 1,
+    "/pricing": 1,
+    "/privacy-policy": 1,
+    "/resources/calculator": 2,
+    "/vba-development": 1
+  },
   "contextualInbound": {
     "/contact": [
       "/",
@@ -49,7 +106,6 @@
     "/case-studies/construction-automated-reporting": [
       "/",
       "/blog/when-to-migrate-from-access",
-      "/case-studies",
       "/case-studies/construction-job-costing-tracker",
       "/case-studies/distribution-slow-spreadsheet",
       "/case-studies/financial-services-data-integration",
@@ -66,7 +122,6 @@
       "/blog/access-vs-power-apps-when-to-stay-on-access",
       "/blog/how-to-split-access-database",
       "/blog/is-microsoft-access-still-relevant-2026",
-      "/case-studies",
       "/case-studies/access-sql-migration-enterprise",
       "/case-studies/construction-job-costing-tracker",
       "/case-studies/distribution-warehouse-pick-list",
@@ -76,7 +131,6 @@
     ],
     "/case-studies/financial-services-data-integration": [
       "/",
-      "/case-studies",
       "/case-studies/access-sql-migration-enterprise",
       "/case-studies/construction-automated-reporting",
       "/case-studies/distribution-slow-spreadsheet",
@@ -89,7 +143,6 @@
       "/",
       "/access-consulting",
       "/blog/access-vs-excel-when-to-use-each",
-      "/case-studies",
       "/case-studies/construction-automated-reporting",
       "/case-studies/financial-services-data-integration",
       "/case-studies/retail-pricing-system",
@@ -123,7 +176,6 @@
       "/blog/access-vs-power-apps-when-to-stay-on-access",
       "/blog/access-vs-sql-server-when-to-migrate",
       "/blog/can-access-handle-50-users",
-      "/blog/categories/access-database",
       "/blog/how-to-split-access-database",
       "/blog/is-microsoft-access-still-relevant-2026",
       "/blog/when-to-migrate-from-access",
@@ -159,7 +211,6 @@
       "/access-consulting",
       "/blog/10-signs-you-need-excel-automation",
       "/blog/access-vs-excel-when-to-use-each",
-      "/blog/categories/excel-automation",
       "/blog/common-excel-vba-mistakes-and-how-to-fix-them",
       "/blog/excel-automation-cost-what-to-expect",
       "/blog/excel-reporting-automation-complete-guide",
@@ -207,7 +258,6 @@
       "/blog/access-vs-power-apps-when-to-stay-on-access",
       "/blog/access-vs-sql-server-when-to-migrate",
       "/blog/can-access-handle-50-users",
-      "/blog/categories/database-migration",
       "/blog/how-to-modernize-access-database",
       "/blog/how-to-split-access-database",
       "/blog/is-microsoft-access-still-relevant-2026",
@@ -222,37 +272,10 @@
       "/",
       "/access-consulting",
       "/access-database-repair",
-      "/case-studies",
       "/case-studies/distribution-slow-spreadsheet",
       "/case-studies/distribution-warehouse-pick-list",
       "/case-studies/manufacturing-inventory-tracking",
       "/vba-development"
-    ],
-    "/case-studies/access-sql-migration-enterprise": [
-      "/access-consulting",
-      "/blog/can-access-handle-50-users",
-      "/case-studies",
-      "/case-studies/financial-services-data-integration",
-      "/case-studies/healthcare-records-access-sql-migration",
-      "/database-migration"
-    ],
-    "/case-studies/distribution-warehouse-pick-list": [
-      "/access-consulting",
-      "/case-studies",
-      "/case-studies/construction-job-costing-tracker",
-      "/case-studies/manufacturing-inventory-tracking",
-      "/case-studies/retail-pricing-system"
-    ],
-    "/case-studies/construction-job-costing-tracker": [
-      "/case-studies",
-      "/case-studies/construction-automated-reporting",
-      "/case-studies/distribution-warehouse-pick-list",
-      "/case-studies/manufacturing-inventory-tracking"
-    ],
-    "/case-studies/healthcare-records-access-sql-migration": [
-      "/case-studies",
-      "/case-studies/access-sql-migration-enterprise",
-      "/database-migration"
     ],
     "/blog/excel-automation-cost-what-to-expect": [
       "/blog/10-signs-you-need-excel-automation",
@@ -299,183 +322,6 @@
       "/hire-excel-vba-consultant",
       "/pricing"
     ],
-    "/blog/categories/excel-automation": [
-      "/blog",
-      "/blog/10-signs-you-need-excel-automation",
-      "/blog/common-excel-vba-mistakes-and-how-to-fix-them",
-      "/blog/excel-automation-cost-what-to-expect",
-      "/blog/excel-reporting-automation-complete-guide",
-      "/blog/financial-modeling-best-practices",
-      "/blog/how-to-speed-up-slow-excel-spreadsheets"
-    ],
-    "/blog/categories/access-database": [
-      "/blog",
-      "/blog/access-database-best-practices",
-      "/blog/access-database-maintenance-checklist",
-      "/blog/access-database-multi-user-setup",
-      "/blog/access-database-performance-optimization",
-      "/blog/access-database-repair-cost",
-      "/blog/access-database-repair-guide",
-      "/blog/access-front-end-back-end-architecture",
-      "/blog/access-vs-excel-when-to-use-each",
-      "/blog/access-vs-power-apps-when-to-stay-on-access",
-      "/blog/can-access-handle-50-users",
-      "/blog/how-to-split-access-database",
-      "/blog/is-microsoft-access-still-relevant-2026",
-      "/blog/why-access-databases-become-corrupted",
-      "/blog/why-your-access-database-keeps-crashing"
-    ],
-    "/blog/categories/database-migration": [
-      "/blog",
-      "/blog/access-sql-server-migration-cost",
-      "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/how-to-modernize-access-database",
-      "/blog/when-to-migrate-from-access"
-    ],
-    "/blog/financial-modeling-best-practices": [
-      "/blog",
-      "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/categories/excel-automation",
-      "/blog/excel-automation-cost-what-to-expect",
-      "/blog/excel-reporting-automation-complete-guide",
-      "/financial-modeling"
-    ],
-    "/blog/access-database-repair-guide": [
-      "/access-database-repair",
-      "/blog",
-      "/blog/access-database-repair-cost",
-      "/blog/access-vs-power-apps-when-to-stay-on-access",
-      "/blog/categories/access-database",
-      "/blog/when-to-migrate-from-access",
-      "/blog/why-access-databases-become-corrupted",
-      "/blog/why-your-access-database-keeps-crashing"
-    ],
-    "/blog/is-microsoft-access-still-relevant-2026": [
-      "/blog",
-      "/blog/access-vs-excel-when-to-use-each",
-      "/blog/access-vs-power-apps-when-to-stay-on-access",
-      "/blog/categories/access-database",
-      "/blog/how-to-modernize-access-database",
-      "/blog/when-to-migrate-from-access"
-    ],
-    "/blog/access-vs-power-apps-when-to-stay-on-access": [
-      "/blog",
-      "/blog/access-vs-excel-when-to-use-each",
-      "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/categories/access-database",
-      "/blog/is-microsoft-access-still-relevant-2026",
-      "/blog/when-to-migrate-from-access"
-    ],
-    "/blog/when-to-migrate-from-access": [
-      "/access-consulting",
-      "/blog",
-      "/blog/access-database-repair-guide",
-      "/blog/access-sql-server-migration-cost",
-      "/blog/access-vs-power-apps-when-to-stay-on-access",
-      "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/categories/database-migration",
-      "/blog/how-to-modernize-access-database",
-      "/blog/is-microsoft-access-still-relevant-2026",
-      "/database-migration"
-    ],
-    "/blog/access-vs-excel-when-to-use-each": [
-      "/access-consulting",
-      "/blog",
-      "/blog/access-vs-power-apps-when-to-stay-on-access",
-      "/blog/categories/access-database",
-      "/blog/is-microsoft-access-still-relevant-2026",
-      "/blog/when-to-migrate-from-access"
-    ],
-    "/blog/how-to-split-access-database": [
-      "/access-consulting",
-      "/blog",
-      "/blog/access-database-multi-user-setup",
-      "/blog/access-front-end-back-end-architecture",
-      "/blog/can-access-handle-50-users",
-      "/blog/categories/access-database"
-    ],
-    "/blog/access-database-multi-user-setup": [
-      "/blog",
-      "/blog/access-front-end-back-end-architecture",
-      "/blog/can-access-handle-50-users",
-      "/blog/categories/access-database",
-      "/blog/how-to-split-access-database"
-    ],
-    "/blog/can-access-handle-50-users": [
-      "/blog",
-      "/blog/access-database-multi-user-setup",
-      "/blog/access-sql-server-migration-cost",
-      "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/categories/access-database",
-      "/blog/how-to-split-access-database",
-      "/blog/when-to-migrate-from-access",
-      "/case-studies/access-sql-migration-enterprise"
-    ],
-    "/blog/access-sql-server-migration-cost": [
-      "/blog",
-      "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/can-access-handle-50-users",
-      "/blog/categories/database-migration",
-      "/database-migration"
-    ],
-    "/blog/access-database-repair-cost": [
-      "/access-database-repair",
-      "/blog",
-      "/blog/access-database-repair-guide",
-      "/blog/categories/access-database",
-      "/blog/why-access-databases-become-corrupted",
-      "/blog/why-your-access-database-keeps-crashing"
-    ],
-    "/blog/why-access-databases-become-corrupted": [
-      "/access-database-repair",
-      "/blog",
-      "/blog/access-database-maintenance-checklist",
-      "/blog/access-database-repair-cost",
-      "/blog/access-database-repair-guide",
-      "/blog/can-access-handle-50-users",
-      "/blog/categories/access-database",
-      "/blog/why-your-access-database-keeps-crashing"
-    ],
-    "/blog/access-front-end-back-end-architecture": [
-      "/blog",
-      "/blog/access-database-best-practices",
-      "/blog/access-database-multi-user-setup",
-      "/blog/categories/access-database",
-      "/blog/how-to-split-access-database"
-    ],
-    "/blog/how-to-modernize-access-database": [
-      "/blog",
-      "/blog/access-database-performance-optimization",
-      "/blog/access-vs-power-apps-when-to-stay-on-access",
-      "/blog/categories/database-migration",
-      "/blog/is-microsoft-access-still-relevant-2026",
-      "/blog/when-to-migrate-from-access",
-      "/database-migration"
-    ],
-    "/blog/access-database-performance-optimization": [
-      "/access-consulting",
-      "/blog",
-      "/blog/access-database-best-practices",
-      "/blog/access-database-maintenance-checklist",
-      "/blog/categories/access-database",
-      "/blog/how-to-modernize-access-database"
-    ],
-    "/blog/access-database-best-practices": [
-      "/access-consulting",
-      "/blog",
-      "/blog/access-database-maintenance-checklist",
-      "/blog/access-database-performance-optimization",
-      "/blog/access-front-end-back-end-architecture",
-      "/blog/categories/access-database"
-    ],
-    "/blog/access-database-maintenance-checklist": [
-      "/blog",
-      "/blog/access-database-best-practices",
-      "/blog/access-database-performance-optimization",
-      "/blog/access-database-repair-cost",
-      "/blog/categories/access-database",
-      "/blog/why-access-databases-become-corrupted"
-    ],
     "/blog/10-signs-you-need-excel-automation": [
       "/blog/access-vs-excel-when-to-use-each",
       "/blog/excel-automation-cost-what-to-expect",
@@ -500,6 +346,48 @@
       "/blog/financial-modeling-best-practices",
       "/excel-automation"
     ],
+    "/blog/access-database-best-practices": [
+      "/access-consulting",
+      "/blog/access-database-maintenance-checklist",
+      "/blog/access-database-performance-optimization",
+      "/blog/access-front-end-back-end-architecture"
+    ],
+    "/case-studies/distribution-warehouse-pick-list": [
+      "/access-consulting",
+      "/case-studies/construction-job-costing-tracker",
+      "/case-studies/manufacturing-inventory-tracking",
+      "/case-studies/retail-pricing-system"
+    ],
+    "/blog/how-to-split-access-database": [
+      "/access-consulting",
+      "/blog/access-database-multi-user-setup",
+      "/blog/access-front-end-back-end-architecture",
+      "/blog/can-access-handle-50-users"
+    ],
+    "/blog/when-to-migrate-from-access": [
+      "/access-consulting",
+      "/blog/access-database-repair-guide",
+      "/blog/access-sql-server-migration-cost",
+      "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/how-to-modernize-access-database",
+      "/blog/is-microsoft-access-still-relevant-2026",
+      "/database-migration"
+    ],
+    "/case-studies/access-sql-migration-enterprise": [
+      "/access-consulting",
+      "/blog/access-sql-server-migration-cost",
+      "/blog/can-access-handle-50-users",
+      "/case-studies/financial-services-data-integration",
+      "/case-studies/healthcare-records-access-sql-migration",
+      "/database-migration"
+    ],
+    "/blog/access-vs-excel-when-to-use-each": [
+      "/access-consulting",
+      "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "/blog/is-microsoft-access-still-relevant-2026",
+      "/blog/when-to-migrate-from-access"
+    ],
     "/blog/why-your-access-database-keeps-crashing": [
       "/access-consulting",
       "/access-database-repair",
@@ -507,6 +395,34 @@
       "/blog/access-database-repair-guide",
       "/blog/access-vs-sql-server-when-to-migrate",
       "/blog/why-access-databases-become-corrupted"
+    ],
+    "/blog/access-database-performance-optimization": [
+      "/access-consulting",
+      "/blog/access-database-best-practices",
+      "/blog/access-database-maintenance-checklist",
+      "/blog/how-to-modernize-access-database"
+    ],
+    "/blog/access-database-repair-guide": [
+      "/access-database-repair",
+      "/blog/access-database-repair-cost",
+      "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "/blog/when-to-migrate-from-access",
+      "/blog/why-access-databases-become-corrupted",
+      "/blog/why-your-access-database-keeps-crashing"
+    ],
+    "/blog/access-database-repair-cost": [
+      "/access-database-repair",
+      "/blog/access-database-repair-guide",
+      "/blog/why-access-databases-become-corrupted",
+      "/blog/why-your-access-database-keeps-crashing"
+    ],
+    "/blog/why-access-databases-become-corrupted": [
+      "/access-database-repair",
+      "/blog/access-database-maintenance-checklist",
+      "/blog/access-database-repair-cost",
+      "/blog/access-database-repair-guide",
+      "/blog/can-access-handle-50-users",
+      "/blog/why-your-access-database-keeps-crashing"
     ],
     "/blog/access-vs-sql-server-when-to-migrate": [
       "/blog/access-database-repair-guide",
@@ -518,6 +434,26 @@
       "/blog/why-your-access-database-keeps-crashing",
       "/database-migration"
     ],
+    "/blog/access-sql-server-migration-cost": [
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/can-access-handle-50-users",
+      "/database-migration"
+    ],
+    "/blog/how-to-modernize-access-database": [
+      "/blog/access-database-performance-optimization",
+      "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "/blog/is-microsoft-access-still-relevant-2026",
+      "/blog/when-to-migrate-from-access",
+      "/database-migration"
+    ],
+    "/case-studies/healthcare-records-access-sql-migration": [
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/can-access-handle-50-users",
+      "/blog/when-to-migrate-from-access",
+      "/case-studies/access-sql-migration-enterprise",
+      "/case-studies/manufacturing-inventory-tracking",
+      "/database-migration"
+    ],
     "/blog/common-excel-vba-mistakes-and-how-to-fix-them": [
       "/blog/excel-automation-cost-what-to-expect",
       "/blog/excel-reporting-automation-complete-guide",
@@ -525,10 +461,18 @@
       "/blog/why-your-access-database-keeps-crashing",
       "/vba-development"
     ],
+    "/blog/financial-modeling-best-practices": [
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/excel-automation-cost-what-to-expect",
+      "/blog/excel-reporting-automation-complete-guide",
+      "/financial-modeling"
+    ],
     "/pricing": [
       "/blog/access-sql-server-migration-cost",
       "/blog/can-access-handle-50-users",
-      "/faq"
+      "/blog/excel-automation-cost-what-to-expect",
+      "/faq",
+      "/hire-excel-vba-consultant"
     ],
     "/about": [
       "/blog/10-signs-you-need-excel-automation",
@@ -565,6 +509,11 @@
       "/case-studies/manufacturing-inventory-tracking",
       "/case-studies/retail-pricing-system"
     ],
+    "/case-studies/construction-job-costing-tracker": [
+      "/case-studies/construction-automated-reporting",
+      "/case-studies/distribution-warehouse-pick-list",
+      "/case-studies/manufacturing-inventory-tracking"
+    ],
     "/privacy-policy": [
       "/free-resources"
     ],
@@ -574,9 +523,6 @@
       "/blog/access-vs-excel-when-to-use-each",
       "/blog/access-vs-power-apps-when-to-stay-on-access",
       "/blog/access-vs-sql-server-when-to-migrate",
-      "/blog/categories/access-database",
-      "/blog/categories/database-migration",
-      "/blog/categories/excel-automation",
       "/blog/common-excel-vba-mistakes-and-how-to-fix-them",
       "/blog/excel-automation-cost-what-to-expect",
       "/blog/excel-reporting-automation-complete-guide",
@@ -586,7 +532,1325 @@
       "/blog/when-to-migrate-from-access",
       "/blog/why-your-access-database-keeps-crashing",
       "/free-resources"
+    ],
+    "/blog/can-access-handle-50-users": [
+      "/blog/access-database-multi-user-setup",
+      "/blog/access-sql-server-migration-cost",
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/how-to-split-access-database",
+      "/blog/when-to-migrate-from-access",
+      "/case-studies/access-sql-migration-enterprise"
+    ],
+    "/blog/categories/excel-automation": [
+      "/blog/10-signs-you-need-excel-automation",
+      "/blog/common-excel-vba-mistakes-and-how-to-fix-them",
+      "/blog/excel-automation-cost-what-to-expect",
+      "/blog/excel-reporting-automation-complete-guide",
+      "/blog/financial-modeling-best-practices",
+      "/blog/how-to-speed-up-slow-excel-spreadsheets"
+    ],
+    "/blog/categories/access-database": [
+      "/blog/access-database-best-practices",
+      "/blog/access-database-maintenance-checklist",
+      "/blog/access-database-multi-user-setup",
+      "/blog/access-database-performance-optimization",
+      "/blog/access-database-repair-cost",
+      "/blog/access-database-repair-guide",
+      "/blog/access-front-end-back-end-architecture",
+      "/blog/access-vs-excel-when-to-use-each",
+      "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "/blog/can-access-handle-50-users",
+      "/blog/how-to-split-access-database",
+      "/blog/is-microsoft-access-still-relevant-2026",
+      "/blog/why-access-databases-become-corrupted",
+      "/blog/why-your-access-database-keeps-crashing"
+    ],
+    "/blog/access-vs-power-apps-when-to-stay-on-access": [
+      "/blog/access-vs-excel-when-to-use-each",
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/is-microsoft-access-still-relevant-2026",
+      "/blog/when-to-migrate-from-access"
+    ],
+    "/blog/is-microsoft-access-still-relevant-2026": [
+      "/blog/access-vs-excel-when-to-use-each",
+      "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "/blog/how-to-modernize-access-database",
+      "/blog/when-to-migrate-from-access"
+    ],
+    "/blog/categories/database-migration": [
+      "/blog/access-sql-server-migration-cost",
+      "/blog/access-vs-sql-server-when-to-migrate",
+      "/blog/how-to-modernize-access-database",
+      "/blog/when-to-migrate-from-access"
+    ],
+    "/blog/access-front-end-back-end-architecture": [
+      "/blog/access-database-best-practices",
+      "/blog/access-database-multi-user-setup",
+      "/blog/how-to-split-access-database"
+    ],
+    "/blog/access-database-multi-user-setup": [
+      "/blog/access-front-end-back-end-architecture",
+      "/blog/can-access-handle-50-users",
+      "/blog/how-to-split-access-database"
+    ],
+    "/blog/access-database-maintenance-checklist": [
+      "/blog/access-database-best-practices",
+      "/blog/access-database-performance-optimization",
+      "/blog/access-database-repair-cost",
+      "/blog/why-access-databases-become-corrupted"
     ]
+  },
+  "editorialAnchors": {
+    "/contact": {
+      "total": 52,
+      "top": {
+        "anchor": "request a fixed-price estimate",
+        "count": 12,
+        "pct": 23.076923076923077
+      },
+      "all": [
+        {
+          "anchor": "request a fixed-price estimate",
+          "count": 12,
+          "pct": 23.076923076923077
+        },
+        {
+          "anchor": "Book a free consultation",
+          "count": 10,
+          "pct": 19.230769230769234
+        },
+        {
+          "anchor": "Book a Consultation",
+          "count": 2,
+          "pct": 3.8461538461538463
+        },
+        {
+          "anchor": "Contact",
+          "count": 2,
+          "pct": 3.8461538461538463
+        },
+        {
+          "anchor": "Book Free Consultation",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Request Fixed-Price Estimate",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Book your free consultation →",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple Projects quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced Projects quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Enterprise Projects quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Request your fixed-price quote →",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple Automation quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced Automation quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Enterprise Automation quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple VBA quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced VBA quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Enterprise VBA quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple Models quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced Models quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Enterprise Models quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple Database quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced Database quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Enterprise Database quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple Repair quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced Repair quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Rebuild + Repair quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Simple Migration quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Advanced Migration quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "Enterprise Migration quote",
+          "count": 1,
+          "pct": 1.9230769230769231
+        },
+        {
+          "anchor": "book a free consultation",
+          "count": 1,
+          "pct": 1.9230769230769231
+        }
+      ]
+    },
+    "/case-studies/construction-automated-reporting": {
+      "total": 5,
+      "top": {
+        "anchor": "Reporting automation",
+        "count": 1,
+        "pct": 20
+      },
+      "all": [
+        {
+          "anchor": "Reporting automation",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "weekly reporting",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Automated Reporting",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Manufacturing Report Automation",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "construction reporting case study",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/case-studies/manufacturing-inventory-tracking": {
+      "total": 8,
+      "top": {
+        "anchor": "Inventory management",
+        "count": 1,
+        "pct": 12.5
+      },
+      "all": [
+        {
+          "anchor": "Inventory management",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "crash-free operation",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "Inventory Tracking System",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "15-user manufacturing team",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "manufacturing client",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "15-user systems run flawlessly",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "manufacturing case study",
+          "count": 1,
+          "pct": 12.5
+        },
+        {
+          "anchor": "15-user manufacturing fix",
+          "count": 1,
+          "pct": 12.5
+        }
+      ]
+    },
+    "/case-studies/financial-services-data-integration": {
+      "total": 4,
+      "top": {
+        "anchor": "Data entry workflows",
+        "count": 1,
+        "pct": 25
+      },
+      "all": [
+        {
+          "anchor": "Data entry workflows",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "returned to the team",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "Data Integration Pipeline",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "Financial Close Process",
+          "count": 1,
+          "pct": 25
+        }
+      ]
+    },
+    "/case-studies/distribution-slow-spreadsheet": {
+      "total": 5,
+      "top": {
+        "anchor": "Spreadsheet performance",
+        "count": 1,
+        "pct": 20
+      },
+      "all": [
+        {
+          "anchor": "Spreadsheet performance",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Spreadsheet Performance Fix",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "a slow spreadsheet at a distribution company",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Operations Dashboard",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "case study",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/access-database-repair": {
+      "total": 14,
+      "top": {
+        "anchor": "Access Database Repair",
+        "count": 2,
+        "pct": 14.285714285714285
+      },
+      "all": [
+        {
+          "anchor": "Access Database Repair",
+          "count": 2,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "Access database repair",
+          "count": 2,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "Database crashes on open or during use",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Corrupted tables or missing data",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "emergency Access repair",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "professional Access database repair",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "repair or rebuild",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "repair and optimization",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Access crash recovery",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "repair corrupted Access files",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Access database repair service",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "repair services",
+          "count": 1,
+          "pct": 7.142857142857142
+        }
+      ]
+    },
+    "/access-consulting": {
+      "total": 21,
+      "top": {
+        "anchor": "Access consulting",
+        "count": 5,
+        "pct": 23.809523809523807
+      },
+      "all": [
+        {
+          "anchor": "Access consulting",
+          "count": 5,
+          "pct": 23.809523809523807
+        },
+        {
+          "anchor": "Access Database Consulting",
+          "count": 3,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "Access Database Development",
+          "count": 2,
+          "pct": 9.523809523809524
+        },
+        {
+          "anchor": "Access Consulting",
+          "count": 2,
+          "pct": 9.523809523809524
+        },
+        {
+          "anchor": "Access database consultant",
+          "count": 2,
+          "pct": 9.523809523809524
+        },
+        {
+          "anchor": "Slow queries and lag with multiple users",
+          "count": 1,
+          "pct": 4.761904761904762
+        },
+        {
+          "anchor": "Record locking and multi-user conflicts",
+          "count": 1,
+          "pct": 4.761904761904762
+        },
+        {
+          "anchor": "Access Database Unstable",
+          "count": 1,
+          "pct": 4.761904761904762
+        },
+        {
+          "anchor": "Access database development",
+          "count": 1,
+          "pct": 4.761904761904762
+        },
+        {
+          "anchor": "Access consulting services",
+          "count": 1,
+          "pct": 4.761904761904762
+        },
+        {
+          "anchor": "Access development",
+          "count": 1,
+          "pct": 4.761904761904762
+        },
+        {
+          "anchor": "Access databases",
+          "count": 1,
+          "pct": 4.761904761904762
+        }
+      ]
+    },
+    "/vba-development": {
+      "total": 6,
+      "top": {
+        "anchor": "VBA Development",
+        "count": 4,
+        "pct": 66.66666666666666
+      },
+      "all": [
+        {
+          "anchor": "VBA Development",
+          "count": 4,
+          "pct": 66.66666666666666
+        },
+        {
+          "anchor": "Broken macros and VBA runtime errors",
+          "count": 1,
+          "pct": 16.666666666666664
+        },
+        {
+          "anchor": "Access VBA development",
+          "count": 1,
+          "pct": 16.666666666666664
+        }
+      ]
+    },
+    "/excel-automation": {
+      "total": 14,
+      "top": {
+        "anchor": "Excel VBA Automation",
+        "count": 3,
+        "pct": 21.428571428571427
+      },
+      "all": [
+        {
+          "anchor": "Excel VBA Automation",
+          "count": 3,
+          "pct": 21.428571428571427
+        },
+        {
+          "anchor": "Excel Automation",
+          "count": 3,
+          "pct": 21.428571428571427
+        },
+        {
+          "anchor": "Excel VBA automation",
+          "count": 2,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "Manual copy-paste and formatting every week",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Reports that take hours to compile",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Hours Lost on Weekly Reports",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Excel VBA Process Automation",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "automate the repetitive parts",
+          "count": 1,
+          "pct": 7.142857142857142
+        },
+        {
+          "anchor": "Excel automation consultant",
+          "count": 1,
+          "pct": 7.142857142857142
+        }
+      ]
+    },
+    "/financial-modeling": {
+      "total": 5,
+      "top": {
+        "anchor": "Financial Modeling",
+        "count": 3,
+        "pct": 60
+      },
+      "all": [
+        {
+          "anchor": "Financial Modeling",
+          "count": 3,
+          "pct": 60
+        },
+        {
+          "anchor": "Financial Models That Don&#x27;t Keep Up",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "financial modeling consultant",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/case-studies": {
+      "total": 7,
+      "top": {
+        "anchor": "Case Studies",
+        "count": 3,
+        "pct": 42.857142857142854
+      },
+      "all": [
+        {
+          "anchor": "Case Studies",
+          "count": 3,
+          "pct": 42.857142857142854
+        },
+        {
+          "anchor": "View all case studies →",
+          "count": 1,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "Browse all case studies →",
+          "count": 1,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "client results",
+          "count": 1,
+          "pct": 14.285714285714285
+        },
+        {
+          "anchor": "Client Case Studies",
+          "count": 1,
+          "pct": 14.285714285714285
+        }
+      ]
+    },
+    "/database-migration": {
+      "total": 15,
+      "top": {
+        "anchor": "Database Migration",
+        "count": 4,
+        "pct": 26.666666666666668
+      },
+      "all": [
+        {
+          "anchor": "Database Migration",
+          "count": 4,
+          "pct": 26.666666666666668
+        },
+        {
+          "anchor": "database migration",
+          "count": 3,
+          "pct": 20
+        },
+        {
+          "anchor": "Migrate Access databases to SQL Server",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "database migration strategies",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "Access database migration",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "database migration services",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "Access to SQL migration",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "migration services",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "migration consulting",
+          "count": 1,
+          "pct": 6.666666666666667
+        },
+        {
+          "anchor": "migrate to SQL Server",
+          "count": 1,
+          "pct": 6.666666666666667
+        }
+      ]
+    },
+    "/case-studies/retail-pricing-system": {
+      "total": 1,
+      "top": {
+        "anchor": "Automated Pricing System",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "Automated Pricing System",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/excel-automation-cost-what-to-expect": {
+      "total": 1,
+      "top": {
+        "anchor": "Excel automation cost expectations",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "Excel automation cost expectations",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/faq": {
+      "total": 4,
+      "top": {
+        "anchor": "pricing and timeline questions",
+        "count": 1,
+        "pct": 25
+      },
+      "all": [
+        {
+          "anchor": "pricing and timeline questions",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "Common Questions",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "answers to common questions",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "how projects work",
+          "count": 1,
+          "pct": 25
+        }
+      ]
+    },
+    "/resources/calculator": {
+      "total": 6,
+      "top": {
+        "anchor": "ROI calculator",
+        "count": 1,
+        "pct": 16.666666666666664
+      },
+      "all": [
+        {
+          "anchor": "ROI calculator",
+          "count": 1,
+          "pct": 16.666666666666664
+        },
+        {
+          "anchor": "ROI Calculator",
+          "count": 1,
+          "pct": 16.666666666666664
+        },
+        {
+          "anchor": "Manual Work ROI Calculator",
+          "count": 1,
+          "pct": 16.666666666666664
+        },
+        {
+          "anchor": "ROI",
+          "count": 1,
+          "pct": 16.666666666666664
+        },
+        {
+          "anchor": "manual work",
+          "count": 1,
+          "pct": 16.666666666666664
+        },
+        {
+          "anchor": "time savings",
+          "count": 1,
+          "pct": 16.666666666666664
+        }
+      ]
+    },
+    "/free-resources": {
+      "total": 5,
+      "top": {
+        "anchor": "automation readiness checklist",
+        "count": 1,
+        "pct": 20
+      },
+      "all": [
+        {
+          "anchor": "automation readiness checklist",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Free checklists",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Excel and Access downloads",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "free Access health check",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Excel and Access checklists",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/hire-excel-vba-consultant": {
+      "total": 1,
+      "top": {
+        "anchor": "VBA consultant engagement",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "VBA consultant engagement",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/excel-consultant-utah": {
+      "total": 5,
+      "top": {
+        "anchor": "Utah Excel consulting",
+        "count": 1,
+        "pct": 20
+      },
+      "all": [
+        {
+          "anchor": "Utah Excel consulting",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Excel consultant in Utah",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Utah-based consulting",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Utah Consulting",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "local Utah VBA help",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/blog/access-database-best-practices": {
+      "total": 2,
+      "top": {
+        "anchor": "Access database best practices",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "Access database best practices",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "best practices hub",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/how-to-split-access-database": {
+      "total": 3,
+      "top": {
+        "anchor": "split the database",
+        "count": 1,
+        "pct": 33.33333333333333
+      },
+      "all": [
+        {
+          "anchor": "split the database",
+          "count": 1,
+          "pct": 33.33333333333333
+        },
+        {
+          "anchor": "how to split an Access database",
+          "count": 1,
+          "pct": 33.33333333333333
+        },
+        {
+          "anchor": "split database guide",
+          "count": 1,
+          "pct": 33.33333333333333
+        }
+      ]
+    },
+    "/blog/when-to-migrate-from-access": {
+      "total": 4,
+      "top": {
+        "anchor": "outgrown Access",
+        "count": 1,
+        "pct": 25
+      },
+      "all": [
+        {
+          "anchor": "outgrown Access",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "migration may be the right call",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "When to Migrate from Access",
+          "count": 1,
+          "pct": 25
+        },
+        {
+          "anchor": "when to migrate from Access",
+          "count": 1,
+          "pct": 25
+        }
+      ]
+    },
+    "/case-studies/access-sql-migration-enterprise": {
+      "total": 2,
+      "top": {
+        "anchor": "enterprise Access to SQL Server migration",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "enterprise Access to SQL Server migration",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "50-user migration case study",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/access-vs-excel-when-to-use-each": {
+      "total": 1,
+      "top": {
+        "anchor": "when to use Access vs Excel",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "when to use Access vs Excel",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/pricing": {
+      "total": 5,
+      "top": {
+        "anchor": "Project Pricing",
+        "count": 1,
+        "pct": 20
+      },
+      "all": [
+        {
+          "anchor": "Project Pricing",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "Fixed pricing",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "fixed pricing",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "consultant pricing",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "full pricing page",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/privacy-policy": {
+      "total": 1,
+      "top": {
+        "anchor": "Privacy Policy",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "Privacy Policy",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog": {
+      "total": 4,
+      "top": {
+        "anchor": "All articles",
+        "count": 3,
+        "pct": 75
+      },
+      "all": [
+        {
+          "anchor": "All articles",
+          "count": 3,
+          "pct": 75
+        },
+        {
+          "anchor": "Excel &amp; Access Articles",
+          "count": 1,
+          "pct": 25
+        }
+      ]
+    },
+    "/blog/can-access-handle-50-users": {
+      "total": 5,
+      "top": {
+        "anchor": "Can Access handle 50 users?",
+        "count": 2,
+        "pct": 40
+      },
+      "all": [
+        {
+          "anchor": "Can Access handle 50 users?",
+          "count": 2,
+          "pct": 40
+        },
+        {
+          "anchor": "50 users",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "15–20 concurrent users",
+          "count": 1,
+          "pct": 20
+        },
+        {
+          "anchor": "20+ concurrent users",
+          "count": 1,
+          "pct": 20
+        }
+      ]
+    },
+    "/blog/why-your-access-database-keeps-crashing": {
+      "total": 2,
+      "top": {
+        "anchor": "why Access databases keep crashing",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "why Access databases keep crashing",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "why your database keeps crashing",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/how-to-modernize-access-database": {
+      "total": 1,
+      "top": {
+        "anchor": "modernize more databases",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "modernize more databases",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/access-database-repair-guide": {
+      "total": 2,
+      "top": {
+        "anchor": "repair problem",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "repair problem",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "repair vs rebuild guide",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/is-microsoft-access-still-relevant-2026": {
+      "total": 2,
+      "top": {
+        "anchor": "Is Microsoft Access Still Relevant in 2026?",
+        "count": 2,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "Is Microsoft Access Still Relevant in 2026?",
+          "count": 2,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/how-to-speed-up-slow-excel-spreadsheets": {
+      "total": 2,
+      "top": {
+        "anchor": "Optimizing the spreadsheet",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "Optimizing the spreadsheet",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "slow Excel guide",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/access-vs-sql-server-when-to-migrate": {
+      "total": 1,
+      "top": {
+        "anchor": "Access vs SQL Server: When to Migrate",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "Access vs SQL Server: When to Migrate",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/access-front-end-back-end-architecture": {
+      "total": 2,
+      "top": {
+        "anchor": "front-end and back-end architecture",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "front-end and back-end architecture",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "FE/BE architecture",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/access-database-multi-user-setup": {
+      "total": 1,
+      "top": {
+        "anchor": "multi-user setup guide",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "multi-user setup guide",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/why-access-databases-become-corrupted": {
+      "total": 2,
+      "top": {
+        "anchor": "why Access databases become corrupted",
+        "count": 1,
+        "pct": 50
+      },
+      "all": [
+        {
+          "anchor": "why Access databases become corrupted",
+          "count": 1,
+          "pct": 50
+        },
+        {
+          "anchor": "corruption depth",
+          "count": 1,
+          "pct": 50
+        }
+      ]
+    },
+    "/blog/access-sql-server-migration-cost": {
+      "total": 1,
+      "top": {
+        "anchor": "SQL Server migration cost",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "SQL Server migration cost",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/access-database-maintenance-checklist": {
+      "total": 2,
+      "top": {
+        "anchor": "maintenance checklist",
+        "count": 2,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "maintenance checklist",
+          "count": 2,
+          "pct": 100
+        }
+      ]
+    },
+    "/blog/access-database-performance-optimization": {
+      "total": 1,
+      "top": {
+        "anchor": "performance optimization",
+        "count": 1,
+        "pct": 100
+      },
+      "all": [
+        {
+          "anchor": "performance optimization",
+          "count": 1,
+          "pct": 100
+        }
+      ]
+    }
   },
   "sampleDepth": {
     "/": 0,

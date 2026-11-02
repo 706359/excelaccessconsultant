@@ -118,9 +118,12 @@ export default function HireExcelVBAConsultant() {
             <div className='card'>
               <h3>Fixed vs. Hourly Pricing</h3>
               <p className='text-muted'>
-                Hourly billing incentivizes slow work. Fixed pricing means the consultant is
-                confident in their estimate and motivated to deliver efficiently. You know costs
-                upfront.
+                Hourly billing incentivizes slow work.{' '}
+                <Link href='/pricing' className='text-link'>
+                  Fixed pricing
+                </Link>{' '}
+                means the consultant is confident in their estimate and motivated to deliver
+                efficiently. You know costs upfront.
               </p>
             </div>
             <div className='card'>

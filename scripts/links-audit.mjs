@@ -143,6 +143,13 @@ function isExemptAnchor(anchor, targetPath) {
   return false;
 }
 
+/** Listing hubs are not contextual donors (nav/footer/breadcrumb already stripped). */
+function isListingSource(path) {
+  if (path === '/blog' || path === '/case-studies') return true;
+  if (path.startsWith('/blog/categories/')) return true;
+  return false;
+}
+
 const failures = [];
 
 async function main() {
@@ -220,8 +227,11 @@ async function main() {
     for (const link of contextualLinks) {
       if (!isIndexablePath(link.path)) continue;
 
-      if (!contextualInbound.has(link.path)) contextualInbound.set(link.path, new Set());
-      contextualInbound.get(link.path).add(path);
+      // Strict contextual inbound: exclude listing hubs + chrome (already stripped)
+      if (!isListingSource(path)) {
+        if (!contextualInbound.has(link.path)) contextualInbound.set(link.path, new Set());
+        contextualInbound.get(link.path).add(path);
+      }
 
       // Template chrome (author bio, bylines) still counts as inbound, not toward 30% share
       if (link.inMeta || link.inRelated || isExemptAnchor(link.anchor, link.path)) continue;
@@ -337,15 +347,41 @@ async function main() {
     }
   }
 
+  const under3 = visited
+    .filter((p) => p !== '/' && p !== '/privacy-policy')
+    .map((p) => ({ path: p, inbound: contextualInbound.get(p)?.size || 0, depth: depth.get(p) }))
+    .filter((r) => r.inbound < 3)
+    .sort((a, b) => a.inbound - b.inbound || a.path.localeCompare(b.path));
+
+  const editorialAnchors = {};
+  for (const [target, map] of bodyAnchorsToTarget) {
+    const entries = [...map.entries()].sort((a, b) => b[1] - a[1]);
+    const total = entries.reduce((a, [, c]) => a + c, 0);
+    editorialAnchors[target] = {
+      total,
+      top: entries[0]
+        ? { anchor: entries[0][0], count: entries[0][1], pct: total ? (entries[0][1] / total) * 100 : 0 }
+        : null,
+      all: entries.map(([anchor, count]) => ({
+        anchor,
+        count,
+        pct: total ? (count / total) * 100 : 0,
+      })),
+    };
+  }
+
   const report = {
     base: BASE,
     crawledAt: new Date().toISOString(),
     pagesVisited: visited.length,
     failureCount: failures.length,
     failures,
+    under3,
+    depth: Object.fromEntries([...depth.entries()].sort((a, b) => a[0].localeCompare(b[0]))),
     contextualInbound: Object.fromEntries(
       [...contextualInbound.entries()].map(([p, set]) => [p, [...set].sort()]),
     ),
+    editorialAnchors,
     sampleDepth: Object.fromEntries(
       [...depth.entries()].filter(([, d]) => d <= 3).slice(0, 20),
     ),
@@ -358,6 +394,8 @@ async function main() {
   const byCode = {};
   for (const f of failures) byCode[f.code] = (byCode[f.code] || 0) + 1;
   console.log(JSON.stringify(byCode, null, 2));
+  console.log(`under3_count=${under3.length}`);
+  for (const r of under3) console.log(`UNDER3 ${r.path} inbound=${r.inbound} depth=${r.depth}`);
   if (failures.length) {
     for (const f of failures.slice(0, 40)) {
       console.log(`${f.code} ${f.path} ${f.detail}`);

@@ -1,0 +1,9 @@
+metric,before,after_proposed
+blog_hub_post_links_no_js,0,24
+blog_hub_category_links_no_js,0,3
+category_pages,excel-tips + access-database + automation-guides (overlapping),excel-automation + access-database + database-migration
+FREE_CANON,placeholder,/free-resources
+link_plan_rows,prior,220
+redirect_rules,0,6
+pages_under_3_contextual_inbound,see crawl thinContextual,1
+footer_logo_aria,missing on footer,add aria-label (header OK)

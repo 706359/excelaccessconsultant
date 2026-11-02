@@ -1,0 +1,755 @@
+{
+  "base": "http://127.0.0.1:5063",
+  "crawledAt": "2026-10-29T19:43:39.424Z",
+  "pagesVisited": 61,
+  "failureCount": 145,
+  "failures": [
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/",
+      "detail": "\"Reporting automation: reduced from 4 hrs to 15 min…\" → /case-studies/construction-automated-reporting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/",
+      "detail": "\"Inventory management: reduced from 5 crashes/wk to 0 crashes…\" → /case-studies/manufacturing-inventory-tracking"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/",
+      "detail": "\"Data entry workflows: reduced from Manual entry to Automated…\" → /case-studies/financial-services-data-integration"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/",
+      "detail": "\"Spreadsheet performance: reduced from 5 min open to 10 sec open…\" → /case-studies/distribution-slow-spreadsheet"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Fixed a Crashing Access Database for a 15-User Manufacturing Team…\" → /case-studies/manufacturing-inventory-tracking"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Built a Construction Tracking System That Cut Weekly Reporting from 6 Hou…\" → /case-studies/construction-automated-reporting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Connected Excel to SQL and Eliminated 500 Hours of Annual Data Entry…\" → /case-studies/financial-services-data-integration"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Fixed a 50MB Excel File That Took 5 Minutes to Open…\" → /case-studies/distribution-slow-spreadsheet"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Automated Complex Pricing Calculations for a Multi-Location Retail Chain…\" → /case-studies/retail-pricing-system"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Migrated a 50-User Access System to SQL Server With Zero Data Loss…\" → /case-studies/access-sql-migration-enterprise"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"How We Cut Warehouse Pick Time 40% With an Access Order Fulfillment System…\" → /case-studies/distribution-warehouse-pick-list"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"Construction Job Costing Tracker: Same-Day WIP Instead of Friday Spreadsheets…\" → /case-studies/construction-job-costing-tracker"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/case-studies",
+      "detail": "\"Healthcare Records: 30-User Access System Migrated to SQL Server Over One Weeken…\" → /case-studies/healthcare-records-access-sql-migration"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog",
+      "detail": "\"Access Database Repair Guide: When to Fix vs Rebuild…\" → /blog/access-database-repair-guide"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog",
+      "detail": "\"Access vs Power Apps: When to Stay on Access…\" → /blog/access-vs-power-apps-when-to-stay-on-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog",
+      "detail": "\"When to Migrate from Access (And When Not To)…\" → /blog/when-to-migrate-from-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-automation",
+      "detail": "\"Construction: Automated Reporting 6 hours of weekly work reduced to 30 seconds.…\" → /case-studies/construction-automated-reporting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-automation",
+      "detail": "\"Distribution: Spreadsheet Speed 50MB file opens in under 10 seconds after optimi…\" → /case-studies/distribution-slow-spreadsheet"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-automation",
+      "detail": "\"Finance: Data Integration 500 hours/year saved on manual data entry.…\" → /case-studies/financial-services-data-integration"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/access-consulting",
+      "detail": "\"Manufacturing: Inventory Database Zero crashes in 8 months. 15 users simultaneou…\" → /case-studies/manufacturing-inventory-tracking"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/access-consulting",
+      "detail": "\"Retail: Pricing System Access pricing rules prevented $30K–$50K in quarterly err…\" → /case-studies/retail-pricing-system"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/access-consulting",
+      "detail": "\"Distribution: Warehouse Pick Lists 40% faster picks. Multi-user Access replaced …\" → /case-studies/distribution-warehouse-pick-list"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/access-database-repair",
+      "detail": "\"Manufacturing: Crash Recovery Fixed daily crashes for 15-user inventory system.…\" → /case-studies/manufacturing-inventory-tracking"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/access-database-repair",
+      "detail": "\"Retail: Database Stabilization Rebuilt unstable pricing database with business r…\" → /case-studies/retail-pricing-system"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/access-database-repair",
+      "detail": "\"Access Development When repair is not enough, I rebuild with proper architecture…\" → /access-consulting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/database-migration",
+      "detail": "\"Enterprise: Access to SQL Migration 50-user system migrated with zero data loss.…\" → /case-studies/access-sql-migration-enterprise"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/database-migration",
+      "detail": "\"Manufacturing: Multi-User Access Stable 15-user system. Sometimes optimization b…\" → /case-studies/manufacturing-inventory-tracking"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/database-migration",
+      "detail": "\"Blog: When to Migrate Decision guide: Access vs SQL Server for growing teams.…\" → /blog/access-vs-sql-server-when-to-migrate"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/vba-development",
+      "detail": "\"Retail: Pricing Automation Complex pricing rules automated in Excel and Access.…\" → /case-studies/retail-pricing-system"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/vba-development",
+      "detail": "\"Construction: Reporting Macro Weekly report generation cut from hours to seconds…\" → /case-studies/construction-automated-reporting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/vba-development",
+      "detail": "\"Excel Automation Services End-to-end process automation beyond single macros.…\" → /excel-automation"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/financial-modeling",
+      "detail": "\"Finance: Data Integration Excel connected to SQL. 500 hours/year saved.…\" → /case-studies/financial-services-data-integration"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/financial-modeling",
+      "detail": "\"Blog: Modeling Best Practices How to build models that scale with your business.…\" → /blog/financial-modeling-best-practices"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/about",
+      "detail": "\"01 Services Excel Automation Automate reporting and eliminate manual spreadsheet…\" → /excel-automation"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/about",
+      "detail": "\"02 Services Access Consulting Stable multi-user databases and Access database re…\" → /access-consulting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-consultant-utah",
+      "detail": "\"01 Excel Excel VBA Automation Turn hours of manual Excel work into one-click aut…\" → /excel-automation"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-consultant-utah",
+      "detail": "\"02 Access Access Database Development Custom multi-user Access databases with fo…\" → /access-consulting"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-consultant-utah",
+      "detail": "\"03 Excel VBA Development Custom VBA for Excel, Access, Word, and Outlook, from m…\" → /vba-development"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-consultant-utah",
+      "detail": "\"04 Excel Financial Modeling Budgets, forecasts, and scenario models with clean s…\" → /financial-modeling"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/excel-consultant-utah",
+      "detail": "\"05 Access Database Migration Migrate from Access to SQL Server or cloud platform…\" → /database-migration"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/categories/access-database",
+      "detail": "\"Access Database Repair Guide: When to Fix vs Rebuild…\" → /blog/access-database-repair-guide"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/categories/access-database",
+      "detail": "\"Access vs Power Apps: When to Stay on Access…\" → /blog/access-vs-power-apps-when-to-stay-on-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/categories/database-migration",
+      "detail": "\"When to Migrate from Access (And When Not To)…\" → /blog/when-to-migrate-from-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/access-database-repair-guide",
+      "detail": "\"When to Migrate from Access (And When Not To)…\" → /blog/when-to-migrate-from-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/is-microsoft-access-still-relevant-2026",
+      "detail": "\"Access vs Power Apps: When to Stay on Access…\" → /blog/access-vs-power-apps-when-to-stay-on-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/is-microsoft-access-still-relevant-2026",
+      "detail": "\"When to Migrate from Access (And When Not To)…\" → /blog/when-to-migrate-from-access"
+    },
+    {
+      "code": "BLOB_ANCHOR",
+      "path": "/blog/when-to-migrate-from-access",
+      "detail": "\"Access Database Repair Guide: When to Fix vs Rebuild…\" → /blog/access-database-repair-guide"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/contact?service=excel-automation",
+      "detail": "1"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/contact?service=vba-development",
+      "detail": "1"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/contact?service=financial-modeling",
+      "detail": "1"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/contact?service=access-consulting",
+      "detail": "1"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/contact?service=access-database-repair",
+      "detail": "1"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/contact?service=database-migration",
+      "detail": "1"
+    },
+    {
+      "code": "CONTEXTUAL_INBOUND_UNDER_3",
+      "path": "/blog/categories/excel-automation",
+      "detail": "1"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies",
+      "detail": "\"Case Studies\" 81.8% (63/77)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/pricing",
+      "detail": "\"Pricing\" 95.3% (61/64)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog",
+      "detail": "\"Blog\" 81.3% (61/75)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact",
+      "detail": "\"Contact\" 31.5% (63/200)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact",
+      "detail": "\"Book Free Consultation\" 47.0% (94/200)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?intent=estimate",
+      "detail": "\"Request Fixed-Price Estimate\" 86.7% (72/83)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/construction-automated-reporting",
+      "detail": "\"30-second weekly reports\" 46.7% (7/15)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/manufacturing-inventory-tracking",
+      "detail": "\"zero-crash inventory system\" 50.0% (12/24)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/financial-services-data-integration",
+      "detail": "\"Excel SQL data integration\" 50.0% (8/16)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/distribution-slow-spreadsheet",
+      "detail": "\"10-second spreadsheet opens\" 46.2% (6/13)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/access-database-repair",
+      "detail": "\"Access database repair\" 31.3% (5/16)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/vba-development",
+      "detail": "\"VBA Development\" 71.4% (10/14)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/excel-automation",
+      "detail": "\"Excel Automation\" 31.3% (10/32)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/financial-modeling",
+      "detail": "\"Financial Modeling\" 50.0% (3/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/database-migration",
+      "detail": "\"Database Migration\" 50.0% (13/26)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/retail-pricing-system",
+      "detail": "\"automated retail pricing\" 58.3% (7/12)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/access-sql-migration-enterprise",
+      "detail": "\"50-user SQL migration\" 55.6% (5/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/distribution-warehouse-pick-list",
+      "detail": "\"faster warehouse pick lists\" 75.0% (6/8)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/construction-job-costing-tracker",
+      "detail": "\"same-day job costing\" 85.7% (6/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/case-studies/healthcare-records-access-sql-migration",
+      "detail": "\"healthcare SQL migration\" 75.0% (3/4)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?service=excel-automation",
+      "detail": "\"Get quote\" 100.0% (3/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?service=vba-development",
+      "detail": "\"Get quote\" 100.0% (3/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?service=financial-modeling",
+      "detail": "\"Get quote\" 100.0% (3/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?service=access-consulting",
+      "detail": "\"Get quote\" 100.0% (3/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?service=access-database-repair",
+      "detail": "\"Get quote\" 100.0% (3/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/contact?service=database-migration",
+      "detail": "\"Get quote\" 100.0% (3/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/excel-automation-cost-what-to-expect",
+      "detail": "\"Excel automation pricing\" 57.1% (4/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/faq",
+      "detail": "\"Common Questions\" 53.3% (8/15)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/resources/calculator",
+      "detail": "\"ROI Calculator\" 61.5% (8/13)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/free-resources",
+      "detail": "\"Free Resources\" 64.3% (9/14)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/hire-excel-vba-consultant",
+      "detail": "\"VBA consultant engagement\" 33.3% (1/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/hire-excel-vba-consultant",
+      "detail": "\"hire Excel VBA help\" 33.3% (1/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/hire-excel-vba-consultant",
+      "detail": "\"hire a VBA consultant\" 33.3% (1/3)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/excel-consultant-utah",
+      "detail": "\"Excel consultant in Utah\" 66.7% (8/12)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/financial-modeling-best-practices",
+      "detail": "\"Financial Modeling Best Practices\" 66.7% (4/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-repair-guide",
+      "detail": "\"Access Database Repair Guide: When to Fix vs Rebuild\" 33.3% (3/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-repair-guide",
+      "detail": "\"Access repair guide\" 44.4% (4/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/is-microsoft-access-still-relevant-2026",
+      "detail": "\"Is Microsoft Access Still Relevant in 2026?\" 66.7% (6/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/is-microsoft-access-still-relevant-2026",
+      "detail": "\"Access relevance in 2026\" 33.3% (3/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "detail": "\"Access vs Power Apps: When to Stay on Access\" 37.5% (3/8)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-vs-power-apps-when-to-stay-on-access",
+      "detail": "\"Access vs Power Apps\" 62.5% (5/8)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/when-to-migrate-from-access",
+      "detail": "\"When to Migrate from Access (And When Not To)\" 33.3% (4/12)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/when-to-migrate-from-access",
+      "detail": "\"when to migrate Access\" 33.3% (4/12)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-vs-excel-when-to-use-each",
+      "detail": "\"Access vs Excel: When to Use Each\" 33.3% (2/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-vs-excel-when-to-use-each",
+      "detail": "\"Access vs Excel\" 50.0% (3/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/how-to-split-access-database",
+      "detail": "\"split an Access database\" 37.5% (3/8)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-multi-user-setup",
+      "detail": "\"Access Database Multi User Setup\" 33.3% (2/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-multi-user-setup",
+      "detail": "\"multi-user Access setup\" 50.0% (3/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-sql-server-migration-cost",
+      "detail": "\"Access SQL Server Migration Cost\" 33.3% (2/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-sql-server-migration-cost",
+      "detail": "\"SQL migration pricing\" 50.0% (3/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-repair-cost",
+      "detail": "\"Access Database Repair Cost\" 33.3% (2/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-repair-cost",
+      "detail": "\"Access repair pricing\" 66.7% (4/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/why-access-databases-become-corrupted",
+      "detail": "\"why Access corrupts\" 50.0% (4/8)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-front-end-back-end-architecture",
+      "detail": "\"Access front-end design\" 42.9% (3/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/how-to-modernize-access-database",
+      "detail": "\"modernize an Access database\" 57.1% (4/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-performance-optimization",
+      "detail": "\"Access performance tuning\" 57.1% (4/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-best-practices",
+      "detail": "\"Access best practices\" 42.9% (3/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-database-maintenance-checklist",
+      "detail": "\"Access maintenance checklist\" 42.9% (3/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/10-signs-you-need-excel-automation",
+      "detail": "\"Excel automation signs\" 66.7% (4/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/10-signs-you-need-excel-automation",
+      "detail": "\"10 Signs You Need Excel Automation\" 33.3% (2/6)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/excel-reporting-automation-complete-guide",
+      "detail": "\"Excel reporting automation\" 55.6% (5/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/excel-reporting-automation-complete-guide",
+      "detail": "\"Excel Reporting Automation: Complete Guide\" 44.4% (4/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/how-to-speed-up-slow-excel-spreadsheets",
+      "detail": "\"speed up Excel\" 60.0% (6/10)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/why-your-access-database-keeps-crashing",
+      "detail": "\"Access crash causes\" 55.6% (5/9)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-vs-sql-server-when-to-migrate",
+      "detail": "\"Access vs SQL Server\" 58.3% (7/12)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/access-vs-sql-server-when-to-migrate",
+      "detail": "\"Access vs SQL Server: When to Migrate\" 33.3% (4/12)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/common-excel-vba-mistakes-and-how-to-fix-them",
+      "detail": "\"common VBA mistakes\" 57.1% (4/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/common-excel-vba-mistakes-and-how-to-fix-them",
+      "detail": "\"Common Excel VBA Mistakes\" 42.9% (3/7)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/about",
+      "detail": "\"Robert Terry\" 57.9% (33/57)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/about",
+      "detail": "\"By Robert Terry\" 42.1% (24/57)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/categories/access-database",
+      "detail": "\"Access Database\" 100.0% (13/13)"
+    },
+    {
+      "code": "ANCHOR_SHARE_OVER_30",
+      "path": "/blog/categories/database-migration",
+      "detail": "\"Database Migration\" 100.0% (3/3)"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/thank-you",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/access-vs-sql-server",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/common-excel-vba-mistakes",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/excel-reporting-automation",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/excel-automation-signs",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/access-database-crashing",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/excel-automation-cost",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/speed-up-excel",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/access-vs-sql-server",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/common-excel-vba-mistakes",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/excel-reporting-automation",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/excel-automation-signs",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/access-database-crashing",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/excel-automation-cost",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/speed-up-excel",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/2026/01/excel-automation-signs",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/2026/01/access-database-crashing",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/2026/01/excel-automation-cost",
+      "detail": "in sitemap, not in BFS"
+    },
+    {
+      "code": "UNREACHABLE_FROM_HOMEPAGE",
+      "path": "/blog/2026/01/speed-up-excel",
+      "detail": "in sitemap, not in BFS"
+    }
+  ],
+  "sampleDepth": {
+    "/": 0,
+    "/case-studies": 1,
+    "/pricing": 1,
+    "/blog": 1,
+    "/contact": 1,
+    "/excel-automation": 1,
+    "/access-consulting": 1,
+    "/access-database-repair": 1,
+    "/database-migration": 1,
+    "/vba-development": 1,
+    "/financial-modeling": 1,
+    "/about": 1,
+    "/faq": 1,
+    "/contact?intent=estimate": 1,
+    "/case-studies/construction-automated-reporting": 1,
+    "/case-studies/manufacturing-inventory-tracking": 1,
+    "/case-studies/financial-services-data-integration": 1,
+    "/case-studies/distribution-slow-spreadsheet": 1,
+    "/case-studies/retail-pricing-system": 1,
+    "/excel-consultant-utah": 1
+  }
+}

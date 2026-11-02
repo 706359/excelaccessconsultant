@@ -17,7 +17,7 @@ export const CONTACT_RELATED_LINKS = [
   {
     num: '01',
     industry: 'Free',
-    title: 'Free Resources',
+    title: 'Free checklists',
     outcome: 'Download checklists and guides for Excel and Access.',
     href: '/free-resources',
     accent: 'primary',

@@ -1,0 +1,149 @@
+{
+  "blog": {
+    "status": 200,
+    "html_length": 28836,
+    "unique_post_links_no_js": [],
+    "post_link_count": 0,
+    "category_links": [],
+    "has_latest_posts_string": false,
+    "notes": "page.jsx only Suspense-wraps BlogPageClient (use client). Post grid is client-rendered; crawler without JS sees 0 post slug links.",
+    "proposed_after_ssr": {
+      "post_links": "all canonical posts from registry (24) as <a href=/blog/slug>title</a> + excerpt",
+      "category_links": 3
+    }
+  },
+  "title_encoding": {
+    "/blog": {
+      "raw_title": "Blog - Excel &amp; Access Automation Tips &amp; Guides",
+      "contains_amp_entity": true,
+      "contains_bare_amp": false,
+      "contains_double_amp": false
+    },
+    "/access-consulting": {
+      "raw_title": "Access Database Consultant | Access Data Consulting",
+      "contains_amp_entity": false,
+      "contains_bare_amp": false,
+      "contains_double_amp": false
+    },
+    "/free-checklist": {
+      "raw_title": "Free Excel &amp; Access Resources | ExcelAccessConsultant",
+      "contains_amp_entity": true,
+      "contains_bare_amp": false,
+      "contains_double_amp": false
+    }
+  },
+  "access_consulting_title_sample": "Access Database Consultant | Access Data Consulting",
+  "free_pages": {
+    "/free-checklist": {
+      "status": 200,
+      "title": "Free Excel &amp; Access Resources | ExcelAccessConsultant",
+      "h1": "Free Excel &amp; Access Resources",
+      "meta": "Download free Excel automation checklists, Access database health guides, and VBA best practices. Instant access, no spam.",
+      "word_count": 416,
+      "body_links": [
+        "/_next/static/chunks/77e5a646547a8f43.css",
+        "/_next/static/chunks/8c84f5a03dbd98ff.css",
+        "/_next/static/chunks/5bcee453cc4bce6d.js",
+        "/site.webmanifest",
+        "/favicon.ico",
+        "/favicon-16x16.png",
+        "/favicon-32x32.png",
+        "/apple-touch-icon.png",
+        "/",
+        "/case-studies",
+        "/pricing",
+        "/blog",
+        "/contact",
+        "/excel-automation",
+        "/access-consulting",
+        "/access-database-repair",
+        "/database-migration",
+        "/vba-development",
+        "/financial-modeling",
+        "/about",
+        "/faq",
+        "/privacy-policy",
+        "/resources/calculator",
+        "/excel-consultant-utah",
+        "/hire-excel-vba-consultant",
+        "/free-checklist"
+      ]
+    },
+    "/free-resources": {
+      "status": 200,
+      "title": "Free Excel &amp; Access Resources | ExcelAccessConsultant",
+      "h1": "Free Excel &amp; Access Resources",
+      "meta": "Free Excel automation checklists, Access database health checks, and VBA best practices guides. Download instantly.",
+      "word_count": 416,
+      "body_links": [
+        "/_next/static/chunks/77e5a646547a8f43.css",
+        "/_next/static/chunks/8c84f5a03dbd98ff.css",
+        "/_next/static/chunks/5bcee453cc4bce6d.js",
+        "/site.webmanifest",
+        "/favicon.ico",
+        "/favicon-16x16.png",
+        "/favicon-32x32.png",
+        "/apple-touch-icon.png",
+        "/",
+        "/case-studies",
+        "/pricing",
+        "/blog",
+        "/contact",
+        "/excel-automation",
+        "/access-consulting",
+        "/access-database-repair",
+        "/database-migration",
+        "/vba-development",
+        "/financial-modeling",
+        "/about",
+        "/faq",
+        "/privacy-policy",
+        "/resources/calculator",
+        "/excel-consultant-utah",
+        "/hire-excel-vba-consultant",
+        "/free-checklist"
+      ]
+    },
+    "/resources/free-checklist": {
+      "status": 200,
+      "title": "Free Excel &amp; Access Resources | ExcelAccessConsultant",
+      "h1": "Free Excel &amp; Access Resources",
+      "meta": "Download free Excel automation checklists, Access database health guides, and VBA best practices. Instant access, no spam.",
+      "word_count": 417,
+      "body_links": [
+        "/_next/static/chunks/77e5a646547a8f43.css",
+        "/_next/static/chunks/8c84f5a03dbd98ff.css",
+        "/_next/static/chunks/5bcee453cc4bce6d.js",
+        "/site.webmanifest",
+        "/favicon.ico",
+        "/favicon-16x16.png",
+        "/favicon-32x32.png",
+        "/apple-touch-icon.png",
+        "/",
+        "/case-studies",
+        "/pricing",
+        "/blog",
+        "/contact",
+        "/excel-automation",
+        "/access-consulting",
+        "/access-database-repair",
+        "/database-migration",
+        "/vba-development",
+        "/financial-modeling",
+        "/about",
+        "/faq",
+        "/resources",
+        "/privacy-policy",
+        "/resources/calculator",
+        "/excel-consultant-utah",
+        "/hire-excel-vba-consultant",
+        "/free-checklist"
+      ]
+    }
+  },
+  "free_pages_overlap_jaccard_words_gt3": {
+    "free-checklist_vs_free-resources": 1,
+    "free-checklist_vs_resources-free-checklist": 1,
+    "free-resources_vs_resources-free-checklist": 1
+  }
+}
