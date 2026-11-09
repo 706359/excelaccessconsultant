@@ -325,9 +325,9 @@ export default function AccessConsulting() {
           <div className='card card--interactive'>
             <h3>Database Support & Maintenance</h3>
             <p className='text-muted'>
-              Automated backups, compact and repair schedules, and maintenance routines, plus
-              consultant database support when something breaks. Keep your database healthy and
-              prevent data loss.
+              Automated backups, compact and repair schedules, and maintenance routines, plus{' '}
+              <Link href='/access-database-support'>Microsoft Access support services</Link> when
+              something breaks. Keep your database healthy and prevent data loss.
             </p>
           </div>
           <div className='card card--interactive'>
@@ -372,8 +372,10 @@ export default function AccessConsulting() {
           otherwise it just happens again. Slowness is usually missing indexes or queries that pull
           far more data than they need. And if the team has really{' '}
           <Link href='/blog/when-to-migrate-from-access'>outgrown Access</Link>, I will say so and
-          walk through the options. Moving to SQL Server is not always the answer, though. I wrote up
-          one{' '}
+          walk through the options—including{' '}
+          <Link href='/access-to-web-app-migration'>converting Access to a web application</Link>{' '}
+          when browser access is required. Moving to SQL Server is not always the answer, though. I
+          wrote up one{' '}
           <Link href='/case-studies/access-sql-migration-enterprise'>
             enterprise Access to SQL Server migration
           </Link>{' '}
@@ -391,7 +393,9 @@ export default function AccessConsulting() {
         <p>
           Sometimes the right move is to keep the spreadsheet and{' '}
           <Link href='/excel-automation'>automate the repetitive parts</Link>. Other times the data
-          belongs in a database, and I explain how I decide in{' '}
+          belongs in a database—see{' '}
+          <Link href='/excel-to-access-conversion'>Excel to Access conversion services</Link> when
+          you are ready to hire that migration—and I explain how I decide in{' '}
           <Link href='/blog/access-vs-excel-when-to-use-each'>when to use Access vs Excel</Link>.
           There is also a case study on{' '}
           <Link href='/case-studies/distribution-slow-spreadsheet'>

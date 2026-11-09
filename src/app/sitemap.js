@@ -22,6 +22,11 @@ const staticRoutes = [
   { path: 'resources/calculator', priority: 0.7, changeFrequency: 'monthly' },
   { path: 'excel-consultant-utah', priority: 0.8, changeFrequency: 'monthly' },
   { path: 'hire-excel-vba-consultant', priority: 0.8, changeFrequency: 'monthly' },
+  { path: 'excel-to-access-conversion', priority: 0.9, changeFrequency: 'monthly' },
+  { path: 'access-to-web-app-migration', priority: 0.9, changeFrequency: 'monthly' },
+  { path: 'access-database-support', priority: 0.9, changeFrequency: 'monthly' },
+  { path: 'excel-dashboard-development', priority: 0.9, changeFrequency: 'monthly' },
+  { path: 'excel-macro-repair', priority: 0.8, changeFrequency: 'monthly' },
   { path: 'privacy-policy', priority: 0.5, changeFrequency: 'yearly' },
 ];
 

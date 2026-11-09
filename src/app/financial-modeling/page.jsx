@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import {
@@ -165,7 +166,12 @@ export default function FinancialModeling() {
                   <h3>Performance Dashboards</h3>
                   <p className='text-muted'>
                     Visual dashboards showing key financial metrics, KPIs, and trends. Automatically
-                    update when data changes. Executive-ready presentations.
+                    update when data changes. Executive-ready presentations. For operational KPI
+                    workbooks outside a full model build, see{' '}
+                    <Link href='/excel-dashboard-development' className='text-link'>
+                      Excel dashboard development
+                    </Link>
+                    .
                   </p>
                 </div>
                 <div className='card card--interactive'>

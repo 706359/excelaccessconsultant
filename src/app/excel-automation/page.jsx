@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import {
@@ -119,6 +120,23 @@ export default function ExcelAutomation() {
           </p>
           <ServiceHeroCTAs />
         </div>
+      </section>
+
+      <section className='container' style={{ paddingBlock: '2rem' }}>
+        <p>
+          Automation is the right first step when Excel is still the right home for the data. When
+          multiple people must edit the same operational records, or the workbook is past
+          reliable sharing, consider a dedicated{' '}
+          <Link href='/excel-to-access-conversion' className='text-link'>
+            convert Excel to Access database project
+          </Link>{' '}
+          instead of more macros on a fragile master file. When the goal is a live scorecard rather
+          than a one-click workflow, see{' '}
+          <Link href='/excel-dashboard-development' className='text-link'>
+            Excel dashboard development services
+          </Link>
+          .
+        </p>
       </section>
 
       <ProblemSection problems={content.problems} />

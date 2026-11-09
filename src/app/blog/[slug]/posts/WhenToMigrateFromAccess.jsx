@@ -83,7 +83,8 @@ function WhenToMigrateFromAccess() {
                         </p>
                         <p>
                           <strong>Migration target:</strong> SQL Server (keep Access as front-end) or a
-                          full web application.
+                          full{' '}
+                          <Link href='/access-to-web-app-migration'>web application rebuild</Link>.
                         </p>
         
                         <h3>

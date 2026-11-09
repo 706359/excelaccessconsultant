@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import {
@@ -246,6 +247,17 @@ export default function VBADevelopmentPage() {
           </p>
           <ServiceHeroCTAs />
         </div>
+      </section>
+
+      <section className='container' style={{ paddingBlock: '2rem' }}>
+        <p>
+          If you only need to{' '}
+          <Link href='/excel-macro-repair' className='text-link'>
+            fix a broken Excel macro
+          </Link>{' '}
+          that stopped after an error or an Office change, use the repair page. This page stays
+          focused on new builds and larger rewrites.
+        </p>
       </section>
 
       <ProblemSection title='The Problem' problems={problems} />

@@ -58,7 +58,12 @@ function AccessVsPowerApps() {
                           Microsoft pushes Power Apps as the modern replacement for legacy databases. But
                           if your <strong>Access database</strong> runs your business today, ripping it out
                           for <strong>Power Apps</strong> isn&apos;t always smart, or cheap. Here&apos;s an
-                          honest comparison from someone who builds and fixes both.
+                          honest comparison from someone who builds and fixes both. When a custom browser
+                          rebuild fits better than Power Apps, see{' '}
+                          <Link href='/access-to-web-app-migration'>
+                            Access to web app migration services
+                          </Link>
+                          .
                         </p>
         
                         <h2>

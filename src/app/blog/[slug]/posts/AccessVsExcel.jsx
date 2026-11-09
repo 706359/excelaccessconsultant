@@ -114,7 +114,10 @@ function AccessVsExcel() {
         </p>
 
         <h2>Warning Signs You Have Outgrown Excel</h2>
-        <p>These are the patterns I see before every Excel-to-Access project:</p>
+        <p>
+          These are the patterns I see before every{' '}
+          <Link href='/excel-to-access-conversion'>Excel to Access conversion</Link> project:
+        </p>
         <ul>
           <li>
             Staff maintain parallel copies of the &quot;master&quot; file because sharing one

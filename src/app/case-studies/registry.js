@@ -68,6 +68,12 @@ export const CASE_STUDIES = {
     },
     relatedService: '/excel-automation',
     relatedServiceLabel: 'Excel VBA Automation',
+    bodyLinks: [
+      {
+        phrase: 'standardized report templates',
+        href: '/excel-dashboard-development',
+      },
+    ],
   },
 
   'financial-services-data-integration': {
@@ -138,6 +144,12 @@ export const CASE_STUDIES = {
     },
     relatedService: '/excel-automation',
     relatedServiceLabel: 'Excel VBA Automation',
+    bodyLinks: [
+      {
+        phrase: 'an Access database to store all historical and reference data',
+        href: '/excel-to-access-conversion',
+      },
+    ],
   },
 
   'retail-pricing-system': {
@@ -244,6 +256,12 @@ export const CASE_STUDIES = {
     },
     relatedService: '/access-consulting',
     relatedServiceLabel: 'Access Database Development',
+    bodyLinks: [
+      {
+        phrase: 'printed lists from Excel exports',
+        href: '/excel-to-access-conversion',
+      },
+    ],
   },
 
   'construction-job-costing-tracker': {
@@ -276,6 +294,12 @@ export const CASE_STUDIES = {
     },
     relatedService: '/access-consulting',
     relatedServiceLabel: 'Access Database Development',
+    bodyLinks: [
+      {
+        phrase: 'separate Excel files per job',
+        href: '/excel-to-access-conversion',
+      },
+    ],
   },
 
   'healthcare-records-access-sql-migration': {

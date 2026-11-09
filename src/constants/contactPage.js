@@ -1,6 +1,31 @@
 export const CONTACT_SERVICES = [
   { value: 'excel-automation', label: 'Excel Automation', accent: 'primary' },
+  {
+    value: 'excel-dashboard-development',
+    label: 'Excel Dashboard Development',
+    accent: 'primary',
+  },
+  {
+    value: 'excel-macro-repair',
+    label: 'Excel Macro Repair',
+    accent: 'primary',
+  },
   { value: 'access-database', label: 'Access Database Help', accent: 'secondary' },
+  {
+    value: 'access-database-support',
+    label: 'Access Database Support',
+    accent: 'secondary',
+  },
+  {
+    value: 'excel-to-access-conversion',
+    label: 'Excel to Access Conversion',
+    accent: 'primary',
+  },
+  {
+    value: 'access-to-web-app-migration',
+    label: 'Access to Web App Migration',
+    accent: 'secondary',
+  },
   { value: 'financial-modeling', label: 'Financial Modeling', accent: 'primary' },
   { value: 'database-migration', label: 'Database Migration', accent: 'secondary' },
   { value: 'vba-development', label: 'VBA Development', accent: 'primary' },

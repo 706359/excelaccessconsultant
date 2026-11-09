@@ -89,6 +89,13 @@ export default function HireExcelVBAConsultant() {
             completed projects, and a straightforward process that eliminates guesswork.
           </p>
           <ContactCTAs {...CTA_BUTTON_VARIANTS.onLight} />
+          <p className='text-muted' style={{ marginTop: '1.25rem' }}>
+            Already have a macro that throws errors? Start with{' '}
+            <Link href='/excel-macro-repair' className='text-link'>
+              Excel macro repair
+            </Link>{' '}
+            instead of a full consulting engagement.
+          </p>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect } from 'react';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import SEO from '../../components/SEO/SEO';
@@ -153,6 +154,13 @@ export default function AccessDatabaseRepair() {
             </div>
           ))}
         </div>
+        <p className='text-muted' style={{ marginTop: '1.5rem' }}>
+          After recovery, ongoing{' '}
+          <Link href='/access-database-support' className='text-link'>
+            Access database support
+          </Link>{' '}
+          covers smaller fixes and maintenance so the same crisis is less likely to return.
+        </p>
       </ServiceCapabilitiesSection>
 
       <ServiceHowItWorks steps={SERVICE_PROCESS_STEPS['access-database-repair']} accent='secondary'>

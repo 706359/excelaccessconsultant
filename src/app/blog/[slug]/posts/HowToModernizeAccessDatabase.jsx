@@ -40,7 +40,11 @@ function HowToModernizeAccessDatabase() {
 
         <h2>Modernization Layers</h2>
         <p>Layer 1: split and optimize current Access. Layer 2: SQL Server back-end, keep Access UI. Layer 3: replace UI with Power Apps or web app (only when justified). Most businesses stop at layer 2.</p>
-        <p><Link href='/database-migration'>migration consulting</Link> · <Link href='/blog/access-database-performance-optimization'>performance optimization</Link></p>
+        <p>
+          <Link href='/database-migration'>migration consulting</Link> ·{' '}
+          <Link href='/access-to-web-app-migration'>Access to web app migration</Link> ·{' '}
+          <Link href='/blog/access-database-performance-optimization'>performance optimization</Link>
+        </p>
         <h2>Next Step</h2>
         <p>
           <Link href='/contact'>Book a free consultation</Link> or{' '}

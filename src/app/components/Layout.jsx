@@ -58,7 +58,12 @@ export default function Layout({ children }) {
 
   const serviceLinks = [
     { href: '/excel-automation', label: 'Excel Automation' },
+    { href: '/excel-dashboard-development', label: 'Excel Dashboard Development' },
+    { href: '/excel-macro-repair', label: 'Excel Macro Repair' },
     { href: '/access-consulting', label: 'Access Consulting' },
+    { href: '/access-database-support', label: 'Access Database Support' },
+    { href: '/excel-to-access-conversion', label: 'Excel to Access Conversion' },
+    { href: '/access-to-web-app-migration', label: 'Access to Web App Migration' },
     { href: '/access-database-repair', label: 'Access Database Repair' },
     { href: '/database-migration', label: 'Database Migration' },
     { href: '/vba-development', label: 'VBA Development' },

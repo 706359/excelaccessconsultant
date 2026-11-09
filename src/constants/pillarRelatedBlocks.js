@@ -39,6 +39,10 @@ export const PILLAR_RELATED = {
       links: [
         { href: '/vba-development', title: 'VBA Development' },
         { href: '/access-consulting', title: 'Access Database Consulting' },
+        {
+          href: '/excel-to-access-conversion',
+          title: 'Excel to Access conversion',
+        },
         { href: '/hire-excel-vba-consultant', title: 'hire Excel VBA help' },
         { href: '/faq', title: 'frequently asked questions' },
       ],
@@ -72,6 +76,14 @@ export const PILLAR_RELATED = {
       links: [
         { href: '/database-migration', title: 'Database Migration' },
         { href: '/access-database-repair', title: 'Access Database Repair' },
+        {
+          href: '/excel-to-access-conversion',
+          title: 'upgrade Excel to Access',
+        },
+        {
+          href: '/access-to-web-app-migration',
+          title: 'move Access to a web app',
+        },
         { href: '/free-resources', title: 'Access health check download' },
         { href: '/faq', title: 'common Access questions' },
       ],
@@ -156,6 +168,10 @@ export const PILLAR_RELATED = {
       heading: 'Services',
       links: [
         { href: '/access-consulting', title: 'Access Database Consulting' },
+        {
+          href: '/access-to-web-app-migration',
+          title: 'Access to web app migration',
+        },
         { href: '/faq', title: 'migration questions answered' },
       ],
     },

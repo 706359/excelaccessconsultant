@@ -76,7 +76,19 @@ export default function PricingPage() {
           <PricingTierGrid tiers={GENERAL_PROJECT_TIERS} variant='excel' />
           <p className='pricing-page__note'>
             <strong>All projects include:</strong> documentation, training, 100% code ownership, and
-            a 30-day warranty.{' '}
+            a 30-day warranty. For ongoing Access help after that window, see{' '}
+            <Link href='/access-database-support' className='text-link'>
+              Access database support
+            </Link>
+            . Custom reporting workbooks are scoped under{' '}
+            <Link href='/excel-dashboard-development' className='text-link'>
+              Excel dashboard development
+            </Link>
+            . Broken macros are scoped under{' '}
+            <Link href='/excel-macro-repair' className='text-link'>
+              Excel macro repair
+            </Link>
+            .{' '}
             <Link href={CTA.primaryHref} className='text-link'>
               Request your fixed-price quote →
             </Link>

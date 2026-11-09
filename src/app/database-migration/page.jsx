@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ServicePageTracker from '../../components/Analytics/ServicePageTracker';
 import FAQSchema from '../../components/SEO/FAQSchema';
 import {
@@ -108,6 +109,17 @@ export default function DatabaseMigrationPage() {
           </p>
           <ServiceHeroCTAs />
         </div>
+      </section>
+
+      <section className='container' style={{ paddingBlock: '2rem' }}>
+        <p>
+          Most migrations keep or re-link an Access front end on SQL Server or Azure SQL. When your
+          team needs browser-based screens instead of desktop Access, see{' '}
+          <Link href='/access-to-web-app-migration' className='text-link'>
+            Access to web app migration services
+          </Link>{' '}
+          for the UI rebuild path that complements this page.
+        </p>
       </section>
 
       <ProblemSection problems={content.problems} />

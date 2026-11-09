@@ -29,6 +29,11 @@ export default function Breadcrumb() {
     '/access-database-repair': 'Access Database Repair',
     '/excel-consultant-utah': 'Excel Consultant Utah',
     '/hire-excel-vba-consultant': 'Hire Excel VBA Consultant',
+    '/excel-to-access-conversion': 'Excel to Access Conversion',
+    '/access-to-web-app-migration': 'Access to Web App Migration',
+    '/access-database-support': 'Access Database Support',
+    '/excel-dashboard-development': 'Excel Dashboard Development',
+    '/excel-macro-repair': 'Excel Macro Repair',
     '/free-checklist': 'Free Resources',
     '/free-resources': 'Free Resources',
   };
