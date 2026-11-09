@@ -5,6 +5,7 @@ import {
   ServiceFinalCTASection,
   ServiceRelatedSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import { BRAND_LOGO_OG } from '../../config/brand';
 import {
   PAGE_REVIEWED,
   PROOF_CASES,
@@ -17,9 +18,115 @@ import {
 } from '../../constants/accessDatabaseSupportPage';
 import { CONSULTANTS, CTA, TRUST } from '../../constants/site';
 
-const CANONICAL = 'https://excelaccessconsultant.com/access-database-support';
-const PROVIDER_ID = 'https://excelaccessconsultant.com/#localbusiness';
+const SITE = 'https://excelaccessconsultant.com';
+const CANONICAL = `${SITE}/access-database-support`;
+const PROVIDER_ID = `${SITE}/#localbusiness`;
+// Prefer dedicated OG art when present; fall back to brand logo so shares are never blank.
+const OG_IMAGE = BRAND_LOGO_OG;
 const sectionStyle = { paddingBlock: '3rem' };
+
+const PAGE_TITLE = 'Microsoft Access Support Services | Excel Access Consultant';
+const PAGE_DESCRIPTION =
+  'Ongoing Microsoft Access support: bug fixes, multi-user locking, reports, backups and maintenance for live .accdb databases. $90/hr or fixed-price quotes.';
+
+export const metadata = {
+  title: { absolute: PAGE_TITLE },
+  description: PAGE_DESCRIPTION,
+  keywords: [
+    'Microsoft Access support services',
+    'Access database support',
+    'Access database maintenance',
+    'Access database troubleshooting',
+    'Access developer on retainer',
+    'legacy Access database support',
+    'inherited Access database support',
+    'Access multi-user locking errors',
+  ],
+  alternates: { canonical: CANONICAL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    url: CANONICAL,
+    siteName: 'Excel Access Consultant',
+    locale: 'en_US',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE.url],
+  },
+};
+
+/*
+ * FAQ: one source of truth for BOTH the visible page and the FAQPage schema.
+ * `text` is plain text (links flattened) and must match what `body` shows.
+ */
+const FAQ_OVERRIDES = {
+  'How much does Access database support cost?': {
+    text: 'Cost depends on urgency, how complex the VBA and linked tables are, and whether you need one fix or ongoing help. Advisory and diagnostic work is $90/hour. Larger scoped changes get a fixed-price quote before coding starts. See the pricing page for how quotes are structured.',
+    body: (
+      <>
+        Cost depends on urgency, how complex the VBA and linked tables are, and whether you need one
+        fix or ongoing help. Advisory and diagnostic work is $90/hour. Larger scoped changes get a
+        fixed-price quote before coding starts. See the{' '}
+        <Link href='/pricing' className='text-link'>
+          pricing
+        </Link>{' '}
+        page for how quotes are structured.
+      </>
+    ),
+  },
+  'How many users can Access handle?': {
+    text: 'With a proper split design, many teams run in the teens to low dozens of concurrent users. Past that range, performance and locking risk rise. I cover practical limits in the blog post on Access with 50 users.',
+    body: (
+      <>
+        With a proper split design, many teams run in the teens to low dozens of concurrent users.
+        Past that range, performance and locking risk rise. I cover practical limits in the blog post
+        on{' '}
+        <Link href='/blog/can-access-handle-50-users' className='text-link'>
+          Access with 50 users
+        </Link>
+        .
+      </>
+    ),
+  },
+  'What if the database is corrupted?': {
+    text: 'That is repair work. I assess whether compact and repair, recovery, or a rebuild is needed, then quote before recovery starts. Use Access database repair for files that will not open or keep crashing.',
+    body: (
+      <>
+        That is repair work. I assess whether compact and repair, recovery, or a rebuild is needed,
+        then quote before recovery starts. Use{' '}
+        <Link href='/access-database-repair' className='text-link'>
+          Access database repair
+        </Link>{' '}
+        for files that will not open or keep crashing.
+      </>
+    ),
+  },
+};
+
+const FAQS = SUPPORT_FAQS.map((faq) => {
+  const override = FAQ_OVERRIDES[faq.question];
+  return {
+    question: faq.question,
+    text: override ? override.text : faq.answer,
+    body: override ? override.body : faq.answer,
+  };
+});
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -38,16 +145,32 @@ const jsonLd = {
         { '@type': 'Country', name: 'Canada' },
         { '@type': 'Country', name: 'United Kingdom' },
       ],
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'Small businesses that run daily operations on Microsoft Access',
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'Advisory and diagnostic work',
+        url: `${SITE}/pricing`,
+        priceCurrency: 'USD',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: '90',
+          priceCurrency: 'USD',
+          unitText: 'HOUR',
+        },
+      },
     },
     {
       '@type': 'FAQPage',
       '@id': `${CANONICAL}#faq`,
-      mainEntity: SUPPORT_FAQS.map((faq) => ({
+      mainEntity: FAQS.map((faq) => ({
         '@type': 'Question',
         name: faq.question,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: faq.answer,
+          text: faq.text,
         },
       })),
     },
@@ -55,12 +178,7 @@ const jsonLd = {
       '@type': 'BreadcrumbList',
       '@id': `${CANONICAL}#breadcrumb`,
       itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://excelaccessconsultant.com/',
-        },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
         {
           '@type': 'ListItem',
           position: 2,
@@ -74,22 +192,35 @@ const jsonLd = {
       '@id': CANONICAL,
       url: CANONICAL,
       name: 'Microsoft Access Support Services',
-      description:
-        'Microsoft Access support services for fixes, locking issues, and small changes on live .accdb files.',
+      description: PAGE_DESCRIPTION,
+      inLanguage: 'en-US',
       dateModified: PAGE_REVIEWED,
+      lastReviewed: PAGE_REVIEWED,
       isPartOf: {
         '@type': 'WebSite',
         name: 'Excel Access Consultant',
-        url: 'https://excelaccessconsultant.com',
+        url: SITE,
       },
       about: { '@id': `${CANONICAL}#service` },
+      mainEntity: { '@id': `${CANONICAL}#faq` },
+      breadcrumb: { '@id': `${CANONICAL}#breadcrumb` },
       author: {
         '@type': 'Person',
         name: CONSULTANTS.displayName,
+        url: `${SITE}/about`,
+        jobTitle: 'Microsoft Access Consultant',
+      },
+      reviewedBy: {
+        '@type': 'Person',
+        name: CONSULTANTS.displayName,
+        url: `${SITE}/about`,
       },
     },
   ],
 };
+
+// Escape "<" so the JSON can never close the script tag early.
+const jsonLdString = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
 function formatReviewed(isoDate) {
   const [year, month, day] = isoDate.split('-').map(Number);
@@ -105,17 +236,21 @@ export default function AccessDatabaseSupport() {
   return (
     <div className='page'>
       <ServicePageTracker service='access-database-support' />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: jsonLdString }} />
 
       <section className='page-hero'>
         <div className='container'>
+          <nav aria-label='Breadcrumb' className='text-muted-sm' style={{ marginBottom: '1rem' }}>
+            <Link href='/' className='text-link'>
+              Home
+            </Link>{' '}
+            <span aria-hidden='true'>/</span>{' '}
+            <span aria-current='page'>Microsoft Access Support Services</span>
+          </nav>
           <h1 className='page-hero__title'>Microsoft Access Support Services</h1>
           <p className='page-hero__lead'>
-            Keep a live Access database working: fixes, small changes, and maintenance when your team
-            depends on it every day.
+            Keep a live Microsoft Access database working: bug fixes, locking-error fixes, small
+            changes, and maintenance when your team depends on it every day.
           </p>
           <div className='contact-ctas contact-ctas--stack'>
             <Button variant='primary' size='large' as={Link} href={CTA.primaryHref}>
@@ -136,9 +271,7 @@ export default function AccessDatabaseSupport() {
       </section>
 
       <section className='container' style={sectionStyle} aria-labelledby='answer-block'>
-        <h2 id='answer-block' className='sr-only'>
-          What are Microsoft Access support services?
-        </h2>
+        <h2 id='answer-block'>What are Microsoft Access support services?</h2>
         <p>
           Microsoft Access support services are ongoing help for a database your business already
           uses. I fix bugs, locking conflicts, slow forms, and small change requests. I also check
@@ -146,10 +279,36 @@ export default function AccessDatabaseSupport() {
           operations, not a full rewrite.
         </p>
         <p>
-          Excel Access Consultant (EAC) works remotely with copies of your .accdb when possible. You
-          stay in control of production cutover. Advisory work uses the $90/hour rate already
-          published on this site. Larger change sets get a fixed-price quote before coding starts.
+          Excel Access Consultant (EAC) works remotely with copies of your .accdb when possible, for
+          businesses in the United States, Canada, and the United Kingdom. You stay in control of
+          production cutover. Advisory work is billed at $90/hour. Larger change sets get a
+          fixed-price quote before coding starts.
         </p>
+        <div className='highlight-box' style={{ marginTop: '1.5rem' }}>
+          <p>
+            <strong>Quick facts</strong>
+          </p>
+          <ul className='highlight-box__list'>
+            <li>
+              <strong>Best for:</strong> live .accdb systems with bugs, locking errors, slow forms,
+              or pending small changes.
+            </li>
+            <li>
+              <strong>Delivery:</strong> remote, working on a copy of your file where possible.
+            </li>
+            <li>
+              <strong>Rate:</strong> $90/hour for advisory and diagnostic work; fixed-price quotes
+              for larger changes.
+            </li>
+            <li>
+              <strong>Engagement:</strong> on-demand, monthly retainer, or project plus support.
+            </li>
+            <li>
+              <strong>Not covered here:</strong> corrupted files (see Access database repair),
+              rebuilds, and SQL Server migrations.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section className='page-section page-section--compact page-section--alt'>
@@ -210,9 +369,10 @@ export default function AccessDatabaseSupport() {
 
       <section className='page-section page-section--compact page-section--alt'>
         <div className='container'>
-          <h2>How support works</h2>
+          <h2>How Access database support works</h2>
           <p className='text-lead'>
-            You get a clear path from the first call to a fixed change, with notes your team can keep.
+            You get a clear path from the first call to a fixed change, with notes your team can
+            keep.
           </p>
           <ol className='stack stack--lg' style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {SUPPORT_STEPS.map((step, index) => (
@@ -233,16 +393,19 @@ export default function AccessDatabaseSupport() {
             </p>
             <ul className='highlight-box__list'>
               <li>
-                On-demand fixes at the advisory rate published on this site ($90/hour) for diagnosis
-                and short tasks.
+                <strong>On-demand:</strong> fixes billed at $90/hour for diagnosis and short tasks.
               </li>
               <li>
-                Monthly retainer for planned hours each month.{' '}
-                {'{{CONFIRM: monthly Access retainer hours and rate}}'}
+                <strong>Monthly retainer:</strong> a set block of hours each month, quoted after a
+                short review of your database.{' '}
+                <Link href={CTA.primaryHref} className='text-link'>
+                  Ask for a retainer quote
+                </Link>
+                .
               </li>
               <li>
-                Project plus support: fixed-price build work, then the 30-day post-delivery window
-                already described on the FAQ and hire pages, with advisory help after that.
+                <strong>Project plus support:</strong> fixed-price build work, followed by a 30-day
+                post-delivery support window, with advisory help after that.
               </li>
             </ul>
           </div>
@@ -378,43 +541,10 @@ export default function AccessDatabaseSupport() {
             Direct answers for owners who need ongoing support for a legacy Access database.
           </p>
           <div className='stack stack--lg'>
-            {SUPPORT_FAQS.map((faq) => (
+            {FAQS.map((faq) => (
               <article key={faq.question} className='card'>
                 <h3>{faq.question}</h3>
-                <p className='text-muted'>
-                  {faq.question === 'How much does Access database support cost?' ? (
-                    <>
-                      Cost depends on urgency, how complex the VBA and linked tables are, and whether
-                      you need one fix or ongoing help. Advisory and diagnostic work is $90/hour on
-                      this site. Larger scoped changes get a fixed-price quote. See the{' '}
-                      <Link href='/pricing' className='text-link'>
-                        pricing
-                      </Link>{' '}
-                      page for how quotes are structured.
-                    </>
-                  ) : faq.question === 'How many users can Access handle?' ? (
-                    <>
-                      With a proper split design, many teams run in the teens to low dozens of
-                      concurrent users. Past that range, performance and locking risk rise. I cover
-                      practical limits in the blog post on{' '}
-                      <Link href='/blog/can-access-handle-50-users' className='text-link'>
-                        Access with 50 users
-                      </Link>
-                      .
-                    </>
-                  ) : faq.question === 'What if the database is corrupted?' ? (
-                    <>
-                      That is repair work. I assess whether compact and repair, recovery, or a rebuild
-                      is needed, then quote before recovery starts. Use{' '}
-                      <Link href='/access-database-repair' className='text-link'>
-                        Access database repair
-                      </Link>{' '}
-                      for files that will not open or keep crashing.
-                    </>
-                  ) : (
-                    faq.answer
-                  )}
-                </p>
+                <p className='text-muted'>{faq.body}</p>
               </article>
             ))}
           </div>

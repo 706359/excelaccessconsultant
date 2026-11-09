@@ -135,44 +135,54 @@ export const PROOF_CASES = [
 
 export const CONVERSION_FAQS = [
   {
-    question: 'Can Excel be converted to an Access database?',
-    answer:
-      'Yes. Spreadsheet tabs can become relational tables in Microsoft Access, with forms for data entry, queries for filtering, and reports for recurring output. Conversion is not a file rename: keys, relationships, and cleanup determine whether the database stays reliable under multi-user use.',
-  },
-  {
-    question: 'When should I move from Excel to Access?',
-    answer:
-      'Move when multiple people must edit the same data, when relationships and validation matter, or when the workbook is slow, crashing, or version-fragmented. Keep Excel for models and analysis. I outline the decision in more detail on Access vs Excel.',
-  },
-  {
     question: 'How much does it cost to convert Excel to Access?',
     answer:
-      'Most conversion projects fall in the same fixed-price bands as other Access and Excel work on this site: roughly $1,500–$3,000 for focused scopes, $3,000–$8,000 for multi-user systems with forms and reports, and $8,000+ for large or multi-department builds. Exact cost depends on sheet count, data quality, and how many workflows you replace.',
+      'Most projects cost between $1,500 and $8,000. A focused conversion with a few clean sheets runs $1,500 to $3,000. A multi-user database with forms, queries and reports usually runs $3,000 to $8,000. Large or multi-department rebuilds start at $8,000. You get a fixed price after a free consultation.',
   },
   {
-    question: 'How long does Excel to Access conversion take?',
+    question: 'How long does an Excel to Access conversion take?',
     answer:
-      'Simple conversions often land in about 1–3 weeks. Multi-user systems with forms, reports, and cleanup commonly take 3–6 weeks. Larger rebuilds run longer. Timeline is confirmed in the fixed-price quote after we review your files.',
+      'Simple conversions take about 1 to 3 weeks. Multi-user systems with forms and validation usually take 3 to 6 weeks. Larger rebuilds take longer. The main factors are the number of sheets and macros, how messy the data is, and how many people will use the database at once.',
   },
   {
-    question: 'Will my team still be able to use Excel after conversion?',
+    question: 'Can I import my Excel file into Access myself?',
     answer:
-      'Usually yes. Many clients keep Excel for analysis and dashboards while Access becomes the system of record. We can link Excel to Access queries so reports refresh without putting transactional data back into a fragile master workbook.',
+      'Yes, for clean, flat data. The Access import wizard copies rows into a table. It does not fix duplicate keys, merged cells, repeating columns or mixed data types, and it does not build forms or reports. If one person uses a simple sheet, try the wizard first. If several people share the file, get the structure designed before importing.',
   },
   {
-    question: 'What happens to my existing Excel formulas and macros?',
+    question: 'Will my Excel formulas and macros still work in Access?',
     answer:
-      'Operational logic that belongs in the database moves into tables, queries, forms, and Access VBA where needed. Pure analysis workbooks can stay in Excel. Broken macros that only papered over spreadsheet limits are replaced by proper validation and multi-user design.',
+      'The logic carries over, the syntax does not. Formulas are rebuilt as queries, calculated fields or VBA, depending on what they do. Excel VBA macros are reviewed and rewritten for Access where you still need them.',
   },
   {
-    question: 'Can you convert an Excel inventory tracker to a multi-user Access database?',
+    question: 'Can we keep using Excel after the conversion?',
     answer:
-      'Yes. Inventory trackers are a common conversion: items, locations, transactions, and users become related tables with forms for receiving, issues, and counts. Concurrent staff can work without emailing copies of the master file.',
+      'Yes. Excel can pull data from Access for reporting and analysis, so your pivot tables and models keep working. The shared data lives in Access, where several people can edit it safely.',
   },
   {
-    question: 'When is Access the wrong destination?',
+    question: 'How many people can use an Access database at the same time?',
     answer:
-      'If you need dozens of concurrent writers, heavy web/mobile access, or you are already near Access size and concurrency limits, SQL Server or another platform may fit better. I will say so up front and point you toward database migration options instead of forcing Access.',
+      'A split Access database suits small and mid-size teams, and we have built one for 15 concurrent users. Once dozens of people write at the same time, SQL Server is the safer back end. We check this in the consultation, before you pay for a build.',
+  },
+  {
+    question: 'When should I move to SQL Server instead of Access?',
+    answer:
+      'Move to SQL Server or a web app if you need dozens of people writing at once, browser or mobile access, or your file is close to the 2 GB Access limit. If Access is the wrong fit, we tell you before you spend money on it.',
+  },
+  {
+    question: 'Is Microsoft Access still supported?',
+    answer:
+      'Yes. Microsoft still ships Access with Microsoft 365, and desktop Access databases remain a supported way to run shared business data for small and mid-size teams.',
+  },
+  {
+    question: 'What do you need from me to quote a conversion?',
+    answer:
+      'Send one or two sample workbooks through the contact form. You can remove sensitive values, because the structure matters more than the data. We review them in the free consultation and give you a fixed price.',
+  },
+  {
+    question: 'Who owns the Access database when it is finished?',
+    answer:
+      'You do. You own 100% of the files, and there is no hosted subscription.',
   },
 ];
 

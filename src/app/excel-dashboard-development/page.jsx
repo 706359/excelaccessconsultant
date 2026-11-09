@@ -5,6 +5,7 @@ import {
   ServiceFinalCTASection,
   ServiceRelatedSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import { BRAND_LOGO_OG } from '../../config/brand';
 import {
   BUILD_STEPS,
   DASHBOARD_FAQS,
@@ -17,9 +18,89 @@ import {
 } from '../../constants/excelDashboardDevelopmentPage';
 import { CONSULTANTS, CTA, TRUST } from '../../constants/site';
 
-const CANONICAL = 'https://excelaccessconsultant.com/excel-dashboard-development';
-const PROVIDER_ID = 'https://excelaccessconsultant.com/#localbusiness';
+const SITE = 'https://excelaccessconsultant.com';
+const CANONICAL = `${SITE}/excel-dashboard-development`;
+const PROVIDER_ID = `${SITE}/#localbusiness`;
+// Prefer dedicated OG art when present; brand logo keeps shares from going blank.
+const OG_IMAGE = BRAND_LOGO_OG;
 const sectionStyle = { paddingBlock: '3rem' };
+
+const PAGE_TITLE = 'Excel Dashboard Development Services | Excel Access Consultant';
+const PAGE_DESCRIPTION =
+  'Custom Excel dashboard development: KPI workbooks with PivotTables and charts that refresh from your data. Fixed-price quotes, you own the file.';
+
+export const metadata = {
+  title: { absolute: PAGE_TITLE },
+  description: PAGE_DESCRIPTION,
+  keywords: [
+    'Excel dashboard development services',
+    'Excel dashboard developer',
+    'custom Excel dashboard',
+    'Excel KPI dashboard developer',
+    'Excel dashboard consultant',
+    'Excel dashboard developer for small business',
+    'Excel reporting dashboard',
+    'Excel dashboard that refreshes from your data',
+  ],
+  alternates: { canonical: CANONICAL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    url: CANONICAL,
+    siteName: 'Excel Access Consultant',
+    locale: 'en_US',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [OG_IMAGE.url],
+  },
+};
+
+/*
+ * FAQ: one source of truth for BOTH the visible page and the FAQPage schema.
+ * `text` is plain text (links flattened) and must match what `body` shows.
+ * Do not rename the cost question below; the override is matched on that exact string.
+ */
+const FAQ_OVERRIDES = {
+  'How much does a custom Excel dashboard cost?': {
+    text: 'Cost follows scope: number of data sources, cleanup needed, KPI count, chart layout, and whether VBA refresh or email steps are included. Fixed-price quotes follow the project bands on the pricing page.',
+    body: (
+      <>
+        Cost follows scope: number of data sources, cleanup needed, KPI count, chart layout, and
+        whether VBA refresh or email steps are included. Fixed-price quotes follow the project bands
+        on the{' '}
+        <Link href='/pricing' className='text-link'>
+          pricing
+        </Link>{' '}
+        page.
+      </>
+    ),
+  },
+};
+
+const FAQS = DASHBOARD_FAQS.map((faq) => {
+  const override = FAQ_OVERRIDES[faq.question];
+  return {
+    question: faq.question,
+    text: override ? override.text : faq.answer,
+    body: override ? override.body : faq.answer,
+  };
+});
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -38,16 +119,21 @@ const jsonLd = {
         { '@type': 'Country', name: 'Canada' },
         { '@type': 'Country', name: 'United Kingdom' },
       ],
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType:
+          'Small and mid-size operations and finance teams that report from Microsoft Excel',
+      },
     },
     {
       '@type': 'FAQPage',
       '@id': `${CANONICAL}#faq`,
-      mainEntity: DASHBOARD_FAQS.map((faq) => ({
+      mainEntity: FAQS.map((faq) => ({
         '@type': 'Question',
         name: faq.question,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: faq.answer,
+          text: faq.text,
         },
       })),
     },
@@ -55,12 +141,7 @@ const jsonLd = {
       '@type': 'BreadcrumbList',
       '@id': `${CANONICAL}#breadcrumb`,
       itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://excelaccessconsultant.com/',
-        },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
         {
           '@type': 'ListItem',
           position: 2,
@@ -74,22 +155,35 @@ const jsonLd = {
       '@id': CANONICAL,
       url: CANONICAL,
       name: 'Excel Dashboard Development Services',
-      description:
-        'Excel dashboard development services for custom KPI workbooks that refresh from your files and databases.',
+      description: PAGE_DESCRIPTION,
+      inLanguage: 'en-US',
       dateModified: PAGE_REVIEWED,
+      lastReviewed: PAGE_REVIEWED,
       isPartOf: {
         '@type': 'WebSite',
         name: 'Excel Access Consultant',
-        url: 'https://excelaccessconsultant.com',
+        url: SITE,
       },
       about: { '@id': `${CANONICAL}#service` },
+      mainEntity: { '@id': `${CANONICAL}#faq` },
+      breadcrumb: { '@id': `${CANONICAL}#breadcrumb` },
       author: {
         '@type': 'Person',
         name: CONSULTANTS.displayName,
+        url: `${SITE}/about`,
+        jobTitle: 'Excel and Microsoft Access Consultant',
+      },
+      reviewedBy: {
+        '@type': 'Person',
+        name: CONSULTANTS.displayName,
+        url: `${SITE}/about`,
       },
     },
   ],
 };
+
+// Escape "<" so the JSON can never close the script tag early.
+const jsonLdString = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 
 function formatReviewed(isoDate) {
   const [year, month, day] = isoDate.split('-').map(Number);
@@ -105,13 +199,17 @@ export default function ExcelDashboardDevelopment() {
   return (
     <div className='page'>
       <ServicePageTracker service='excel-dashboard-development' />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: jsonLdString }} />
 
       <section className='page-hero'>
         <div className='container'>
+          <nav aria-label='Breadcrumb' className='text-muted-sm' style={{ marginBottom: '1rem' }}>
+            <Link href='/' className='text-link'>
+              Home
+            </Link>{' '}
+            <span aria-hidden='true'>/</span>{' '}
+            <span aria-current='page'>Excel Dashboard Development Services</span>
+          </nav>
           <h1 className='page-hero__title'>Excel Dashboard Development Services</h1>
           <p className='page-hero__lead'>
             Custom Microsoft Excel dashboards that refresh from your data so weekly reporting is not
@@ -136,9 +234,7 @@ export default function ExcelDashboardDevelopment() {
       </section>
 
       <section className='container' style={sectionStyle} aria-labelledby='answer-block'>
-        <h2 id='answer-block' className='sr-only'>
-          What is an Excel dashboard developer and what do they build?
-        </h2>
+        <h2 id='answer-block'>What is an Excel dashboard developer and what do they build?</h2>
         <p>
           An Excel dashboard developer builds a workbook that answers fixed business questions with
           charts, PivotTables, and filters. Excel dashboard development services cover the data
@@ -146,19 +242,49 @@ export default function ExcelDashboardDevelopment() {
           without hiring the developer again each month.
         </p>
         <p>
-          Excel Access Consultant (EAC) builds these as fixed-price Excel projects. You receive the
-          finished file and own it. This page is for a maintained reporting tool, not a one-off chart
-          paste. A proper build plans named ranges, refresh steps, and who can open the file when
-          next month&apos;s CSV arrives.
+          Excel Access Consultant (EAC) is an Excel dashboard consultant for businesses in the
+          United States, Canada, and the United Kingdom. EAC builds these as fixed-price Excel
+          projects. You receive the finished file and own it. This is a maintained reporting tool,
+          not a one-off chart paste. A proper build plans named ranges, refresh steps, and who can
+          open the file when next month&apos;s CSV arrives.
         </p>
+        <div className='highlight-box' style={{ marginTop: '1.5rem' }}>
+          <p>
+            <strong>Quick facts</strong>
+          </p>
+          <ul className='highlight-box__list'>
+            <li>
+              <strong>Best for:</strong> weekly or monthly KPI reporting that currently means
+              rebuilding charts by hand.
+            </li>
+            <li>
+              <strong>You receive:</strong> a finished Excel workbook you own, with handover notes so
+              your team can run it.
+            </li>
+            <li>
+              <strong>Pricing:</strong> fixed-price quote based on scope. See the pricing page.
+            </li>
+            <li>
+              <strong>Built with:</strong> Microsoft Excel: PivotTables, slicers, and charts, plus
+              Power Query and Power Pivot where your desktop Excel supports them.
+            </li>
+            <li>
+              <strong>Service area:</strong> United States, Canada, and the United Kingdom.
+            </li>
+            <li>
+              <strong>Not covered here:</strong> Power BI dashboards. This service stays inside
+              Microsoft Excel.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section className='page-section page-section--compact page-section--alt'>
         <div className='container'>
           <h2>What Excel dashboard development services build</h2>
           <p className='text-lead'>
-            Custom Excel dashboards for the reporting jobs already common in EAC client work:
-            construction, distribution, and finance operations.
+            Custom Excel dashboards for reporting jobs common in construction, distribution, and
+            finance operations.
           </p>
           <div className='grid-2'>
             {DASHBOARD_TYPES.map((item) => (
@@ -170,18 +296,18 @@ export default function ExcelDashboardDevelopment() {
           </div>
           <p className='text-muted' style={{ marginTop: '1.5rem' }}>
             A KPI is a number leadership watches on purpose, such as open orders, inventory turns, or
-            job margin. A PivotTable summarizes rows into groups you can filter. Slicers are clickable
-            filters that drive those PivotTables and charts together.
+            job margin. A PivotTable summarizes rows into groups you can filter. Slicers are
+            clickable filters that drive those PivotTables and charts together.
           </p>
         </div>
       </section>
 
       <section className='page-section page-section--compact page-section--white'>
         <div className='container'>
-          <h2>Where the data comes from</h2>
+          <h2>Where the data for your Excel dashboard comes from</h2>
           <p className='text-lead'>
-            Dashboards only work when the inputs are known. EAC already connects Excel to the sources
-            below on existing automation and reporting work.
+            Dashboards only work when the inputs are known. EAC connects Excel to the sources below
+            on automation and reporting projects.
           </p>
           <div className='grid-2'>
             {DATA_SOURCES.map((item) => (
@@ -196,17 +322,17 @@ export default function ExcelDashboardDevelopment() {
             or in a Data Model. A Data Model is the in-workbook store of related tables used for
             analysis. Power Pivot is the Excel feature set for building that model and writing DAX
             measures (calculations stored with the model). When your Windows desktop Excel license
-            supports those features, a Power Query and Power Pivot consultant build can refresh
-            instead of being rebuilt each month.
+            supports those features, a Power Query and Power Pivot build can refresh instead of being
+            rebuilt each month.
           </p>
           <p className='text-muted'>
-            {'{{CONFIRM: confirm Power Query and Power Pivot as a standard EAC dashboard delivery method}}'}{' '}
-            Until confirmed in writing for your project, refresh may also use VBA helpers and
-            connections to Access or SQL Server, which this site already offers under{' '}
+            The refresh method is agreed in writing at the start of each project: Power Query and
+            Power Pivot where your desktop Excel supports them, VBA helpers, or connections to Access
+            or SQL Server (see{' '}
             <Link href='/excel-automation' className='text-link'>
               Excel automation
             </Link>
-            . An Excel dashboard that refreshes from your data should not require re-pasting every
+            ). An Excel dashboard that refreshes from your data should not require re-pasting every
             monthly export into the chart sheet.
           </p>
         </div>
@@ -214,7 +340,7 @@ export default function ExcelDashboardDevelopment() {
 
       <section className='page-section page-section--compact page-section--alt'>
         <div className='container'>
-          <h2>How a dashboard gets built</h2>
+          <h2>How an Excel dashboard gets built</h2>
           <p className='text-lead'>
             The build starts with the questions you need answered, then the data, then the layout.
             Charts come after the numbers match.
@@ -242,8 +368,8 @@ export default function ExcelDashboardDevelopment() {
             <Link href='/financial-modeling' className='text-link'>
               financial modeling
             </Link>
-            . Automated Excel reports that only need a PDF emailed after consolidation often sit on
-            the automation page. Interactive scorecards sit here.
+            . Reports that only need a PDF emailed after consolidation usually belong on the
+            automation page. Interactive scorecards belong here.
           </p>
         </div>
       </section>
@@ -259,9 +385,8 @@ export default function ExcelDashboardDevelopment() {
             Choose Excel when managers must keep working offline, when the dashboard must live next
             to existing project files, or when you want a custom file you own after a fixed-price
             build. Choose a broader BI platform when IT owns cloud datasets, many viewers need
-            governed access, and the org standard is already Power BI. EAC does not list Power BI
-            delivery as a service on this site. An Excel KPI dashboard developer engagement here
-            stays inside Microsoft Excel.
+            governed access, and the org standard is already Power BI. EAC builds Excel dashboards;
+            this service does not include Power BI development.
           </p>
           <p className='text-muted'>
             Microsoft documents that advanced Power Pivot model creation is a desktop Excel feature,
@@ -343,13 +468,13 @@ export default function ExcelDashboardDevelopment() {
         <div className='container'>
           <h2>Related work</h2>
           <p className='text-lead'>
-            These case studies show Excel and Access reporting work already published on the site.
-            Facts below match those pages only.
+            These published case studies show Excel and Access reporting work from real client
+            projects.
           </p>
           <p className='text-muted'>
             Construction weekly packs, job costing WIP views, and distribution ops workbooks are the
-            closest published examples. Each one started from messy multi-file Excel work and ended
-            with a reporting surface the team could trust.
+            closest examples. Each one started from messy multi-file Excel work and ended with a
+            reporting surface the team could trust.
           </p>
           <div className='grid-3'>
             {PROOF_CASES.map((study) => (
@@ -377,31 +502,15 @@ export default function ExcelDashboardDevelopment() {
             mid-size operations teams.
           </p>
           <div className='stack stack--lg'>
-            {DASHBOARD_FAQS.map((faq) => (
+            {FAQS.map((faq) => (
               <article key={faq.question} className='card'>
                 <h3>{faq.question}</h3>
-                <p className='text-muted'>
-                  {faq.question === 'How much does a custom Excel dashboard cost?' ? (
-                    <>
-                      Cost follows scope: number of data sources, cleanup needed, KPI count, chart
-                      layout, and whether VBA refresh or email steps are included. Fixed-price quotes
-                      follow the same project bands on the{' '}
-                      <Link href='/pricing' className='text-link'>
-                        pricing
-                      </Link>{' '}
-                      page. This page does not list a separate dashboard rate.
-                    </>
-                  ) : (
-                    faq.answer
-                  )}
-                </p>
+                <p className='text-muted'>{faq.body}</p>
               </article>
             ))}
           </div>
           <p className='text-muted' style={{ marginTop: '1.25rem' }}>
-            {'{{CONFIRM: post-handover support window and change process for dashboard projects}}'}{' '}
-            Site-wide project pages already describe a 30-day post-delivery window for build work;
-            confirm if dashboard engagements use the same rule.
+            Post-handover support and how changes are handled are confirmed in your written quote.
           </p>
         </div>
       </section>
@@ -409,7 +518,7 @@ export default function ExcelDashboardDevelopment() {
       <ServiceRelatedSection groups={RELATED_GROUPS} />
 
       <ServiceFinalCTASection
-        heading='Ready for automated Excel reports your team can refresh?'
+        heading='Need an Excel dashboard your team can refresh?'
         body={`I have ${TRUST.years} years building Excel tools that operations and finance teams actually open. Book a free consultation with ${CONSULTANTS.displayName}. Bring a sample export and the questions the dashboard must answer.`}
       />
     </div>

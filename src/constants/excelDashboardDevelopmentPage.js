@@ -140,12 +140,12 @@ export const DASHBOARD_FAQS = [
   {
     question: 'How much does a custom Excel dashboard cost?',
     answer:
-      'Cost follows scope: number of data sources, cleanup needed, KPI count, chart layout, and whether VBA refresh or email steps are included. Fixed-price quotes follow the same project bands on the pricing page. This page does not list a separate dashboard rate.',
+      'Cost follows scope: number of data sources, cleanup needed, KPI count, chart layout, and whether VBA refresh or email steps are included. Fixed-price quotes follow the project bands on the pricing page.',
   },
   {
-    question: 'Does the dashboard refresh automatically?',
+    question: 'Will the dashboard refresh from my data, or do I rebuild it every month?',
     answer:
-      'It refreshes when you run the path I build: Power Query refresh, a VBA refresh button, or a pull from Access or SQL Server. Fully unattended schedules depend on your PC or server setup. I document the steps for your file.',
+      'A proper build plans named ranges and refresh steps so a new monthly export can be loaded without re-pasting into the chart sheet. The refresh method is agreed in writing at the start of the project.',
   },
   {
     question: 'Can you fix or rebuild an existing dashboard?',
@@ -158,9 +158,9 @@ export const DASHBOARD_FAQS = [
       'Power Query imports and cleans data before it lands in Excel. Power Pivot builds a Data Model with relationships and DAX measures. Full Power Pivot editing needs Excel on Windows with a license that includes it.',
   },
   {
-    question: 'Should I use Excel or Power BI?',
+    question: 'Should I choose an Excel dashboard or Power BI?',
     answer:
-      'Stay in Excel when your team lives in workbooks, needs offline files, or wants a fixed-price custom file they own. Consider Power BI when the org standard is cloud BI with many viewers. EAC builds Excel solutions; Power BI is not listed as a service here.',
+      'Choose Excel when managers must work offline, the dashboard must live next to existing project files, or you want a custom file you own after a fixed-price build. Choose a broader BI platform when IT owns cloud datasets, many viewers need governed access, and the organization already standardizes on Power BI. EAC dashboard work stays inside Microsoft Excel.',
   },
   {
     question: 'Will the file work for several people, on Mac, or in Excel for the web?',
@@ -168,9 +168,9 @@ export const DASHBOARD_FAQS = [
       'Several people can open a shared workbook, but concurrent editing has limits. Advanced Data Model and Power Pivot work is a Windows desktop Excel feature. Excel for the web can view many charts and some Power Pivot visuals, but cannot create Power Pivot models or new external connections.',
   },
   {
-    question: 'Who owns the finished dashboard file?',
+    question: 'Do I own the finished Excel dashboard?',
     answer:
-      'You do. Deliverables on this site include 100% ownership of the files and code. There is no license fee to keep using what I build after handover.',
+      'Yes. You receive the finished file and own it, with handover notes so your team can run it without hiring the developer again each month.',
   },
 ];
 

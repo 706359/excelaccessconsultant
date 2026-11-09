@@ -7,6 +7,7 @@ import {
   ServiceFinalCTASection,
   ServiceRelatedSection,
 } from '../../components/ui/ServicePageSections/ServicePageSections';
+import { BRAND_LOGO_OG } from '../../config/brand';
 import {
   ARCHITECTURE_ROWS,
   PAGE_UPDATED,
@@ -19,103 +20,167 @@ import {
 } from '../../constants/accessToWebAppMigrationPage';
 import { CONSULTANTS, CTA, TRUST } from '../../constants/site';
 
-const CANONICAL = 'https://excelaccessconsultant.com/access-to-web-app-migration';
+const SITE = 'https://excelaccessconsultant.com';
+const CANONICAL = `${SITE}/access-to-web-app-migration`;
+const PROVIDER_ID = `${SITE}/#localbusiness`;
 const sectionStyle = { paddingBlock: '3rem' };
 
-const serviceSchema = {
+const META_TITLE = 'Convert Access Database to Web App | Fixed Price | EAC';
+const META_DESCRIPTION =
+  'Convert an Access database to a web app: SQL Server/Azure SQL, browser-based forms, VBA rewritten. Fixed-price quotes from $3,000. Free consultation.';
+
+/* ------------------------------------------------------------------ */
+/* Next.js App Router metadata                                         */
+/* (If your layout uses a title template, `absolute` prevents          */
+/*  "… | EAC | EAC" duplication.)                                      */
+/* ------------------------------------------------------------------ */
+export const metadata = {
+  metadataBase: new URL(SITE),
+  title: { absolute: META_TITLE },
+  description: META_DESCRIPTION,
+  // Google ignores the keywords meta tag; kept for Bing/other crawlers and internal documentation.
+  keywords: [
+    'convert Access database to web application',
+    'migrate Access to web app',
+    'Access to web app migration services',
+    'replace Access with web application',
+    'Access database remote multi-user web access',
+    'Access web conversion consultant',
+    'Access to SQL Server migration',
+    'Access to Azure SQL migration',
+    'Access database to .NET web application',
+    'Access to Power Apps alternative',
+    'Access web app migration cost',
+  ],
+  alternates: { canonical: CANONICAL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    url: CANONICAL,
+    siteName: 'Excel Access Consultant',
+    title: 'Convert Access Database to Web Application | Excel Access Consultant',
+    description: META_DESCRIPTION,
+    locale: 'en_US',
+    images: [BRAND_LOGO_OG],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Convert Access Database to Web Application | EAC',
+    description: META_DESCRIPTION,
+    images: [BRAND_LOGO_OG.url],
+  },
+};
+
+/* ------------------------------------------------------------------ */
+/* Structured data (single @graph, cross-linked with @id)              */
+/* FAQPage schema is still emitted by <FAQSchema />.                   */
+/* Provider references the site LocalBusiness @id (root layout).       */
+/* ------------------------------------------------------------------ */
+const graphSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Access to Web Application Migration',
-  serviceType: 'Access database to web application conversion',
-  url: CANONICAL,
-  description:
-    'Convert Access database to web application: migrate data to SQL Server or Azure SQL, rebuild forms as web-based interfaces, rewrite VBA as application logic. Fixed-price projects from Excel Access Consultant (EAC).',
-  provider: {
-    '@type': 'ProfessionalService',
-    name: 'Excel Access Consultant',
-    alternateName: 'EAC',
-    url: 'https://excelaccessconsultant.com',
-    founder: { '@type': 'Person', name: CONSULTANTS.displayName },
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'United States',
-  },
-  offers: [
+  '@graph': [
     {
-      '@type': 'Offer',
-      name: 'Focused Access migration (SQL / hybrid)',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        minPrice: 3000,
-        maxPrice: 5000,
-        priceCurrency: 'USD',
-      },
+      '@type': 'Service',
+      '@id': `${CANONICAL}#service`,
+      name: 'Access to Web Application Migration',
+      serviceType: 'Access database to web application conversion',
+      url: CANONICAL,
+      description:
+        'Convert an Access database to a web application: migrate data to SQL Server or Azure SQL, rebuild forms as browser-based interfaces, and rewrite VBA as application logic. Fixed-price projects from Excel Access Consultant (EAC).',
+      provider: { '@id': PROVIDER_ID },
+      areaServed: { '@type': 'Country', name: 'United States' },
+      offers: [
+        {
+          '@type': 'Offer',
+          name: 'Focused Access migration (SQL / hybrid)',
+          url: CANONICAL,
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 3000,
+            maxPrice: 5000,
+            priceCurrency: 'USD',
+          },
+        },
+        {
+          '@type': 'Offer',
+          name: 'Advanced Access migration with form work',
+          url: CANONICAL,
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 5000,
+            maxPrice: 12000,
+            priceCurrency: 'USD',
+          },
+        },
+        {
+          '@type': 'Offer',
+          name: 'Enterprise Access modernization',
+          url: CANONICAL,
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 12000,
+            priceCurrency: 'USD',
+          },
+        },
+        {
+          '@type': 'Offer',
+          name: 'Custom web application rebuild (typically $10,000–$25,000+)',
+          url: CANONICAL,
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 10000,
+            priceCurrency: 'USD',
+          },
+        },
+      ],
+      mainEntityOfPage: { '@id': `${CANONICAL}#webpage` },
     },
     {
-      '@type': 'Offer',
-      name: 'Advanced Access migration with form work',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        minPrice: 5000,
-        maxPrice: 12000,
-        priceCurrency: 'USD',
+      '@type': 'WebPage',
+      '@id': `${CANONICAL}#webpage`,
+      name: 'Convert Access Database to Web Application',
+      url: CANONICAL,
+      description: META_DESCRIPTION,
+      dateModified: PAGE_UPDATED,
+      inLanguage: 'en-US',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'Excel Access Consultant',
+        url: SITE,
       },
+      about: { '@id': `${CANONICAL}#service` },
+      mainEntity: { '@id': `${CANONICAL}#service` },
+      breadcrumb: { '@id': `${CANONICAL}#breadcrumb` },
+      author: { '@type': 'Person', name: CONSULTANTS.displayName },
     },
     {
-      '@type': 'Offer',
-      name: 'Enterprise Access modernization',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        minPrice: 12000,
-        priceCurrency: 'USD',
-      },
+      '@type': 'BreadcrumbList',
+      '@id': `${CANONICAL}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Access to Web App Migration',
+          item: CANONICAL,
+        },
+      ],
     },
   ],
 };
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://excelaccessconsultant.com/',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Access to Web App Migration',
-      item: CANONICAL,
-    },
-  ],
-};
-
-const webPageSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: 'Convert Access Database to Web Application',
-  url: CANONICAL,
-  description:
-    'Convert Access database to web application with Excel Access Consultant. SQL/Azure back end, web forms, fixed-price migration.',
-  dateModified: PAGE_UPDATED,
-  inLanguage: 'en-US',
-  isPartOf: {
-    '@type': 'WebSite',
-    name: 'Excel Access Consultant',
-    url: 'https://excelaccessconsultant.com',
-  },
-  about: {
-    '@type': 'Service',
-    name: 'Access to Web Application Migration',
-  },
-  author: {
-    '@type': 'Person',
-    name: CONSULTANTS.displayName,
-  },
-};
+// Escape "<" so no string inside the JSON can close the script tag.
+const jsonLd = (data) => JSON.stringify(data).replace(/</g, '\\u003c');
 
 function formatUpdated(isoDate) {
   const [year, month, day] = isoDate.split('-').map(Number);
@@ -127,6 +192,29 @@ function formatUpdated(isoDate) {
   });
 }
 
+const COST_ROWS = [
+  {
+    path: 'Focused migration: SQL Server back end, Access front end',
+    range: '$3,000–$5,000',
+    drivers: 'Number of tables, data volume, light VBA',
+  },
+  {
+    path: 'Advanced migration with form and report work',
+    range: '$5,000–$12,000',
+    drivers: 'Forms, reports, VBA complexity, user roles',
+  },
+  {
+    path: 'Enterprise or Azure-oriented modernization',
+    range: '$12,000+',
+    drivers: 'Integrations, security controls, multiple workflows',
+  },
+  {
+    path: 'Custom web application rebuild (browser UI replaces Access screens)',
+    range: 'About $10,000–$25,000+',
+    drivers: 'Every screen, report, and macro redesigned; longer timeline',
+  },
+];
+
 export default function AccessToWebAppMigration() {
   return (
     <div className='page'>
@@ -134,26 +222,17 @@ export default function AccessToWebAppMigration() {
       <FAQSchema faqs={WEB_FAQS} />
       <script
         type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(graphSchema) }}
       />
 
       <section className='page-hero'>
         <div className='container'>
-          <h1 className='page-hero__title'>
-            Convert Access Database to Web Application
-          </h1>
+          <h1 className='page-hero__title'>Convert Access Database to Web Application</h1>
           <p className='page-hero__lead'>
-            Hire Excel Access Consultant (EAC) to migrate Access to web app architecture—SQL Server
-            or Azure SQL for data, web-based screens for your team—so remote users stop depending on
-            a fragile shared .accdb file.
+            Excel Access Consultant (EAC) converts your Access database to a web application. Data
+            moves to SQL Server or Azure SQL, forms are rebuilt as browser-based screens, and VBA
+            becomes application logic, so remote teams stop depending on a fragile shared .accdb
+            file.
           </p>
           <div className='contact-ctas contact-ctas--stack'>
             <Button variant='primary' size='large' as={Link} href={CTA.primaryHref}>
@@ -164,9 +243,7 @@ export default function AccessToWebAppMigration() {
             </Button>
           </div>
           <div className='content-meta' style={{ marginTop: '1.25rem' }}>
-            <Link href='/about'>By {CONSULTANTS.displayName}</Link>
-            <span aria-hidden='true'>•</span>
-            <span>Reviewed by {CONSULTANTS.displayName}</span>
+            <Link href='/about'>Written and reviewed by {CONSULTANTS.displayName}</Link>
             <span aria-hidden='true'>•</span>
             <time dateTime={PAGE_UPDATED}>Last updated: {formatUpdated(PAGE_UPDATED)}</time>
           </div>
@@ -176,20 +253,63 @@ export default function AccessToWebAppMigration() {
       <section className='container' style={sectionStyle} aria-labelledby='direct-answer'>
         <h2 id='direct-answer'>Can an Access database be converted to a web app?</h2>
         <p>
-          Yes. You can convert Access database to web application systems by moving tables to SQL
-          Server or Azure SQL and rebuilding forms as browser-based interfaces. Access itself does
-          not run in a browser—Microsoft discontinued Access web apps—so this is a planned rebuild
-          of UI and VBA, not an upload. Excel Access Consultant (EAC) scopes that work at a fixed
+          Yes. You can convert an Access database to a web application by moving the tables to SQL
+          Server or Azure SQL and rebuilding the forms as browser-based interfaces. Access itself
+          does not run in a browser, and Microsoft retired Access web apps, so this is a planned
+          rebuild of the user interface and VBA, not a file upload. EAC scopes that work at a fixed
           price after a free consultation.
         </p>
+        <ul>
+          <li>
+            <strong>Data:</strong> tables move to SQL Server or Azure SQL; your original .accdb is
+            kept untouched as a backup through testing.
+          </li>
+          <li>
+            <strong>Interface:</strong> Access forms become web-based screens (or stay in Access on
+            a hybrid SQL back end if that is enough).
+          </li>
+          <li>
+            <strong>Logic:</strong> VBA and macros are rewritten as application logic.
+          </li>
+          <li>
+            <strong>Price:</strong> fixed-price quotes, from about $3,000 for focused SQL/hybrid
+            work to $10,000–$25,000+ for a full web UI rebuild.
+          </li>
+        </ul>
+        <nav aria-label='On this page' className='text-muted' style={{ marginTop: '1.5rem' }}>
+          <strong>On this page:</strong>{' '}
+          <a href='#signs' className='text-link'>
+            Signs to migrate
+          </a>{' '}
+          ·{' '}
+          <a href='#deliverables' className='text-link'>
+            What you get
+          </a>{' '}
+          ·{' '}
+          <a href='#process' className='text-link'>
+            Process
+          </a>{' '}
+          ·{' '}
+          <a href='#architecture' className='text-link'>
+            Architecture options
+          </a>{' '}
+          ·{' '}
+          <a href='#cost' className='text-link'>
+            Cost and timeline
+          </a>{' '}
+          ·{' '}
+          <a href='#faq' className='text-link'>
+            FAQ
+          </a>
+        </nav>
       </section>
 
-      <section className='page-section page-section--compact page-section--alt'>
+      <section id='signs' className='page-section page-section--compact page-section--alt'>
         <div className='container'>
           <h2>Signs it is time to move Access to the web</h2>
           <p className='text-lead'>
             If several of these are true every week, staying on a desktop-only Access model is the
-            risk—not a temporary inconvenience.
+            risk, not a temporary inconvenience.
           </p>
           <div className='grid-2'>
             {WEB_SIGNS.map((item) => (
@@ -200,7 +320,7 @@ export default function AccessToWebAppMigration() {
             ))}
           </div>
           <p className='text-muted' style={{ marginTop: '1.5rem' }}>
-            Concurrency limits alone do not always require a web UI—see{' '}
+            Concurrency limits alone do not always require a web UI. See{' '}
             <Link href='/blog/can-access-handle-50-users' className='text-link'>
               whether Access can handle 50 users
             </Link>{' '}
@@ -217,12 +337,12 @@ export default function AccessToWebAppMigration() {
         </div>
       </section>
 
-      <section className='page-section page-section--compact page-section--white'>
+      <section id='deliverables' className='page-section page-section--compact page-section--white'>
         <div className='container'>
           <h2>What gets migrated when you replace Access with a web application</h2>
           <p className='text-lead'>
             Access to web app migration services deliver a working system of record your staff can
-            use—not a slide deck. Here is what clients typically receive.
+            use, not a slide deck. Here is what clients typically receive.
           </p>
           <div className='grid-2'>
             {WEB_DELIVERABLES.map((item) => (
@@ -233,7 +353,7 @@ export default function AccessToWebAppMigration() {
             ))}
           </div>
           <p className='text-muted' style={{ marginTop: '1.5rem' }}>
-            Microsoft&apos;s own guidance is clear that tools like SSMA move tables and data—not
+            Microsoft&apos;s own guidance is clear that tools like SSMA move tables and data, not
             forms, reports, macros, or VBA. See{' '}
             <a
               href='https://support.microsoft.com/en-us/access/migrate-an-access-database-to-sql-server'
@@ -252,17 +372,17 @@ export default function AccessToWebAppMigration() {
             >
               Microsoft Learn: migrating Access databases to SQL Server and Azure SQL
             </a>
-            . UI and logic rebuild is where specialist delivery matters.
+            . The UI and logic rebuild is where specialist delivery matters.
           </p>
         </div>
       </section>
 
-      <section className='page-section page-section--compact page-section--alt'>
+      <section id='process' className='page-section page-section--compact page-section--alt'>
         <div className='container'>
           <h2>Our Access to web app migration process</h2>
           <p className='text-lead'>
-            Same discipline as other EAC migrations: honest readiness review, fixed price after
-            scope, validated data move, then cutover with support.
+            Same discipline as other EAC migrations: an honest readiness review, a fixed price after
+            scope, a validated data move, then cutover with support.
           </p>
           <ol className='stack stack--lg' style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {WEB_STEPS.map((step, index) => (
@@ -278,7 +398,7 @@ export default function AccessToWebAppMigration() {
             ))}
           </ol>
           <p className='text-muted' style={{ marginTop: '1.5rem' }}>
-            Split Access architecture often comes first—see{' '}
+            Split Access architecture often comes first. See{' '}
             <Link href='/blog/access-front-end-back-end-architecture' className='text-link'>
               Access front-end / back-end architecture
             </Link>
@@ -291,12 +411,12 @@ export default function AccessToWebAppMigration() {
         </div>
       </section>
 
-      <section className='page-section page-section--compact page-section--white'>
+      <section id='architecture' className='page-section page-section--compact page-section--white'>
         <div className='container'>
           <h2>Architecture options: hybrid SQL, custom web, or Power Apps</h2>
           <p className='text-lead'>
             Move Access online only as far as the business needs. These paths compete on remote
-            access, scale, customization, and ongoing cost—not marketing labels.
+            access, scale, customization, and ongoing cost, not marketing labels.
           </p>
           <div className='blog-table-wrap'>
             <table>
@@ -343,13 +463,8 @@ export default function AccessToWebAppMigration() {
             <Link href='/database-migration' className='text-link'>
               database migration and modernization
             </Link>
-            .{' '}
-            <strong>
-              [PLACEHOLDER: confirm EAC web-app stack and delivery model]
-            </strong>{' '}
-            — for example whether custom UI work is delivered primarily with .NET, another modern
-            web stack, partnered build, or scoped case-by-case. Until confirmed, treat &quot;web
-            forms / web-based interfaces&quot; as the accurate public claim.
+            . The technology used for a custom web interface is chosen per project during discovery,
+            based on your users, integrations, and IT environment.
           </p>
 
           <h3>Power Apps / Dataverse as one alternative</h3>
@@ -361,7 +476,7 @@ export default function AccessToWebAppMigration() {
             <Link href='/blog/access-vs-power-apps-when-to-stay-on-access' className='text-link'>
               Access vs Power Apps: when to stay on Access
             </Link>
-            . This page is for buyers who need a commercial web-application path—not a Power
+            . This page is for buyers who need a commercial web-application path, not a Power
             Platform sales pitch.
           </p>
         </div>
@@ -369,17 +484,17 @@ export default function AccessToWebAppMigration() {
 
       <MidPageCTA
         heading='Need Access database remote multi-user web access?'
-        subtext='Send the .accdb (or a sanitized copy) and who uses it. I will recommend hybrid SQL, a web UI rebuild, or staying on optimized Access—then quote a fixed price.'
+        subtext='Send the .accdb (or a sanitized copy) and who uses it. I will recommend hybrid SQL, a web UI rebuild, or staying on optimized Access, then quote a fixed price.'
       />
 
-      <section className='page-section page-section--compact page-section--alt'>
+      <section id='proof' className='page-section page-section--compact page-section--alt'>
         <div className='container'>
           <h2>Proof from Access modernization projects</h2>
           <p className='text-lead'>
-            Published case studies below are SQL Server / hybrid migrations—not claims that those
-            clients received a full browser rebuild. They show EAC&apos;s data migration, cutover,
-            and multi-user delivery. Web UI rebuilds are scoped when browser access is a hard
-            requirement.
+            The published case studies below are SQL Server / hybrid migrations, not claims that
+            those clients received a full browser rebuild. They show EAC&apos;s data migration,
+            cutover, and multi-user delivery. Web UI rebuilds are scoped when browser access is a
+            hard requirement.
           </p>
           <div className='grid-3'>
             {PROOF_CASES.map((study) => (
@@ -402,26 +517,46 @@ export default function AccessToWebAppMigration() {
         </div>
       </section>
 
-      <section className='page-section page-section--compact page-section--white'>
+      <section id='cost' className='page-section page-section--compact page-section--white'>
         <div className='container'>
-          <h2>Cost and timeline to convert Access database to web application</h2>
+          <h2>How much does it cost to convert an Access database to a web application?</h2>
           <p>
-            Drivers that move both budget and calendar: number of forms and reports, VBA complexity,
-            data volume, integrations, user roles, and any compliance-driven process controls your
-            IT team requires. Hybrid SQL-back-end projects follow the migration bands already
-            published for{' '}
+            Most Access to web app projects fall between about $3,000 and $25,000+, depending on how
+            far the rebuild goes. Hybrid SQL-back-end projects take roughly 3–12 weeks; a full web
+            UI rebuild takes longer and is timed after the scoping review.
+          </p>
+          <div className='blog-table-wrap'>
+            <table>
+              <caption className='sr-only'>
+                Typical fixed-price ranges for Access to SQL Server hybrid migration and custom web
+                application rebuilds
+              </caption>
+              <thead>
+                <tr>
+                  <th scope='col'>Path</th>
+                  <th scope='col'>Typical investment</th>
+                  <th scope='col'>What moves the price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COST_ROWS.map((row) => (
+                  <tr key={row.path}>
+                    <th scope='row'>{row.path}</th>
+                    <td>{row.range}</td>
+                    <td>{row.drivers}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ marginTop: '1.25rem' }}>
+            Drivers that move both budget and calendar: the number of forms and reports, VBA
+            complexity, data volume, integrations, user roles, and any compliance-driven process
+            controls your IT team requires. The hybrid bands match those published for{' '}
             <Link href='/database-migration' className='text-link'>
               Access database migration
             </Link>
-            : roughly $3,000–$5,000 for smaller scopes, $5,000–$12,000 when form/report work is
-            included, and $12,000+ for large or Azure-oriented programs (about 3–12 weeks depending
-            on complexity).
-          </p>
-          <p>
-            Fuller rebuilds that replace Access with a web application UI typically cost more than
-            hybrid alone. Planning content on this site cites about $10,000–$25,000+ for custom web
-            or .NET-style front-end paths, with longer timelines when every screen and macro must be
-            redesigned. Power Apps rebuilds can land higher still once licensing is included.
+            . Power Apps rebuilds can cost more once licensing is included.
           </p>
           <p className='text-muted'>
             See the{' '}
@@ -445,11 +580,11 @@ export default function AccessToWebAppMigration() {
         </div>
       </section>
 
-      <section className='container' style={sectionStyle}>
+      <section className='container' style={sectionStyle} id='security'>
         <h2>Security, access, and data safety</h2>
         <p>
           On server-backed projects, EAC sets up SQL Server (or Azure SQL) logins, roles, and
-          permissions so view/edit rights follow your business rules—not a single shared file
+          permissions so view and edit rights follow your business rules, not a single shared file
           password. Migrations keep the original Access database as an untouched backup through
           testing. Cloud SQL paths add the backup and remote-access posture that comes with a
           managed server database. EAC does not claim HIPAA, SOC 2, or other formal certifications
@@ -458,13 +593,13 @@ export default function AccessToWebAppMigration() {
         </p>
       </section>
 
-      <section className='page-section page-section--compact page-section--alt'>
+      <section id='when-not' className='page-section page-section--compact page-section--alt'>
         <div className='container'>
           <h2>When not to migrate to a web app</h2>
           <p>
             If the database mostly works, users are under practical Access concurrency limits, and
             everyone is fine on desktop PCs, a full web rebuild is usually the wrong spend. Fix
-            crashes, indexes, and split architecture first—see{' '}
+            crashes, indexes, and split architecture first. See{' '}
             <Link href='/blog/access-database-performance-optimization' className='text-link'>
               Access database performance optimization
             </Link>{' '}
@@ -476,8 +611,7 @@ export default function AccessToWebAppMigration() {
             <Link href='/database-migration' className='text-link'>
               database migration
             </Link>
-            ). I talk clients out of migration when optimization is enough—that is the same advice
-            in{' '}
+            ). I talk clients out of migration when optimization is enough, the same advice as in{' '}
             <Link href='/blog/when-to-migrate-from-access' className='text-link'>
               when to migrate from Access
             </Link>{' '}
@@ -490,11 +624,11 @@ export default function AccessToWebAppMigration() {
         </div>
       </section>
 
-      <section className='page-section page-section--compact page-section--white'>
+      <section id='faq' className='page-section page-section--compact page-section--white'>
         <div className='container'>
           <h2>Access to web app migration FAQ</h2>
           <p className='text-lead'>
-            Direct answers for buyers evaluating Access web conversion consultant engagements.
+            Direct answers for buyers evaluating an Access web conversion consultant.
           </p>
           <div className='stack stack--lg'>
             {WEB_FAQS.map((faq) => (
@@ -511,7 +645,7 @@ export default function AccessToWebAppMigration() {
 
       <ServiceFinalCTASection
         heading='Ready to modernize a legacy Access database for the browser?'
-        body={`${TRUST.years} years helping US teams stabilize Access and migrate when the platform no longer fits. Book a free consultation with ${CONSULTANTS.displayName}—you get an honest path (optimize, hybrid SQL, or web UI), a fixed-price plan when work is justified, and ownership of what is delivered.`}
+        body={`${TRUST.years} years helping US teams stabilize Access and migrate when the platform no longer fits. Book a free consultation with ${CONSULTANTS.displayName}: you get an honest path (optimize, hybrid SQL, or web UI), a fixed-price plan when work is justified, and ownership of what is delivered.`}
       />
     </div>
   );
